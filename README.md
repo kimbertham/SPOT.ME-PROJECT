@@ -2,4 +2,6 @@
 Main repo for SEI Project 3
 Kimberley
 Thomas Ly
-Robbie Serowka
+Rob
+Kim
+Gabs 👺
