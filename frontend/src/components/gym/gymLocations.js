@@ -3,19 +3,19 @@ import React from 'react'
 class gymSearch extends React.Component {
   state= {
     searchForm: {
-      radius : '', // distance
-      keywords : '', // keywords
-      location:'' //location -- drop down with text of location but coordinates set as value of input option
+      radius: '', // distance
+      keywords: '', // keywords
+      location: '' //location -- drop down with text of location but coordinates set as value of input option
     }
   }
 
   handleChange = event => {
-    const searchForm = {...this.state.form, [event.target.name]:event.target.value}
-    this.setState({searchForm})
+    const searchForm = { ...this.state.form, [event.target.name]: event.target.value }
+    this.setState({ searchForm })
   }
 
   handleSubmit = async event => {
-    const {radius, language, keywords } = this.state
+    const { radius, language, keywords } = this.state
     event.preventDefault()
     try {
       const response = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
@@ -31,8 +31,8 @@ class gymSearch extends React.Component {
     }
   }
 
-render(){
-  return (
+  render(){
+    return (
     <>
     <section className='gymSearch'>
       <div className='gym-search-container'>
@@ -43,7 +43,7 @@ render(){
           <div className='radius-field'>
             <label className='radius'><p>radius</p> </label>
             <input 
-            onChange={this.handleChange}
+              onChange={this.handleChange}
               name='radius'
               value={this.state.radius}
               className='form-input' 
@@ -53,7 +53,7 @@ render(){
           <div className='keywords-field'>
             <label className='keywords'><p>keywords</p> </label>
             <input 
-            onChange={this.handleChange}
+              onChange={this.handleChange}
               name='keywords' 
               value={this.state.keywords}
               className='form-input' 
@@ -63,21 +63,21 @@ render(){
           <div className='location-field'>
             <label className='location'><p>location</p> </label>
             <input 
-            onChange={this.handleChange}
+              onChange={this.handleChange}
               name='location' 
               value={this.state.location}
               className='form-input' 
               placeholder='location'/>
           </div>
 
-          </form>
+        </form>
 
-        </div>
-      </section>
+      </div>
+    </section>
 
     </>
-  )
-}
+    )
+  }
 }
 
 export default gymSearch
