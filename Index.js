@@ -15,15 +15,11 @@ mongoose.connect(
     console.log('Mongo is Connected!')
   })
 
+// Middleware start
+
 app.use(bodyParser.json())
 
-// Middleware here
-
-app.use('./api', router)
-
-
-
-
+app.use('/api', router)
 
 
 // Middleware end
