@@ -6,7 +6,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 class Map extends React.Component {
   state = {
     viewport: {
-      latitude: 51.515,
+    latitude: 51.515,
     longitude: -0.078,
     width: '80vw',
     height: '80vh',
@@ -14,8 +14,13 @@ class Map extends React.Component {
     }
   }
 
+
+
+  
   render() {
     const { viewport } = this.state
+
+  console.log(this.props)
 
     return (
       <MapGl
@@ -26,12 +31,16 @@ class Map extends React.Component {
           this.setState({ viewport })
         }}
       >
-        <Marker
-          latitude={51.515}
-          longitude={-0.078}
-        >
+
+      
+    {this.props.data.map(location => {
+      return <Marker
+          key={location.place_id}
+          latitude={location.lat}
+          longitude={location.lng}>
           <span role="img" aria-label="marker">🐳</span>
         </Marker>
+        })}
         
       </MapGl>
     )
