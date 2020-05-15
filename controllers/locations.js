@@ -12,6 +12,8 @@ const axios = require('axios')
 // longitude: number,
 // }
 async function getLocalFacilityData(req, res) {
+  console.log('RECIEVED')
+  
   const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
   const apiKey = 'AIzaSyAmR3drNq7VbhNZTH1e0esR4oTQZrIIoMI'
   const keyWord = req
@@ -81,8 +83,10 @@ async function getOneFacility(req, res) {
       rating: data.rating,
       ratingAmount: data.user_ratings_total,
       type: data.types,
-      location: data.vicinity,
-      openingHours: data.opening_hours
+      location: data.formatted_address,
+      businessStatus: data.business_status,
+      reviews: data.reviews
+      // openingHours: data.opening_hours
     }
 
     res.status(200).json(cleanedUpData)
