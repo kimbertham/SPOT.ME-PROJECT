@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 
 // Middleware here
 
-app.use('./api', router)
+app.use('/api', router)
 
 
 
