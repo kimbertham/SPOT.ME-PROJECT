@@ -22,8 +22,8 @@ class gymLocations extends React.Component {
     const { radius, location, keywords } = this.state
     event.preventDefault()
     try {
-      const response = await axios.post('/api/locations', {keyword:'gym', radius: 5000, latitude: 51.5055, longitude: 0.0754
-    })
+      const response = await axios.post('/api/locations', { keyword: 'gym', radius: 5000, latitude: 51.5055, longitude: 0.0754
+      })
       console.log(response.data)
     } catch (err) {
       console.log(err)

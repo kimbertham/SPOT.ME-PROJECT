@@ -11,11 +11,8 @@ const apiKey = 'AIzaSyBoze6uLA1t1ok4V5CmHGknNK2eYCpcv7w'
 // latitude: number,
 // longitude: number,
 // }
-async function getLocalFacilityData(req, res) {
-  console.log('RECIEVED')
-  console.log(req.body.keyword,req.body.radius,req.body.latitude,req.body.longitude )
-  
-  
+async function getLocalFacilityData(req, res, next) {
+  // console.log('RECIEVED')
   const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
   const keyWord = req.body.keyword
   const radius = req.body.radius
@@ -32,8 +29,9 @@ async function getLocalFacilityData(req, res) {
       }
     })
     if (!response){
-      throw new Error('AXIOS DIDNT WORK')
+      throw new Error('Not Found')
     }
+    // If Google returns an array of locations:
     const locationData = response.data.results
     const cleanedUpData = locationData.map(location => {
       return ({
@@ -51,7 +49,7 @@ async function getLocalFacilityData(req, res) {
 
     res.status(200).json(cleanedUpData)
   } catch (err) {
-    res.status(404).json(err.message)
+    next(err)
   }
 }
 
