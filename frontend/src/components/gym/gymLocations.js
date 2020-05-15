@@ -21,14 +21,8 @@ class gymLocations extends React.Component {
     const { radius, location, keywords } = this.state
     event.preventDefault()
     try {
-      const response = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?
-      key=${ApiKey}&
-      radius=${radius}}&
-      location=${location}}&
-      language=en&
-      keyword=${keywords}&
-      fields=formatted_address,name`
-      )
+      const response = await axios.post('localhost:8000/api/locations', {keyword:'gym', radius: 5000, latitude: 51.5055, longitude: 0.0754
+    })
       console.log(response)
     } catch (err) {
       console.log(err)
