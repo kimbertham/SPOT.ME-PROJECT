@@ -16,8 +16,10 @@ async componentDidMount() {
 
 render() {
   return (
-    <h2></h2>
+    <div className='page-container'/>
+    </div>
     ) 
+    
   }
 }
 export default gymShow
