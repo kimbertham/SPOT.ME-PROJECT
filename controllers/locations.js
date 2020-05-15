@@ -56,6 +56,7 @@ async function getLocalFacilityData(req, res) {
 }
 
 
+
 // -----------------------  GET ONE LOCATION REQUEST FROM FRONT END ('/locations/places_id') ------------------------
 // ------------- returns ONE location which has been cleaned up to be saved in state -----------
 // REQUIRES A BODY = {
