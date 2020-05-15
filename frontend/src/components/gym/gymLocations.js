@@ -5,16 +5,16 @@ const ApiKey = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
 class gymLocations extends React.Component {
   state= {
     searchForm: {
-      radius: '', // distance
-      keyword: '', // keywords
-      longitude: '', //location -- drop down with text of location but coordinates set as value of input option
+      keyword: '', 
+      radius: '', 
+      longitude: '', 
       latitude: ''
     }
   }
 
   handleChange = event => {
-    const searchForm = { ...this.state.form, [event.target.name]: event.target.value }
-    this.setState({ searchForm })
+    const searchForm = { ...this.state.searchForm, [event.target.name]: event.target.value }
+    this.setState({ searchForm})
   }
 
   handleSubmit = async event => {
@@ -22,8 +22,7 @@ class gymLocations extends React.Component {
     const { radius, location, keywords } = this.state
     event.preventDefault()
     try {
-      const response = await axios.post('/api/locations', {keyword:'gym', radius: 5000, latitude: 51.5055, longitude: 0.0754
-    })
+      const response = await axios.post('/api/locations', {...this.state.searchForm})
       console.log(response.data)
     } catch (err) {
       console.log(err)
@@ -32,6 +31,7 @@ class gymLocations extends React.Component {
 
   render(){
     console.log(this.state.searchForm)
+
     return (
       <>
         <section className='gymSearch'>
@@ -39,6 +39,14 @@ class gymLocations extends React.Component {
 
             <form onSubmit={this.handleSubmit} className='gym-search-form'>
       
+                <div className='keywords-field'>
+                  <label className='keywords'><p>keywords</p> </label>
+                  <input 
+                    onChange={this.handleChange}
+                    name='keywords' 
+                    value={this.state.keywords}
+                    className='form-input' 
+                    placeholder='keywords'/>
 
               <div className='radius-field'>
                 <label className='radius'><p>radius</p> </label>
@@ -50,24 +58,26 @@ class gymLocations extends React.Component {
                   placeholder='radius'/>
               </div>
 
-              <div className='keywords-field'>
-                <label className='keywords'><p>keywords</p> </label>
-                <input 
-                  onChange={this.handleChange}
-                  name='keywords' 
-                  value={this.state.keywords}
-                  className='form-input' 
-                  placeholder='keywords'/>
               </div>
 
-              <div className='location-field'>
-                <label className='location'><p>location</p> </label>
+              <div className='longitude-field'>
+                <label className='longitude'><p>longitude</p> </label>
                 <input 
                   onChange={this.handleChange}
-                  name='location' 
-                  value={this.state.location}
+                  name='longitude' 
+                  value={this.state.longitude}
                   className='form-input' 
-                  placeholder='location'/>
+                  placeholder='longitude'/>
+              </div>
+
+              <div className='latitude-field'>
+                <label className='latitude'><p>latitude</p> </label>
+                <input 
+                  onChange={this.handleChange}
+                  name='latitude'
+                  value={this.state.latitude}
+                  className='form-input' 
+                  placeholder='latitude'/>
               </div>
 
               <div className='search-button'>
