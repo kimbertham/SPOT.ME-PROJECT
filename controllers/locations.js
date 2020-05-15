@@ -1,6 +1,6 @@
 const axios = require('axios')
 // const httpRequest = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?parameters&key=AIzaSyAmR3drNq7VbhNZTH1e0esR4oTQZrIIoMI&radius=5000&location=51.5055,0.0754&language=en&keyword=swimming&fields=formatted_address,name'
-
+const apiKey = 'AIzaSyBoze6uLA1t1ok4V5CmHGknNK2eYCpcv7w'
 
 
 // -----------------------  GET REQUEST FROM FRONT END ('/locations') ------------------------
@@ -12,12 +12,15 @@ const axios = require('axios')
 // longitude: number,
 // }
 async function getLocalFacilityData(req, res) {
+  console.log('RECIEVED')
+  console.log(req.body.keyword,req.body.radius,req.body.latitude,req.body.longitude )
+  
+  
   const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
-  const apiKey = 'AIzaSyAmR3drNq7VbhNZTH1e0esR4oTQZrIIoMI'
-  const keyWord = req
+  const keyWord = req.body.keyword
   const radius = req.body.radius
-  const location = `${req.body.lat},${req.body.lon}`
-  const fields = 'formatted_address,name'
+  const location = `${req.body.latitude},${req.body.longitude}`
+  const fields = 'formatted_address'
   try {
     const response = await axios.get(googlePlacesURL, {
       params: {
@@ -28,11 +31,13 @@ async function getLocalFacilityData(req, res) {
         fields: fields
       }
     })
-
+    if (!response){
+      throw new Error('AXIOS DIDNT WORK')
+    }
     const locationData = response.data.results
     const cleanedUpData = locationData.map(location => {
       return ({
-        id: location.id,
+        place_id: location.place_id,
         name: location.name,
         lat: location.geometry.location.lat,
         lng: location.geometry.location.lng,
@@ -46,63 +51,55 @@ async function getLocalFacilityData(req, res) {
 
     res.status(200).json(cleanedUpData)
   } catch (err) {
-    res.status(404).json(err)
+    res.status(404).json(err.message)
   }
 }
 
 
-// -----------------------  GET REQUEST FROM FRONT END ('/locations/id') ------------------------
+// -----------------------  GET ONE LOCATION REQUEST FROM FRONT END ('/locations/places_id') ------------------------
 // ------------- returns ONE location which has been cleaned up to be saved in state -----------
 // REQUIRES A BODY = {
-// keyword: String,
-// radius: number,
-// latitude: number,
-// longitude: number,
+// places_id: String
 // }
 
 async function getOneFacility(req, res) {
-  const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
-  const apiKey = 'AIzaSyAmR3drNq7VbhNZTH1e0esR4oTQZrIIoMI'
-  const keyWord = req
-  const radius = req.body.radius
-  const location = `${req.body.lat},${req.body.lon}`
-  const fields = 'formatted_address,name'
+  console.log('GOT')
+  const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/details/json?'
+  const placeId = req.params.placeId
+  console.log(placeId)
+  
+  const fields = 'formatted_address,name,business_status,place_id,type,opening_hours,rating,price_level,geometry,review'
+  
   try {
     const response = await axios.get(googlePlacesURL, {
       params: {
         key: apiKey,
-        radius: radius,
-        location: location,
-        keyword: keyWord,
+        place_id: placeId,
         fields: fields
       }
     })
+    console.log(response.data.result)
 
-    const locationData = response.data.results
-    const cleanedUpData = locationData.map(location => {
-      return ({
-        id: location.id,
-        name: location.name,
-        lat: location.geometry.location.lat,
-        lng: location.geometry.location.lng,
-        rating: location.rating,
-        ratingAmount: location.user_ratings_total,
-        type: location.types,
-        location: location.vicinity,
-        openingHours: location.opening_hours
-      })
-    })
+    const data = response.data.result
+    const locationObject = {
+      place_id: data.place_id,
+      name: data.name,
+      lat: data.geometry.location.lat,
+      lng: data.geometry.location.lng,
+      rating: data.rating,
+      ratingAmount: data.user_ratings_total,
+      type: data.types,
+      location: data.formatted_address,
+      businessStatus: data.business_status,
+      reviews: data.reviews
+      // openingHours: data.opening_hours
+    }
 
-    res.status(200).json(cleanedUpData)
+    res.status(200).json(locationObject)
   } catch (err) {
     res.status(404).json(err)
   }
 }
-
-
-
-
-
 
 
 

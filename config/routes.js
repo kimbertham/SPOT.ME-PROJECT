@@ -13,7 +13,12 @@ router.route('/register')
 // --------------- ROUTES FOR GETTING FACITILY DATA FROM GOOGLE --------------
 
 router.route('/locations')
-  .get(locations.getLocalFacilityData)
+  .get(locations.getLocalFacilityData) 
+
+router.route('/locations/:placeId')
+  .get(locations.getOneFacility) 
+    
+
 
 
 module.exports = router
