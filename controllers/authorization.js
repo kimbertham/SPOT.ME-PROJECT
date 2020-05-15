@@ -23,7 +23,7 @@ async function login (req, res, next) {
 async function register(req, res) {
   console.log('registering new user')
   try {
-    const user = await user.create(req.body)
+    const user = await User.create(req.body)
     res.status(201).json({ message: ` Welcome ${user.username}` })
   } catch (err) {
     console.log(err)
