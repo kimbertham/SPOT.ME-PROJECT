@@ -1,19 +1,13 @@
 const router = require('express').Router()
-const user = require('../controllers/users')
+const auth = require('../controllers/authorization')
 const locations = require('../controllers/locations')
 
 router.route('/login')
-  .post(user.login)
+  .post(auth.login)
 
 
 router.route('/register')
-  .post(user.register)
-
-
-
-
-
-
+  .post(auth.register)
 
 
 // --------------- ROUTES FOR GETTING FACITILY DATA FROM GOOGLE --------------
