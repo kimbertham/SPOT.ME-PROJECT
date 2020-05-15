@@ -14,14 +14,8 @@ class Map extends React.Component {
     }
   }
 
-
-
-  
   render() {
     const { viewport } = this.state
-
-  console.log(this.props)
-
     return (
       <MapGl
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
@@ -32,7 +26,6 @@ class Map extends React.Component {
         }}
       >
 
-      
     {this.props.data.map(location => {
       return <Marker
           key={location.place_id}

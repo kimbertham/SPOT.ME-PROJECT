@@ -16,7 +16,10 @@ mongoose.connect(
     console.log('Mongo is Connected!')
   })
 
-// Middleware start
+
+// Middleware here
+
+
 
 app.use(bodyParser.json())
 
