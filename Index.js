@@ -5,6 +5,7 @@ const router = require('./config/routes')
 const app = express()
 const port = 8000
 const dbURI = 'mongodb://localhost/spotme-db'
+const errorHandler = require('./lib/errorHandler')
 
 
 mongoose.connect(
@@ -23,6 +24,7 @@ mongoose.connect(
 app.use(bodyParser.json())
 
 app.use('/api', router)
+app.use(errorHandler)
 
 
 // Middleware end
