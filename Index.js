@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const router = require('./config/routes')
 const app = express()
 const port = 8000
 const dbURI = 'mongodb://localhost/spotme-db'
@@ -18,7 +19,7 @@ app.use(bodyParser.json())
 
 // Middleware here
 
-app.use(./api, router)
+app.use('./api', router)
 
 
 
