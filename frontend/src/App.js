@@ -1,16 +1,18 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import gymLocations from './components/gym/gymLocations'
+import GymLocations from './components/gym/gymLocations'
 
 
 const App = () => {
   return (
-
+    <>
       <BrowserRouter>
-      <Switch>
-      <Route path='/gym' compoments={gymLocations} />
-      </Switch>
+        <Switch>
+          <GymLocations/>
+
+        </Switch>
       </BrowserRouter>
+    </>
   )
 }
 
