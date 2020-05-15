@@ -14,7 +14,11 @@ router.route('/register')
 
 router.route('/locations')
   .get(locations.getLocalFacilityData) 
+
+router.route('/locations/:placeId')
+  .get(locations.getOneFacility) 
     
+
 
 
 module.exports = router
