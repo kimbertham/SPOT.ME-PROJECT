@@ -12,7 +12,7 @@ const apiKey = 'AIzaSyBoze6uLA1t1ok4V5CmHGknNK2eYCpcv7w'
 // longitude: number,
 // }
 async function getLocalFacilityData(req, res, next) {
-  // console.log('RECIEVED')
+  console.log('RECIEVED')
   const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
   const keyWord = req.body.keyword
   const radius = req.body.radius
@@ -54,6 +54,20 @@ async function getLocalFacilityData(req, res, next) {
 }
 
 
+///---------get the coordinates ( lat and lon ) from the postcode search input ( /locations) -------------
+async function getCoOrdinates(req, res) {
+  console.log('got ya boi')
+  const googleGeoURL = 'https://maps.googleapis.com/maps/api/geocode/json?'
+  const address = req.body.address
+  const apiKeyTwo = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A' // enable key at the top to replace 
+  try {
+    const response = await axios.get(googleGeoURL, { params: { key: apiKeyTwo, address: address } })
+    const data  = response.data.results[0].geometry.location ///
+    res.json(data)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 // -----------------------  GET ONE LOCATION REQUEST FROM FRONT END ('/locations/places_id') ------------------------
 // ------------- returns ONE location which has been cleaned up to be saved in state -----------
@@ -104,5 +118,6 @@ async function getOneFacility(req, res) {
 
 module.exports = {
   getLocalFacilityData: getLocalFacilityData,
-  getOneFacility: getOneFacility
+  getOneFacility: getOneFacility,
+  getCoOrdinates
 }

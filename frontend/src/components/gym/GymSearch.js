@@ -1,19 +1,21 @@
 import React from 'react'
 
-const gymSearch = ({change, submit, longitude,latitude,radius, keywords}) => {
+const gymSearch = ({change, submit, longitude,latitude,radius, keyword, address}) => {
   return (
     
   <section className='gymSearch'>
   <div className='gym-search-container'>
     <form onSubmit={submit} className='gym-search-form'>
-        <div className='keywords-field'>
-          <label className='keywords'><p>keywords</p> </label>
+        <div className='keyword-field'>
+          <label className='keyword'><p>keyword</p> </label>
           <input 
             onChange={change}
-            name='keywords' 
-            value={keywords}
+            name='keyword' 
+            value={keyword}
             className='form-input' 
-            placeholder='keywords'/>
+            placeholder='keyword'/>
+        </div>
+
       <div className='radius-field'>
         <label className='radius'><p>radius</p> </label>
         <input 
@@ -23,25 +25,17 @@ const gymSearch = ({change, submit, longitude,latitude,radius, keywords}) => {
           className='form-input' 
           placeholder='radius'/>
       </div>
-      </div>
-      <div className='longitude-field'>
-        <label className='longitude'><p>longitude</p> </label>
+
+      <div className='address-field'>
+        <label className='address'><p>address</p> </label>
         <input 
           onChange={change}
-          name='longitude' 
-          value={longitude}
+          name='address' 
+          value={address}
           className='form-input' 
-          placeholder='longitude'/>
+          placeholder='address'/>
       </div>
-      <div className='latitude-field'>
-        <label className='latitude'><p>latitude</p> </label>
-        <input 
-          onChange={change}
-          name='latitude'
-          value={latitude}
-          className='form-input' 
-          placeholder='latitude'/>
-      </div>
+
       <div className='search-button'>
         <button type='submit'>Search</button>
       </div>

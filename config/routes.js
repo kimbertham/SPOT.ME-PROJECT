@@ -12,10 +12,14 @@ router.route('/register')
   .post(auth.register)
 
 
+
 // --------------- ROUTES FOR GETTING FACITILY DATA FROM GOOGLE --------------
 
 router.route('/locations')
   .post( locations.getLocalFacilityData) 
+
+router.route('/locations/co')
+  .post(locations.getCoOrdinates)
 
 router.route('/locations/:placeId')
   .post(locations.getOneFacility) 

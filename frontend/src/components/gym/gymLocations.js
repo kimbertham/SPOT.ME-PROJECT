@@ -7,10 +7,11 @@ import GymSearch from './GymSearch'
 class gymLocations extends React.Component {
   state= {
     searchForm:{
-      keywords: '', 
+      keyword: '', 
       radius: '', 
       longitude: '', 
-      latitude: ''
+      latitude: '',
+      address: ''
     },
     data : []
   }
@@ -20,9 +21,16 @@ class gymLocations extends React.Component {
     this.setState({ searchForm})
   }
 
+  async handleGeocoding() {
+    const res = await axios.post('/api/locations/co' , {...this.state.searchForm})
+    const searchForm = {...this.state.searchForm, latitude: res.data.lat, longitude:res.data.lng}
+    this.setState({searchForm}, () => { console.log(this.state)})
+  }
+
   handleSubmit = async event => {
     event.preventDefault()
     try {
+      await this.handleGeocoding()
       const response = await axios.post('/api/locations', {...this.state.searchForm}) 
       console.log(response.data)
       this.setState({data : response.data})
@@ -32,6 +40,7 @@ class gymLocations extends React.Component {
   }
 
   render(){
+    // console.log(this.state.data)
     return (
       <>
       <GymSearch

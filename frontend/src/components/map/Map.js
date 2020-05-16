@@ -14,6 +14,12 @@ class Map extends React.Component {
     }
   }
 
+
+
+  handeClick = event => {
+    console.log('clicked')
+  }
+
   render() {
     const { viewport } = this.state
     return (
@@ -21,6 +27,7 @@ class Map extends React.Component {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         mapStyle='mapbox://styles/mapbox/light-v10'
         { ...viewport }
+
         onViewportChange= {viewport => {
           this.setState({ viewport })
         }}
@@ -31,7 +38,7 @@ class Map extends React.Component {
           key={location.place_id}
           latitude={location.lat}
           longitude={location.lng}>
-          <span role="img" aria-label="marker">🐳</span>
+          <span role="img" aria-label="marker" onClick={this.handeClick}>🐳</span>
         </Marker>
         })}
         
