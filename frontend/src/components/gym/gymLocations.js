@@ -49,11 +49,11 @@ class gymLocations extends React.Component {
         />
 
         <Map 
+          viewport={this.state.viewport}
           longitude={this.state.searchForm.longitude}
           latitude={this.state.searchForm.latitude}
           data={this.state.data}
         />
-
       </>
     )
   }
