@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const postSchema = new mongoose.Schema({
   content: { type: String, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  likes: [userSchema]
+  likes: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }]
 }, {
   timestamps: true
 })

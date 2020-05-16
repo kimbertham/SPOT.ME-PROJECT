@@ -1,4 +1,3 @@
-const Post = require('../models/Posts')
 const User = require('../models/user')
 
 
@@ -8,8 +7,14 @@ const User = require('../models/user')
 // }
 
 async function createNewPost(req,res,next) {
+  // console.log('post submitted')
+  // console.log(req.currentUser)
+  // console.log(req.params.userId)
+  
   try {
-    const user = User.findById(req.params.userId)
+    const user = await User.findById(req.params.userId)
+    console.log(user)
+       
     if (!user.equals(req.currentUser._id)){
       throw new Error('Not authorized to do this')
     }
@@ -23,14 +28,14 @@ async function createNewPost(req,res,next) {
   }
 }
 
-
 // ----- DELETE REQUEST TO REMOVE POST ---------
 // http delete request - /profile/:userId/post/:postId
 // no body required
+// owner token required to delete
 
 async function deletePost(req,res,next) {
   try {
-    const user = User.findById(req.params.userId)
+    const user = await User.findById(req.params.userId)
     const postToDelete = user.posts.id(req.params.postId)
     if (!user || !postToDelete) {
       throw new Error('Not Found')
@@ -47,14 +52,14 @@ async function deletePost(req,res,next) {
   }
 }
 
-
 // ------- LIKE A POST CONTROLLER ------------
 // put request - /profile/:userId/post/:postId
 // no body required
+// valid token required to delete
 
 async function toggleLike(req,res,next){
   try {
-    const owner = await User.findById(req.body.userId)
+    const owner = await User.findById(req.params.userId)
     const post = owner.posts.id(req.params.postId)
     if (!owner || !post) {
       throw new Error('Not Found')
@@ -69,5 +74,10 @@ async function toggleLike(req,res,next){
   
 }
 
+module.exports = {
+  newPost: createNewPost,
+  deletePost: deletePost,
+  addLike: toggleLike
+}
 
 
