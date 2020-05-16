@@ -1,6 +1,7 @@
 const axios = require('axios')
 // const httpRequest = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?parameters&key=AIzaSyAmR3drNq7VbhNZTH1e0esR4oTQZrIIoMI&radius=5000&location=51.5055,0.0754&language=en&keyword=swimming&fields=formatted_address,name'
-const apiKey = 'AIzaSyBoze6uLA1t1ok4V5CmHGknNK2eYCpcv7w'
+// const apiKey = 'AIzaSyBoze6uLA1t1ok4V5CmHGknNK2eYCpcv7w'
+const apiKey = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
 
 
 // -----------------------  GET REQUEST FROM FRONT END ('/locations') ------------------------
@@ -12,7 +13,7 @@ const apiKey = 'AIzaSyBoze6uLA1t1ok4V5CmHGknNK2eYCpcv7w'
 // longitude: number,
 // }
 async function getLocalFacilityData(req, res, next) {
-  // console.log('RECIEVED')
+  console.log('RECIEVED')
   const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
   const keyWord = req.body.keyword
   const radius = req.body.radius
@@ -28,6 +29,7 @@ async function getLocalFacilityData(req, res, next) {
         fields: fields
       }
     })
+
     if (!response){
       throw new Error('Not Found')
     }
@@ -54,6 +56,20 @@ async function getLocalFacilityData(req, res, next) {
 }
 
 
+///---------get the coordinates ( lat and lon ) from the postcode search input ( /locations) -------------
+async function getCoOrdinates(req, res) {
+  console.log('got ya boi')
+  const googleGeoURL = 'https://maps.googleapis.com/maps/api/geocode/json?'
+  const address = req.body.address
+  const apiKeyTwo = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A' // enable key at the top to replace 
+  try {
+    const response = await axios.get(googleGeoURL, { params: { key: apiKeyTwo, address: address } })
+    const data  = response.data.results[0].geometry.location ///
+    res.json(data)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 // -----------------------  GET ONE LOCATION REQUEST FROM FRONT END ('/locations/places_id') ------------------------
 // ------------- returns ONE location which has been cleaned up to be saved in state -----------
@@ -62,12 +78,12 @@ async function getLocalFacilityData(req, res, next) {
 // }
 
 async function getOneFacility(req, res) {
-  console.log('GOT')
+  // console.log('GOT')
   const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/details/json?'
   const placeId = req.params.placeId
-  console.log(placeId)
+  // console.log(placeId)
   
-  const fields = 'formatted_address,name,business_status,place_id,type,opening_hours,rating,price_level,geometry,review'
+  const fields = 'formatted_address,name,business_status,place_id,type,opening_hours,rating,price_level,geometry,review,photos'
   
   try {
     const response = await axios.get(googlePlacesURL, {
@@ -77,7 +93,7 @@ async function getOneFacility(req, res) {
         fields: fields
       }
     })
-    console.log(response.data.result)
+    // console.log(response.data.result)
 
     const data = response.data.result
     const locationObject = {
@@ -90,7 +106,8 @@ async function getOneFacility(req, res) {
       type: data.types,
       location: data.formatted_address,
       businessStatus: data.business_status,
-      reviews: data.reviews
+      reviews: data.reviews,
+      photos: data.photos
       // openingHours: data.opening_hours
     }
 
@@ -100,9 +117,32 @@ async function getOneFacility(req, res) {
   }
 }
 
+async function getPhotos(req,res ) {
+  console.log('GET TEST')
+  const photoReference = req.params.photoId
+  const googleImgURL = 'https://maps.googleapis.com/maps/api/place/photo?'
+  const apiKeyTwo = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A' // enable key at the top to replace 
+  const maxwidth = '400'
+  try { 
+    const response = await axios.get(googleImgURL, { params: { 
+      key: apiKeyTwo, 
+      photoreference: photoReference,
+      maxwidth: maxwidth
+    }
+    }
+    )
+    // ,{ responseType: 'blob' }
+    console.log(response)
+    res.json(response.data)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 
 module.exports = {
   getLocalFacilityData: getLocalFacilityData,
-  getOneFacility: getOneFacility
+  getOneFacility: getOneFacility,
+  getCoOrdinates,
+  getPhotos
 }

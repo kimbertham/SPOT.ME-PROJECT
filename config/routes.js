@@ -16,9 +16,14 @@ router.route('/register')
 router.route('/locations')
   .post( locations.getLocalFacilityData) 
 
+router.route('/locations/co')
+  .post(locations.getCoOrdinates)
+
 router.route('/locations/:placeId')
   .post(locations.getOneFacility) 
-    
+  
+router.route('/locations/:placeId/:photoId')
+  .post(locations.getPhotos)
 
 // --------------- ROUTES FOR MAKING/DELETE POSTS AND LIKES --------------
 

@@ -14,8 +14,8 @@ const App = () => {
       <BrowserRouter>
       <Navbar/>
         <Switch>
-          <Route path='/locations' component={GymLocations}/>
           <Route path='/locations/:placeId' component={GymShow} />
+          <Route path='/locations' component={GymLocations}/>
           <Route path='/register' component={Register}/>
           <Route path='/login' component={Login}/>
           <Route path='/profile' component={gymProfile}/>

@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from 'react'
+import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
 class Navbar extends React.Component{
