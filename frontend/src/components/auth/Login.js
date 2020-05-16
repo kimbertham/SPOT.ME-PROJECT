@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import { notify } from '../../lib/notifications'
 import { setToken } from '../../lib/auth'
-import { toast } from '../../lib/notifications'
 import { Link, withRouter } from 'react-router-dom'
 
 class Login extends React.Component {
@@ -28,9 +30,8 @@ class Login extends React.Component {
     try {
       const res = await axios.post('/api/login', { ...this.state.formData })
       setToken(res.data.token)
-      console.log(res.data.message)
-      // toast(res.data.message) //* not working
-      // this.props.history.push('/?????????should be the newsfeed') //* route does not exist yet
+      // this.props.history.push('/should be the newsfeed') //* route does not exist yet
+      notify(res.data.message)
     } catch (err) {
       console.log(err)
       this.setState({ error: 'Invalid Credentials' })
@@ -41,6 +42,7 @@ class Login extends React.Component {
     const { formData, error } = this.state
     return (
       <section className="section">
+      <ToastContainer/>
         <div className="container">
           <div className="columns">
             <form 

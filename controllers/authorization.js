@@ -23,14 +23,16 @@ async function login (req, res) {
 }
 
 async function register(req, res) {
-  console.log('registering new user')
+  const errMessage = []
+  console.log('Registering new user')
   try {
     const user = await User.create(req.body)
-    console.log('user created!')
     res.status(201).json({ message: ` Welcome ${user.username}` })
   } catch (err) {
-    console.log(err)
-    res.status(401).json({ message: 'Invalid Credentials' })
+    for ( const message of Object.entries(err.errors)) {
+      errMessage.push(message)
+    } 
+    res.status(401).json( errMessage )
   }
 }
 

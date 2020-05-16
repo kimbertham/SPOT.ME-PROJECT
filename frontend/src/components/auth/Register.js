@@ -1,5 +1,8 @@
 import React from 'react'
 import axios from 'axios'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import { notify } from '../../lib/notifications'
 
 class Register extends React.Component {
   state = {
@@ -12,7 +15,7 @@ class Register extends React.Component {
       passwordConfirmation: '',
       level: ''
     },
-    errors: ''
+    errors: []
   }
 
   handleChange = event => {
@@ -26,25 +29,36 @@ class Register extends React.Component {
     }
   }
 
+  //* converts an array into object and sets state for errors
+  getSubmitErrors = (arr) => {
+function reducer(a, c) {
+  return {...a, [c[0]]: c[1].message.replace('Path ', '')}
+}
+  const error = arr.reduce(reducer, {})
+  this.setState({ errors: error })
+  }
+
   handleSubmit = async event => {
     event.preventDefault()
     try {
       // console.log(this.state.formData)
       const res = await axios.post('/api/register', {...this.state.formData})
-      console.log(res.data.message)
-      this.props.history.push('/login')
+      this.props.history.push('/login') //* Should go straight to search fields or interests
+      notify(res.data.message)
     } catch (err) {
-      // console.log(err.response.data.errors)
-      this.setState({ errors: 'Invalid Credentials' })
+      console.log(err.response.data)
+      this.getSubmitErrors(err.response.data)
     }
   }
 
   render() {
     const { formData, errors } = this.state
-    // console.log(this.state)
+    console.log(this.state)
+    // console.log(this.getSubmitErrors(['email', 'usernames']) )
     return ( 
       <section className="section">
         <div className="container">
+        <ToastContainer/>
           <div className="columns">
             <form onSubmit={this.handleSubmit} className="column is-half is-offset-one-quarter box">
             <div className="field">
@@ -65,7 +79,7 @@ class Register extends React.Component {
                 <label className="label">Last Name</label>
                 <div className="control">
                   <input 
-                    className={`input ${errors ? 'is-danger' : '' }`}
+                    className={`input ${errors.password ? 'is-danger' : '' }`}
                     placeholder="Last Name"
                     name="lastName"
                     onChange={this.handleChange}
@@ -99,7 +113,9 @@ class Register extends React.Component {
                     value={formData.email}
                   />
                 </div>
-                {errors.email && <small className="help is-danger">{errors.email}</small>}
+                {errors.email && <small className="help is-danger">
+                  {formData.email? 'An account with this email already exists' : errors.email }
+                  </small>}
               </div>
               <div className="field">
                 <label className="label">Password</label>
@@ -127,10 +143,10 @@ class Register extends React.Component {
                     value={formData.passwordConfirmation}
                   />
                 </div>
-                {errors.passwordConfirmation && <small className="help is-danger">{errors.passwordConfirmation}</small>}
+                {errors.passwordConfirmation && <small className="help is-danger">Your entered passwords do not match</small>}
               </div>
             <div className="field">
-              <label className="label">What's your skill level?</label>
+              <label className="label">What's your skill level? (Optional)</label>
               <div className="control">
                 <label className="radio">
                   <input
