@@ -2,6 +2,15 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 // const Group = require('./Group') //* not in use yet
 
+const postSchema = new mongoose.Schema({
+  content: { type: String, required: true },
+  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  likes: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }]
+}, {
+  timestamps: true
+})
+
+
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true, maxlength: 50 },
   lastName: { type: String, required: true, maxlength: 50 },
@@ -11,7 +20,8 @@ const userSchema = new mongoose.Schema({
   image: { type: String },
   level: { type: String, required: true },
   // following: [ userSchema ], // * We need the id of the users
-  gyms: []
+  gyms: [],
+  posts: [postSchema]
 }, {
   timestamps: true
 })
