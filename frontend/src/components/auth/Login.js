@@ -16,7 +16,7 @@ class Login extends React.Component {
   handleChange = event => {
     try {
       const formData = { ...this.state.formData, [event.target.name]: event.target.value }
-    this.setState({ formData, error: '' })
+      this.setState({ formData, error: '' })
     } catch (err) {
       console.log(err)
     }
@@ -26,13 +26,13 @@ class Login extends React.Component {
   handleSubmit = async event => {
     event.preventDefault()
     try {
-      const res = await axios.post('/api/login', {...this.state.formData})
+      const res = await axios.post('/api/login', { ...this.state.formData })
       setToken(res.data.token)
       console.log(res.data.message)
       // toast(res.data.message) //* not working
       // this.props.history.push('/?????????should be the newsfeed') //* route does not exist yet
     } catch (err) {
-      console.log(err);
+      console.log(err)
       this.setState({ error: 'Invalid Credentials' })
     }
   }
@@ -44,8 +44,9 @@ class Login extends React.Component {
         <div className="container">
           <div className="columns">
             <form 
-            onSubmit={this.handleSubmit} 
-            className="column is-half is-offset-one-quarter box">
+              onSubmit={this.handleSubmit} 
+              className="column is-half is-offset-one-quarter box"
+            >
               <div className="field">
                 <label className="label">Email</label>
                 <div className="control">
