@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-// import { notify } from 'react-notify-toast'
-// const styles = {
-//   background: '#000', text: '#fff' 
-// }
-
-// export const toast = message => {
-//   notify.show(message, 'custom', 3000, styles)
-// }
-=======
 
 import {  toast } from 'react-toastify';
 const styles = {
@@ -24,4 +14,3 @@ export const notify = (message) => toast( message , {
   draggable: true,
   progress: undefined,
 })
->>>>>>> development

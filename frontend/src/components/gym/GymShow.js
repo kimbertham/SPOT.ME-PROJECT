@@ -13,7 +13,8 @@ class gymShow extends React.Component {
     type:'',
     photos: [],
       },
-    photosRaw: []
+    photosRaw: [],
+    
   }
 
 async componentDidMount() {

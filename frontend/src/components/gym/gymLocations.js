@@ -13,7 +13,8 @@ class gymLocations extends React.Component {
       latitude: '',
       address: ''
     },
-    data : []
+    data : [],
+    
   }
 
   handleChange = event => {
@@ -49,8 +50,11 @@ class gymLocations extends React.Component {
       />
 
       <Map 
-      {...this.state}
+      latitude={this.state.searchForm.latitude}
+      longitude={this.state.searchForm.longitude}
+      data={this.state.data}
       />
+
       </>
     )
   }
