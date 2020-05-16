@@ -28,6 +28,7 @@ async function getLocalFacilityData(req, res, next) {
         fields: fields
       }
     })
+
     if (!response){
       throw new Error('Not Found')
     }

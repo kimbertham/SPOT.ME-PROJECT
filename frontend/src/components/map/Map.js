@@ -2,6 +2,7 @@ import React from 'react'
 import MapGl, { Marker } from 'react-map-gl'
 // import axios from 'axios'
 import 'mapbox-gl/dist/mapbox-gl.css'
+import {Link} from 'react-router-dom'
 
 class Map extends React.Component {
   state = {
@@ -15,13 +16,13 @@ class Map extends React.Component {
   }
 
 
-
   handeClick = event => {
     console.log('clicked')
   }
 
   render() {
     const { viewport } = this.state
+    console.log(this.props)
     return (
       <MapGl
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
@@ -34,12 +35,12 @@ class Map extends React.Component {
       >
 
     {this.props.data.map(location => {
-      return <Marker
+      return <Link to={`/locations/${location.place_id}`}> <Marker
           key={location.place_id}
           latitude={location.lat}
           longitude={location.lng}>
           <span role="img" aria-label="marker" onClick={this.handeClick}>🐳</span>
-        </Marker>
+        </Marker> </Link>
         })}
         
       </MapGl>
