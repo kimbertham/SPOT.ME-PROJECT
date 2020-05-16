@@ -7,10 +7,8 @@ const locations = require('../controllers/locations')
 router.route('/login')
   .post(auth.login)
 
-
 router.route('/register')
   .post(auth.register)
-
 
 // --------------- ROUTES FOR GETTING FACITILY DATA FROM GOOGLE --------------
 

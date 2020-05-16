@@ -1,1 +1,13 @@
 @import '~bulma/bulma.sass';
+
+input {
+  &[type="checkbox"],
+  &[type="radio"] {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
+.textAlign {
+  text-align: center;
+}
