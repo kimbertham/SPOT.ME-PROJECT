@@ -13,7 +13,6 @@ async componentDidMount() {
     }
 }
 
-
 render() {
   return (
     <div className='page-container'/>

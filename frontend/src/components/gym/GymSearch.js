@@ -2,7 +2,6 @@ import React from 'react'
 
 const gymSearch = ({change, submit, longitude,latitude,radius, keyword, address}) => {
   return (
-    
   <section className='gymSearch'>
   <div className='gym-search-container'>
     <form onSubmit={submit} className='gym-search-form'>

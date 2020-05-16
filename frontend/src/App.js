@@ -5,6 +5,8 @@ import GymShow from './components/gym/GymShow'
 import GymSearch from './components/gym/GymSearch'
 import Map from './components/map/Map'
 import Navbar from './components/common/Navbar'
+import Register from './components/auth/Register'
+import Login from './components/auth/Login'
 
 
 const App = () => {
@@ -15,6 +17,8 @@ const App = () => {
         <Switch>
           <Route path='/locations' component={GymLocations}/>
           <Route path='/locations/:placeId' component={GymShow} />
+          <Route path='/register' component={Register}/>
+          <Route path='/login' component={Login}/>
         </Switch>
       </BrowserRouter>
     </>
