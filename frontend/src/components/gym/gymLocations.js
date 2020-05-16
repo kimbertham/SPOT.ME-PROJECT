@@ -24,7 +24,7 @@ class gymLocations extends React.Component {
   async handleGeocoding() {
     const res = await axios.post('/api/locations/co' , {...this.state.searchForm})
     const searchForm = {...this.state.searchForm, latitude: res.data.lat, longitude:res.data.lng}
-    this.setState({searchForm}, () => { console.log(this.state)})
+    this.setState({searchForm})
   }
 
   handleSubmit = async event => {
@@ -32,7 +32,6 @@ class gymLocations extends React.Component {
     try {
       await this.handleGeocoding()
       const response = await axios.post('/api/locations', {...this.state.searchForm}) 
-      console.log(response.data)
       this.setState({data : response.data})
     } catch (err) {
       console.log(err)

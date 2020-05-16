@@ -1,6 +1,7 @@
 const axios = require('axios')
 // const httpRequest = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?parameters&key=AIzaSyAmR3drNq7VbhNZTH1e0esR4oTQZrIIoMI&radius=5000&location=51.5055,0.0754&language=en&keyword=swimming&fields=formatted_address,name'
-const apiKey = 'AIzaSyBoze6uLA1t1ok4V5CmHGknNK2eYCpcv7w'
+// const apiKey = 'AIzaSyBoze6uLA1t1ok4V5CmHGknNK2eYCpcv7w'
+const apiKey = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
 
 
 // -----------------------  GET REQUEST FROM FRONT END ('/locations') ------------------------
@@ -77,12 +78,12 @@ async function getCoOrdinates(req, res) {
 // }
 
 async function getOneFacility(req, res) {
-  console.log('GOT')
+  // console.log('GOT')
   const googlePlacesURL = 'https://maps.googleapis.com/maps/api/place/details/json?'
   const placeId = req.params.placeId
-  console.log(placeId)
+  // console.log(placeId)
   
-  const fields = 'formatted_address,name,business_status,place_id,type,opening_hours,rating,price_level,geometry,review'
+  const fields = 'formatted_address,name,business_status,place_id,type,opening_hours,rating,price_level,geometry,review,photos'
   
   try {
     const response = await axios.get(googlePlacesURL, {
@@ -92,7 +93,7 @@ async function getOneFacility(req, res) {
         fields: fields
       }
     })
-    console.log(response.data.result)
+    // console.log(response.data.result)
 
     const data = response.data.result
     const locationObject = {
@@ -105,7 +106,8 @@ async function getOneFacility(req, res) {
       type: data.types,
       location: data.formatted_address,
       businessStatus: data.business_status,
-      reviews: data.reviews
+      reviews: data.reviews,
+      photos: data.photos
       // openingHours: data.opening_hours
     }
 
@@ -115,10 +117,32 @@ async function getOneFacility(req, res) {
   }
 }
 
+async function getPhotos(req,res ) {
+  console.log('GET TEST')
+  const photoReference = req.params.photoId
+  const googleImgURL = 'https://maps.googleapis.com/maps/api/place/photo?'
+  const apiKeyTwo = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A' // enable key at the top to replace 
+  const maxwidth = '400'
+  try { 
+    const response = await axios.get(googleImgURL, { params: { 
+      key: apiKeyTwo, 
+      photoreference: photoReference,
+      maxwidth: maxwidth
+    }
+    }
+    )
+    // ,{ responseType: 'blob' }
+    console.log(response)
+    res.json(response.data)
+  } catch (err) {
+    console.log(err)
+  }
+}
 
 
 module.exports = {
   getLocalFacilityData: getLocalFacilityData,
   getOneFacility: getOneFacility,
-  getCoOrdinates
+  getCoOrdinates,
+  getPhotos
 }
