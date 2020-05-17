@@ -6,13 +6,6 @@ import { Link } from 'react-router-dom'
 
 class Map extends React.Component {
   state = {
-    // viewport: {
-    //   latitude: 51.509865,
-    //   longitude: -0.118092,
-    //   width: '80vw',
-    //   height: '80vh',
-    //   zoom: 12
-    // },
     modal: false,
     data: []
   }
@@ -27,12 +20,17 @@ class Map extends React.Component {
     }
   }
 
+//   handleFlyTo = () => {
+//     this.map.flyTo({ center: [-118.4107187, 33.9415889] })
+// }
 
+  
   hideModal=()=>{
     this.setState({ modal: false })
   }
 
   render() {
+    console.log(this.map)
     const { viewport, modal } = this.state
     const { longitude,latitude } = this.props
     const { name , location, businessStatus, place_id } = this.state.data
@@ -43,33 +41,25 @@ class Map extends React.Component {
         <MapGl
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
           mapStyle='mapbox://styles/mapbox/light-v10'
-        
+          ref={(map) => { this.map = map }}
           {...this.props.viewport}
-
-          // longitude={longitude ? longitude : -0.118092  }
-          // latitude={latitude ? latitude : 51.509865 }
-        
-          // onViewportChange= {viewport => {
-          //   this.setState({ viewport })
-          // }}
-
           onViewportChange={this.props.moveMap}
         >
 
-
           {this.props.data.map((location) => {
             return <Marker
-              key={location.place_id}
-              latitude={location.lat}
-              longitude={location.lng}>
+            key={location.place_id}
+            latitude={location.lat}
+            longitude={location.lng}>
               <span role="img"
                 aria-label="marker"
                 onClick={() =>this.handleModal(location.place_id)}
-              >🐳</span>
+                >🐳</span>
             </Marker>
           })}
-        
         </MapGl>
+
+          {/* <button onClick={() => {this.map.mapObject.flyTo({ center: [-118.4107187, 33.9415889] })}}></button> */}
 
         <div className={`modal ${modalClassName}`}>
           <div className='gym-modal-info'>

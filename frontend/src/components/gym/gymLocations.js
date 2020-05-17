@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Map from '../map/Map'
 import GymSearch from './GymSearch'
+import { FlyToInterpolator } from 'react-map-gl'
 
 
 class gymLocations extends React.Component {
@@ -36,9 +37,9 @@ class gymLocations extends React.Component {
 
   }
 
-  handleFlyTo = () => {
-
-  }
+//   handleFlyTo = () => {
+//     this.map.flyTo({ center: [-118.4107187, 33.9415889] })
+// }
 
   handleSubmit = async event => {
     event.preventDefault()
