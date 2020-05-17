@@ -4,6 +4,7 @@ const locations = require('../controllers/locations')
 const posts = require('../controllers/posts')
 const users = require('../controllers/users')
 const secureRoute = require('../lib/secureRoute')
+const groups = require('../controllers/groups')
 
 
 router.route('/login')
@@ -40,5 +41,32 @@ router.route('/profile/:userId/post/:postId')
 // --------------- ROUTE FOR USER PROFILE --------------
 router.route('/profile/:userId')
   .get(users.show)
+
+
+// --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
+router.route('/groups/new/:userId')
+  .post(secureRoute ,groups.new)
+
+router.route('/groups/:groupId/:userId')
+  .delete(secureRoute ,groups.delete)
+
+router.route('/groups/:groupId/join/:userId')
+  .put(secureRoute ,groups.join)
+
+router.route('/groups/:groupId/leave/:userId')
+  .put(secureRoute ,groups.leave)
+
+// ------------ ROUTES FOR POSTING IN GROUP -----------------
+
+router.route('/groups/:groupId/post/:userId')
+  .post(secureRoute ,groups.post)
+
+router.route('/groups/:groupId/post/:postId/delete')
+  .delete(secureRoute ,groups.deletePost)
+
+router.route('/groups/:groupId/post/:postId/like')
+  .put(secureRoute ,groups.like)
+
+
 
 module.exports = router

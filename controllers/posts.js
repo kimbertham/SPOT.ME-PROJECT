@@ -5,12 +5,11 @@ const User = require('../models/user')
 // require body = {
 // content: String
 // }
-
+// REQUIRES VALID TOKEN
 async function createNewPost(req,res,next) {
   // console.log('post submitted')
   // console.log(req.currentUser)
   // console.log(req.params.userId)
-  
   try {
     const user = await User.findById(req.params.userId)
     console.log(user)
@@ -21,7 +20,6 @@ async function createNewPost(req,res,next) {
     user.posts.push(req.body)
     await user.save()
     res.status(201).json('post created successfully')
-
   } catch (err){
     next(err)
   }
@@ -51,8 +49,10 @@ async function deletePost(req,res,next) {
   }
 }
 
-// ------- LIKE A POST CONTROLLER ------------
+// ------- TOGGLE A LIKE ON A POST CONTROLLER ------------
+// Will like the post or unlike the post if the user already liked it
 // put request - /profile/:userId/post/:postId
+// userId is the Id of the OWNER of the post, Not the id of the user who is signed in
 // no body required
 // valid token required to delete
 
@@ -63,14 +63,17 @@ async function toggleLike(req,res,next){
     if (!owner || !post) {
       throw new Error('Not Found')
     }
-    post.likes.push(req.currentUser)
+    if (post.likes.includes(req.currentUser._id)) {
+      post.likes.pull(req.currentUser)
+    } else {
+      post.likes.push(req.currentUser)
+    }
     await owner.save()
-    res.status(201).json('post liked successfully')
+    res.status(201).json('post liked/unliked successfully')
 
   } catch (err){
     next(err)
   }
-  
 }
 
 module.exports = {
