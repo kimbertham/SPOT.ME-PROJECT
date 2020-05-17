@@ -2,6 +2,7 @@ const router = require('express').Router()
 const auth = require('../controllers/authorization')
 const locations = require('../controllers/locations')
 const posts = require('../controllers/posts')
+const users = require('../controllers/users')
 const secureRoute = require('../lib/secureRoute')
 
 
@@ -16,9 +17,14 @@ router.route('/register')
 router.route('/locations')
   .post( locations.getLocalFacilityData) 
 
+router.route('/locations/co')
+  .post(locations.getCoOrdinates)
+
 router.route('/locations/:placeId')
   .post(locations.getOneFacility) 
-    
+  
+router.route('/locations/:placeId/:photoId')
+  .post(locations.getPhotos)
 
 // --------------- ROUTES FOR MAKING/DELETE POSTS AND LIKES --------------
 
@@ -33,6 +39,8 @@ router.route('/profile/:userId/post/:postId')
 router.route('/profile/:userId/post/:postId')
   .put(secureRoute ,posts.addLike)
 
-
+// --------------- ROUTE FOR USER PROFILE --------------
+router.route('/profile/:userId')
+  .get(users.show)
 
 module.exports = router

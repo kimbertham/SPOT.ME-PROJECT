@@ -8,5 +8,10 @@ export const notify = (message) => toast( message , {
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
+<<<<<<< HEAD
   progress: undefined
 })
+=======
+  progress: undefined,
+})
+>>>>>>> development
