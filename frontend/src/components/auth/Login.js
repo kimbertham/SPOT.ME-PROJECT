@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { notify } from '../../lib/notifications'
 import { setToken } from '../../lib/auth'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Login extends React.Component {
   state = {

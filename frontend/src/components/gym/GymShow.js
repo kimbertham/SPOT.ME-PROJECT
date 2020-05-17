@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { get } from 'mongoose'
+// import { get } from 'mongoose' //* I don't think this is a thing - Tom
 
 class gymShow extends React.Component {
   state={
@@ -32,26 +32,29 @@ class gymShow extends React.Component {
 
   async getImages(){
     const images = this.state.data.photos
-    const photoReferences = []
-    images.map(photo => {
-      photoReferences.push(photo.photo_reference)
-    })
+    // * I cleaned this up, please check if it works - Tom
+    // const photoReferences = []
+    // images.map(photo => {
+    //   photoReferences.push(photo.photo_reference)
+    // })
+    const photoReferences = images.map(photo => photo.photo_reference)
     this.setState({ photoReferences })
   }
 
 
   render() {
-    const { bussinessStatus, location,name,rating,reviews,type } = this.state.data
+  // * I took out the unused 'type' from the const - Tom
+  const { bussinessStatus, location, name, rating, reviews } = this.state.data
     // const test = URL.createObjectURL(this.state.photosRaw[0])
     // const img = document.createElement('img');
     // img.src = 'data:image/jpeg;base64,' + btoa(`${this.state.photosRaw[0].data}`);
-    console.log(this.state)
+    // console.log(this.state)
     return (  
       <div className='gym-show-page'>  
         <div className='gym-show-imgs'>
         </div>
         {this.state.photoReferences.map(photo => {
-          return <img key={photo} src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photo}&key=AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A`}></img>
+          return <img key={photo} alt="place" src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photo}&key=AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A`}></img>
         })}
 
         <div className='gym-show-info'>

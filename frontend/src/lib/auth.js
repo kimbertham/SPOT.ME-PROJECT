@@ -3,7 +3,7 @@ export const setToken = token => {
 }
 
 export const getToken = () => {
-  localStorage.removeItem('token')
+  return window.localStorage.getItem('token')
 }
 
 export const getPayload = () => {
@@ -12,4 +12,8 @@ export const getPayload = () => {
   const parts = token.split('.')
   if (parts.length < 3)  return false 
   return JSON.parse(window.atob(parts[1]))
+}
+
+export const getUserId = () => {
+  return getPayload().sub
 }

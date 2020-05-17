@@ -11,7 +11,6 @@ async componentDidMount() {
   try {
     const userId = this.props.match.params.userId
     const res = await getProfile(userId)
-    console.log(res.data)
     this.setState( { user: res.data } )  
   } catch (err) {
     console.log(err)
@@ -21,7 +20,6 @@ async componentDidMount() {
   render(){
     return (
       <div>
-        <h1> hello world!</h1>
         <Post 
         user={this.state.user}
         />

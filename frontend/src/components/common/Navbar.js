@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import { getUserId } from '../../lib/auth'
+
 
 class Navbar extends React.Component{
-
+  
   render() {
     return (
       <nav className="navbar is-dark">
@@ -15,7 +17,7 @@ class Navbar extends React.Component{
               <Link to="/locations" className="navbar-item">locations</Link>
               <Link to="/register" className="navbar-item">Register</Link>
               <Link to="/login" className="navbar-item">Log In</Link>
-              <Link to="/profile/:userId" className="navbar-item">Profile</Link>
+              <Link to={`/profile/${getUserId()}`} className="navbar-item">Profile</Link>
             </div>
           </div>
         </div>
