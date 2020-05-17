@@ -2,6 +2,7 @@ const router = require('express').Router()
 const auth = require('../controllers/authorization')
 const locations = require('../controllers/locations')
 const posts = require('../controllers/posts')
+const users = require('../controllers/users')
 const secureRoute = require('../lib/secureRoute')
 
 
@@ -38,6 +39,8 @@ router.route('/profile/:userId/post/:postId')
 router.route('/profile/:userId/post/:postId')
   .put(secureRoute ,posts.addLike)
 
-
+// --------------- ROUTE FOR USER PROFILE --------------
+router.route('/profile/:userId')
+  .get(users.show)
 
 module.exports = router

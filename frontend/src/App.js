@@ -18,7 +18,7 @@ const App = () => {
           <Route path='/locations' component={GymLocations}/>
           <Route path='/register' component={Register}/>
           <Route path='/login' component={Login}/>
-          <Route path='/profile' component={gymProfile}/>
+          <Route path='/profile/:userId' component={gymProfile}/>
         </Switch>
       </BrowserRouter>
     </>
