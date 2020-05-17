@@ -45,14 +45,27 @@ router.route('/profile/:userId')
 
 // --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
 router.route('/groups/new/:userId')
-  .post(groups.new)
+  .post(secureRoute ,groups.new)
 
+router.route('/groups/:groupId/:userId')
+  .delete(secureRoute ,groups.delete)
 
+router.route('/groups/:groupId/join/:userId')
+  .put(secureRoute ,groups.join)
 
+router.route('/groups/:groupId/leave/:userId')
+  .put(secureRoute ,groups.leave)
 
+// ------------ ROUTES FOR POSTING IN GROUP -----------------
 
+router.route('/groups/:groupId/post/:userId')
+  .post(secureRoute ,groups.post)
 
+router.route('/groups/:groupId/post/:postId/delete')
+  .delete(secureRoute ,groups.deletePost)
 
+router.route('/groups/:groupId/post/:postId/like')
+  .put(secureRoute ,groups.like)
 
 
 
