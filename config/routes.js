@@ -22,8 +22,6 @@ router.route('/locations/co')
 router.route('/locations/:placeId')
   .post(locations.getOneFacility) 
   
-router.route('/locations/:placeId/:photoId')
-  .post(locations.getPhotos)
 
 // --------------- ROUTES FOR MAKING/DELETE POSTS AND LIKES --------------
 

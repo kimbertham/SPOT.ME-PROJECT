@@ -117,32 +117,9 @@ async function getOneFacility(req, res) {
   }
 }
 
-async function getPhotos(req,res ) {
-  console.log('GET TEST')
-  const photoReference = req.params.photoId
-  const googleImgURL = 'https://maps.googleapis.com/maps/api/place/photo?'
-  const apiKeyTwo = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A' // enable key at the top to replace 
-  const maxwidth = '400'
-  try { 
-    const response = await axios.get(googleImgURL, { params: { 
-      key: apiKeyTwo, 
-      photoreference: photoReference,
-      maxwidth: maxwidth
-    }
-    }
-    )
-    // ,{ responseType: 'blob' }
-    console.log(response)
-    res.json(response.data)
-  } catch (err) {
-    console.log(err)
-  }
-}
-
 
 module.exports = {
   getLocalFacilityData: getLocalFacilityData,
   getOneFacility: getOneFacility,
-  getCoOrdinates,
-  getPhotos
+  getCoOrdinates
 }
