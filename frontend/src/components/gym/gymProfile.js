@@ -25,6 +25,7 @@ class gymProfile extends React.Component {
   }
 
   render() {
+    
     const { users } = this.state
     return (
       <section className="section">

@@ -51,3 +51,84 @@ input {
   height: 90px;
   border-radius: 45px;
 }
+
+// * For posts
+.post-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #414141;
+  width: 50vw;
+  border-radius: 10px;
+  .top-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 95%;
+    padding: 10px 0;
+    margin: 0 auto;
+    border-bottom: 0.5px solid #C4C4C4;
+    figure {
+      display: flex;
+      margin: auto;
+      // width: 50px;
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+      }
+    }
+    .field {
+      height: inherit;
+      
+      textarea {
+        overflow: auto;
+        height: 32px;
+        min-height: 32px;
+        width: 45.5vw;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #6A6767;
+        border: none;
+        color: #E5E5E5;
+        font-size: medium;
+        font-weight: 500;
+        resize: none;
+        // -webkit-transition: height .35s ease-in-out;
+        animation: collapse .35s ease-in-out;
+      }
+      textarea::placeholder {
+      color: #A9A4A4;
+      }
+      textarea:focus {
+        height: 150px;
+        // -webkit-transition: height .35s ease-in-out;
+        animation: expand .35s 1 0s ease-in-out;
+      }
+    }
+    @keyframes expand{
+      0%{
+          transform: rotate(0);
+          height: 32px;
+          }
+      100%{
+          transform: rotate(0);
+          height: 150px;
+          }
+  }
+  @keyframes collapse{
+    0%{
+        transform: rotate(0);
+        height: 150px;
+        }
+    100%{
+        transform: rotate(0);
+        height: 32px;
+        }
+}
+  }
+  .bottom-section {
+    height: 50px;
+    width: 100%;
+  }
+}
