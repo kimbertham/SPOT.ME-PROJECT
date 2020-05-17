@@ -33,7 +33,7 @@ class Map extends React.Component {
 
   render() {
     const { viewport, modal } = this.state
-    // const { longitude,latitude } = this.props
+    const { longitude,latitude } = this.props
     const { name , location, businessStatus, place_id } = this.state.data
     const modalClassName = modal ? 'display-block' : 'display-none'
     console.log(this.state.data)
@@ -43,8 +43,8 @@ class Map extends React.Component {
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
           mapStyle='mapbox://styles/mapbox/light-v10'
           {...viewport}
-          // longitude={longitude ? longitude : -0.118092  }
-          // latitude={latitude ? latitude : 51.509865 }
+          longitude={longitude ? longitude : -0.118092  }
+          latitude={latitude ? latitude : 51.509865 }
         
           onViewportChange= {viewport => {
             this.setState({ viewport })
