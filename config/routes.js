@@ -4,6 +4,7 @@ const locations = require('../controllers/locations')
 const posts = require('../controllers/posts')
 const users = require('../controllers/users')
 const secureRoute = require('../lib/secureRoute')
+const groups = require('../controllers/groups')
 
 
 router.route('/login')
@@ -40,5 +41,19 @@ router.route('/profile/:userId/post/:postId')
 // --------------- ROUTE FOR USER PROFILE --------------
 router.route('/profile/:userId')
   .get(users.show)
+
+
+// --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
+router.route('/groups/new/:userId')
+  .post(groups.new)
+
+
+
+
+
+
+
+
+
 
 module.exports = router

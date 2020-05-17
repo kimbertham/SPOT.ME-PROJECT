@@ -10,7 +10,6 @@ async function createNewPost(req,res,next) {
   // console.log('post submitted')
   // console.log(req.currentUser)
   // console.log(req.params.userId)
-  
   try {
     const user = await User.findById(req.params.userId)
     console.log(user)
