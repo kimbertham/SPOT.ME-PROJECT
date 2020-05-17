@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-      <Navbar/>
+        <Navbar/>
         <Switch>
           <Route path='/locations/:placeId' component={GymShow} />
           <Route path='/locations' component={GymLocations}/>
