@@ -5,27 +5,27 @@ import GymSearch from './GymSearch'
 
 
 class gymLocations extends React.Component {
-  state= {
-    searchForm:{
+  state = {
+    searchForm: {
       keywords: '', 
       radius: '', 
       longitude: '', 
       latitude: ''
     },
-    data : []
+    data: []
   }
 
   handleChange = event => {
     const searchForm = { ...this.state.searchForm, [event.target.name]: event.target.value }
-    this.setState({ searchForm})
+    this.setState({ searchForm })
   }
 
   handleSubmit = async event => {
     event.preventDefault()
     try {
-      const response = await axios.post('/api/locations', {...this.state.searchForm}) 
+      const response = await axios.post('/api/locations', { ...this.state.searchForm }) 
       console.log(response.data)
-      this.setState({data : response.data})
+      this.setState({ data: response.data })
     } catch (err) {
       console.log(err)
     }
@@ -35,13 +35,13 @@ class gymLocations extends React.Component {
     return (
       <>
       <GymSearch
-      change={this.handleChange} 
-      submit={this.handleSubmit}
-      {...this.state.searchForm}
+        change={this.handleChange} 
+        submit={this.handleSubmit}
+        {...this.state.searchForm}
       />
 
       <Map 
-      {...this.state}
+        {...this.state}
       />
       </>
     )
