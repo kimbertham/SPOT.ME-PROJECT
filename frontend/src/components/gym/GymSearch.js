@@ -1,6 +1,6 @@
 import React from 'react'
 
-const gymSearch = ({change, submit, longitude,latitude,radius, keyword, address}) => {
+const gymSearch = ({change, submit, longitude,latitude,radius, keyword, address, flyTo}) => {
   return (
   <section className='gymSearch'>
   <div className='gym-search-container'>

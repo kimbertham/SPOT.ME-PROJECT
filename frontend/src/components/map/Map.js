@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 
 class Map extends React.Component {
   state = {
-    viewport: {
-      latitude: 51.509865,
-      longitude: -0.118092,
-      width: '80vw',
-      height: '80vh',
-      zoom: 12
-    },
+    // viewport: {
+    //   latitude: 51.509865,
+    //   longitude: -0.118092,
+    //   width: '80vw',
+    //   height: '80vh',
+    //   zoom: 12
+    // },
     modal: false,
     data: []
   }
@@ -26,6 +26,7 @@ class Map extends React.Component {
       console.log(err)
     }
   }
+
 
   hideModal=()=>{
     this.setState({ modal: false })
@@ -42,14 +43,19 @@ class Map extends React.Component {
         <MapGl
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
           mapStyle='mapbox://styles/mapbox/light-v10'
-          {...viewport}
-          longitude={longitude ? longitude : -0.118092  }
-          latitude={latitude ? latitude : 51.509865 }
         
-          onViewportChange= {viewport => {
-            this.setState({ viewport })
-          }}
+          {...this.props.viewport}
+
+          // longitude={longitude ? longitude : -0.118092  }
+          // latitude={latitude ? latitude : 51.509865 }
+        
+          // onViewportChange= {viewport => {
+          //   this.setState({ viewport })
+          // }}
+
+          onViewportChange={this.props.moveMap}
         >
+
 
           {this.props.data.map((location) => {
             return <Marker
