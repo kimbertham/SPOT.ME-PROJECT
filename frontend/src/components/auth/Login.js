@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { notify } from '../../lib/notifications'
 import { setToken } from '../../lib/auth'
@@ -42,7 +42,7 @@ class Login extends React.Component {
     const { formData, error } = this.state
     return (
       <section className="section">
-      <ToastContainer/>
+        <ToastContainer/>
         <div className="container">
           <div className="columns">
             <form 
