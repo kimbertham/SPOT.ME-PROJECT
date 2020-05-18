@@ -1,6 +1,7 @@
 @import '~bulma/bulma.sass';
 
 input {
+
   &[type="checkbox"],
   &[type="radio"] {
     margin-left: 1em;
@@ -16,23 +17,188 @@ input {
   text-align: center;
 }
 
+.wrap-center {
+  margin: 48px auto;
+  padding: 0;
+  width: 50%;
+}
+
 .center-button {
   width: 40%;
   margin-left: 30%;
+}
+
+.center-items {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
 }
 
 .display-block {
   display: block;
 }
 
-.display-none{
+.display-none {
   display: none;
 }
 
+<<<<<<< HEAD
+=======
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding-top: 5%;
+  z-index: 2;
+  color: black;
+
+  .gym-modal-info {
+    height: 500px;
+    width: 800px;
+    margin: 0 auto;
+    background-color: white;
+  }
+}
+
+>>>>>>> development
 .profile-picture {
   width: 90px;
   height: 90px;
   border-radius: 45px;
+<<<<<<< HEAD
   
 }
 
+=======
+  margin-right: 10px;
+}
+
+.custom-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  transition: all 0.2s ease-in-out;
+  width: 250px;
+  border-radius: 20px;
+  color: #E5E5E5;
+  cursor: pointer;
+
+  img {
+    margin-right: 10px;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+button {
+  font-size: medium;
+  font-weight: 400;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+
+}
+
+button:hover {
+  background-color: #6A6767;
+}
+
+
+// * For posts
+.post-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #414141;
+  width: 50vw;
+  border-radius: 10px;
+
+  .top-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 95%;
+    padding: 10px 0;
+    margin: 0 auto;
+    border-bottom: 0.5px solid #C4C4C4;
+
+    figure {
+      display: flex;
+      margin: auto;
+
+      // width: 50px;
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+      }
+    }
+
+    .field {
+      height: inherit;
+
+      textarea {
+        overflow: auto;
+        height: 32px;
+        min-height: 32px;
+        width: 45vw;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #6A6767;
+        border: none;
+        color: #E5E5E5;
+        font-size: medium;
+        font-weight: 500;
+        resize: none;
+        animation: collapse .35s ease-in-out;
+      }
+
+      textarea::placeholder {
+        color: #A9A4A4;
+      }
+
+      textarea:focus {
+        height: 150px;
+        animation: expand .35s 1 0s ease-in-out;
+      }
+    }
+
+    .bottom-section {
+      display: flex;
+      flex-direction: row;
+      height: 50px;
+      width: 100%;
+      margin: 10px auto;
+    }
+
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: rotate(0);
+    height: 32px;
+  }
+
+  100% {
+    transform: rotate(0);
+    height: 150px;
+  }
+}
+
+
+@keyframes collapse {
+  0% {
+    transform: rotate(0);
+    height: 150px;
+  }
+
+  100% {
+    transform: rotate(0);
+    height: 32px;
+  }
+}
+>>>>>>> development

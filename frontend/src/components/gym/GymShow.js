@@ -49,10 +49,12 @@ class gymShow extends React.Component {
 
   async getImages(){
     const images = this.state.data.photos
-    const photoReferences = []
-    images.map(photo => {
-      photoReferences.push(photo.photo_reference)
-    })
+    // * I cleaned this up, please check if it works - Tom
+    // const photoReferences = []
+    // images.map(photo => {
+    //   photoReferences.push(photo.photo_reference)
+    // })
+    const photoReferences = images.map(photo => photo.photo_reference)
     this.setState({ photoReferences })
   }
 

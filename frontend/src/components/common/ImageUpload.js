@@ -29,12 +29,15 @@ class ImageUpload extends React.Component {
           </div>
           :
           <>
-            <label className="label center-text">{this.props.labelText || 'Upload Image'}</label>
+            <button className="custom-button">
             <input
-              className="input center-button"
+              className="display-none"
               type="file"
               onChange={this.handleUpload}
             />
+            <img  src={require('../../assets/photo.png')} alt="poloroid" width="40px"/>
+            Upload photo
+            </button>
           </>
         }
       </>

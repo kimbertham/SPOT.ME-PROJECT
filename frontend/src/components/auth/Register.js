@@ -3,7 +3,7 @@ import axios from 'axios'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { notify } from '../../lib/notifications'
-// import ImageUpload from '../common/ImageUpload'
+import ImageUpload from '../common/ImageUpload'
 
 class Register extends React.Component {
   state = {
@@ -11,6 +11,7 @@ class Register extends React.Component {
       username: '',
       firstName: '',
       lastName: '',
+      image: '',
       email: '',
       password: '',
       passwordConfirmation: '',
@@ -182,14 +183,13 @@ class Register extends React.Component {
                 </div>
               </div>
               {/* //* can't get upload to work */}
-              {/* <div className="field">
+              <div className="field">
                 <div className="control">
                   <ImageUpload 
-                    onChange={ this.handleChange }
                     name="image"
                   />
                 </div>
-              </div> */}
+              </div>
               <div className="field">
                 <button type="submit" className="button is-fullwidth is-warning">Register</button>
               </div>
