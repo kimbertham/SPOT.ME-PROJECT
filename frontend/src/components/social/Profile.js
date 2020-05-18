@@ -4,7 +4,7 @@ import { getProfile } from '../../lib/api'
 
 class Profile extends React.Component {
 state = {
-  user : {}
+  user: {}
 }
 
 async componentDidMount() {
@@ -17,15 +17,15 @@ async componentDidMount() {
   }
 }
 
-  render(){
-    return (
-      <div>
-        <Post 
+render(){
+  return (
+    <div>
+      <Post 
         user={this.state.user}
-        />
-      </div>
-    )
-  }
+      />
+    </div>
+  )
+}
 }
 
 export default Profile
