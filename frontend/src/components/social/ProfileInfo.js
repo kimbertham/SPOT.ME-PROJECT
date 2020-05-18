@@ -39,6 +39,7 @@ class ProfileInfo extends React.Component {
         <div className='username'>
           <h1>{user.firstName} {user.lastName}</h1>
           <p>@{user.username}</p>
+          <p>{user.level}</p>
           </div>
           <p> {user.description? user.description : ' '}</p>
       </div>

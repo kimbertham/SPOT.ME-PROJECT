@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-evenly;
   *{
-    border: 1px solid transparent;
+    border: 1px solid  transparent;
     color: #E5E5E5;
   }
 }
@@ -68,14 +68,15 @@
   height: 50vh;
   background-color: #535C61;
   border-radius: 10px;
+
 }
 
 .info-top {
-
   width: 100%;
   height:25vh;
   display:flex;
   align-items: center;
+  padding-bottom: 20px;
   .follower-count{
     width:33%;
     height:25vh;
@@ -87,7 +88,7 @@
     width:33.3%;
     height:25vh;
   .profile-pic{
-    width:50%;
+    width:70%;
     border-radius: 50%;
   }
 }
