@@ -169,6 +169,83 @@ button:hover {
   }
 }
 
+// * For NewsFeed
+.feeds-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #414141;
+  width: 50vw;
+  border-radius: 10px;
+
+  .feeds-header {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 95%;
+    padding: 10px 0;
+    margin: 0 auto;
+    border-bottom: 0.5px solid #C4C4C4;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        margin: 0px 10px 0px 20px;
+    }
+  }
+
+  .feeds-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 95%;
+    padding: 10px 0;
+    margin: 0 auto;
+  }
+
+  h1, h4, p {
+    color: #E5E5E5;
+  }
+
+  .feeds-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 95%;
+    padding: 10px 0;
+    margin: 0 auto;
+    border-bottom: 0.5px solid #C4C4C4;
+
+    figure {
+      display: flex;
+      margin: auto;
+    }
+
+    img {
+      width: 500px;
+      height: 250px;
+      object-fit: cover;
+    }
+  } 
+
+  .feeds-likes {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 95%;
+    padding: 10px 0;
+    margin: 0 auto;
+  
+    .like {
+      color: #E5E5E5;
+      margin-left: 10px;
+      
+    }
+  }
+
+}
+
 @keyframes expand {
   0% {
     transform: rotate(0);

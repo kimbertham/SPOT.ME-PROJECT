@@ -25,7 +25,6 @@ async componentDidMount() {
         user={this.state.user}
         />
         <NewsFeedsCard
-        user={this.state}
         />
       </div>
     )
