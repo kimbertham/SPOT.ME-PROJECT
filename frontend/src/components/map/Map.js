@@ -59,7 +59,7 @@ class Map extends React.Component {
           })}
         </MapGl>
 
-          {/* <button onClick={() => {this.map.mapObject.flyTo({ center: [-118.4107187, 33.9415889] })}}></button> */}
+          {/* <button onClick={() => {this.map.state.map.flyTo()}}>fly</button> */}
 
         <div className={`modal ${modalClassName}`}>
           <div className='gym-modal-info'>
