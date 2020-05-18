@@ -36,6 +36,8 @@ handleSubmit = async event => {
 }
 
 render() {
+  if (this.props.user === {}) return null
+  console.log(this.props.user)
   return (
     <section className="wrap-center">
       <div className="post-container is-half">
@@ -44,7 +46,8 @@ render() {
           <div className="top-section">
             <figure className="picture">
               <img 
-                className="profile-picture" 
+                className="profile-picture"
+                loading='lazy'
                 src={this.props.user.image} 
                 alt="logo" 
               />

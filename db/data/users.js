@@ -7,7 +7,7 @@ module.exports = [
     password: 'pass',
     passwordConfirmation: 'pass',
     level: 'beginner',
-    image: 'https://cdn.muscleandstrength.com/sites/default/files/field/feature-wide-image/workout/dumbbell-only-at-gym-or-home-workout.jpg'
+    image: 'https://ca.slack-edge.com/T0351JZQ0-UF7T00ANN-9e0ffcda6506-72'
   },
   {
     username: 'charlotte',
@@ -17,7 +17,7 @@ module.exports = [
     password: 'pass',
     passwordConfirmation: 'pass',
     level: 'intermediate',
-    image: 'https://cdn.muscleandstrength.com/sites/default/files/field/feature-wide-image/workout/dumbbell-only-at-gym-or-home-workout.jpg'
+    image: 'https://ca.slack-edge.com/T0351JZQ0-UDC194EAH-3d2a5f44ffa8-72'
   },
   {
     username: 'abi',
@@ -27,7 +27,7 @@ module.exports = [
     password: 'pass',
     passwordConfirmation: 'pass',
     level: 'advanced',
-    image: 'https://cdn.muscleandstrength.com/sites/default/files/field/feature-wide-image/workout/dumbbell-only-at-gym-or-home-workout.jpg'
+    image: 'https://ca.slack-edge.com/T0351JZQ0-UPF4VBW6A-aa58c07cbaf1-72'
   },
   {
     username: 'Kimberly Tham',
@@ -47,7 +47,7 @@ module.exports = [
     password: 'pass',
     passwordConfirmation: 'pass',
     level: 'advanced',
-    image: 'https://cdn.muscleandstrength.com/sites/default/files/field/feature-wide-image/workout/dumbbell-only-at-gym-or-home-workout.jpg'
+    image: 'https://scontent-lht6-1.xx.fbcdn.net/v/t1.0-0/c8.0.206.206a/p206x206/21231580_10155517430356438_5115411691158266457_n.jpg?_nc_cat=103&_nc_sid=da31f3&_nc_ohc=KTkWvz4TVu8AX9ZvBro&_nc_ht=scontent-lht6-1.xx&oh=5c5c5b05124e16e9098a236436c60d97&oe=5EE84120'
   },
   {
     username: 'Gabriel Presmanes',
