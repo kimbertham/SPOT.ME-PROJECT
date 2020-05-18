@@ -2,7 +2,6 @@ import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { getUserId } from '../../lib/auth'
 
-
 class Navbar extends React.Component{
   
   render() {
