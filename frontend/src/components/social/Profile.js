@@ -1,6 +1,7 @@
 import React from 'react' 
 import Post from './Post'
 import { getProfile } from '../../lib/api'
+import ProfileInfo from '../social/ProfileInfo'
 
 class Profile extends React.Component {
 state = {
@@ -18,11 +19,17 @@ async componentDidMount() {
 }
 
   render(){
+    console.log(this.state)
     return (
       <div>
+
+      <ProfileInfo 
+      user={this.state.user}/>
+
         <Post 
         user={this.state.user}
         />
+
       </div>
     )
   }

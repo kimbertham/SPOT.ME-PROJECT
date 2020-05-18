@@ -29,6 +29,7 @@ class Login extends React.Component {
     event.preventDefault()
     try {
       const res = await axios.post('/api/login', { ...this.state.formData })
+      console.log(res.data.token)
       setToken(res.data.token)
       // this.props.history.push('/should be the newsfeed') //* route does not exist yet
       notify(res.data.message)

@@ -42,22 +42,6 @@ input {
   display: none;
 }
 
-.modal {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding-top: 5%;
-  z-index: 2;
-  color: black;
-
-  .gym-modal-info {
-    height: 500px;
-    width: 800px;
-    margin: 0 auto;
-    background-color: white;
-  }
-}
 
 .profile-picture {
   width: 90px;
@@ -97,7 +81,6 @@ button {
 button:hover {
   background-color: #6A6767;
 }
-
 
 // * For posts
 .post-container {
@@ -193,3 +176,4 @@ button:hover {
     height: 32px;
   }
 }
+

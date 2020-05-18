@@ -13,6 +13,7 @@ router.route('/login')
 router.route('/register')
   .post(auth.register)
 
+
 // --------------- ROUTES FOR GETTING LOCATION DATA FROM GOOGLE --------------
 
 router.route('/locations')
@@ -41,6 +42,10 @@ router.route('/profile/:userId/post/:postId')
 // --------------- ROUTE FOR USER PROFILE --------------
 router.route('/profile/:userId')
   .get(users.show)
+
+router.route('/:userId/follow')
+  .post(secureRoute, users.follow)
+
 
 
 // --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
