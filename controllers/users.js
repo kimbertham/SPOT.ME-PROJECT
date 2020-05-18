@@ -12,6 +12,20 @@ async function profileShow(req, res) {
   }
 }
 
+async function userUpdate(req, res) {
+  try {
+    console.log('got')
+    const userId = req.params.userId
+    const user = await User.findById(userId)
+    Object.assign(user, req.body) 
+    await user.save()
+    res.status(202).json(user)
+  } catch (err) {
+    console.log(err)
+    res.status(422).json(err)
+  }
+}
+
 
 // -------- GET USERS GROUPS ---------------
 // ------ GET request to /groups
@@ -49,5 +63,9 @@ async function getUsersGroups(req,res,next){
 
 module.exports = {
   show: profileShow,
+<<<<<<< HEAD
   getUsersGroups: getUsersGroups
+=======
+  userUpdate
+>>>>>>> development
 }
