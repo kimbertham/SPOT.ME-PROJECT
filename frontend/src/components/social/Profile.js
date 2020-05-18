@@ -1,6 +1,7 @@
 import React from 'react' 
 import Post from './Post'
 import { getProfile } from '../../lib/api'
+import NewsFeedsCard from './NewsFeedsCard'
 
 class Profile extends React.Component {
 state = {
@@ -22,6 +23,9 @@ async componentDidMount() {
       <div>
         <Post 
         user={this.state.user}
+        />
+        <NewsFeedsCard
+        user={this.state}
         />
       </div>
     )

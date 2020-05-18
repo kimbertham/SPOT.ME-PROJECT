@@ -7,6 +7,7 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 // import gymProfile from './components/gym/gymProfile'
 import Profile from './components/social/Profile'
+import Home from './components/social/Home'
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/register' component={Register}/>
           <Route path='/login' component={Login}/>
           <Route path='/profile/:userId' component={Profile}/>
+          <Route path='/home' component={Home}/>
         </Switch>
       </BrowserRouter>
     </>
