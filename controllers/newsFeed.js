@@ -1,6 +1,5 @@
 const User = require('../models/user')
 const Group = require('../models/Group')
-const Post = require('../models/Posts')
 
 
 // -------------- Get News Feed ----------------------
@@ -51,6 +50,9 @@ async function getNewsFeed(req,res,next){
   }
  
 }
+
+
+
 
 module.exports = {
   getNewsFeed: getNewsFeed
