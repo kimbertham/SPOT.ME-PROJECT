@@ -28,20 +28,40 @@ const NewsFeedsCard = (posts, user) => (
         <p><span>10 </span>likes</p>
       </div>
       <div className="feeds-buttons">
-      <button className="custom-button">
-          <input
+        <div className="field center-items">
+          <div className="control center-items">
+          <button className="feed-button">
+            <input
             className="display-none"
-          />
-          <img src={require('../../assets/fitness.png')} alt="logo" width="40px"/>
-          Like
-      </button>
-      <button className="custom-button">
-          <input
+            />
+            <img src={require('../../assets/fitness.png')} alt="logo" width="20px"/>
+            Like
+          </button>
+          <button className="feed-button">
+            <input
             className="display-none"
+            />
+            <img src={require('../../assets/interface (1).png')} alt="logo" width="20px"/>
+            Comment
+          </button>
+          </div>
+        </div>
+      </div>
+      <div className="feeds-comments">
+        <figure className="picture">
+          <img 
+            className="profile-picture" 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Terry_Crews_by_Gage_Skidmore_5.jpg/440px-Terry_Crews_by_Gage_Skidmore_5.jpg"
+            alt="logo" 
           />
-          <img src={require('../../assets/interface (1).png')} alt="logo" width="40px"/>
-          Comment
-      </button>
+        </figure>
+        <div className="field">
+          <textarea
+            className="textarea"
+            name="content"
+            placeholder="Want to post something?"
+          />
+        </div>
       </div>
     </div>
   </div>
