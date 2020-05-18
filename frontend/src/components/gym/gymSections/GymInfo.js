@@ -1,6 +1,4 @@
 import React from 'react'
-import Axios from 'axios'
-import gymLocations from '../gymLocations'
 
 const GymInfo = ({data}) => {
   console.log(data)

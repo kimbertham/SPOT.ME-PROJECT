@@ -11,7 +11,22 @@ async function profileShow(req, res) {
   }
 }
 
+async function userUpdate(req, res) {
+  try {
+    console.log('got')
+    const userId = req.params.userId
+    const user = await User.findById(userId)
+    Object.assign(user, req.body) 
+    await user.save()
+    res.status(202).json(user)
+  } catch (err) {
+    console.log(err)
+    res.status(422).json(err)
+  }
+}
+
 
 module.exports = {
-  show: profileShow
+  show: profileShow,
+  userUpdate
 }

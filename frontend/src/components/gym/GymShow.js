@@ -85,7 +85,7 @@ class gymShow extends React.Component {
             speeds={500}>
               {this.state.photoReferences.map(photo => {
                 return <div className='slide'>
-                  <img className='gym-img' src={`${baseUrl}${photo}${key}`}/></div> 
+                  <img className='gym-img' src={`${baseUrl}${photo}${key}`} alt='gym-pic'/></div> 
                 })}
           </Slider>
             <div className='slider-two'>
@@ -98,7 +98,7 @@ class gymShow extends React.Component {
             className='slides-two'> 
               {this.state.photoReferences.map(photo => {
                 return <div className='slide-two'>
-                <img className='slider-two-img' src={`${baseUrl}${photo}${key}`}/> </div> 
+                <img className='slider-two-img' src={`${baseUrl}${photo}${key}`} alt='gym-pic'/> </div> 
               })}
           </Slider>
         </div>

@@ -15,6 +15,7 @@ router.route('/login')
 router.route('/register')
   .post(auth.register)
 
+
 // --------------- ROUTES FOR GETTING LOCATION DATA FROM GOOGLE --------------
 
 router.route('/locations')
@@ -41,6 +42,11 @@ router.route('/profile/:userId/post/:postId')
   .put(secureRoute ,posts.addLike)
 
 // --------------- ROUTE FOR USER PROFILE --------------
+
+
+router.route('/profile/:userId/edit')
+  .post(users.userUpdate)
+
 router.route('/profile/:userId')
   .get(users.show)
 
