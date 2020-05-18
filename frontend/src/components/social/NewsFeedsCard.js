@@ -24,8 +24,24 @@ const NewsFeedsCard = (posts, user) => (
         </figure>
       </div>
       <div className="feeds-likes">
+        <img className="likes" src={require('../../assets/muscle.png')} alt="logo"/>
         <p><span>10 </span>likes</p>
-        <button className="like">Like!</button>
+      </div>
+      <div className="feeds-buttons">
+      <button className="custom-button">
+          <input
+            className="display-none"
+          />
+          <img src={require('../../assets/fitness.png')} alt="logo" width="40px"/>
+          Like
+      </button>
+      <button className="custom-button">
+          <input
+            className="display-none"
+          />
+          <img src={require('../../assets/interface (1).png')} alt="logo" width="40px"/>
+          Comment
+      </button>
       </div>
     </div>
   </div>

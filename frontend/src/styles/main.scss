@@ -187,10 +187,10 @@ button:hover {
     border-bottom: 0.5px solid #C4C4C4;
 
       img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50px;
-        margin: 0px 10px 0px 20px;
+        width: 50px;
+        height: 60px;
+        border-radius: 10px;
+        margin-right: 10px;
     }
   }
 
@@ -236,12 +236,29 @@ button:hover {
     width: 95%;
     padding: 10px 0;
     margin: 0 auto;
+    border-bottom: 0.5px solid #C4C4C4;
   
     .like {
       color: #E5E5E5;
-      margin-left: 10px;
-      
+      width: 40px;
+      height: 30px;
+      border-radius: 30px;
+      margin: 2px 0px 0px 10px;
     }
+
+    .likes {
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      margin: 0px 5px;
+    }   
+  }
+  .feeds-buttons {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    width: 100%;
+    margin: 10px auto;
   }
 
 }
