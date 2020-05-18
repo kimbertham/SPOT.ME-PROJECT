@@ -1,7 +1,7 @@
 import React from 'react'
 import ImageUpload from '../common/ImageUpload'
 import { postContent } from '../../lib/api'
-
+ 
 // * props: user
 class Post extends React.Component {
 state = {
