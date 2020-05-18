@@ -72,9 +72,7 @@ async function getCoOrdinates(req, res) {
 
 // -----------------------  GET ONE LOCATION REQUEST FROM FRONT END ('/locations/places_id') ------------------------
 // ------------- returns ONE location which has been cleaned up to be saved in state -----------
-// REQUIRES A BODY = {
-// places_id: String
-// }
+// NO BODY REQUIRED, JUST PLACES_ID IN THE URL
 
 async function getOneFacility(req, res) {
   // console.log('GOT')
