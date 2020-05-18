@@ -6,6 +6,7 @@ const users = require('../controllers/users')
 const secureRoute = require('../lib/secureRoute')
 const groups = require('../controllers/groups')
 const follow = require('../controllers/follow')
+const newsFeed = require('../controllers/newsFeed')
 
 
 router.route('/login')
@@ -71,6 +72,11 @@ router.route('/groups/:groupId/post/:postId/delete')
 router.route('/groups/:groupId/post/:postId/like')
   .put(secureRoute ,groups.like)
 
+
+// ------------ ROUTES FOR NEWS FEED -----------------
+
+router.route('/news')
+  .get(secureRoute ,newsFeed.getNewsFeed)
 
 
 module.exports = router
