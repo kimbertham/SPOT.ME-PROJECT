@@ -14,7 +14,7 @@ async function profileShow(req, res) {
 
 
 // -------- GET USERS GROUPS ---------------
-// ------ GET request to /news/groups
+// ------ GET request to /groups
 // --- valid token required of user
 
 
@@ -43,7 +43,6 @@ async function getUsersGroups(req,res,next){
   } catch (err){
     next(err)
   }
- 
 }
 
 

@@ -44,6 +44,9 @@ router.route('/profile/:userId/post/:postId')
 router.route('/profile/:userId')
   .get(users.show)
 
+router.route('/groups')
+  .get(secureRoute ,users.getUsersGroups)
+
 
 router.route('/profile/:userId/follow')
   .put(secureRoute, follow.toggleFollow)
