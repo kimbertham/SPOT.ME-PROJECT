@@ -68,7 +68,6 @@ class gymShow extends React.Component {
     const baseUrl= 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='
     const key='&key=AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
     console.log(this.state)
-    
     return (  
   <div className='gym-show-page'> 
     <div className='page-top'>
