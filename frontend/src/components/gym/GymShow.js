@@ -85,7 +85,7 @@ class gymShow extends React.Component {
                 speeds={500}>
                 {this.state.photoReferences.map(photo => {
                   return 
-                  <div 
+                  <div> 
                   
                     className='slide'>
                     <img 
