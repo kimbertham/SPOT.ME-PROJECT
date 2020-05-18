@@ -21,7 +21,9 @@ const userSchema = new mongoose.Schema({
   level: { type: String, required: true },
   // following: [ userSchema ], // * We need the id of the users
   gyms: [],
-  posts: [postSchema]
+  posts: [postSchema],
+  following: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
+  followers: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }]
 }, {
   timestamps: true
 })
