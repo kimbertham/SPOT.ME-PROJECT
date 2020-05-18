@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const faker = require('faker')
-const User = require('./models/user')
+const User = require('../models/user')
 const dbURI = 'mongodb://localhost/spotme-db'
+const defaultProfiles = require('./data/users')
 
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, async (err, db) => {
@@ -18,7 +19,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
       const splitName = name.split(' ')
       const firstName = splitName[0]
       const lastName = splitName[1]
-      const image = faker.image.imageUrl()
+      
       users.push({
         firstName: firstName, 
         lastName: lastName,
@@ -26,9 +27,14 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
         email: `${name.split(' ').join('')}@email.com`,
         password: 'pass',
         passwordConfirmation: 'pass',
-        image: image
+        level: 'beginner',
+        image: 'https://source.unsplash.com/300x300/?person,people'
       })
     }
+
+    defaultProfiles.map(profile => {
+      users.push(profile)
+    })
 
     const createdUsers = await User.create(users)
 

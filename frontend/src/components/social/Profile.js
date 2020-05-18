@@ -15,7 +15,13 @@ async componentDidMount() {
   try {
     const userId = this.props.match.params.userId
     const res = await getProfile(userId)
+<<<<<<< HEAD
     this.setState( { user: res.data })   
+=======
+    console.log(res.data);
+    
+    this.setState( { user: res.data } )  
+>>>>>>> seeds
   } catch (err) {
     console.log(err)
   }
@@ -23,6 +29,7 @@ async componentDidMount() {
 
 <<<<<<< HEAD
 render(){
+  if (this.state.user === {}) return null
   return (
     <div>
       <Post 
