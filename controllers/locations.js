@@ -61,9 +61,8 @@ async function getCoOrdinates(req, res) {
   console.log('got ya boi')
   const googleGeoURL = 'https://maps.googleapis.com/maps/api/geocode/json?'
   const address = req.body.address
-  const apiKeyTwo = 'AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A' // enable key at the top to replace 
   try {
-    const response = await axios.get(googleGeoURL, { params: { key: apiKeyTwo, address: address } })
+    const response = await axios.get(googleGeoURL, { params: { key: apiKey, address: address } })
     const data  = response.data.results[0].geometry.location ///
     res.json(data)
   } catch (err) {
@@ -83,7 +82,7 @@ async function getOneFacility(req, res) {
   const placeId = req.params.placeId
   // console.log(placeId)
   
-  const fields = 'formatted_address,name,business_status,place_id,type,opening_hours,rating,price_level,geometry,review,photos'
+  const fields = 'formatted_address,name,business_status,place_id,type,opening_hours,rating,price_level,geometry,review,photos,formatted_phone_number'
   
   try {
     const response = await axios.get(googlePlacesURL, {
@@ -107,8 +106,9 @@ async function getOneFacility(req, res) {
       location: data.formatted_address,
       businessStatus: data.business_status,
       reviews: data.reviews,
-      photos: data.photos
-      // openingHours: data.opening_hours
+      photos: data.photos,
+      opening_hours: data.opening_hours,
+      formatted_phone_number: data.formatted_phone_number
     }
 
     res.status(200).json(locationObject)

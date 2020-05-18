@@ -57,7 +57,6 @@ class gymLocations extends React.Component {
       this.setState({ viewport })
   }
 
-
   render(){
     // console.log(this.state.data)
     return (
