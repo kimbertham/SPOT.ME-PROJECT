@@ -50,7 +50,7 @@ async function deletePost(req,res,next) {
 
 // ------- TOGGLE A LIKE ON A POST CONTROLLER ------------
 // Will like the post or unlike the post if the user already liked it
-// put request - /profile/:userId/post/:postId
+// put request - /profile/:ownerId/post/:postId
 // userId is the Id of the OWNER of the post, Not the id of the user who is signed in
 // no body required
 // valid token required to delete

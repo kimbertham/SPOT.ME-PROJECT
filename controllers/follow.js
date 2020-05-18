@@ -22,9 +22,13 @@ async function toggleFollow(req,res,next){
     if (userToFollow._id.equals(req.currentUser._id)){
       throw new Error('You cannot follow yourself hehe!')
     } 
-    if (userToFollow.followers.id())
-      userToFollow.followers.push(req.currentUser.id)
-    followingUser.following.push(userToFollow._id)
+    if (userToFollow.followers.includes(req.currentUser._id)){
+      userToFollow.followers.pull(req.currentUser._id)
+      followingUser.following.pull(userToFollow._id)
+    } else {
+      userToFollow.followers.push(req.currentUser._id)
+      followingUser.following.push(userToFollow._id)
+    }
     await userToFollow.save()
     await followingUser.save()
     res.status(202).json('FOLLOW TOGGLED!')
