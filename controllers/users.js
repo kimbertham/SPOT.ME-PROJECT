@@ -16,6 +16,7 @@ async function userUpdate(req, res) {
     console.log('got')
     const userId = req.params.userId
     const user = await User.findById(userId)
+    console.log(req.body)
     Object.assign(user, req.body) 
     await user.save()
     res.status(202).json(user)
