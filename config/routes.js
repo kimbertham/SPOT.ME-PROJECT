@@ -5,6 +5,7 @@ const posts = require('../controllers/posts')
 const users = require('../controllers/users')
 const secureRoute = require('../lib/secureRoute')
 const groups = require('../controllers/groups')
+const follow = require('../controllers/follow')
 
 
 router.route('/login')
@@ -25,7 +26,7 @@ router.route('/locations/:placeId')
   .post(locations.getOneFacility) 
   
 
-// --------------- ROUTES FOR MAKING/DELETE POSTS AND LIKES --------------
+// --------------- ROUTES FOR MAKING/DELETE POSTS AND LIKES AND FOLLOWS --------------
 
 router.route('/profile/:userId/post')
   .post(secureRoute, posts.newPost)
@@ -42,6 +43,9 @@ router.route('/profile/:userId/post/:postId')
 router.route('/profile/:userId')
   .get(users.show)
 
+
+router.route('/profile/:userId/follow')
+  .put(secureRoute, follow.toggleFollow)
 
 // --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
 router.route('/groups/new/:userId')
