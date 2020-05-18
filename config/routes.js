@@ -40,13 +40,13 @@ router.route('/profile/:userId/post/:postId')
   .put(secureRoute ,posts.addLike)
 
 // --------------- ROUTE FOR USER PROFILE --------------
+
+
+router.route('/profile/:userId/edit')
+  .post(users.userUpdate)
+
 router.route('/profile/:userId')
   .get(users.show)
-
-router.route('/:userId/follow')
-  .post(secureRoute, users.follow)
-
-
 
 // --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
 router.route('/groups/new/:userId')

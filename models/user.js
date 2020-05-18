@@ -21,7 +21,8 @@ const userSchema = new mongoose.Schema({
   level: { type: String, required: true },
   // following: [ userSchema ], // * We need the id of the users
   gyms: [],
-  posts: [postSchema]
+  posts: [postSchema],
+  description: { type: String, maxlength: 50 }
 }, {
   timestamps: true
 })

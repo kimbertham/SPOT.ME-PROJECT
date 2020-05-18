@@ -1,5 +1,6 @@
 @import '~bulma/bulma.sass';
 
+
 input {
 
   &[type="checkbox"],
@@ -7,6 +8,11 @@ input {
     margin-left: 1em;
     margin-right: 1em;
   }
+}
+
+ body{
+  background-color:#343D42; 
+  height:100vh;
 }
 
 .textAlign {
@@ -18,7 +24,6 @@ input {
 }
 
 .wrap-center {
-  margin: 48px auto;
   padding: 0;
   width: 50%;
 }

@@ -11,17 +11,22 @@ async function profileShow(req, res) {
   }
 }
 
-async function followUser(req,res) {
-
-  const getUser = req.params.userId
-  const userToFollow = await User.findById(getUser)
-  const currentUser = req.currentUser 
-  userToFollow.following.push(currentUser)
-  res.json(200).json('Followed confirm')
-
+async function userUpdate(req, res) {
+  try {
+    console.log('got')
+    const userId = req.params.userId
+    const user = await User.findById(userId)
+    Object.assign(user, req.body) 
+    await user.save()
+    res.status(202).json(user)
+  } catch (err) {
+    console.log(err)
+    res.status(422).json(err)
+  }
 }
+
 
 module.exports = {
   show: profileShow,
-  follow: followUser
+  userUpdate
 }

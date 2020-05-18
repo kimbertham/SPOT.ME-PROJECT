@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Map from '../map/Map'
 import GymSearch from './GymSearch'
-import { FlyToInterpolator } from 'react-map-gl'
+// import { FlyToInterpolator } from 'react-map-gl'
 
 
 class gymLocations extends React.Component {
