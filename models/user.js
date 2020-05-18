@@ -22,12 +22,8 @@ const userSchema = new mongoose.Schema({
   // following: [ userSchema ], // * We need the id of the users
   gyms: [],
   posts: [postSchema],
-<<<<<<< HEAD
-  description: { type: String, maxlength: 50 }
-=======
   following: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
   followers: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }]
->>>>>>> 9367b27509577848fbe86f1897580cae84a093a8
 }, {
   timestamps: true
 })

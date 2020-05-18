@@ -59,7 +59,7 @@ const NewsFeedsCard = (posts, user) => (
           <textarea
             className="textarea"
             name="content"
-            placeholder="Want to post something?"
+            placeholder="Write a comment..."
           />
         </div>
       </div>

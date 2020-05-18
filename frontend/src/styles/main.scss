@@ -172,7 +172,6 @@ button:hover {
     width: 95%;
     padding: 10px 0;
     margin: 0 auto;
-    border-bottom: 0.5px solid #C4C4C4;
 
       img {
         width: 50px;
@@ -203,7 +202,6 @@ button:hover {
     width: 95%;
     padding: 10px 0;
     margin: 0 auto;
-    border-bottom: 0.5px solid #C4C4C4;
 
     figure {
       display: flex;
@@ -267,6 +265,39 @@ button:hover {
       input {
         display: none;
       }
+    }
+  }
+
+  .feeds-comments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 95%;
+    padding: 10px 0;
+
+    .profile-picture {
+        width: 50px;
+        height: 50px;
+        border-radius: 30px;
+        margin-right: 10px;
+
+    }
+
+    textarea {
+      overflow: auto;
+      height: 32px;
+      min-height: 32px;
+      width: 40vw;
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: #6A6767;
+      border: none;
+      color: #E5E5E5;
+      font-size: medium;
+      font-weight: 500;
+      resize: none;
+      animation: collapse .35s ease-in-out;
     }
   }
 
