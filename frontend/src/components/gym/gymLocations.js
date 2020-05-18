@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Map from '../map/Map'
 import GymSearch from './GymSearch'
+import { FlyToInterpolator } from 'react-map-gl'
 
 
 class gymLocations extends React.Component {
@@ -13,7 +14,14 @@ class gymLocations extends React.Component {
       latitude: '',
       address: ''
     },
-    data: []
+    data: [],
+    viewport: {
+      latitude: 51.509865,
+      longitude: -0.118092,
+      width: '80vw',
+      height: '80vh',
+      zoom: 12
+    }
   }
 
   handleChange = event => {
@@ -24,8 +32,14 @@ class gymLocations extends React.Component {
   async handleGeocoding() {
     const res = await axios.post('/api/locations/co' , { ...this.state.searchForm })
     const searchForm = { ...this.state.searchForm, latitude: res.data.lat, longitude: res.data.lng }
-    this.setState({ searchForm })
+    const viewport= {...this.state.viewport, latitude: res.data.lat, longitude: res.data.lng }
+    this.setState({ searchForm, viewport })
+
   }
+
+//   handleFlyTo = () => {
+//     this.map.flyTo({ center: [-118.4107187, 33.9415889] })
+// }
 
   handleSubmit = async event => {
     event.preventDefault()
@@ -38,6 +52,11 @@ class gymLocations extends React.Component {
     }
   }
 
+
+  moveMap = (viewport) => {
+      this.setState({ viewport })
+  }
+
   render(){
     // console.log(this.state.data)
     return (
@@ -46,12 +65,12 @@ class gymLocations extends React.Component {
           change={this.handleChange} 
           submit={this.handleSubmit}
           {...this.state.searchForm}
+          flyTo={this.handleFlyTo}
         />
 
         <Map 
+          moveMap={this.moveMap}
           viewport={this.state.viewport}
-          longitude={this.state.searchForm.longitude}
-          latitude={this.state.searchForm.latitude}
           data={this.state.data}
         />
       </>
