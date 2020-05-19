@@ -1,6 +1,8 @@
 @import '~bulma/bulma.sass';
 
 
+
+
 input {
 
   &[type="checkbox"],
@@ -27,6 +29,11 @@ input {
 .wrap-center {
   padding: 0;
   width: 50%;
+  
+
+
+
+  
 }
 
 .center-button {
@@ -179,6 +186,7 @@ button:hover {
         margin-right: 10px;
     }
   }
+
 
   .feeds-content {
     display: flex;

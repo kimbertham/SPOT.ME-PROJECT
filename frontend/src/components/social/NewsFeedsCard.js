@@ -60,19 +60,6 @@ class NewsFeedsCard extends React.Component {
           <div className="control center-items">
 
 
-          {post.comments? post.comments.map(comment =>{
-          return <div key={comment.id} className='post-comments'>
-          <div className='post-comment-field'>
-            {/* <img src={`${comment.user.image}`} alt='commenters-img'></img> */}
-            <div className='commenters-comment'>
-              <p>{comment.user.username}</p>
-              <p>{comment.content}</p>
-            </div>
-          </div>
-        </div>
-        }) : null }
-
-
 
           <button className="feed-button" onClick={()=>{ like(`${post._id}`)}}> 
           {/*!call addLikefunction from parent */}
@@ -87,6 +74,19 @@ class NewsFeedsCard extends React.Component {
           </div>
         </div>
       </div>
+
+      {post.comments? post.comments.map(comment =>{
+          return <div key={comment.id} className='post-comments-container'>
+          <div className='post-comment-field'>
+            <img src={`${comment.user.image}`} alt='commenters-img'></img>
+            <div className='commenters-comment'>
+              <p>{comment.user.username}</p>
+              <p>{comment.content}</p>
+            </div>
+          </div>
+        </div>
+        }) : null }
+
 
       <div className="feeds-comments">
         <figure className="picture">
