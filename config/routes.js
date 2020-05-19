@@ -42,6 +42,7 @@ router.route('/profile/:userId/post/:postId')
 router.route('/profile/:userId/post/:postId')
   .put(secureRoute ,posts.addLike)
 
+// if you are adding/removing comments to a Group post, refer to the group controller and routes below
 router.route('/profile/:ownerId/post/:postId/comment')
   .put(secureRoute, posts.addComment)
 
@@ -63,6 +64,7 @@ router.route('/groups')
 router.route('/profile/:userId/follow')
   .put(secureRoute, follow.toggleFollow)
 
+
 // --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
 router.route('/groups/new/:userId')
   .post(secureRoute ,groups.new)
@@ -76,7 +78,8 @@ router.route('/groups/:groupId/join/:userId')
 router.route('/groups/:groupId/leave/:userId')
   .put(secureRoute ,groups.leave)
 
-// ------------ ROUTES FOR POSTING IN GROUP -----------------
+
+// ------------ ROUTES FOR POSTING IN GROUP AND LIKING/COMMENTING -----------------
 
 router.route('/groups/:groupId/post/:userId')
   .post(secureRoute ,groups.post)
@@ -85,7 +88,17 @@ router.route('/groups/:groupId/post/:postId/delete')
   .delete(secureRoute ,groups.deletePost)
 
 router.route('/groups/:groupId/post/:postId/like')
-  .put(secureRoute ,groups.like)
+  .put(secureRoute ,groups.likePost)
+
+router.route('/groups/:groupId/post/:postId/comment')
+  .put(secureRoute ,groups.addGroupPostComment)
+
+router.route('/groups/:groupId/post/:postId/comment/:commentId')
+  .delete(secureRoute ,groups.removeGroupPostComment)
+
+router.route('/groups/:groupId/post/:postId/comment/:commentId/like')
+  .put(secureRoute ,groups.likeComment)
+
 
 
 // ------------ ROUTES FOR NEWS FEED -----------------

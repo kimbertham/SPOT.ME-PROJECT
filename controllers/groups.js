@@ -148,15 +148,13 @@ async function deleteGroupPost(req,res,next) {
   }
 }
 
-
-
 // -------------- TOGGLES LIKE ON A POST FROM GROUP --------------------
 // this will like a post or Unlike a post if the user has already liked it
 // PUT request: /groups/:groupId/post/:postId/like
 // No body required
 // valid token required
 
-async function toggleLike(req,res,next){
+async function togglePostLike(req,res,next){
   try {
     const group = await Group.findById(req.params.groupId)
     const post = group.posts.id(req.params.postId)
@@ -179,7 +177,83 @@ async function toggleLike(req,res,next){
 }
 
 
+// ------------------------------ ADD COMMENT TO A GROUP POST   -------------------------------------
+// PUT request: /groups/:groupId/post/:postId/comment
+// body required = {content: String }
+// valid token required
 
+async function addGroupPostComment(req,res,next){
+  try {
+    const group = await Group.findById(req.params.groupId)
+    const post = group.posts.id(req.params.postId)
+    if (!group || !post) {
+      throw new Error('Not Found')
+    }
+    
+    req.body.user = req.currentUser
+    post.comments.push(req.body)
+    await group.save()
+    res.status(201).json('Group comment added successfully')
+  } catch (err){
+    next(err)
+  }
+}
+
+
+
+
+
+
+
+// ------------------------------ REMOVE COMMENT TO A GROUP POST   -------------------------------------
+// DELETE request: /groups/:groupId/post/:postId/comment/:commentId
+// no body required
+// valid token required - either the user who made the comment or the user who made the post
+
+async function removeGroupPostComment(req,res,next){
+  try {
+    const group = await Group.findById(req.params.groupId)
+    const post = group.posts.id(req.params.postId)
+    const commentToDelete = post.comments.id(req.params.commentId)
+    if (!group || !post || !commentToDelete) {
+      throw new Error('Not Found')
+    }
+    
+    post.comments.pull(commentToDelete)
+    await group.save()
+    res.status(201).json('Group Post comment removed successfully')
+  } catch (err){
+    next(err)
+  }
+}
+
+
+// -------------- TOGGLES LIKE ON A COMMENT IN A POST FROM GROUP --------------------
+// this will like a post or Unlike a post if the user has already liked it
+// PUT request: /groups/:groupId/post/:postId/comment/:commentId/like
+// No body required
+// valid token required
+
+async function toggleCommentLike(req,res,next){
+  try {
+    const group = await Group.findById(req.params.groupId)
+    const post = group.posts.id(req.params.postId)
+    const commentToLike = post.comments.id(req.params.commentId)
+    if (!group || !post || !commentToLike) {
+      throw new Error('Not Found')
+    }
+    if (commentToLike.likes.includes(req.currentUser._id)) {
+      commentToLike.likes.pull(req.currentUser)
+    } else {
+      commentToLike.likes.push(req.currentUser)
+    }
+    await group.save()
+    res.status(201).json('post liked/unliked successfully')
+
+  } catch (err){
+    next(err)
+  }
+}
 
 
 
@@ -190,5 +264,8 @@ module.exports = {
   leave: leaveGroup,
   post: postInGroup,
   deletePost: deleteGroupPost,
-  like: toggleLike
+  likePost: togglePostLike,
+  addGroupPostComment: addGroupPostComment,
+  removeGroupPostComment: removeGroupPostComment,
+  likeComment: toggleCommentLike
 }
