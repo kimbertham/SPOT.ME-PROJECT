@@ -4,25 +4,35 @@ import { withHeaders } from '../../lib/api'
 import {getUserId} from '../../lib/auth'
 
 class NewsFeedsCard extends React.Component {
-  state= {
-    comment: ''
+  state = {
+    data : {
+      content: ''
+    }
+  
   }
+
 
   postAComment = async (postOwner, postId) => {
-    const res = await axios.put(`/profile/${postOwner}/post/${postId}/comment`,
-    this.state.comment,
-    withHeaders())
-    const comment = res.data
-    this.setState({comment})
+    console.log(`/api/profile/${postOwner}/post/${postId}/comment`)
+    console.log(this.state.data)
+    const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
+    const content = res.data
+    this.setState({content})
   }
 
+  handleChange = event => {
+    const data = { ...this.state.data, [event.target.name]: event.target.value }
+    this.setState( {data} )
+  }
 
   render () {
-    console.log(this.props)
+    console.log(this.state)
     const { user, like } = this.props
     let posts = user.posts ? user.posts : []
+    console.log(posts)
     return (
       <>
+
       {posts.slice(0).reverse().map((post => {
     return <div className="wrap-center">
     <div className="feeds-container">
@@ -50,6 +60,21 @@ class NewsFeedsCard extends React.Component {
           <div className="control center-items">
 
 
+          {post.comments? post.comments.map(comment =>{
+          return <div key={comment.id} className='post-comments'>
+          <div className='post-comment-field'>
+            {/* <img src={`${comment.user.image}`} alt='commenters-img'></img> */}
+            <div className='commenters-comment'>
+              <p>{comment.user.username}</p>
+              <p>{comment.content}</p>
+            </div>
+          </div>
+        </div>
+        
+        }) : null }
+
+
+
           <button className="feed-button" onClick={()=>{ like(`${post._id}`)}}> 
           {/*!call addLikefunction from parent */}
             <img src={require('../../assets/fitness.png')} alt="logo" width="20px"/>
@@ -60,10 +85,10 @@ class NewsFeedsCard extends React.Component {
             <img src={require('../../assets/interface (1).png')} alt="logo" width="20px"/>
             Comment
           </button>
-
           </div>
         </div>
       </div>
+
       <div className="feeds-comments">
         <figure className="picture">
           <img 
@@ -74,11 +99,16 @@ class NewsFeedsCard extends React.Component {
         </figure>
 
         <div className="field">
-          <form onSubmit={e=>{ e.preventDefault(); this.postAComment(`${post.owner}`,`${post._id}`)}}>
+          <form onSubmit={e=>{ e.preventDefault(); this.postAComment(`${post.owner}` , `${post._id}`)}}>
           <textarea
+
             className="textarea"
             name="content"
-            placeholder="Write a comment..."/>
+            placeholder="Write a comment..."
+            onChange={this.handleChange}
+            // value={this.state.data.content}
+            
+            />
             <button> Send Comment </button>
             </form>
         </div>
@@ -86,6 +116,10 @@ class NewsFeedsCard extends React.Component {
     </div>
   </div>
     }))}
+
+
+
+
   </>
     )
   }
