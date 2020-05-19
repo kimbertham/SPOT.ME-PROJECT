@@ -29,11 +29,11 @@ class Map extends React.Component {
   }
 
   render() {
-    console.log(this.map)
+    // console.log(this.map)
     const { modal } = this.state
     const { name , location, businessStatus, place_id } = this.state.data
     const modalClassName = modal ? 'display-block' : 'display-none'
-    console.log(this.state.data)
+    // console.log(this.state.data)
     return (
       <>
         <MapGl
