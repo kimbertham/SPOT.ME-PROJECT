@@ -1,7 +1,7 @@
-import React from 'react'
+ import React from 'react'
 import axios from 'axios'
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 import Reviews from './gymSections/Reviews'
@@ -15,9 +15,9 @@ class gymShow extends React.Component {
     section: {
       reviews: false,
       members: false,
-      directions:false,
+      directions: false,
       posts: false
-      },
+    },
 
     data: {
       bussinessStatus: '',
@@ -28,10 +28,10 @@ class gymShow extends React.Component {
       type: '',
       photos: [],
       opening_hours: '',
-      formatted_phone_number:''
+      formatted_phone_number: ''
     },
 
-    photoReferences: [],
+    photoReferences: []
   }
 
   async componentDidMount() {
@@ -39,8 +39,8 @@ class gymShow extends React.Component {
       const gymId = this.props.match.params.placeId
       const response = await axios.post(`/api/locations/${gymId}`)
       const data = response.data
-      console.log(response.data)
-      this.setState({ data, nav1: this.slider1, nav2: this.slider2 })
+      this.setState({ data})
+      this.setState({  nav1: this.slider1, nav2: this.slider2})
       await this.getImages()
     } catch (err) {
       console.log(err)
@@ -60,19 +60,19 @@ class gymShow extends React.Component {
 
 
   getSection = async page =>  {
-    const section = { reviews: false, members: false, directions:false, posts: false}
-    await this.setState({section})
-    const sectionChange =  {...this.state.section, [page] : true }
-    this.setState({section:sectionChange })
+    const section = { reviews: false, members: false, directions: false, posts: false }
+    await this.setState({ section })
+    const sectionChange =  { ...this.state.section, [page]: true }
+    this.setState({ section: sectionChange })
   }
 
   render() { 
-    const baseUrl= 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='
-    const key='&key=AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
-    console.log(this.state)
+    const baseUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='
+    const key = '&key=AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
+
     return (  
-  <div className='gym-show-page'> 
-    <div className='page-top'>
+      <div className='gym-show-page'> 
+        <div className='page-top'>
       
       <div className='gym-images'>
         <div className='slider-container'>
@@ -85,7 +85,7 @@ class gymShow extends React.Component {
             speeds={500}>
               {this.state.photoReferences.map(photo => {
                 return <div className='slide'>
-                  <img className='gym-img' src={`${baseUrl}${photo}${key}`} alt='gym-pic'/></div> 
+                  <img  alt='gym-pics' className='gym-img' src={`${baseUrl}${photo}${key}`}/></div> 
                 })}
           </Slider>
             <div className='slider-two'>
@@ -98,21 +98,19 @@ class gymShow extends React.Component {
             className='slides-two'> 
               {this.state.photoReferences.map(photo => {
                 return <div className='slide-two'>
-                <img className='slider-two-img' src={`${baseUrl}${photo}${key}`} alt='gym-pic'/> </div> 
+                <img alt='gym-pics'className='slider-two-img' src={`${baseUrl}${photo}${key}`}/> </div> 
               })}
           </Slider>
         </div>
+
+        <GymNav getSection={this.getSection} />
+
+        <div className="changing-sections">
+          <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
+        </div>
+        </div>
       </div>
-    </div>
-    <GymInfo data={this.state.data} />
-  </div>
-
-  <GymNav getSection={this.getSection} />
-
-  <div className="changing-sections">
-  <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
-  </div>
-
+      </div>
       </div>
     ) 
   }

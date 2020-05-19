@@ -19,7 +19,6 @@ class Map extends React.Component {
       console.log(err)
     }
   }
-
 //   handleFlyTo = () => {
 //     this.map.flyTo({ center: [-118.4107187, 33.9415889] })
 // }
@@ -31,8 +30,7 @@ class Map extends React.Component {
 
   render() {
     console.log(this.map)
-    const { viewport, modal } = this.state
-    const { longitude,latitude } = this.props
+    const { modal } = this.state
     const { name , location, businessStatus, place_id } = this.state.data
     const modalClassName = modal ? 'display-block' : 'display-none'
     console.log(this.state.data)
@@ -62,7 +60,7 @@ class Map extends React.Component {
           {/* <button onClick={() => {this.map.state.map.flyTo()}}>fly</button> */}
 
         <div className={`modal ${modalClassName}`}>
-          <div className='gym-modal-info'>
+          <div className='gym-modal-info modal-info'>
             <div className='gym-modal-text'>
               <div onClick={this.hideModal}><p>xxx</p></div>
               <p>{name}</p>

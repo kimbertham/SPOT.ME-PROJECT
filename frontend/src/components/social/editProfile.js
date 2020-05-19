@@ -4,39 +4,35 @@ import axios from 'axios'
 
 class editProfile extends React.Component {
 state = { 
-  data: {
-    description: '',
-    firstName: '',
-    lastName: ''
-  }
+  user : {}
 }
 
 async componentDidMount() {
   try {
     const userId = this.props.match.params.userId
-    const data = await axios.get(`/api/profile/${userId}`)
-    this.setState( { user: data.data })   
+    const user = await axios.get(`/api/profile/${userId}`)
+    this.setState( { user: user.data })   
   } catch (err) {
     console.log(err)
   }
 }
 
- handleSubmit = async event => {
-   event.preventDefault()
-   const userId = this.props.match.params.userId
-   try {
-    const data = { ...this.state.data }
+  handleSubmit = async event => {
+  event.preventDefault()
+  const userId = this.props.match.params.userId
+  try {
+    const data = { ...this.state.user }
     await axios.post(`/api/profile/${userId}/edit`, data)
     this.props.history.push(`/profile/${userId}`)
-   } catch (err) {
+  } catch (err) {
     console.log(err)
-   }
- }
+  }
+}
 
 
 handleChange = event => {
-  const data = { ...this.state.data, [event.target.name]: event.target.value }
-  this.setState({ data })
+  const user = { ...this.state.user, [event.target.name]: event.target.value }
+  this.setState({ user})
 }
 
 render() {
@@ -54,7 +50,7 @@ render() {
               placeholder="First Name here"
               name="firstName"
               onChange={this.handleChange}
-              value={this.state.data.firstName}
+              value={this.state.user.firstName}
             />
           </div>
 
@@ -65,7 +61,7 @@ render() {
               placeholder="last Name"
               name="lastName"
               onChange={this.handleChange}
-              value={this.state.data.lastName}
+              value={this.state.user.lastName}
             />
           </div>
 
@@ -76,7 +72,7 @@ render() {
               placeholder="description here"
               name="description"
               onChange={this.handleChange}
-              value={this.state.data.description}
+              value={this.state.user.description}
             />
           </div>
 

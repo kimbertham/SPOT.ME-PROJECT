@@ -18,7 +18,6 @@ const postSchema = new mongoose.Schema({
   timestamps: true
 })
 
-
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true, maxlength: 50 },
   lastName: { type: String, required: true, maxlength: 50 },
@@ -30,6 +29,7 @@ const userSchema = new mongoose.Schema({
   // following: [ userSchema ], // * We need the id of the users
   gyms: [],
   posts: [postSchema],
+  description: { type: String, maxlength: 50 },
   following: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
   followers: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }]
 }, {

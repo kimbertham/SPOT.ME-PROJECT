@@ -11,7 +11,7 @@ const GymInfo = ({data}) => {
       <p>status:{data.bussinessStatus}</p>
       <p>rating: {data.rating}</p>
       <p>phone number: {data.formatted_phone_number}</p>
-      <p>opening hours:{data.opening_hours}</p>
+      {/* <p>opening hours:{data.opening_hours}</p> */}
     </div>
     </div>
 

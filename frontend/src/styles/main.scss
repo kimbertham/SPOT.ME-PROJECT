@@ -10,10 +10,9 @@ input {
   }
 }
 
- body{
+ #root{
   background-color:#343D42; 
-  height:100vh;
-}
+ }
 
 .textAlign {
   text-align: center;
@@ -92,7 +91,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   background-color: #414141;
-  width: 50vw;
+  width: 60vw;
   border-radius: 10px;
 
   .top-section {
