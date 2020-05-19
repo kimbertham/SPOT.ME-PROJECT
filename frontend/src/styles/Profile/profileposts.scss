@@ -8,9 +8,7 @@ border: 2px solid green;
   border-radius: 10px;
 
 }
-* {
-  border: 2px solid red;
-}
+
 
 .profile-post-header{
   display: flex;
@@ -24,8 +22,8 @@ border: 2px solid green;
 
 .profile-post-content{
   display: flex;
- align-items: center;
- font-size: 20px;
+  align-items: center;
+  font-size: 20px;
   height: 80px;
   padding:2px;
 
