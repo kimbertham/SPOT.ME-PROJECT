@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import {Link } from 'react-router-dom'
-import {getUserGroups } from '../../lib/api'
+import { Link } from 'react-router-dom'
+import { getUserGroups } from '../../lib/api'
 
 class ProfileGroups extends React.Component {
 state = {
@@ -34,10 +34,10 @@ handleSubmit =  async (event) => {
     <>
       {groups? groups.map(group => {
         return <Link to='/group/:groupId'>
-          <div key= {group.id }className='group-field'>
+          <div key= { group.id }className='group-field'>
           <img className='group-icon' src='https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png' alt='group-pic'/>
           <div className='group-info'>
-        <p>{`${group.name}`}</p>
+        <p>{ `${group.name}` }</p>
           </div>
         </div>
         </Link>
@@ -46,7 +46,7 @@ handleSubmit =  async (event) => {
 
 <div className={`${modalClassName} modal `}> 
     <div className={`${modalClassName} modal-info modal-group`}> 
-    <div onClick={this.props.hideModal}> X</div>
+    <div onClick={this.props.toggleModal}> X</div>
     <h1> New Group </h1>
         <form onSubmit={this.handleSubmit}className="group-profile-form">
           <div className="group-field">
@@ -60,7 +60,7 @@ handleSubmit =  async (event) => {
             />
         </div>
         <div className="group-field">
-            <label className="label"> First Name </label>
+            <label className="label"> Description </label>
             <input 
               className='group-input'
               placeholder="First Name here"
