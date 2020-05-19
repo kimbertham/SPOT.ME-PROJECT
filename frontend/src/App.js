@@ -24,8 +24,8 @@ const App = () => {
           <Route path='/login' component={Login}/>
           <Route path='/profile/:userId/edit' component={editProfile} />
           <Route path='/profile/:userId' component={Profile}/>
-          <Route path='/home' component={Home}/>
-          <Route path='/feed/:userId' component={NewsFeedsCard}/>
+          <Route path='/home' component={NewsFeedsCard}/>
+          {/* <Route path='/feed/:userId' component={NewsFeedsCard}/> */}
           <Route path='/groups/:groupId' component={GroupShow}/>
         </Switch>
       </BrowserRouter>

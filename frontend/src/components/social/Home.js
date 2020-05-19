@@ -11,7 +11,7 @@ class Home extends React.Component {
       <section className="section">
         <div className="container">
           <div className="column">
-              <NewsFeedsCard />
+            <NewsFeedsCard />
           </div>
         </div>
       </section>

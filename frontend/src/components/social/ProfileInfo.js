@@ -10,7 +10,6 @@ class ProfileInfo extends React.Component {
     await axios.put(`/api/profile/${userId}/follow`, '' ,
     { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
   )
-  // this.props.history.push(`/profile/${userId}`)
   }
 
   render () {
@@ -18,15 +17,12 @@ class ProfileInfo extends React.Component {
   return (
 
     <div className='profile-info-container'>
-
       <div className='profile-info-section'>
-
       <Link to={`/profile/${user.id}/edit`}> 
       <img className='edit-profile' src='https://i.imgur.com/8o2WJAN.jpg' alt='edit-icon'/></Link>
-
-      <div className='info-top'>
-        <div className='follower-count'>
-          <p>9001</p>
+        <div className='info-top'>
+          <div className='follower-count'>
+            <p>9001</p>
         </div>
         <div className='profile-pic-container'>
           <img className='profile-pic'src={this.props.user.image}  alt='profile-pic'/>

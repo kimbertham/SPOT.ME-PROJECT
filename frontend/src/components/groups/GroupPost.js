@@ -1,13 +1,13 @@
 import React from 'react'
 import ImageUpload from '../common/ImageUpload'
-import { postContent } from '../../lib/api'
- 
+
 // * props: user
 class GroupPost extends React.Component {
 state = {
   formData: {
     content: ''
   }
+  
 }
 
 clearPost = () => {
