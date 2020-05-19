@@ -12,13 +12,13 @@ class NewsFeedsCard extends React.Component {
   }
 
 
-  postAComment = async (postOwner, postId) => {
-    console.log(`/api/profile/${postOwner}/post/${postId}/comment`)
-    console.log(this.state.data)
-    const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
-    const content = res.data
-    this.setState({content})
-  }
+  // postAComment = async (postOwner, postId) => {
+  //   const userId= getUserId()
+  //   const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
+  //   const content = res.data
+  //   this.setState({content})
+  // }
+
 
   handleChange = event => {
     const data = { ...this.state.data, [event.target.name]: event.target.value }
@@ -26,10 +26,10 @@ class NewsFeedsCard extends React.Component {
   }
 
   render () {
-    console.log(this.state)
-    const { user, like } = this.props
+
+    const { user, like, comment, change } = this.props
     let posts = user.posts ? user.posts : []
-    console.log(posts)
+
     return (
       <>
 
@@ -70,7 +70,6 @@ class NewsFeedsCard extends React.Component {
             </div>
           </div>
         </div>
-        
         }) : null }
 
 
@@ -99,17 +98,17 @@ class NewsFeedsCard extends React.Component {
         </figure>
 
         <div className="field">
-          <form onSubmit={e=>{ e.preventDefault(); this.postAComment(`${post.owner}` , `${post._id}`)}}>
+          <form onSubmit={e=>{ e.preventDefault(); comment(`${post.owner}` , `${post._id}`)}}>
           <textarea
 
             className="textarea"
             name="content"
             placeholder="Write a comment..."
-            onChange={this.handleChange}
+            onChange={change}
             // value={this.state.data.content}
             
             />
-            <button> Send Comment </button>
+          <button> Send Comment </button> 
             </form>
         </div>
       </div>

@@ -93,7 +93,8 @@ async function addComment(req,res,next){
     req.body.user = req.currentUser
     post.comments.push(req.body)
     await owner.save()
-    res.status(201).json('comment added successfully')
+
+    res.status(201).json(req.body)
   } catch (err){
     next(err)
   }

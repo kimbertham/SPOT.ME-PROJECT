@@ -11,7 +11,10 @@ import { getUserId } from '../../lib/auth'
 class Profile extends React.Component {
 state = {
   user: {},
-  modal: false
+  modal: false,
+  data : {
+    content: ''
+  },
 }
 
 async componentDidMount() {
@@ -34,6 +37,17 @@ addLike = async (postId) => {
   }
 }
 
+handleChange = event => {
+  const data = { ...this.state.data, [event.target.name]: event.target.value }
+  this.setState({ data })
+}
+
+  postAComment = async (postOwner, postId) => {
+    console.log(this.state)
+  const userId= getUserId()
+  const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
+  const content = res.data
+}
 
 setModal =() => {
   this.setState({ modal: true })
@@ -44,6 +58,7 @@ hideModal = () => {
 
 render(){
   // console.log(this.state)
+  // console.log(this.props)
   return (
     <div className='profile-page-container'>
         
@@ -68,6 +83,8 @@ render(){
           <NewsFeedsCard 
             user={this.state.user}
             like={this.addLike}
+            comment={this.postAComment}
+            change={this.handleChange}
           />
 
 

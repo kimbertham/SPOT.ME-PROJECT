@@ -5,7 +5,6 @@ import GymShow from './components/gym/GymShow'
 import Navbar from './components/common/Navbar'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-// import gymProfile from './components/gym/gymProfile'
 import Profile from './components/social/Profile'
 import editProfile from './components/social/editProfile'
 import Home from './components/social/Home'
@@ -26,6 +25,7 @@ const App = () => {
           <Route path='/profile/:userId' component={Profile}/>
           <Route path='/home' component={Home}/>
           <Route path='/feed/:userId' component={NewsFeedsCard}/>
+  
         </Switch>
       </BrowserRouter>
     </>
