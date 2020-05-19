@@ -37,7 +37,7 @@ handleSubmit = async event => {
 
 render() {
   if (this.props.user === {}) return null
-  console.log(this.props.user)
+  // console.log(this.props.user)
   return (
     <section className="wrap-center">
       <div className="post-container is-half">

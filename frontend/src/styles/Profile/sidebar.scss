@@ -1,62 +1,71 @@
-.profile-sidebar {
-  // border: 2px solid white;
-  width: 20vw;
+.left-section {
   height: 80vh;
-  max-height: 80vh;
-  // overflow: hidden;
-  border-radius: 10px;
+  position: sticky;
+  top: 67px;
 
-  h1 {
-    font-size: 25px;
-    margin: 10px;
-  }
-
-}
-.events-container {
-  height: 50%;
-}
-
-.events-container, .groups-container {
-  overflow-y: scroll;
-  overflow: hidden;
-  height: 50%;
-  width: 100%;
-  
-  border-bottom: 2px solid #535C61;
-  
-  .sidebar-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    p {
-      font-size: 12px;
-    }
-  }
-
-  .groups-list {
-    // height: 50%;
+  .profile-sidebar {
+    // border: 2px solid white;
+    width: 20vw;
+    height: 80vh;
+    max-height: 80vh;
+    border-radius: 10px;
     
-    overflow-y: scroll;
 
-    .group-field {
-      padding: 5px;
-      display: flex;
-      height: 10%;
-      margin: -10px 0;
-    
-      .group-icon {
-        width: 45px;
-        border-radius: 50%;
+    .events-container,
+    .groups-container {
+      height: 50%;
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 2px solid #535C61;
+
+      h1 {
+        font-size: 25px;
+        margin: 10px;
       }
-    
-      .group-info {
+
+      .sidebar-head {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: flex-end;
-        padding-left: 20px;
-        width: 100%;
+
+        p {
+          font-size: 12px;
+          margin: 0 auto;
+        }
+      }
+
+      .groups-list-wrap,
+      .events-list-wrap {
+        height: 100%;
+        overflow-y: scroll;
+
+        .groups-list,
+        .events-list {
+
+          .group-field,
+          .event-field {
+            padding: 5px;
+            display: flex;
+            height: 10%;
+            margin: -10px 0;
+
+            .group-icon,
+            .event-icon {
+              width: 45px;
+              border-radius: 50%;
+            }
+
+            .group-info,
+            .event-info {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              padding-left: 20px;
+              width: 100%;
+            }
+          }
+        }
       }
     }
   }
 }
-
