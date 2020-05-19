@@ -63,8 +63,6 @@ hideModal = () => {
       test={this.test}/>
 
 
-      <NewsFeedsCard
-        />
       </div>
 
     </div>
