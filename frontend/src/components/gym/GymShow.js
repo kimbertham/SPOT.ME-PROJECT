@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import axios from 'axios'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
@@ -39,8 +39,8 @@ class gymShow extends React.Component {
       const gymId = this.props.match.params.placeId
       const response = await axios.post(`/api/locations/${gymId}`)
       const data = response.data
-      console.log(response.data)
-      this.setState({ data, nav1: this.slider1, nav2: this.slider2 })
+      this.setState({ data})
+      this.setState({  nav1: this.slider1, nav2: this.slider2})
       await this.getImages()
     } catch (err) {
       console.log(err)
@@ -85,7 +85,7 @@ class gymShow extends React.Component {
             speeds={500}>
               {this.state.photoReferences.map(photo => {
                 return <div className='slide'>
-                  <img className='gym-img' src={`${baseUrl}${photo}${key}`} alt='gym-pic'/></div> 
+                  <img  alt='gym-pics' className='gym-img' src={`${baseUrl}${photo}${key}`}/></div> 
                 })}
           </Slider>
             <div className='slider-two'>
@@ -98,7 +98,7 @@ class gymShow extends React.Component {
             className='slides-two'> 
               {this.state.photoReferences.map(photo => {
                 return <div className='slide-two'>
-                <img className='slider-two-img' src={`${baseUrl}${photo}${key}`} alt='gym-pic'/> </div> 
+                <img alt='gym-pics'className='slider-two-img' src={`${baseUrl}${photo}${key}`}/> </div> 
               })}
           </Slider>
         </div>

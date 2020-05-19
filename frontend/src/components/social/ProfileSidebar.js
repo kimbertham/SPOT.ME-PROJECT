@@ -1,42 +1,43 @@
 import React from 'react'
+import ProfileGroups from './ProfileGroups'
 
 
-const profileSidebar = () => {
-return (
+class profileSidebar extends React.Component {
+  state={
+  }
 
-/* {this.props.events.map(event => {
-  return 
-})} */
 
+  render() {
+  return (
 
 <div className='profile-sidebar'>
-
   <div className='events-container'>
+    <div className='sidebar-head'> 
     <h1>Events</h1>
-    <div className='sidebar-field'>
-      <img className='sidebar-img' src={'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'} alt='profile-pic'/>
-      <div className='sidebar-text'>
-        <p> 'user.events.name'</p>
-      </div>
+    <p>+ New Event</p>
     </div>
   </div>
 
-
-{/* {this.props.groups.map(group => {
-  return 
-})} */}
   <div className='groups-container'>
-    <h1>Groups</h1>
-    <div className='sidebar-field'>
-      <img className='sidebar-img' src={'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'} alt='profile-pic'/>
-      <div className='sidebar-text'>
-        <p> 'user.groups.name'</p>
+  <div className='sidebar-head'> 
+    <h1>My Groups</h1>
+    <p onClick={this.props.setModal}>+ New Group</p>
+    </div>
+
+      <ProfileGroups 
+      user={this.props.user}
+      groups={this.props.groups}
+      setModal={this.props.setModal}
+      hideModal={this.props.hideModal}
+      modal={this.props.modal}/>
       </div>
     </div>
-  </div>
 
 
-</div>
-)
-} 
+
+
+
+    )
+  } 
+}
 export default profileSidebar
