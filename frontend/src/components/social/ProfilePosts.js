@@ -1,16 +1,14 @@
 import React from 'react'
 import axios from 'axios'
-import { withHeaders } from '../../lib/auth'
+import { withHeaders } from '../../lib/api'
 
 class ProfilePosts extends React.Component {
 state={}
 
 addLike = async (postId) => {
   try {
-    const userId = this.props.user
-    await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,
-    // * this was already a function - tom
-      { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} })
+  const userId = this.props.user
+  await axios.put(`/api/profile/${userId}/post/${postId}`,'' , withHeaders )
   } catch (err) {
     console.log(err)
   }

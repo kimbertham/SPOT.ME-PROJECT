@@ -2,10 +2,15 @@ import React from 'react'
 import ProfileGroups from './ProfileGroups'
 
 
+
 class profileSidebar extends React.Component {
-  state={
+  // * props: user, groups
+  state = {
+    user : {},
+    modal: false
   }
 
+toggleModal = () => this.setState({ modal : !this.state.modal })
 
   render() {
   return (
@@ -21,15 +26,20 @@ class profileSidebar extends React.Component {
   <div className='groups-container'>
   <div className='sidebar-head'> 
     <h1>My Groups</h1>
-    <p onClick={this.props.setModal}>+ New Group</p>
+    <p onClick={this.toggleModal}>+ New Group</p>
     </div>
 
       <ProfileGroups 
       user={this.props.user}
+      groups={this.groups}
+      toggleModal={this.toggleModal}
+      modal={this.state.modal}/>
+      // * changed set and remove modal to one toggle function - tom
+      {/* user={this.props.user}
       groups={this.props.groups}
       setModal={this.props.setModal}
       hideModal={this.props.hideModal}
-      modal={this.props.modal}/>
+      modal={this.props.modal}/> */}
       </div>
     </div>
 
