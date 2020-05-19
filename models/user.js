@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const postSchema = require('./postSchema')
+// const Group = require('./Group') //* not in use yet
+
 
 const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true, maxlength: 50 },

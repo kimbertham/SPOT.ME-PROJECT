@@ -14,6 +14,7 @@ export const postContent = (content, userId) => {
 }
 
 export const getProfile = userId => {
+  console.log(userId)
   return axios.get(`${baseUrl}/profile/${userId}`)
 }
 
