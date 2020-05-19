@@ -1,6 +1,25 @@
 const Group = require('../models/Group')
 const User = require('../models/user')
 
+
+
+// -------- SHOW GROUP ----------------
+// ----- GET request to /groups/:groupId
+
+async function showGroup(req,res,next){
+  console.log('attempting to send Group')
+  try {
+    const group = await Group.findById(req.params.groupId).populate('members')
+    if (!group) {
+      throw new Error('Not Found')
+    }
+    res.status(200).json(group)
+  } catch (err){
+    next(err)
+  }
+  
+}
+
 // --------------- CREATE NEW GROUP ---------------
 // post request: /groups/new/:userId
 // body required = {
@@ -18,8 +37,8 @@ async function createGroup(req,res,next) {
     req.body.owner = req.currentUser
     const newGroup = await Group.create(req.body)
     newGroup.members.push(user)
+    await newGroup.save()
     res.status(201).json(newGroup)
-    await user.save()
   } catch (err){
     next(err)
   }
@@ -265,5 +284,6 @@ module.exports = {
   likePost: togglePostLike,
   addGroupPostComment: addGroupPostComment,
   removeGroupPostComment: removeGroupPostComment,
-  likeComment: toggleCommentLike
+  likeComment: toggleCommentLike,
+  showGroup: showGroup
 }

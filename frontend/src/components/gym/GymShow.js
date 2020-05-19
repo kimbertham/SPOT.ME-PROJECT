@@ -6,7 +6,7 @@ import Slider from 'react-slick'
 
 import Reviews from './gymSections/Reviews'
 import GymNav from './gymSections/GymNav'
-import GymInfo from './gymSections/GymInfo'
+// import GymInfo from './gymSections/GymInfo'
 
 
 class gymShow extends React.Component {

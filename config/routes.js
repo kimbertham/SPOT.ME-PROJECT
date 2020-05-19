@@ -66,6 +66,10 @@ router.route('/profile/:userId/follow')
 
 
 // --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
+
+router.route('/groups/:groupId')
+  .get(groups.showGroup)
+
 router.route('/groups/new/:userId')
   .post(secureRoute ,groups.new)
 
