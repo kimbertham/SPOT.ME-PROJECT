@@ -1,7 +1,7 @@
  import React from 'react'
 import axios from 'axios'
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
 
 import Reviews from './gymSections/Reviews'
@@ -15,9 +15,9 @@ class gymShow extends React.Component {
     section: {
       reviews: false,
       members: false,
-      directions:false,
+      directions: false,
       posts: false
-      },
+    },
 
     data: {
       bussinessStatus: '',
@@ -28,10 +28,10 @@ class gymShow extends React.Component {
       type: '',
       photos: [],
       opening_hours: '',
-      formatted_phone_number:''
+      formatted_phone_number: ''
     },
 
-    photoReferences: [],
+    photoReferences: []
   }
 
   async componentDidMount() {
@@ -60,19 +60,19 @@ class gymShow extends React.Component {
 
 
   getSection = async page =>  {
-    const section = { reviews: false, members: false, directions:false, posts: false}
-    await this.setState({section})
-    const sectionChange =  {...this.state.section, [page] : true }
-    this.setState({section:sectionChange })
+    const section = { reviews: false, members: false, directions: false, posts: false }
+    await this.setState({ section })
+    const sectionChange =  { ...this.state.section, [page]: true }
+    this.setState({ section: sectionChange })
   }
 
   render() { 
-    const baseUrl= 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='
-    const key='&key=AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
-    console.log(this.state)
+    const baseUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='
+    const key = '&key=AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
+
     return (  
-  <div className='gym-show-page'> 
-    <div className='page-top'>
+      <div className='gym-show-page'> 
+        <div className='page-top'>
       
       <div className='gym-images'>
         <div className='slider-container'>
@@ -102,17 +102,15 @@ class gymShow extends React.Component {
               })}
           </Slider>
         </div>
+
+        <GymNav getSection={this.getSection} />
+
+        <div className="changing-sections">
+          <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
+        </div>
+        </div>
       </div>
-    </div>
-    <GymInfo data={this.state.data} />
-  </div>
-
-  <GymNav getSection={this.getSection} />
-
-  <div className="changing-sections">
-  <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
-  </div>
-
+      </div>
       </div>
     ) 
   }
