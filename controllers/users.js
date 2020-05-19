@@ -51,6 +51,7 @@ async function getUsersGroups(req,res,next){
       })
       return userInGroup
     })
+    console.log('got groups')
     res.status(200).json(usersGroups)
   } catch (err){
     next(err)

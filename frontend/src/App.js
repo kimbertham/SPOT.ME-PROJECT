@@ -9,6 +9,7 @@ import Login from './components/auth/Login'
 import Profile from './components/social/Profile'
 import editProfile from './components/social/editProfile'
 import Home from './components/social/Home'
+import NewsFeedsCard from './components/social/NewsFeedsCard'
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path='/profile/:userId/edit' component={editProfile} />
           <Route path='/profile/:userId' component={Profile}/>
           <Route path='/home' component={Home}/>
+          <Route path='/feed/:userId' component={NewsFeedsCard}/>
         </Switch>
       </BrowserRouter>
     </>
