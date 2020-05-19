@@ -75,10 +75,57 @@ async function toggleLike(req,res,next){
   }
 }
 
+// ------------------------------ ADD COMMENT TO A POST SECTION -------------------------------------
+// PUT Request to /profile/:ownerId/post/:postId/comment
+// body required = {content: String }
+// valid token required
+
+async function addComment(req,res,next){
+  try {
+    const owner = await User.findById(req.params.ownerId)
+    const post = owner.posts.id(req.params.postId)
+    if (!owner || !post) {
+      throw new Error('Not Found')
+    }
+    
+    req.body.user = req.currentUser
+    post.comments.push(req.body)
+    await owner.save()
+    res.status(201).json('comment added successfully')
+  } catch (err){
+    next(err)
+  }
+}
+
+
+// ------------------------------ DELETE COMMENT TO A POST SECTION -------------------------------------
+// DELETE Request to /profile/:ownerId/post/:postId/comment/:commentId
+// NO body required 
+// valid token required - either the comment owner or the owner of the post
+
+async function removeComment(req,res,next){
+  try {
+    const owner = await User.findById(req.params.ownerId)
+    const post = owner.posts.id(req.params.postId)
+    const commentToDelete = post.comments.id(req.params.commentId)
+    if (!owner || !post || !commentToDelete) {
+      throw new Error('Not Found')
+    }
+    
+    post.comments.pull(commentToDelete)
+    await owner.save()
+    res.status(201).json('comment added successfully')
+  } catch (err){
+    next(err)
+  }
+}
+
 module.exports = {
   newPost: createNewPost,
   deletePost: deletePost,
-  addLike: toggleLike
+  addLike: toggleLike,
+  addComment: addComment,
+  removeComment: removeComment
 }
 
 

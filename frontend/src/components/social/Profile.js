@@ -4,7 +4,7 @@ import { getProfile } from '../../lib/api'
 import ProfileInfo from '../social/ProfileInfo'
 import ProfileSidebar from './ProfileSidebar'
 import ProfilePosts from './ProfilePosts'
-
+import NewsFeedsCard from './NewsFeedsCard'
 
 class Profile extends React.Component {
 state = {
@@ -63,6 +63,8 @@ hideModal = () => {
       test={this.test}/>
 
 
+      <NewsFeedsCard
+        />
       </div>
 
     </div>

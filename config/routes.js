@@ -42,11 +42,17 @@ router.route('/profile/:userId/post/:postId')
 router.route('/profile/:userId/post/:postId')
   .put(secureRoute ,posts.addLike)
 
+router.route('/profile/:ownerId/post/:postId/comment')
+  .put(secureRoute, posts.addComment)
+
+router.route('/profile/:ownerId/post/:postId/comment/:commentId')
+  .delete(secureRoute, posts.removeComment)
+
 // --------------- ROUTE FOR USER PROFILE --------------
 
 
-router.route('/profile/:userId/edit')
-  .post(users.userUpdate)
+// router.route('/profile/:userId/edit')
+//   .post(users.userUpdate)
 
 router.route('/profile/:userId')
   .get(users.show)

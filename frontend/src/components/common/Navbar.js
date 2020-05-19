@@ -18,6 +18,7 @@ class Navbar extends React.Component{
               <Link to="/register" className="navbar-item">Register</Link>
               <Link to="/login" className="navbar-item">Log In</Link>
               <Link to={`/profile/${getUserId()}`} className="navbar-item">Profile</Link>
+              <Link to="/home" className="navbar-item">Home</Link>
             </div>
           </div>
         </div>

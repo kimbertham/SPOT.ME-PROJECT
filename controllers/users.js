@@ -32,7 +32,6 @@ async function userUpdate(req, res) {
 // --- valid token required of user
 
 
-
 async function getUsersGroups(req,res,next){
   console.log('GET FEED')
   try {
