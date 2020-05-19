@@ -11,7 +11,6 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 
   try {
     await db.dropDatabase()
-
     const users = []
 
     for (let index = 0; index < 300; index++) {
@@ -39,6 +38,8 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
     const createdUsers = await User.create(users)
 
     console.log(`❇️ Created ${createdUsers.length} ❇️`)
+
+
     
   } catch (err) {
     console.log(err)

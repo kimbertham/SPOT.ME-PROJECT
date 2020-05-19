@@ -9,8 +9,6 @@ addLike = async (postId) => {
   try {
   const userId = this.props.user
   await axios.put(`/api/profile/${userId}/post/${postId}`,'' , withHeaders )
-    // * this was already a function - tom
-  // { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} })
   } catch (err) {
   console.log(err)
   }

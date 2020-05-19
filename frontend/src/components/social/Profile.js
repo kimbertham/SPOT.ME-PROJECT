@@ -9,7 +9,6 @@ import NewsFeedsCard from './NewsFeedsCard'
 class Profile extends React.Component {
 state = {
   user : {},
-  modal: false
 }
 
 async componentDidMount() {
@@ -23,13 +22,13 @@ async componentDidMount() {
   }
 }
 
-setModal =() => {
-  this.setState({ modal : true})
-}
-
-hideModal = () => {
-  this.setState({modal:false})
-}
+//* moved into sidebar
+// setModal =() => {
+//   this.setState({ modal : true})
+// }
+// hideModal = () => {
+//   this.setState({modal:false})
+// }
 
   render(){
     // console.log(this.state)
@@ -37,9 +36,8 @@ hideModal = () => {
       <div className='profile-page-container'>
         
       <ProfileSidebar 
-      modal={this.state.modal}
-      setModal={this.setModal}
-      hideModal={this.hideModal}
+      // * moved this into ProfileSidebar - tom
+      // modal={this.state.modal}
       user={this.state.user.id}/>
 
     <div className='right-section'>
@@ -48,8 +46,6 @@ hideModal = () => {
       <ProfileInfo 
       user={this.state.user}/>
       </div>
-
-
 
       <div className='profile-post'>
       <Post 
