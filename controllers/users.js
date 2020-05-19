@@ -63,9 +63,6 @@ async function getUsersGroups(req,res,next){
 
 module.exports = {
   show: profileShow,
-<<<<<<< HEAD
-  getUsersGroups: getUsersGroups
-=======
+  getUsersGroups,
   userUpdate
->>>>>>> development
 }

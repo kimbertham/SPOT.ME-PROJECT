@@ -69,48 +69,11 @@ class gymShow extends React.Component {
   render() { 
     const baseUrl = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference='
     const key = '&key=AIzaSyAn3WW4SI3RHmQ7I_6HFcrUTdNalXkoJ4A'
-    console.log(this.state)
+
     return (  
       <div className='gym-show-page'> 
         <div className='page-top'>
       
-<<<<<<< HEAD
-          <div className='gym-images'>
-            <div className='slider-container'>
-              <Slider 
-                asNavFor={this.state.nav2}
-                ref={slider => (this.slider1 = slider)}
-                className='slides'
-                lazyLoad={true}
-                slidesToShow={1}
-                speeds={500}>
-                {this.state.photoReferences.map(photo => {
-                  return <div className='slide'>
-                    <img 
-                      className='gym-img' 
-                      src={`${baseUrl}${photo}${key}`}
-                    />
-                  </div> 
-                })}
-              </Slider>
-              <div className='slider-two'>
-                <Slider 
-                  asNavFor={this.state.nav1}
-                  ref={slider => (this.slider2 = slider)}
-                  slidesToShow={7}
-                  swipeToSlide={true}
-                  focusOnSelect={true}
-                  className='slides-two'> 
-                  {this.state.photoReferences.map(photo => {
-                    return <div className='slide-two'>
-                      <img className='slider-two-img' src={`${baseUrl}${photo}${key}`}/> </div> 
-                  })}
-                </Slider>
-              </div>
-            </div>
-          </div>
-          <GymInfo data={this.state.data} />
-=======
       <div className='gym-images'>
         <div className='slider-container'>
           <Slider 
@@ -138,7 +101,6 @@ class gymShow extends React.Component {
                 <img className='slider-two-img' src={`${baseUrl}${photo}${key}`} alt='gym-pic'/> </div> 
               })}
           </Slider>
->>>>>>> 93aac6e06bc8847df1568b853d689eadb746a7a9
         </div>
 
         <GymNav getSection={this.getSection} />
@@ -146,7 +108,9 @@ class gymShow extends React.Component {
         <div className="changing-sections">
           <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
         </div>
-
+        </div>
+      </div>
+      </div>
       </div>
     ) 
   }

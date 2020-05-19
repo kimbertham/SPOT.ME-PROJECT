@@ -3,7 +3,7 @@ import axios from 'axios'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { notify } from '../../lib/notifications'
-import { setToken } from '../../lib/auth'
+import { setToken, getUserId } from '../../lib/auth'
 import { Link } from 'react-router-dom'
 
 class Login extends React.Component {
@@ -29,9 +29,8 @@ class Login extends React.Component {
     event.preventDefault()
     try {
       const res = await axios.post('/api/login', { ...this.state.formData })
-      console.log(res.data.token)
       setToken(res.data.token)
-      // this.props.history.push('/should be the newsfeed') //* route does not exist yet
+      this.props.history.push(`/profile/${getUserId()}`)
       notify(res.data.message)
     } catch (err) {
       console.log(err)
