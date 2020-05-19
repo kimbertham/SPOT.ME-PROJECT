@@ -14,7 +14,7 @@ toggleModal = () => this.setState({ modal : !this.state.modal })
 
   render() {
   return (
-
+<div>
 <div className='profile-sidebar'>
   <div className='events-container'>
     <div className='sidebar-head'> 
@@ -25,10 +25,10 @@ toggleModal = () => this.setState({ modal : !this.state.modal })
 
   <div className='groups-container'>
   <div className='sidebar-head'> 
-    <h1>My Groups</h1>
+    <h1>Groups</h1>
     <p onClick={this.toggleModal}>+ New Group</p>
     </div>
-
+    <div className="groups-list">
       <ProfileGroups 
       user={this.props.user}
       groups={this.groups}
@@ -40,7 +40,11 @@ toggleModal = () => this.setState({ modal : !this.state.modal })
       setModal={this.props.setModal}
       hideModal={this.props.hideModal}
       modal={this.props.modal}/> */}
+      
       </div>
+      </div>
+    </div>
+    <div className="center-text">Contact us | Spot.me 2020</div>
     </div>
 
 
