@@ -68,7 +68,7 @@ async function toggleLike(req,res,next){
       post.likes.push(req.currentUser)
     }
     await owner.save()
-    res.status(201).json('post liked/unliked successfully')
+    res.status(201).json(owner)
 
   } catch (err){
     next(err)

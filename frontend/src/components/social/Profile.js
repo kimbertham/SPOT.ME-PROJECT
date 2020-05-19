@@ -4,7 +4,6 @@ import { getProfile } from '../../lib/api'
 import ProfileInfo from '../social/ProfileInfo'
 import ProfileSidebar from './ProfileSidebar'
 import ProfilePosts from './ProfilePosts'
-import ProfileGroups from './ProfileGroups'
 
 
 class Profile extends React.Component {
@@ -41,8 +40,7 @@ hideModal = () => {
       modal={this.state.modal}
       setModal={this.setModal}
       hideModal={this.hideModal}
-      user={this.state.user.id}
-      groups={this.state.user.groups}/>
+      user={this.state.user.id}/>
 
     <div className='right-section'>
 

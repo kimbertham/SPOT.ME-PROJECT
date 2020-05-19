@@ -5,9 +5,9 @@ import {Link} from 'react-router-dom'
 class ProfileInfo extends React.Component {
   state ={}
 
-    followUser = () =>{
+    followUser = async () =>{
       const userId = this.props.user.id
-    const follow = axios.put(`/api/profile/${userId}/follow`, '' ,
+    await axios.put(`/api/profile/${userId}/follow`, '' ,
     { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
   )
   // this.props.history.push(`/profile/${userId}`)
@@ -15,7 +15,6 @@ class ProfileInfo extends React.Component {
 
   render () {
     const {user} = this.props
-    console.log(this.props)
   return (
 
     <div className='profile-info-container'>

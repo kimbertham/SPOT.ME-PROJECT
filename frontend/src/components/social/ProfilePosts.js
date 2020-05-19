@@ -9,7 +9,7 @@ state={
 addLike = async (postId) => {
   try {
   const userId = this.props.user
-  const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,
+  await await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,
   { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} })
   } catch (err) {
   console.log(err)
@@ -18,7 +18,7 @@ addLike = async (postId) => {
 
 
 render() {
-  const {posts, username, id, } = this.props
+  const {posts, username } = this.props
   let post = posts? posts : []
 
   return (
@@ -27,7 +27,7 @@ render() {
       return  <div key={post._id} className='profile-posts-container'>
     <div className='profile-post-field'>
     <div className='profile-post-header'>
-      <img className='profile-post-img' src={'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'} />
+      <img className='profile-post-img' src={'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'} alt='poster-img'/>
     <h1>{username}</h1>
     </div>
     <div className='profile-post-content'>
@@ -44,14 +44,14 @@ render() {
     <div className='profile-post-comments'>
     
       <div className='profile-comment-field'>
-      <img className='user-img-small' src={'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'}/>
+      <img className='user-img-small' src={'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'} alt='commenter-img'/>
       <p> comments will go here </p>
     </div> 
     </div>
     
     
     <div className='profile-make-comment'>
-      <img className='user-img-small' src={'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'} />
+      <img className='user-img-small' src={'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png'} alt='current-user-img' />
     
       <input className='make-profile-comments'/>
     </div>

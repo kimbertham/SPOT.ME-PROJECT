@@ -1,10 +1,17 @@
 import React from 'react'
 import axios from 'axios'
 import {Link } from 'react-router-dom'
+import {getUserGroups } from '../../lib/api'
 
 class ProfileGroups extends React.Component {
 state = {
-  group: {}
+  groups: []
+}
+
+async componentDidMount() {
+const res = await getUserGroups()
+const groups = res.data
+this.setState({ groups})
 }
 
 handleChange = event => {
@@ -20,13 +27,12 @@ handleSubmit =  async (event) => {
 }
 
   render(){
-    console.log(this.props)
-    const {groups} = this.props
-    let group = groups? groups : []
-  const modalClassName = this.props.modal ? 'display-block' : 'display-none'
+    const {groups} = this.state
+    const modalClassName = this.props.modal ? 'display-block' : 'display-none'
   return(
+
     <>
-      {group.map(group => {
+      {groups? groups.map(group => {
         return <Link to='/group/:groupId'>
           <div key= {group.id }className='group-field'>
           <img className='group-icon' src='https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png' alt='group-pic'/>
@@ -35,7 +41,7 @@ handleSubmit =  async (event) => {
           </div>
         </div>
         </Link>
-    })}
+    }) : ' ' }
 
 
 <div className={`${modalClassName} modal `}> 
@@ -50,7 +56,7 @@ handleSubmit =  async (event) => {
               placeholder="Group name here"
               name="name"
               onChange={this.handleChange}
-              value={group.name}
+              value={groups.name}
             />
         </div>
         <div className="group-field">
@@ -60,17 +66,13 @@ handleSubmit =  async (event) => {
               placeholder="First Name here"
               name="description"
               onChange={this.handleChange}
-              value={group.description}
+              value={groups.description}
             />
         </div>
       <button>Send!</button>
       </form>
     </div>
   </div>
-
-
-
-
     </>
   )
 }

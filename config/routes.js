@@ -30,6 +30,7 @@ router.route('/locations/:placeId')
 
 // --------------- ROUTES FOR MAKING/DELETE POSTS AND LIKES AND FOLLOWS --------------
 
+
 router.route('/profile/:userId/post')
   .post(secureRoute, posts.newPost)
 
@@ -52,7 +53,6 @@ router.route('/profile/:userId')
 
 router.route('/groups')
   .get(secureRoute ,users.getUsersGroups)
-
 
 router.route('/profile/:userId/follow')
   .put(secureRoute, follow.toggleFollow)
