@@ -15,30 +15,12 @@ async componentDidMount() {
   try {
     const userId = this.props.match.params.userId
     const res = await getProfile(userId)
-<<<<<<< HEAD
     this.setState( { user: res.data })   
-=======
-    console.log(res.data);
-    
-    this.setState( { user: res.data } )  
->>>>>>> seeds
   } catch (err) {
     console.log(err)
   }
 }
 
-<<<<<<< HEAD
-render(){
-  if (this.state.user === {}) return null
-  return (
-    <div>
-      <Post 
-        user={this.state.user}
-      />
-    </div>
-  )
-}
-=======
   render(){
     console.log(this.state)
     return (
@@ -66,7 +48,6 @@ render(){
       </div>
     )
   }
->>>>>>> 93aac6e06bc8847df1568b853d689eadb746a7a9
 }
 
 export default Profile
