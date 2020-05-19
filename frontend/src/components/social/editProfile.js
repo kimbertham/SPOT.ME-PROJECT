@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 
+
 class editProfile extends React.Component {
 state = { 
   user : {}
@@ -19,14 +20,19 @@ async componentDidMount() {
 
   handleSubmit = async event => {
   event.preventDefault()
-  const userId = this.props.match.params.userId
   try {
+    const userId = this.props.match.params.userId
     const data = { ...this.state.user }
     await axios.post(`/api/profile/${userId}/edit`, data)
     this.props.history.push(`/profile/${userId}`)
   } catch (err) {
     console.log(err)
   }
+}
+
+returnPage = () => {
+  const userId = this.props.match.params.userId
+  this.props.history.push(`/profile/${userId}`)
 }
 
 
@@ -40,8 +46,8 @@ render() {
   console.log(this.props)
   return (
     <div className='edit-profile-container'>
-    
       <div className='edit-form-container'> 
+      <div onClick={this.returnPage} className='back-cross'><p> X </p></div>
         <form onSubmit={this.handleSubmit} className="edit-profile-form">
           <div className="edit-field">
             <label className="label"> First Name </label>
@@ -75,16 +81,6 @@ render() {
               value={this.state.user.description}
             />
           </div>
-
-          {/* <div className="edit-field">
-        <label className="label"> Level</label>
-          <textarea 
-            placeholder="level here"
-            name="level"
-            onChange={this.handleChange}
-            value={this.state.data.level}
-          />
-        </div> */}
           <button>send!</button>
         </form>
       </div>

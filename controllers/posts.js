@@ -83,6 +83,7 @@ async function toggleLike(req,res,next){
 
 async function addComment(req,res,next){
   try {
+    console.log('received')
     const owner = await User.findById(req.params.ownerId)
     const post = owner.posts.id(req.params.postId)
     if (!owner || !post) {

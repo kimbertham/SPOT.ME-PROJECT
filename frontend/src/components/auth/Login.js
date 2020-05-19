@@ -31,6 +31,7 @@ class Login extends React.Component {
       const res = await axios.post('/api/login', { ...this.state.formData })
       setToken(res.data.token)
       this.props.history.push(`/profile/${getUserId()}`)
+      window.location.reload(false)
       notify(res.data.message)
     } catch (err) {
       console.log(err)

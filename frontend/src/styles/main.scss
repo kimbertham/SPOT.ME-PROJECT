@@ -10,6 +10,8 @@ input {
   }
 }
 
+
+
  #root{
   background-color:#343D42; 
  }
@@ -46,7 +48,6 @@ input {
   display: none;
 }
 
-
 .profile-picture {
   width: 90px;
   height: 90px;
@@ -79,7 +80,6 @@ button {
   font-weight: 400;
   border: none;
   background-color: rgba(0, 0, 0, 0);
-
 }
 
 button:hover {
@@ -302,6 +302,7 @@ button:hover {
 
 }
 
+// * For Navbar
 .navbar-button {
   display: flex;
   justify-content: center;
@@ -372,7 +373,6 @@ button:hover {
     height: 150px;
   }
 }
-
 
 @keyframes collapse {
   0% {

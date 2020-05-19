@@ -39,8 +39,8 @@ class Navbar extends React.Component{
           </div>
           <div className="navbar-menu">
             <div className="navbar-end">
-            {isAuthenticated() && <Link to="/locations" className="navbar-button"><img src={require('../../assets/color.png')} /></Link>}
-            {isAuthenticated() && <Link to="/locations" className="navbar-button"><img src={require('../../assets/alarm.png')} /></Link>}
+            {isAuthenticated() && <Link to="" className="navbar-button"><img src={require('../../assets/color.png')} /></Link>}
+            {isAuthenticated() && <Link to="" className="navbar-button"><img src={require('../../assets/alarm.png')} /></Link>}
             {isAuthenticated() && <Link to="/locations" className="navbar-button"><img src={require('../../assets/travel.png')} /></Link>}
             {!isAuthenticated() && <Link to="/register" className="other-button">Sign Up</Link>}
             {!isAuthenticated() && <Link to="/login" className="navbar-button"><img src={require('../../assets/multimedia.png')} /></Link>}
@@ -50,7 +50,7 @@ class Navbar extends React.Component{
                 src={this.state.user.image}
                 alt="logo" 
               />{this.state.user.firstName}</Link>}
-            {isAuthenticated() && <Link to="/locations" className="navbar-button"><img src={require('../../assets/cogwheel.png')} /></Link>}
+            {isAuthenticated() && <Link to="" className="navbar-button"><img src={require('../../assets/cogwheel.png')} /></Link>}
             {isAuthenticated() && <span onClick={this.handleLogout} className="navbar-button"><img src={require('../../assets/signs.png')} /></span>}
             </div>
           </div>
