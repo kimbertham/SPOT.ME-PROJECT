@@ -15,7 +15,6 @@ async function toggleFollow(req,res,next){
     console.log(userToFollow)
     console.log(followingUser)
     
-    
     if (!userToFollow || !followingUser){
       throw new Error('Not Found')
     }

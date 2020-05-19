@@ -11,14 +11,13 @@ const User = require('../models/user')
 async function createGroup(req,res,next) {
   try {
     console.log('CREATING GROUP')
-    
     const user = await User.findById(req.params.userId)
-
     if ( !user.equals(req.currentUser._id)){
       throw new Error('Not authorized to do this')
     }
     req.body.owner = req.currentUser
     const newGroup = await Group.create(req.body)
+    newGroup.members.push(user)
     res.status(201).json(newGroup)
     await user.save()
   } catch (err){

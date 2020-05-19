@@ -3,7 +3,7 @@ import { getToken } from './auth'
 
 const baseUrl = '/api'
 
-const withHeaders = () => {
+export const withHeaders = () => {
   return {
     headers: { Authorization: `Bearer ${getToken()}` }
   }

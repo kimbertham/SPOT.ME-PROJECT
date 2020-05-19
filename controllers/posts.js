@@ -121,6 +121,8 @@ async function removeComment(req,res,next){
   }
 }
 
+
+
 module.exports = {
   newPost: createNewPost,
   deletePost: deletePost,
