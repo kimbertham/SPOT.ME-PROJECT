@@ -1,6 +1,9 @@
 import React from 'react'
 
 function GroupSidebar(props) {
+  // console.log('yo');
+  const members = props.members
+//  console.log(props.members);
  
   return (
 <div className='profile-sidebar'>
@@ -8,7 +11,14 @@ function GroupSidebar(props) {
   <div className='sidebar-head'> 
     <h1>Members</h1>
     </div>
-
+{ members?  members.map(member => {
+  return (
+    <div key={member._id}> 
+    <img src={member.image}/>
+    <p>{member.firstName} {member.lastName}</p>
+    </div>
+  )
+}) : ''}
       </div>
     </div>
     )

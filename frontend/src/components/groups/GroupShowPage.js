@@ -3,12 +3,15 @@ import GroupSidebar from './GroupSidebar'
 import GroupInfo from './GroupInfo'
 import GroupPost from './GroupPost'
 import GroupNewsFeedsCard from './GroupNewsFeedsCard'
-import { getGroup } from '../../lib/api'
+import { getGroup, getProfile } from '../../lib/api'
+import { getUserId } from '../../lib/auth'
+import axios from 'axios'
 
 class GroupShow extends React.Component {
   state = {
     group: {},
-    modal: false
+    modal: false,
+    user: {}
   }
 
 
@@ -16,13 +19,35 @@ class GroupShow extends React.Component {
     try {
       const groupId = this.props.match.params.groupId
       const res = await getGroup(groupId)
-      console.log(res.data);
-      
-      this.setState( { group: res.data })   
+      const userId = await getUserId()
+      const resUser = await getProfile(userId)
+      // console.log(res.data);
+      // console.log(resUser.data);
+      this.setState( { group: res.data, user: resUser.data })   
     } catch (err) {
       console.log(err)
     }
   }
+
+  joinGroup = async () =>{
+    const userId = await getUserId()
+    const groupId = this.state.group._id
+  await axios.put(`/api/groups/${groupId}/join/${userId}`, '' ,
+  { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
+)
+const res = await getGroup(groupId)
+this.setState( { group: res.data })  
+}
+
+leaveGroup = async () =>{
+  const userId = await getUserId()
+  const groupId = this.state.group._id
+await axios.put(`/api/groups/${groupId}/leave/${userId}`, '' ,
+{ headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
+)
+const res = await getGroup(groupId)
+this.setState( { group: res.data })  
+}
 
   // addLike = async (postId) => {
   //   try {
@@ -34,6 +59,11 @@ class GroupShow extends React.Component {
   //   }
   // }
 
+
+//   <GroupNewsFeedsCard
+//   user={this.state.user}
+//   like={this.addLike}
+// />
 
   render() {
     // console.log(this.state)
@@ -49,18 +79,16 @@ class GroupShow extends React.Component {
 
           <div className='profile-info-component'>
             <GroupInfo
-              group={this.state.group} />
+              group={this.state.group} user={this.state.user} members={this.state.group.members} join={this.joinGroup} leave={this.leaveGroup} />
           </div>
 
           <div className='profile-post'>
             <GroupPost
-              group={this.state.group}
+              {...this.state}
+              
             />
 
-            <GroupNewsFeedsCard
-              user={this.state.user}
-              like={this.addLike}
-            />
+           
 
 
           </div>

@@ -1,22 +1,27 @@
 import React from 'react'
-import axios from 'axios'
+
 import {Link} from 'react-router-dom'
 
-class GroupInfo extends React.Component {
+function GroupInfo(props) {
   
 
-  //   followUser = async () =>{
-  //     const userId = this.props.user.id
-  //   await axios.put(`/api/profile/${userId}/follow`, '' ,
-  //   { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
-  // )
-  // // this.props.history.push(`/profile/${userId}`)
-  // }
 
-  render () {
-    const {group} = this.props
+    const {group} = props
+    const members = group.members
+    
+    if(!group) {
+      console.log('nothing');
+      return
+    }
+
+    const membersIdArray = members?  members.map(member => {
+      return member._id
+    }) : ''
+    console.log(membersIdArray);
+    console.log(membersIdArray.includes( props.user.id));
+    
+    
   return (
-
     <div className='profile-info-container'>
 
       <div className='profile-info-section'>
@@ -25,13 +30,14 @@ class GroupInfo extends React.Component {
 
       <div className='info-top'>
         <div className='follower-count'>
-          <p>{group.members.length}</p>
+          <p>{membersIdArray.length}</p>
+          <p>Member{membersIdArray.length === 1? '' : 's'}</p>
         </div>
         <div className='profile-pic-container'>
           <img className='profile-pic' src='https://i.imgur.com/8o2WJAN.jpg' alt='profile-pic'/>
         </div>
           <div className='button-container'>
-          <button className='follow-button'> Follow </button>
+          <button  onClick = {membersIdArray.includes( props.user.id)? props.leave : props.join } className='follow-button'> {membersIdArray.includes( props.user.id)? 'Leave Group' : 'Join Group'} </button>
           </div>
       </div>
 
@@ -50,6 +56,6 @@ class GroupInfo extends React.Component {
 
   )
   }
-}
+
 
 export default GroupInfo

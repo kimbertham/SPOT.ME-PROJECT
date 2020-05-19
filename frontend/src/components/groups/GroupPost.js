@@ -22,22 +22,22 @@ handleChange = event => {
   this.setState({ formData })
 }
 
-handleSubmit = async event => {
-  event.preventDefault()
-  try {
-    await postContent(this.state.formData, this.props.user.id)
-    console.log('GroupPost sent!')
-    this.clearPost()
+// handleSubmit = async event => {
+//   event.preventDefault()
+//   try {
+//     await postContent(this.state.formData, this.props.user.id)
+//     console.log('GroupPost sent!')
+//     this.clearPost()
     
     
-  } catch (err) {
-    console.log(err)
-  }
-}
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
 
 render() {
   if (this.props.group === {}) return null
-  console.log(this.props.group)
+  // console.log(this.props.group)
   return (
     <section className="wrap-center">
       <div className="post-container is-half">
@@ -48,7 +48,7 @@ render() {
               <img 
                 className="profile-picture"
                 loading='lazy'
-                src={this.props.user.image} 
+                src={require('../../assets/send.png')} 
                 alt="logo" 
               />
             </figure>
@@ -77,7 +77,7 @@ render() {
                   className="custom-button"
                   type="submit"
                   value="submit"
-                  onClick={this.handleSubmit}
+                  
                 >
                   <img src={require('../../assets/send.png')} alt="submit" width="40px"/>
                 GroupPost
