@@ -5,11 +5,6 @@ import axios from 'axios'
 class editProfile extends React.Component {
 state = { 
   user : {}
-  // data: {
-  //   description: '',
-  //   firstName: '',
-  //   lastName: ''
-  // }
 }
 
 async componentDidMount() {
@@ -23,16 +18,16 @@ async componentDidMount() {
 }
 
   handleSubmit = async event => {
-   event.preventDefault()
-   const userId = this.props.match.params.userId
-   try {
+  event.preventDefault()
+  const userId = this.props.match.params.userId
+  try {
     const data = { ...this.state.user }
     await axios.post(`/api/profile/${userId}/edit`, data)
     this.props.history.push(`/profile/${userId}`)
-   } catch (err) {
+  } catch (err) {
     console.log(err)
-   }
- }
+  }
+}
 
 
 handleChange = event => {

@@ -1,0 +1,78 @@
+import React from 'react'
+import axios from 'axios'
+import {Link } from 'react-router-dom'
+
+class ProfileGroups extends React.Component {
+state = {
+  group: {}
+}
+
+handleChange = event => {
+  const group = { ...this.state.group, [event.target.name]: event.target.value }
+  this.setState({ group })
+}
+
+handleSubmit =  async (event) => {
+  event.preventDefault()
+  const userId = this.props.user
+  await axios.post(`/api/groups/new/${userId}`, this.state.group,
+  { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} })
+}
+
+  render(){
+    console.log(this.props)
+    const {groups} = this.props
+    let group = groups? groups : []
+  const modalClassName = this.props.modal ? 'display-block' : 'display-none'
+  return(
+    <>
+      {group.map(group => {
+        return <Link to='/group/:groupId'>
+          <div key= {group.id }className='group-field'>
+          <img className='group-icon' src='https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png' alt='group-pic'/>
+          <div className='group-info'>
+        <p>{`${group.name}`}</p>
+          </div>
+        </div>
+        </Link>
+    })}
+
+
+<div className={`${modalClassName} modal `}> 
+    <div className={`${modalClassName} modal-info modal-group`}> 
+    <div onClick={this.props.hideModal}> X</div>
+    <h1> New Group </h1>
+        <form onSubmit={this.handleSubmit}className="group-profile-form">
+          <div className="group-field">
+            <label className="label"> Group Name </label>
+            <input 
+              className='group-input'
+              placeholder="Group name here"
+              name="name"
+              onChange={this.handleChange}
+              value={group.name}
+            />
+        </div>
+        <div className="group-field">
+            <label className="label"> First Name </label>
+            <input 
+              className='group-input'
+              placeholder="First Name here"
+              name="description"
+              onChange={this.handleChange}
+              value={group.description}
+            />
+        </div>
+      <button>Send!</button>
+      </form>
+    </div>
+  </div>
+
+
+
+
+    </>
+  )
+}
+}
+export default ProfileGroups

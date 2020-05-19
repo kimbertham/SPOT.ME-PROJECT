@@ -8,6 +8,7 @@ import Login from './components/auth/Login'
 // import gymProfile from './components/gym/gymProfile'
 import Profile from './components/social/Profile'
 import editProfile from './components/social/editProfile'
+import ProfilePosts from './components/social/ProfilePosts'
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/login' component={Login}/>
           <Route path='/profile/:userId/edit' component={editProfile} />
           <Route path='/profile/:userId' component={Profile}/>
+        
         </Switch>
       </BrowserRouter>
     </>

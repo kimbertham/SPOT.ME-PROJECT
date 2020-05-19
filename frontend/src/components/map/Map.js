@@ -62,7 +62,7 @@ class Map extends React.Component {
           {/* <button onClick={() => {this.map.state.map.flyTo()}}>fly</button> */}
 
         <div className={`modal ${modalClassName}`}>
-          <div className='gym-modal-info'>
+          <div className='gym-modal-info modal-info'>
             <div className='gym-modal-text'>
               <div onClick={this.hideModal}><p>xxx</p></div>
               <p>{name}</p>

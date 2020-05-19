@@ -3,10 +3,14 @@ import Post from './Post'
 import { getProfile } from '../../lib/api'
 import ProfileInfo from '../social/ProfileInfo'
 import ProfileSidebar from './ProfileSidebar'
+import ProfilePosts from './ProfilePosts'
+import ProfileGroups from './ProfileGroups'
+
 
 class Profile extends React.Component {
 state = {
-  user : {}
+  user : {},
+  modal: false
 }
 
 async componentDidMount() {
@@ -20,12 +24,25 @@ async componentDidMount() {
   }
 }
 
+setModal =() => {
+  this.setState({ modal : true})
+}
+
+hideModal = () => {
+  this.setState({modal:false})
+}
+
   render(){
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className='profile-page-container'>
         
-      <ProfileSidebar />
+      <ProfileSidebar 
+      modal={this.state.modal}
+      setModal={this.setModal}
+      hideModal={this.hideModal}
+      user={this.state.user.id}
+      groups={this.state.user.groups}/>
 
     <div className='right-section'>
 
@@ -34,10 +51,20 @@ async componentDidMount() {
       user={this.state.user}/>
       </div>
 
+
+
       <div className='profile-post'>
       <Post 
       user={this.state.user}
       />
+
+      <ProfilePosts 
+      posts={this.state.user.posts}
+      user={this.state.user.id}
+      username={this.state.user.username}
+      test={this.test}/>
+
+
       </div>
 
     </div>
