@@ -1,15 +1,17 @@
 import React from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 import {Link} from 'react-router-dom'
 
 class ProfileInfo extends React.Component {
   state ={}
 
-//     followUser = () =>{
-//     const userToFollow = axios.post(`/api/profile/:userId/follow`, '' ,
-//     { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
-//   ) 
-// }
+    followUser = async () =>{
+      const userId = this.props.user.id
+    await axios.put(`/api/profile/${userId}/follow`, '' ,
+    { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
+  )
+  // this.props.history.push(`/profile/${userId}`)
+  }
 
   render () {
     const {user} = this.props
@@ -30,7 +32,7 @@ class ProfileInfo extends React.Component {
           <img className='profile-pic'src={this.props.user.image}  alt='profile-pic'/>
         </div>
           <div className='button-container'>
-          <button className='follow-button'> Follow </button>
+          <button onClick={this.followUser} className='follow-button'> Follow </button>
           </div>
       </div>
 

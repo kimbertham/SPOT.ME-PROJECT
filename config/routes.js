@@ -30,6 +30,7 @@ router.route('/locations/:placeId')
 
 // --------------- ROUTES FOR MAKING/DELETE POSTS AND LIKES AND FOLLOWS --------------
 
+
 router.route('/profile/:userId/post')
   .post(secureRoute, posts.newPost)
 
@@ -41,18 +42,23 @@ router.route('/profile/:userId/post/:postId')
 router.route('/profile/:userId/post/:postId')
   .put(secureRoute ,posts.addLike)
 
+router.route('/profile/:ownerId/post/:postId/comment')
+  .put(secureRoute, posts.addComment)
+
+router.route('/profile/:ownerId/post/:postId/comment/:commentId')
+  .delete(secureRoute, posts.removeComment)
+
 // --------------- ROUTE FOR USER PROFILE --------------
 
 
-router.route('/profile/:userId/edit')
-  .post(users.userUpdate)
+// router.route('/profile/:userId/edit')
+//   .post(users.userUpdate)
 
 router.route('/profile/:userId')
   .get(users.show)
 
 router.route('/groups')
   .get(secureRoute ,users.getUsersGroups)
-
 
 router.route('/profile/:userId/follow')
   .put(secureRoute, follow.toggleFollow)
