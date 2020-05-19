@@ -39,6 +39,7 @@ async function createGroup(req,res,next) {
     newGroup.members.push(user)
     await newGroup.save()
     res.status(201).json(newGroup)
+    await newGroup.save()
   } catch (err){
     next(err)
   }

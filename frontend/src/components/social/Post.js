@@ -1,7 +1,7 @@
 import React from 'react'
 import ImageUpload from '../common/ImageUpload'
 import { postContent } from '../../lib/api'
- 
+
 // * props: user
 class Post extends React.Component {
 state = {
@@ -37,7 +37,6 @@ handleSubmit = async event => {
 
 render() {
   if (this.props.user === {}) return null
-
   return (
     <section className="wrap-center">
       <div className="post-container is-half">

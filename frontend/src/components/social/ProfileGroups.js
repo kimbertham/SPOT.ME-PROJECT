@@ -11,7 +11,8 @@ state = {
 async componentDidMount() {
 const res = await getUserGroups()
 const groups = res.data
-this.setState({ groups})
+console.log(groups)
+this.setState({ groups })
 }
 
 handleChange = event => {
@@ -34,11 +35,12 @@ handleSubmit =  async (event) => {
 
     <>
       {groups? groups.map(group => {
+        console.log(group)
         return <Link to='/group/:groupId'>
           <div key= { group.id }className='group-field'>
-          <img className='group-icon' src='https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png' alt='group-pic'/>
+          <img className='group-icon' src={ group.image ? group.image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1xllWBpckzi_eEfVyJuUcy9WEWObmCUmTsENKt85aXU67KSnF&usqp=CAU'} alt='group'/>
           <div className='group-info'>
-        <p>{ `${group.name}` }</p>
+        <p>{ group.name }</p>
           </div>
         </div>
         </Link>
@@ -64,10 +66,20 @@ handleSubmit =  async (event) => {
             <label className="label"> Description </label>
             <input 
               className='group-input'
-              placeholder="First Name here"
+              placeholder="Group description here"
               name="description"
               onChange={this.handleChange}
               value={groups.description}
+            />
+        </div>
+        <div className="group-field">
+            <label className="label"> Image Url </label>
+            <input 
+              className='group-input'
+              placeholder="Group image here"
+              name="image"
+              onChange={this.handleChange}
+              value={groups.image}
             />
         </div>
       <button>Send!</button>

@@ -80,7 +80,7 @@ render(){
             user={this.state.user}
           />
 
-          <NewsFeedsCard 
+          <NewsFeedsCard
             user={this.state.user}
             like={this.addLike}
             comment={this.postAComment}

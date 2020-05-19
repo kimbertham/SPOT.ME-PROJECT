@@ -1,40 +1,46 @@
-
-.gym-show-page{
+.gym-show-page {
   border: 2px solid green;
-  padding:30px;
+  padding: 30px;
 
 }
 
 .page-top {
   margin-top: 20px;
-  height:600px;
-  border: 2px solid blue; 
+  height: 600px;
+  border: 2px solid blue;
   display: flex;
-  .gym-images{
-    width:60%;
+
+  .gym-images {
+    width: 60%;
     border: 2px solid red;
   }
-  .gym-show-info{
-    width:50%;
+
+  .gym-show-info {
+    width: 50%;
     margin: 0 auto;
     border: 2px solid black;
-    .gym-info-main{
+
+    .gym-info-main {
       text-align: center;
-      h1 { 
+
+      h1 {
         font-size: 30px;
       }
-      p{
-        font-size: 20px;;
+
+      p {
+        font-size: 20px;
+        ;
       }
     }
   }
 }
 
-.gym-navbar{
-  width:100%;
-  height:30px;
+.gym-navbar {
+  width: 100%;
+  height: 30px;
   background-color: rgb(211, 143, 32);
-  display:flex;
+  display: flex;
+
   .nav-field {
     // text-align: center;
     margin: 0 30px;
@@ -43,9 +49,8 @@
 }
 
 
-.changing-sections{
-  width:100%;
+.changing-sections {
+  width: 100%;
   border: 2px solid black;
 
 }
-
