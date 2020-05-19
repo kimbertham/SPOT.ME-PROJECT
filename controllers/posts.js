@@ -1,6 +1,7 @@
 const User = require('../models/user')
 
 
+// ----- CREATE POST  - NOT FOR GROUP POSTS!, REFER TO GROUP CONTROLLER FOR THIS  ---------
 // post request - /profile/:userId/post
 // require body = {
 // content: String
@@ -24,7 +25,7 @@ async function createNewPost(req,res,next) {
   }
 }
 
-// ----- DELETE REQUEST TO REMOVE POST ---------
+// ----- DELETE REQUEST TO REMOVE POST  - NOT FOR GROUP POSTS!, REFER TO GROUP CONTROLLER FOR THIS  ---------
 // http delete request - /profile/:userId/post/:postId
 // no body required
 // owner token required to delete
@@ -48,7 +49,7 @@ async function deletePost(req,res,next) {
   }
 }
 
-// ------- TOGGLE A LIKE ON A POST CONTROLLER ------------
+// ------- TOGGLE A LIKE ON A POST CONTROLLER - NOT FOR GROUP POSTS!, REFER TO GROUP CONTROLLER FOR THIS  ------------
 // Will like the post or unlike the post if the user already liked it
 // put request - /profile/:ownerId/post/:postId
 // userId is the Id of the OWNER of the post, Not the id of the user who is signed in
@@ -75,7 +76,7 @@ async function toggleLike(req,res,next){
   }
 }
 
-// ------------------------------ ADD COMMENT TO A POST SECTION -------------------------------------
+// ------------------------------ ADD COMMENT TO A POST SECTION  - NOT FOR GROUP POSTS!, REFER TO GROUP CONTROLLER FOR THIS  -------------------------------------
 // PUT Request to /profile/:ownerId/post/:postId/comment
 // body required = {content: String }
 // valid token required
@@ -98,7 +99,7 @@ async function addComment(req,res,next){
 }
 
 
-// ------------------------------ DELETE COMMENT TO A POST SECTION -------------------------------------
+// ------------------------------ DELETE COMMENT TO A POST SECTION  - NOT FOR GROUP POSTS!, REFER TO GROUP CONTROLLER FOR THIS  -------------------------------------
 // DELETE Request to /profile/:ownerId/post/:postId/comment/:commentId
 // NO body required 
 // valid token required - either the comment owner or the owner of the post
