@@ -32,7 +32,6 @@ async function userUpdate(req, res) {
 // --- valid token required of user
 
 
-
 async function getUsersGroups(req,res,next){
   console.log('GET FEED')
   try {
@@ -63,5 +62,5 @@ async function getUsersGroups(req,res,next){
 
 module.exports = {
   show: profileShow,
-  userUpdate
+  getUsersGroups: getUsersGroups
 }
