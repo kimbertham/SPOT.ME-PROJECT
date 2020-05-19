@@ -9,7 +9,7 @@ state={
 addLike = async (postId) => {
   try {
   const userId = this.props.user
-  await await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,
+   await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,
   { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} })
   } catch (err) {
   console.log(err)

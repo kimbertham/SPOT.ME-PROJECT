@@ -51,8 +51,8 @@ router.route('/profile/:ownerId/post/:postId/comment/:commentId')
 // --------------- ROUTE FOR USER PROFILE --------------
 
 
-// router.route('/profile/:userId/edit')
-//   .post(users.userUpdate)
+router.route('/profile/:userId/edit')
+  .post(users.userUpdate)
 
 router.route('/profile/:userId')
   .get(users.show)
