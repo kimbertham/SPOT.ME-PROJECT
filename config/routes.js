@@ -88,12 +88,16 @@ router.route('/groups/:groupId/post/:postId/delete')
   .delete(secureRoute ,groups.deletePost)
 
 router.route('/groups/:groupId/post/:postId/like')
-  .put(secureRoute ,groups.like)
+  .put(secureRoute ,groups.likePost)
 
 router.route('/groups/:groupId/post/:postId/comment')
   .put(secureRoute ,groups.addGroupPostComment)
 
+router.route('/groups/:groupId/post/:postId/comment/:commentId')
+  .delete(secureRoute ,groups.removeGroupPostComment)
 
+router.route('/groups/:groupId/post/:postId/comment/:commentId/like')
+  .put(secureRoute ,groups.likeComment)
 
 
 
