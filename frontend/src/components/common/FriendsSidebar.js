@@ -32,17 +32,17 @@ toggleModal = () => this.setState({ modal : !this.state.modal })
   </div>
   <div className="friends-list">
     { user.following ? user.following.map(friend => {
-    return <div 
+    return <div
+            
             key={friend.id} 
-            className="friend"
-            >
+            className="friend">
               <img 
                 className='group-icon' 
                 src={ friend.image ? friend.image : '../../assets/dumbell.png'} 
                 alt='friend'
               />              
           <p>{ friend.username }</p>
-            </div>
+          </div>
     }) : null }
   </div>
 </div>
