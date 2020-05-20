@@ -46,7 +46,7 @@ class ProfileInfo extends React.Component {
           <p> {user.description? user.description : ' '}</p>
       </div>
       </div>
-      </div>
+      </div> 
     </div>
 
 

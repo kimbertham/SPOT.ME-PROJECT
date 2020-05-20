@@ -19,21 +19,20 @@ class NewsFeedsCard extends React.Component {
   //   this.setState({content})
   // }
 
-
-  handleChange = event => {
-    const data = { ...this.state.data, [event.target.name]: event.target.value }
-    this.setState( {data} )
-  }
+  // handleChange = event => {
+  //   const data = { ...this.state.data, [event.target.name]: event.target.value }
+  //   this.setState( {data} )
+  // }
 
   render () {
 
-    const { user, like, comment, change } = this.props
-    let posts = user.posts ? user.posts : []
+    const { user, like, comment, change, group } = this.props
+    let GroupPosts = group.posts ? group.posts : []
 
     return (
       <>
 
-      {posts.slice(0).reverse().map((post => {
+      {GroupPosts.slice(0).reverse().map((post => {
     return <div className="wrap-center">
     <div className="feeds-container">
       <div className="feeds-header">
@@ -62,7 +61,6 @@ class NewsFeedsCard extends React.Component {
 
 
           <button className="feed-button" onClick={()=>{ like(`${post._id}`)}}> 
-          {/*!call addLikefunction from parent */}
             <img src={require('../../assets/fitness.png')} alt="logo" width="20px"/>
             Like
           </button>
@@ -98,15 +96,13 @@ class NewsFeedsCard extends React.Component {
         </figure>
 
         <div className="field">
-          <form onSubmit={e=>{ e.preventDefault(); comment(`${post.owner}` , `${post._id}`)}}>
+          <form onSubmit={e=>{ e.preventDefault(); this.props.postComment(post._id)}}>
           <textarea
-
             className="textarea"
             name="content"
             placeholder="Write a comment..."
-            onChange={change}
-            // value={this.state.data.content}
-            
+            onChange={this.props.handleChange}
+            value={this.props.commentData}
             />
           <button> Send Comment </button> 
             </form>
