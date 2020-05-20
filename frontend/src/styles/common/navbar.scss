@@ -1,0 +1,88 @@
+nav {
+  position: sticky;
+  top: 1px;
+
+  .navbar-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    transition: all 0.2s ease-in-out;
+    width: 45px;
+    margin: 5px 10px;
+    border-radius: 10px;
+    border: 3px solid black;
+
+
+    img {
+      object-fit: cover;
+    }
+  }
+}
+
+.navbar-button:hover {
+  background-color: #6A6767;
+}
+
+.other-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  transition: all 0.2s ease-in-out;
+  width: 90px;
+  margin: 10px 10px;
+  border-radius: 10px;
+  border: 3px solid black;
+  color: #E5E5E5;
+}
+
+.other-button:hover {
+  background-color: #6A6767;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  width: 120px;
+  margin: 10px 10px;
+  border-radius: 20px;
+  border: 3px solid black;
+  color: #E5E5E5;
+
+  .profile-picture {
+    width: 22px;
+    height: 22px;
+    margin-left: 5px;
+    border-radius: 15px;
+    border: 1px solid #E5E5E5;
+  }
+}
+
+.profile-button:hover {
+  background-color: #6A6767;
+}
+
+.logo-button {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 170px;
+  margin: 10px 10px;
+  border-radius: 20px;
+  color: #2BFFF2;
+  background-color: #5E5757;
+  font-size: 25px;
+  font-weight: 900;
+
+  .logo-picture {
+    width: 35px;
+    height: 35px;
+    margin: 10px;
+  }
+}
+
+.logo-button:hover {
+  background-color: #6A6767;
+}
