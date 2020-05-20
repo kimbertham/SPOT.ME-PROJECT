@@ -8,6 +8,7 @@ const groups = require('../controllers/groups')
 const follow = require('../controllers/follow')
 const newsFeed = require('../controllers/newsFeed')
 const messages = require('../controllers/messages')
+const search = require('../controllers/search')
 
 
 router.route('/login')
@@ -121,6 +122,15 @@ router.route('/messages/:userId/post/:recipentId')
 
 router.route('/messages/:userId/delete/:postId')
   .delete(secureRoute, messages.deleteMessage)
+
+
+
+// ------------ ROUTES FOR SEARCHBAR -----------------
+
+router.route('/search/:inputText')
+  .get( search.results)
+
+
 
 
 module.exports = router
