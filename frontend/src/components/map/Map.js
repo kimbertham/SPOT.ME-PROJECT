@@ -52,7 +52,7 @@ class Map extends React.Component {
               <span role="img"
                 aria-label="marker"
                 onClick={() =>this.handleModal(location.place_id)}
-                >🐳</span>
+                >🏋️</span>
             </Marker>
           })}
         </MapGl>

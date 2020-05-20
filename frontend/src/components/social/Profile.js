@@ -98,7 +98,6 @@ render(){
         </div>
       </div>
       <FriendsSidebar/>
-
     </div>
   )
 }
