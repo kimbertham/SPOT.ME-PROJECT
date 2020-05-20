@@ -7,6 +7,7 @@ import FriendsSidebar from '../common/FriendsSidebar'
 import NewsFeedsCard from './NewsFeedsCard'
 import { withHeaders } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
+import ProfileSidebar from './ProfileSidebar'
 
 class Profile extends React.Component {
 state = {
@@ -17,7 +18,8 @@ state = {
   },
   
   modal: false,
-  toggleLike: false
+
+  index: null
 }
 
 async componentDidMount() {
@@ -63,10 +65,10 @@ deletePost = async (postId) => {
   this.setState( { user: res.data })  
 }
 
-showLikes = () => {
-  console.log('clicked')
-}
+setIndex = async (i) => {
+  await this.setState({index: i})
 
+}
 
 setModal =() => {
   this.setState({ modal: true })
@@ -81,14 +83,15 @@ render(){
   return (
     <div className='profile-page-container'>
         
-      {/* <ProfileSidebar 
+        {/* <div className='left-section'> 
+      <ProfileSidebar 
         modal={this.state.modal}
         setModal={this.setModal}
         hideModal={this.hideModal}
-        user={this.state.user.id}/> */}
+        user={this.state.user.id}/>
+        </div> */}
 
       <div className='mid-section'>
-
         <div className='profile-info-component'>
           <ProfileInfo 
             user={this.state.user}/>
@@ -98,7 +101,7 @@ render(){
             user={this.state.user}
           />
 
-      {posts.slice(0).reverse().map(post => {
+      {posts.slice(0).reverse().map((post, i) => {
           return <NewsFeedsCard
             post={post}
             user={this.state.user}
@@ -109,6 +112,9 @@ render(){
             commentDelete={this.commentDelete}
             deletePost={this.deletePost}
             showLikes={this.showLikes}
+            setIndex={this.setIndex}
+            i={i}
+            indexState={this.state.index}
           />
         })}
 

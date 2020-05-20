@@ -1,10 +1,9 @@
 
-// *{
-//   border: 2px solid red;
-// }
-
 .profile-page-container {
 
+  *{
+    border: 2px solid red;
+  }
 //! common 
 
 .followers-icon{
@@ -84,18 +83,17 @@
     height: 30%;
     display: flex;
     justify-content: center;
-
   }
 }
-
   .follower-count {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 33.3%;
     height: 25vh;
-  }
 
+
+  }
   .button-container {
     display: flex;
     justify-content: center;
@@ -103,7 +101,6 @@
     width: 33.3%;
     height: 25vh;
   }
-
   .follow-button {
     background: #88BEF0;
     border-radius: 5px;

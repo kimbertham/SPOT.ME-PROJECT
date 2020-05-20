@@ -1,18 +1,13 @@
 import React from 'react'
+import { getUserId } from '../../lib/auth'
 
 
 class NewsFeedsCard extends React.Component {
-  state = {
-    showLikes: false,
-  }
-
 
     render () {
-      // const { user, like, comment, change } = this.props
-      // const posts = user.posts ? user.posts : []
-      // const modalClassName = this.state.showLikes? 'display-block' : 'display-none'
-      const { post,user,like,comment,change, commentDelete, deletePost, showLikes } = this.props
-      console.log(post.likes)
+      const { post, user ,like,comment,change, commentDelete, deletePost, i, setIndex, indexState } = this.props
+      const currentUser = getUserId()
+      const profileUser =  user.id
       return (
         <>
             <div className="wrap-center">
@@ -21,7 +16,9 @@ class NewsFeedsCard extends React.Component {
                 <div className="feeds-header">
                   <img src={`${user.image}`} alt="test" />
                   <h4 className="feeds-header-title">{user.username}</h4> 
-                  <div onClick={()=>{deletePost(`${post._id}`)}}><p> delete post req here</p></div>
+                  <div 
+                  className={currentUser === profileUser? 'display-block' : 'display-none'}
+                  onClick={()=>{deletePost(`${post._id}`)}}><p> delete post req here</p></div>
                 </div>
                 <div className="feeds-content">
                   <h1>{post.content}</h1>
@@ -32,12 +29,19 @@ class NewsFeedsCard extends React.Component {
                     {post.image ? <img src={require(`${post.image}`)} alt="test"/> : null}
                   </figure>
                 </div>
-                <div  onClick={showLikes} className="feeds-likes">
+                <div 
+                onMouseEnter={()=>{setIndex(`${i}`)}} className="feeds-likes"
+                onMouseLeave={()=>{setIndex(null)}}>
+
                   <img 
                   className="likes" 
                   src={require('../../assets/muscle.png')} 
                   alt="logo"/>
-                  <div className="show-likes-div">  
+                  
+                  <div className={`likes-hover ${i.toString() === indexState? 'display-block' : 'display-none'}`}>  
+                  {post.likes.map(like => {
+                    return <p>{`${like.firstName}`}{`${like.lastName}`} liked this</p>
+                  })}
                   </div>
                   <p><span>{post.likes.length}</span>likes</p>
                 </div>
@@ -64,7 +68,9 @@ class NewsFeedsCard extends React.Component {
                       <div className='commenters-comment'>
                         <p>{comment.user.username}</p>
                         <p>{comment.content}</p>
-                        <div onClick={()=>commentDelete(`${post._id}`,`${comment._id}`)}><p>delete comment button</p></div>
+                        <div 
+                        className={currentUser === profileUser? 'display-block' : 'display-none'}
+                        onClick={()=>commentDelete(`${post._id}`,`${comment._id}`)}><p>delete comment button</p></div>
                       </div>
                     </div>
                   </div>
