@@ -52,7 +52,7 @@ handleSubmit =  async (event) => {
           <div className="group-field">
             <label className="label"> Group Name </label>
             <input 
-              className='group-input'
+              className='group-input' 
               placeholder="Group name here"
               name="name"
               onChange={this.handleChange}
