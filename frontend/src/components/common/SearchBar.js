@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import {Link, withRouter} from 'react-router-dom'
- 
+import { getUserId } from '../../lib/api'
+
 class SearchBar extends React.Component {
   state = {
     input: '',
@@ -43,6 +44,7 @@ render(){
             return (
               <div className="navbar-item">
               <Link to={`/profile/${user._id}`}>
+              
   <img 
     className="profile-picture"
     loading='lazy'

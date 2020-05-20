@@ -11,7 +11,6 @@ state = {
 async componentDidMount() {
 const res = await getUserGroups()
 const groups = res.data
-console.log(groups)
 this.setState({ groups })
 }
 
@@ -30,7 +29,6 @@ handleSubmit =  async (event) => {
   render(){
     const {groups} = this.state
     const modalClassName = this.props.modal ? 'display-block' : 'display-none'
-    // console.log(this.state)
   return(
 
     <>
