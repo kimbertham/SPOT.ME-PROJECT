@@ -1,11 +1,12 @@
 import React from 'react' 
 import Post from './Post'
+import axios from 'axios'
 import { getProfile } from '../../lib/api'
 import ProfileInfo from '../social/ProfileInfo'
-import ProfileSidebar from './ProfileSidebar'
+import ProfileSidebar from '../common/ProfileSidebar'
+import FriendsSidebar from '../common/FriendsSidebar'
 import NewsFeedsCard from './NewsFeedsCard'
 import { withHeaders } from '../../lib/api'
-import axios from 'axios'
 import { getUserId } from '../../lib/auth'
 // import express from 'express'
 
@@ -73,7 +74,12 @@ render(){
         hideModal={this.hideModal}
         user={this.state.user.id}/>
 
+<<<<<<< HEAD
       <div className='right-section'>
+=======
+      <div className='mid-section'>
+
+>>>>>>> e4d42d5b01f3dd51564a1579594655fb833bfb67
         <div className='profile-info-component'>
           <ProfileInfo 
             user={this.state.user}/>
@@ -82,15 +88,20 @@ render(){
           <Post 
             user={this.state.user}
           />
+<<<<<<< HEAD
           <NewsFeedsCard 
+=======
+
+          <NewsFeedsCard
+>>>>>>> e4d42d5b01f3dd51564a1579594655fb833bfb67
             user={this.state.user}
             like={this.addLike}
             comment={this.postAComment}
             change={this.handleChange}
           />
         </div>
-
       </div>
+      <FriendsSidebar/>
 
     </div>
   )

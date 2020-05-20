@@ -8,6 +8,9 @@ import './styles/Profile/profileinfo.scss'
 import './styles/Profile/editProfile.scss'
 import './styles/Profile/profileposts.scss'
 import './styles/Profile/profilegroups.scss'
+import './styles/Profile/sidebar.scss'
+import './styles/common/posts.scss'
+import './styles/common/navbar.scss'
 import App from './App'
 
 ReactDOM.render(<App />, document.getElementById('root'))

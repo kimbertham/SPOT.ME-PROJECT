@@ -127,10 +127,10 @@ async function removeComment(req,res,next){
 
 module.exports = {
   newPost: createNewPost,
-  deletePost: deletePost,
+  deletePost,
   addLike: toggleLike,
-  addComment: addComment,
-  removeComment: removeComment
+  addComment,
+  removeComment
 }
 
 

@@ -1,8 +1,5 @@
 @import '~bulma/bulma.sass';
 
-
-
-
 input {
 
   &[type="checkbox"],
@@ -12,10 +9,8 @@ input {
   }
 }
 
-
-
-#root{
-  background-color:#343D42; 
+#root {
+  background-color: #343D42;
 }
 
 .textAlign {
@@ -88,76 +83,6 @@ button:hover {
   background-color: #6A6767;
 }
 
-// * For posts
-.post-container {
-  display: flex;
-  flex-direction: column;
-  background-color: #414141;
-  width: 60vw;
-  border-radius: 10px;
-
-  .top-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 95%;
-    padding: 10px 0;
-    margin: 0 auto;
-    border-bottom: 0.5px solid #C4C4C4;
-
-    figure {
-      display: flex;
-      margin: auto;
-
-      // width: 50px;
-      img {
-        width: 30px;
-        height: 30px;
-        border-radius: 50px;
-      }
-    }
-
-    .field {
-      height: inherit;
-
-      textarea {
-        overflow: auto;
-        height: 32px;
-        min-height: 32px;
-        width: 45vw;
-        padding: 5px 10px;
-        border-radius: 5px;
-        background-color: #6A6767;
-        border: none;
-        color: #E5E5E5;
-        font-size: medium;
-        font-weight: 500;
-        resize: none;
-        animation: collapse .35s ease-in-out;
-      }
-
-      textarea::placeholder {
-        color: #A9A4A4;
-      }
-
-      textarea:focus {
-        height: 150px;
-        animation: expand .35s 1 0s ease-in-out;
-      }
-    }
-
-    .bottom-section {
-      display: flex;
-      flex-direction: row;
-      height: 50px;
-      width: 100%;
-      margin: 10px auto;
-    }
-
-  }
-}
-
 // * For NewsFeed
 .feeds-container {
   display: flex;
@@ -165,6 +90,7 @@ button:hover {
   background-color: #414141;
   width: 50vw;
   border-radius: 10px;
+  margin-bottom: 25px;
 
   .feeds-header {
     display: flex;
@@ -174,14 +100,13 @@ button:hover {
     padding: 10px 0;
     margin: 0 auto;
 
-      img {
-        width: 50px;
-        height: 60px;
-        border-radius: 10px;
-        margin-right: 10px;
+    img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      margin-right: 10px;
     }
   }
-
 
   .feeds-content {
     display: flex;
@@ -192,7 +117,9 @@ button:hover {
     margin: 0 auto;
   }
 
-  h1, h4, p {
+  h1,
+  h4,
+  p {
     color: #E5E5E5;
   }
 
@@ -215,7 +142,7 @@ button:hover {
       height: 250px;
       object-fit: cover;
     }
-  } 
+  }
 
   .feeds-likes {
     display: flex;
@@ -225,7 +152,7 @@ button:hover {
     padding: 10px 0;
     margin: 0 auto;
     border-bottom: 0.5px solid #C4C4C4;
-  
+
     .like {
       color: #E5E5E5;
       width: 40px;
@@ -239,6 +166,7 @@ button:hover {
       height: 30px;
       border-radius: 30px;
       margin: 0px 5px;
+<<<<<<< HEAD
     }   
 
     .pop-up{
@@ -250,6 +178,8 @@ button:hover {
       border-radius: 10px;
       padding:4px;
 
+=======
+>>>>>>> e4d42d5b01f3dd51564a1579594655fb833bfb67
     }
   }
 
@@ -258,8 +188,7 @@ button:hover {
     flex-direction: row;
     height: 50px;
     width: 100%;
-    margin: 10px auto;
-    border-bottom: 0.5px solid #C4C4C4;
+    margin: 0 auto;
 
     .feed-button {
       display: flex;
@@ -271,11 +200,11 @@ button:hover {
       border-radius: 20px;
       color: #E5E5E5;
       cursor: pointer;
-    
+
       img {
         margin-right: 10px;
       }
-    
+
       input {
         display: none;
       }
@@ -289,6 +218,8 @@ button:hover {
     height: 100%;
     width: 95%;
     padding: 10px 0px;
+    margin: 0 auto;
+    border-top: 0.5px solid #e5e5e5;
 
     .profile-picture {
       width: 50px;
@@ -312,12 +243,11 @@ button:hover {
       animation: collapse .35s ease-in-out;
     }
   }
-
 }
 
 .post-comment-field {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 
   img {
     width: 50px;
@@ -333,27 +263,6 @@ button:hover {
   padding: 10px 10px;
   border-radius: 30px;
   background-color: #6A6767
-}
-
-// * For Navbar
-.navbar-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 45px;
-  transition: all 0.2s ease-in-out;
-  width: 45px;
-  margin: 5px 10px;
-  border-radius: 10px;
-  border: 3px solid black;
-
-  img {
-    object-fit: cover;
-  }
-}
-
-.navbar-button:hover {
-  background-color: #6A6767;
 }
 
 .other-button {
@@ -384,11 +293,11 @@ button:hover {
   color: #E5E5E5;
 
   .profile-picture {
-  width: 22px;
-  height: 22px;
-  margin-left: 5px;
-  border-radius: 15px;
-  border: 1px solid #E5E5E5;
+    width: 22px;
+    height: 22px;
+    margin-left: 5px;
+    border-radius: 15px;
+    border: 1px solid #E5E5E5;
   }
 }
 
@@ -419,4 +328,3 @@ button:hover {
     height: 32px;
   }
 }
-

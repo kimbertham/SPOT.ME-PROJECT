@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const postSchema = require('./postSchema')
+const messageSchema = require('./messages')
 // const Group = require('./Group') //* not in use yet
 
 
@@ -12,8 +13,8 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   image: { type: String },
   level: { type: String, required: true },
-  // following: [ userSchema ], // * We need the id of the users
   gyms: [],
+  messages: [messageSchema],
   posts: [postSchema],
   description: { type: String, maxlength: 50 },
   following: [{ type: mongoose.Schema.ObjectId, ref: 'User', required: true }],
