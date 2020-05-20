@@ -94,7 +94,7 @@ async function addComment(req,res,next){
     post.comments.push(req.body)
     await owner.save()
 
-    res.status(201).json(owner)
+    res.status(201).json('comment added')
   } catch (err){
     next(err)
   }
