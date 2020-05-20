@@ -37,3 +37,5 @@ async function returnResults(req,res,next) {
 module.exports = {
   results: returnResults
 }
+
+const dog = 2
