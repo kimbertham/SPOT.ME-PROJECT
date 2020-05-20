@@ -4,22 +4,13 @@ import { withHeaders } from '../../lib/api'
 
 class NewsFeedsCard extends React.Component {
   state = {
-    data: {
-      content: ''
-    },
+    // data: {
+    //   content: ''
+    // },
     showLikes: false
   }
 
-  // async postAComment(postOwner, postId) {
-  //   const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
-  //   console.log(res)
-  //   this.state.commentPosted === false ? this.setState({ commentPosted: true }) : this.setState({ commentPosted: false })
-  // }
 
-  //   handleChange = event => {
-  //     const data = { ...this.state.data, [event.target.name]: event.target.value }
-  //     this.setState( { data } )
-  //   }
 
     displayLikes = (value) =>{
       this.setState({showLikes: value})

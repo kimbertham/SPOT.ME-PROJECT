@@ -22,12 +22,10 @@ state = {
   toggleLike: false
 }
 
-
 async postAComment(postOwner, postId) {
   const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
-  console.log(res)
-  this.setState({user: res.data})
-  // this.state.commentPosted === false ? this.setState({ commentPosted: true }) : this.setState({ commentPosted: false })
+  const user = res.data
+  this.setState({user})
 }
 
   handleChange = event => {
@@ -35,7 +33,6 @@ async postAComment(postOwner, postId) {
     this.setState( { data } )
   }
 
-  
 
 async componentDidMount() {
   try {
@@ -51,7 +48,6 @@ addLike = async (postId) => {
   const userId = getUserId()
   const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' , withHeaders() )
   const user = res.data
-  // const user = {...this.state.user, [this.state.posts]: postData}
   this.setState( { user })   
 }
 
@@ -74,12 +70,8 @@ render(){
         hideModal={this.hideModal}
         user={this.state.user.id}/>
 
-<<<<<<< HEAD
-      <div className='right-section'>
-=======
       <div className='mid-section'>
 
->>>>>>> e4d42d5b01f3dd51564a1579594655fb833bfb67
         <div className='profile-info-component'>
           <ProfileInfo 
             user={this.state.user}/>
@@ -88,12 +80,8 @@ render(){
           <Post 
             user={this.state.user}
           />
-<<<<<<< HEAD
-          <NewsFeedsCard 
-=======
 
           <NewsFeedsCard
->>>>>>> e4d42d5b01f3dd51564a1579594655fb833bfb67
             user={this.state.user}
             like={this.addLike}
             comment={this.postAComment}
