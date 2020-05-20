@@ -257,20 +257,35 @@ button:hover {
 
   .gym-search-form {
     display: flex;
-    justify-content: space-around;
+
+    p {
+      color: #000000;
+    }
   }
 
   .keyword-field {
-    margin: 10px;
-    background-color: red;
+    margin: 10px 40px 10px 10px;
   }
 
-  .search-button {
-    display: flex;
-    align-items: center;
-    button {
-      background-color:#DA5C5C
-    }
+  .radius-field {
+    margin: 10px;
+  }
+  
+  .address-field {
+    margin: 10px;
+  }
+
+  .form-input {
+    background-color: #C4C4C4;
+  }
+
+  button {
+    margin: 35px 0px 0px 10px;
+    background-color:#DA5C5C;
+  }
+
+  button:hover {
+    background-color:#6A6767;
   }
 }
 
