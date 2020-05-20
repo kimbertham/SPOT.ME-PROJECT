@@ -35,9 +35,8 @@ handleSubmit =  async (event) => {
 
     <>
       {groups? groups.map(group => {
-        console.log(group)
         return <Link to='/group/:groupId'>
-          <div key= { group.id }className='group-field'>
+          <div key={ group.id } className='group-field'>
           <img className='group-icon' src={ group.image ? group.image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1xllWBpckzi_eEfVyJuUcy9WEWObmCUmTsENKt85aXU67KSnF&usqp=CAU'} alt='group'/>
           <div className='group-info'>
         <p>{ group.name }</p>

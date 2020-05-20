@@ -7,6 +7,7 @@ const secureRoute = require('../lib/secureRoute')
 const groups = require('../controllers/groups')
 const follow = require('../controllers/follow')
 const newsFeed = require('../controllers/newsFeed')
+const messages = require('../controllers/messages')
 
 
 router.route('/login')
@@ -109,6 +110,17 @@ router.route('/groups/:groupId/post/:postId/comment/:commentId/like')
 
 router.route('/news')
   .get(secureRoute ,newsFeed.getNewsFeed)
+
+// ------------ ROUTES FOR MESSAGES -----------------
+
+router.route('/messages')
+  .get(secureRoute, messages.getAllMessages)
+
+router.route('/messages/:userId/post/:recipentId')
+  .post(secureRoute, messages.createMessage)
+
+router.route('/messages/:userId/delete/:postId')
+  .delete(secureRoute, messages.deleteMessage)
 
 
 module.exports = router

@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfileGroups from './ProfileGroups'
+import ProfileGroups from '../social/ProfileGroups'
 
 
 
@@ -9,6 +9,7 @@ class profileSidebar extends React.Component {
     user : {},
     modal: false
   }
+  
 
 toggleModal = () => this.setState({ modal : !this.state.modal })
 

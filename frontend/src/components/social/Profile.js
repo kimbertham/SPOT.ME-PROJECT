@@ -1,11 +1,12 @@
 import React from 'react' 
 import Post from './Post'
+import axios from 'axios'
 import { getProfile } from '../../lib/api'
 import ProfileInfo from '../social/ProfileInfo'
-import ProfileSidebar from './ProfileSidebar'
+import ProfileSidebar from '../common/ProfileSidebar'
+import FriendsSidebar from '../common/FriendsSidebar'
 import NewsFeedsCard from './NewsFeedsCard'
 import { withHeaders } from '../../lib/api'
-import axios from 'axios'
 import { getUserId } from '../../lib/auth'
 
 class Profile extends React.Component {
@@ -68,7 +69,7 @@ render(){
         hideModal={this.hideModal}
         user={this.state.user.id}/>
 
-      <div className='right-section'>
+      <div className='mid-section'>
 
         <div className='profile-info-component'>
           <ProfileInfo 
@@ -89,8 +90,8 @@ render(){
 
 
         </div>
-
       </div>
+      <FriendsSidebar/>
 
     </div>
   )

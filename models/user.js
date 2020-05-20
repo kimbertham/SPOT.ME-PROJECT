@@ -13,7 +13,6 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   image: { type: String },
   level: { type: String, required: true },
-  // following: [ userSchema ], // * We need the id of the users
   gyms: [],
   messages: [messageSchema],
   posts: [postSchema],

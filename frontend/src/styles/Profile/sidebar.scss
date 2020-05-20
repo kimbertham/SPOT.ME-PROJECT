@@ -1,15 +1,17 @@
+// * left side
 .left-section {
+
   height: 80vh;
   position: sticky;
   top: 67px;
 
   .profile-sidebar {
     // border: 2px solid white;
-    width: 20vw;
+    width: 15vw;
     height: 80vh;
     max-height: 80vh;
     border-radius: 10px;
-    
+
 
     .events-container,
     .groups-container {
@@ -29,6 +31,7 @@
         align-items: center;
 
         p {
+          cursor: pointer;
           font-size: 12px;
           margin: 0 auto;
         }
@@ -62,10 +65,34 @@
               justify-content: flex-end;
               padding-left: 20px;
               width: 100%;
+
+              p {
+                max-width: 15vh;
+              }
             }
           }
         }
       }
     }
   }
+}
+
+// * right side
+
+.right-section {
+  height: 90vh;
+  width: 20vh;
+  position: sticky;
+  top: 67px;
+  border-radius: 10px;
+  background-color: white;
+
+  .sidebar-head {
+
+    h3 {
+      font-size: 25px;
+      margin: 10px;
+    }
+  }
+
 }
