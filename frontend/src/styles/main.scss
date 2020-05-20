@@ -251,6 +251,29 @@ button:hover {
   background-color: #6A6767
 }
 
+.gym-search-container {
+  background-color: #3DB2C2;
+
+
+  .gym-search-form {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .keyword-field {
+    margin: 10px;
+    background-color: red;
+  }
+
+  .search-button {
+    display: flex;
+    align-items: center;
+    button {
+      background-color:#DA5C5C
+    }
+  }
+}
+
 
 @keyframes expand {
   0% {
