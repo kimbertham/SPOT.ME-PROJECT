@@ -2,7 +2,7 @@
   top: 0;
   
   nav {
-    // position: fixed;  // * It brokes the gymsearch radius, keyword and address div, we have to check it out
+    position: fixed;  // * It brokes the gymsearch radius, keyword and address div, we have to check it out
     width: 100%;
 
     .navbar-button {

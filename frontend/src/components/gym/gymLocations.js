@@ -71,6 +71,7 @@ class gymLocations extends React.Component {
     // console.log(this.state.data)
     return (
       <>
+      <div className="locations">
         <div className="search">
         <GymSearch
           change={this.handleChange} 
@@ -79,19 +80,20 @@ class gymLocations extends React.Component {
           flyTo={this.handleFlyTo}
         />
         </div>
-        <div className="sidebar">
-          <ProfileSidebar 
-          modal={this.state.modal}
-          setModal={this.setModal}
-          hideModal={this.hideModal}
-          user={this.state.user.id}/>
-        </div>
         <div className="map">
         <Map
           moveMap={this.moveMap}
           viewport={this.state.viewport}
           data={this.state.data}
         />
+        </div>
+      </div>
+      <div className="sidebar">
+          <ProfileSidebar 
+          modal={this.state.modal}
+          setModal={this.setModal}
+          hideModal={this.hideModal}
+          user={this.state.user.id}/>
         </div>
       </>
     )
