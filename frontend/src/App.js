@@ -9,6 +9,8 @@ import Profile from './components/social/Profile'
 import editProfile from './components/social/editProfile'
 import NewsFeedsCard from './components/social/NewsFeedsCard'
 import GroupShow from './components/groups/GroupShowPage'
+// import NewsFeed from './components/social/NewsFeed'
+// import NewsFeedHome from './components/social/NewsFeedHome'
 
 
 const App = () => {
@@ -26,6 +28,7 @@ const App = () => {
           <Route path='/home' component={NewsFeedsCard}/>
           {/* <Route path='/feed/:userId' component={NewsFeedsCard}/> */}
           <Route path='/groups/:groupId' component={GroupShow}/>
+          {/* <Route path='/newsfeed' component={NewsFeedHome}/> */}
         </Switch>
       </BrowserRouter>
     </>
