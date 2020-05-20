@@ -18,11 +18,15 @@ state = {
   },
 }
 
+getData = async () => {
+  const userId = this.props.match.params.userId
+  const res = await getProfile(userId)
+  this.setState( { user: res.data }) 
+}
+
 async componentDidMount() {
   try {
-    const userId = this.props.match.params.userId
-    const res = await getProfile(userId)
-    this.setState( { user: res.data })   
+    this.getData() 
   } catch (err) {
     console.log(err)
   }
@@ -45,7 +49,7 @@ handleChange = event => {
 
   postAComment = async (postOwner, postId) => {
     console.log(this.state)
-  const userId= getUserId()
+  const userId = getUserId()
   const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
   const content = res.data
 }
@@ -79,6 +83,7 @@ render(){
         <div className='profile-post'>
           <Post 
             user={this.state.user}
+            refresh={this.getData}
           />
 
           <NewsFeedsCard

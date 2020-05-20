@@ -2,7 +2,7 @@ import React from 'react'
 import ImageUpload from '../common/ImageUpload'
 import { postContent } from '../../lib/api'
 
-// * props: user
+// * props: user, refresh
 class Post extends React.Component {
 state = {
   formData: {
@@ -28,8 +28,7 @@ handleSubmit = async event => {
     await postContent(this.state.formData, this.props.user.id)
     console.log('Post sent!')
     this.clearPost()
-    
-    
+    this.props.refresh()
   } catch (err) {
     console.log(err)
   }
