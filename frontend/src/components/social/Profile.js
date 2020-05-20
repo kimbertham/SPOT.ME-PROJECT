@@ -36,37 +36,34 @@ async postAComment(postOwner, postId) {
   }
 
   
+// getData = async () => {
+//   const userId = this.props.match.params.userId
+//   const res = await getProfile(userId)
+//   this.setState( { user: res.data }) 
+// }
 
 async componentDidMount() {
   try {
-    const userId = this.props.match.params.userId
-    const res = await getProfile(userId)
-    this.setState( { user: res.data })   
+    this.getData() 
   } catch (err) {
     console.log(err)
   }
 }
 
 addLike = async (postId) => {
-<<<<<<< HEAD
   const userId = getUserId()
   const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' , withHeaders() )
   const user = res.data
-  // const user = {...this.state.user, [this.state.posts]: postData}
   this.setState( { user })   
-=======
-  try {
-    const userId = getUserId()
-    const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,  withHeaders() )
-    
-    this.setState( { user: res.data }) 
-  } catch (err) {
-    console.log(err)
-  }
->>>>>>> d5bce1a3b039a644102d8965887f37649b40cb0d
 }
 
 
+  postAComment = async (postOwner, postId) => {
+    console.log(this.state)
+  const userId = getUserId()
+  const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
+  const content = res.data
+}
 
 setModal =() => {
   this.setState({ modal: true })
@@ -85,12 +82,8 @@ render(){
         hideModal={this.hideModal}
         user={this.state.user.id}/>
 
-<<<<<<< HEAD
-      <div className='right-section'>
-=======
       <div className='mid-section'>
 
->>>>>>> e4d42d5b01f3dd51564a1579594655fb833bfb67
         <div className='profile-info-component'>
           <ProfileInfo 
             user={this.state.user}/>
@@ -98,13 +91,10 @@ render(){
         <div className='profile-post'>
           <Post 
             user={this.state.user}
+            refresh={this.getData}
           />
-<<<<<<< HEAD
-          <NewsFeedsCard 
-=======
 
           <NewsFeedsCard
->>>>>>> e4d42d5b01f3dd51564a1579594655fb833bfb67
             user={this.state.user}
             like={this.addLike}
             comment={this.postAComment}
@@ -113,7 +103,6 @@ render(){
         </div>
       </div>
       <FriendsSidebar/>
-
     </div>
   )
 }

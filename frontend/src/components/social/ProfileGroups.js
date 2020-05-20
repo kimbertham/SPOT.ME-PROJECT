@@ -9,16 +9,9 @@ state = {
 }
 
 async componentDidMount() {
-<<<<<<< HEAD
-  const res = await getUserGroups()
-  const groups = res.data
-  this.setState({ groups })
-=======
 const res = await getUserGroups()
 const groups = res.data
-console.log(groups)
 this.setState({ groups })
->>>>>>> e4d42d5b01f3dd51564a1579594655fb833bfb67
 }
 
 handleChange = event => {
@@ -33,11 +26,10 @@ handleSubmit =  async (event) => {
     { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` } })
 }
 
-render(){
-  const { groups } = this.state
-  const modalClassName = this.props.modal ? 'display-block' : 'display-none'
-  // console.log(this.state)
-  return (
+  render(){
+    const {groups} = this.state
+    const modalClassName = this.props.modal ? 'display-block' : 'display-none'
+  return(
 
     <>
 <<<<<<< HEAD

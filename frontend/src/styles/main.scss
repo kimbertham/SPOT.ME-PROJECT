@@ -1,5 +1,15 @@
 @import '~bulma/bulma.sass';
 
+html {
+  background-color: #343D42;
+}
+
+// body.preload *{
+//   animation-duration: 0s !important;
+//   -webkit-animation-duration: 0s !important;
+//   transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
+// }
+
 input {
 
   &[type="checkbox"],
@@ -10,7 +20,10 @@ input {
 }
 
 #root {
+  width: 100%;
+  height: 100%;
   background-color: #343D42;
+  margin: 0 auto;
 }
 
 .textAlign {

@@ -43,8 +43,8 @@ class Map extends React.Component {
             longitude={location.lng}>
               <span role="img"
                 aria-label="marker"
-                onClick={()=>this.handleModal(location.place_id)}
-                >🐳</span>
+                onClick={() =>this.handleModal(location.place_id)}
+                >🏋️</span>
             </Marker>
           })}
         </MapGl>
