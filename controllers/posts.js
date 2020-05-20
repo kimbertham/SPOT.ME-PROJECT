@@ -19,7 +19,7 @@ async function createNewPost(req,res,next) {
     req.body.owner = req.currentUser
     user.posts.push(req.body)
     await user.save()
-    res.status(201).json('post created successfully')
+    res.status(201).json(req.body)
   } catch (err){
     next(err)
   }
@@ -94,7 +94,7 @@ async function addComment(req,res,next){
     post.comments.push(req.body)
     await owner.save()
 
-    res.status(201).json(req.body)
+    res.status(201).json(owner)
   } catch (err){
     next(err)
   }

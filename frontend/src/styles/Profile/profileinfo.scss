@@ -1,4 +1,11 @@
 
+//! common 
+
+.followers-icon{
+  background-image: url('https://i.imgur.com/dmix3Do.jpg');
+  background-size:100% 100%;
+}
+
 .profile-page-container{ 
   
   margin:20px;
@@ -65,6 +72,13 @@
   align-items: center;
   width:33.3%;
   height:25vh;
+  .profile-followers{
+    width:28%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+
+  }
 }
 
 .button-container {
