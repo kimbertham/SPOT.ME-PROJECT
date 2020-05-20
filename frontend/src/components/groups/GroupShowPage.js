@@ -89,7 +89,7 @@ class GroupShow extends React.Component {
 
 
   addLike = async (postId) => {
-    console.log(postId);
+    // console.log(postId);
 
     try {
       const userId = getUserId()
