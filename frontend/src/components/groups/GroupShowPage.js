@@ -85,7 +85,6 @@ this.setState( { group: res.data })
           <div className='profile-post'>
             <GroupPost
               {...this.state}
-              
             />
 
            

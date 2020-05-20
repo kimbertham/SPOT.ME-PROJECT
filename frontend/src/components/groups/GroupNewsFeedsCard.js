@@ -3,26 +3,36 @@ import axios from 'axios'
 import { withHeaders } from '../../lib/api'
 import {getUserId} from '../../lib/auth'
 
-class GroupNewsFeedsCard extends React.Component {
-  state= {
-    comment: ''
+class NewsFeedsCard extends React.Component {
+  state = {
+    data : {
+      content: ''
+    }
+  
   }
 
-  postAComment = async (postOwner, postId) => {
-    const res = await axios.put(`/profile/${postOwner}/post/${postId}/comment`,
-    this.state.comment,
-    withHeaders())
-    const comment = res.data
-    this.setState({comment})
-  }
 
+  // postAComment = async (postOwner, postId) => {
+  //   const userId= getUserId()
+  //   const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
+  //   const content = res.data
+  //   this.setState({content})
+  // }
+
+
+  handleChange = event => {
+    const data = { ...this.state.data, [event.target.name]: event.target.value }
+    this.setState( {data} )
+  }
 
   render () {
-    console.log(this.props)
-    const { user, like } = this.props
+
+    const { user, like, comment, change } = this.props
     let posts = user.posts ? user.posts : []
+
     return (
       <>
+
       {posts.slice(0).reverse().map((post => {
     return <div className="wrap-center">
     <div className="feeds-container">
@@ -50,6 +60,7 @@ class GroupNewsFeedsCard extends React.Component {
           <div className="control center-items">
 
 
+
           <button className="feed-button" onClick={()=>{ like(`${post._id}`)}}> 
           {/*!call addLikefunction from parent */}
             <img src={require('../../assets/fitness.png')} alt="logo" width="20px"/>
@@ -60,10 +71,23 @@ class GroupNewsFeedsCard extends React.Component {
             <img src={require('../../assets/interface (1).png')} alt="logo" width="20px"/>
             Comment
           </button>
-
           </div>
         </div>
       </div>
+
+      {post.comments? post.comments.map(comment =>{
+          return <div key={comment.id} className='post-comments-container'>
+          <div className='post-comment-field'>
+            <img src={`${comment.user.image}`} alt='commenters-img'></img>
+            <div className='commenters-comment'>
+              <p>{comment.user.username}</p>
+              <p>{comment.content}</p>
+            </div>
+          </div>
+        </div>
+        }) : null }
+
+
       <div className="feeds-comments">
         <figure className="picture">
           <img 
@@ -74,22 +98,31 @@ class GroupNewsFeedsCard extends React.Component {
         </figure>
 
         <div className="field">
-          <form onSubmit={e=>{ e.preventDefault(); this.postAComment(`${post.owner}`,`${post._id}`)}}>
+          <form onSubmit={e=>{ e.preventDefault(); comment(`${post.owner}` , `${post._id}`)}}>
           <textarea
+
             className="textarea"
             name="content"
-            placeholder="Write a comment..."/>
-            <button> Send Comment </button>
+            placeholder="Write a comment..."
+            onChange={change}
+            // value={this.state.data.content}
+            
+            />
+          <button> Send Comment </button> 
             </form>
         </div>
       </div>
     </div>
   </div>
     }))}
+
+
+
+
   </>
     )
   }
 }
 
 
-export default GroupNewsFeedsCard
+export default NewsFeedsCard
