@@ -26,8 +26,7 @@
 
 .mid-section {
   // border:3px solid black;
-  display: flex;
-  width: 70vw;
+  // width: 70vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -80,13 +79,13 @@
   align-items: center;
   width:33.3%;
   height:25vh;
-  // .profile-followers{
-  //   width:28%;
-  //   height: 30%;
-  //   display: flex;
-  //   justify-content: center;
+  .profile-followers{
+    width:28%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
 
-  // }
+  }
 }
 
   .follower-count {

@@ -1,29 +1,27 @@
 import React from 'react'
-import axios from 'axios'
-import { withHeaders } from '../../lib/api'
+
 
 class NewsFeedsCard extends React.Component {
   state = {
     showLikes: false,
   }
 
-    displayLikes = (value) =>{
-      this.setState({showLikes: value})
-    }
-
 
     render () {
       // const { user, like, comment, change } = this.props
       // const posts = user.posts ? user.posts : []
-      const modalClassName = this.state.showLikes? 'display-block' : 'display-none'
-      const { post,user,like,comment,change } = this.props
+      // const modalClassName = this.state.showLikes? 'display-block' : 'display-none'
+      const { post,user,like,comment,change, commentDelete, deletePost, showLikes } = this.props
+      console.log(post.likes)
       return (
         <>
             <div className="wrap-center">
               <div className="feeds-container">
+
                 <div className="feeds-header">
                   <img src={`${user.image}`} alt="test" />
                   <h4 className="feeds-header-title">{user.username}</h4> 
+                  <div onClick={()=>{deletePost(`${post._id}`)}}><p> delete post req here</p></div>
                 </div>
                 <div className="feeds-content">
                   <h1>{post.content}</h1>
@@ -34,36 +32,23 @@ class NewsFeedsCard extends React.Component {
                     {post.image ? <img src={require(`${post.image}`)} alt="test"/> : null}
                   </figure>
                 </div>
-
-                <div className="feeds-likes" 
-                  onMouseEnter={()=>{this.displayLikes(`${true}`)}}
-                  onMouseLeave={()=>{this.displayLikes(`${''}`)}}>
-                {/* display likes --------*/}
-                <div className={`pop-up ${modalClassName}`}>
-                {post.likes? post.likes.map(like=> {
-                  return <p>{like.username} liked this!</p>
-                }) : null} 
-                </div>
-                
+                <div  onClick={showLikes} className="feeds-likes">
                   <img 
                   className="likes" 
                   src={require('../../assets/muscle.png')} 
                   alt="logo"/>
-                  <p><span> {post.likes.length} </span>likes</p>
+                  <div className="show-likes-div">  
+                  </div>
+                  <p><span>{post.likes.length}</span>likes</p>
                 </div>
 
                 <div className="feeds-buttons">
                   <div className="field center-items">
                     <div className="control center-items">
-
-                      <button className="feed-button" onClick={()=>{
-                        like(`${post._id}`)
-                      }}> 
-                        {/*!call addLikefunction from parent */}
+                      <button className="feed-button" onClick={()=>{like(`${post._id}`)}}> 
                         <img src={require('../../assets/fitness.png')} alt="logo" width="20px"/>
                           Like
                       </button>
-                      
                       <button className="feed-button"> 
                         <img src={require('../../assets/interface (1).png')} alt="logo" width="20px"/>
                       Comment
@@ -79,6 +64,7 @@ class NewsFeedsCard extends React.Component {
                       <div className='commenters-comment'>
                         <p>{comment.user.username}</p>
                         <p>{comment.content}</p>
+                        <div onClick={()=>commentDelete(`${post._id}`,`${comment._id}`)}><p>delete comment button</p></div>
                       </div>
                     </div>
                   </div>
@@ -95,18 +81,16 @@ class NewsFeedsCard extends React.Component {
 
                   <div className="field">
                     <form onSubmit={e=>{ e.preventDefault(); comment(`${post.owner}` , `${post._id}`)}}>
-
-                    
                       <textarea
                         className="textarea"
                         name="content"
                         placeholder="Write a comment..."
                         onChange={change}/>
-
                       <button> Send Comment </button> 
                     </form>
                   </div>
                 </div>
+
               </div>
             </div>
         </>

@@ -117,7 +117,7 @@ async function removeComment(req,res,next){
     
     post.comments.pull(commentToDelete)
     await owner.save()
-    res.status(201).json('comment added successfully')
+    res.status(201).json('comment removed successfully')
   } catch (err){
     next(err)
   }

@@ -1,7 +1,4 @@
 import React from 'react'
-import axios from 'axios'
-import { withHeaders } from '../../lib/api'
-import {getUserId} from '../../lib/auth'
 
 class NewsFeedsCard extends React.Component {
   state = {
@@ -26,7 +23,7 @@ class NewsFeedsCard extends React.Component {
 
   render () {
 
-    const { user, like, comment, change, group } = this.props
+    const { user, like, group } = this.props
     let GroupPosts = group.posts ? group.posts : []
 
     return (

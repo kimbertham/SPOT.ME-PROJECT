@@ -6,14 +6,6 @@ function GroupSidebar(props) {
   //  console.log(props.members);
 
   return (
-<<<<<<< HEAD
-    <div key={member._id}> 
-    <img src={member.image} alt='group-img'/>
-    <p>{member.firstName} {member.lastName}</p>
-    </div>
-  )
-}) : ''}
-=======
     <div className='left-section'>
       <div className='profile-sidebar'>
         <div className='groups-container'>
@@ -25,7 +17,7 @@ function GroupSidebar(props) {
           {members ? members.map(member => {
             return (
               <div key={member._id}>
-                <img src={member.image} />
+                <img src={member.image} alt='group-icon'/>
                 <p>{member.firstName} {member.lastName}</p>
               </div>
             )
@@ -33,7 +25,6 @@ function GroupSidebar(props) {
           </div>
           </div>
         </div>
->>>>>>> d5bce1a3b039a644102d8965887f37649b40cb0d
       </div>
     </div>
   )

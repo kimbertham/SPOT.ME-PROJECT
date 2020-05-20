@@ -19,10 +19,10 @@ class ProfileInfo extends React.Component {
   }
 
   render () {
-    console.log(this.state)
     const {user} = this.props
     const followers = user.followers? user.followers : []
     const modalClassName = this.state.showFollowers? 'display-block' : 'display-none'
+
   return (
 
     <div className='profile-info-container'>
@@ -32,19 +32,18 @@ class ProfileInfo extends React.Component {
 
         <div className='info-top'>
 
-
           <div className='follower-count'>  
             <div onClick={()=>this.showFollowers(true)} className='followers-icon profile-followers'></div> 
-            <div className='modal'></div>
+            <div className='modal' style={{border: '2px solid red'}}></div>
               <div className='followers-container'>
                 <div className={`${modalClassName}`}>
                 <div onClick={()=>this.showFollowers('')} className='back-cross'>Xxxx</div>
-                {followers? followers.map(follower => {
+                {followers.length > 0? followers.map(follower => {
                 return <div className='followers-field'>
-                    <img src={`${follower.image}`}/>
-                <p>{`${follower.firstName} ${follower.lastName}`}</p>
+                  <img src={`${follower.image}`} alt='follower-img'/>
+                  <p>{`${follower.firstName} ${follower.lastName}`}</p>
                   </div>
-                }) : ''}
+                }) : <p style={{ color: 'red' }}>'no followers to show' </p> }
               </div>
             </div>
         </div>
