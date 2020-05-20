@@ -32,7 +32,8 @@ addLike = async (postId) => {
   try {
     const userId = getUserId()
     const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,  withHeaders() )
-    this.setState({ user: res.data })
+    
+    this.setState( { user: res.data }) 
   } catch (err) {
     console.log(err)
   }
