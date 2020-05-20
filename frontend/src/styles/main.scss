@@ -251,9 +251,23 @@ button:hover {
   background-color: #6A6767
 }
 
+.sidebar {
+  background-color: #343D42;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  height: 100%;
+}
+
+.map {
+  margin-left: 200px;
+}
+
 .gym-search-container {
   background-color: #3DB2C2;
-
+  margin-left: 200px;
 
   .gym-search-form {
     display: flex;

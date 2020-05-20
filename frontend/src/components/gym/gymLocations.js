@@ -67,7 +67,7 @@ class gymLocations extends React.Component {
           {...this.state.searchForm}
           flyTo={this.handleFlyTo}
         />
-
+        <div className="sidebar"></div>
         <Map 
           moveMap={this.moveMap}
           viewport={this.state.viewport}

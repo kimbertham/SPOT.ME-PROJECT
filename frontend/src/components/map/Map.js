@@ -37,13 +37,13 @@ class Map extends React.Component {
     return (
       <>
         <MapGl
+          className="map"
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
           mapStyle='mapbox://styles/mapbox/light-v10'
           ref={(map) => { this.map = map }}
           {...this.props.viewport}
           onViewportChange={this.props.moveMap}
         >
-
           {this.props.data.map((location) => {
             return <Marker
             key={location.place_id}
@@ -62,8 +62,8 @@ class Map extends React.Component {
         <div className={`modal ${modalClassName}`}>
           <div className='gym-modal-info modal-info'>
             <div className='gym-modal-text'>
-              <div onClick={this.hideModal}><p>xxx</p></div>
-              <p>{name}</p>
+              <div onClick={this.hideModal}><p className='close'>X</p></div>
+              <h1>{name}</h1>
               <p>{location}</p>
               <p>{businessStatus}</p>
               <Link to={`/locations/${place_id}`} > <p>see more...</p></Link>
