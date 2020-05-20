@@ -9,7 +9,7 @@ const User = require('../models/user')
 async function showGroup(req,res,next){
   console.log('attempting to send Group')
   try {
-    const group = await Group.findById(req.params.groupId).populate('members')
+    const group = await Group.findById(req.params.groupId).populate('members').populate('posts.comments.user')
     if (!group) {
       throw new Error('Not Found')
     }

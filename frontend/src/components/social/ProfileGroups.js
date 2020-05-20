@@ -40,6 +40,7 @@ render(){
   return (
 
     <>
+<<<<<<< HEAD
       {groups ? groups.map(group => {
         return <Link to='/group/:groupId'>
 <<<<<<< HEAD
@@ -49,6 +50,10 @@ render(){
               <p>{ `${group.name}` }</p>
             </div>
 =======
+=======
+      {groups? groups.map(group => {
+        return <Link to={`/groups/${group._id}`}>
+>>>>>>> d5bce1a3b039a644102d8965887f37649b40cb0d
           <div key={ group.id } className='group-field'>
           <img className='group-icon' src={ group.image ? group.image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1xllWBpckzi_eEfVyJuUcy9WEWObmCUmTsENKt85aXU67KSnF&usqp=CAU'} alt='group'/>
           <div className='group-info'>

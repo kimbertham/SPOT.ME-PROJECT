@@ -5,12 +5,19 @@ import GroupPost from './GroupPost'
 import { getGroup, getProfile } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 import axios from 'axios'
+import FriendsSidebar from '../common/FriendsSidebar'
 
 class GroupShow extends React.Component {
   state = {
     group: {},
     modal: false,
-    user: {}
+    user: {},
+    formData: {
+      content: ''
+    },
+    commentData: {
+      content: ''
+    }
   }
 
 
@@ -22,47 +29,109 @@ class GroupShow extends React.Component {
       const resUser = await getProfile(userId)
       // console.log(res.data);
       // console.log(resUser.data);
-      this.setState( { group: res.data, user: resUser.data })   
+      this.setState({ group: res.data, user: resUser.data })
     } catch (err) {
       console.log(err)
     }
   }
 
-  joinGroup = async () =>{
+  joinGroup = async () => {
     const userId = await getUserId()
     const groupId = this.state.group._id
-  await axios.put(`/api/groups/${groupId}/join/${userId}`, '' ,
-  { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
-)
-const res = await getGroup(groupId)
-this.setState( { group: res.data })  
-}
+    await axios.put(`/api/groups/${groupId}/join/${userId}`, '',
+      { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` } }
+    )
+    const res = await getGroup(groupId)
+    this.setState({ group: res.data })
+  }
 
-leaveGroup = async () =>{
-  const userId = await getUserId()
-  const groupId = this.state.group._id
-await axios.put(`/api/groups/${groupId}/leave/${userId}`, '' ,
-{ headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
-)
-const res = await getGroup(groupId)
-this.setState( { group: res.data })  
-}
-
-  // addLike = async (postId) => {
-  //   try {
-  //     const userId = getUserId()
-  //     const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,  withHeaders() )
-  //     this.setState({ user: res.data })
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  leaveGroup = async () => {
+    const userId = await getUserId()
+    const groupId = this.state.group._id
+    await axios.put(`/api/groups/${groupId}/leave/${userId}`, '',
+      { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` } }
+    )
+    const res = await getGroup(groupId)
+    this.setState({ group: res.data })
+  }
 
 
-//   <GroupNewsFeedsCard
-//   user={this.state.user}
-//   like={this.addLike}
-// />
+  handleChange = event => {
+    const value = event.target.value
+    this.setState({
+      formData: {
+        content: value
+      }
+    })
+  }
+
+  postToGroup = async (e) => {
+    e.preventDefault()
+    console.log('posting');
+    try {
+      const userId = await getUserId()
+      await axios.post(`/api/groups/${this.state.group._id}/post/${userId}`, this.state.formData,
+        { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` } }
+      )
+      const res = await getGroup(this.state.group._id)
+      this.setState({
+        group: res.data,
+        formData: {
+          content: ''
+        }
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
+
+  addLike = async (postId) => {
+    console.log(postId);
+
+    try {
+      const userId = getUserId()
+      await axios.put(`/api/groups/${this.state.group._id}/post/${postId}/like`,'' ,  { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` } } )
+      const res = await getGroup(this.state.group._id)
+      this.setState({
+        group: res.data
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  handleCommentChange = event => {
+    console.log(event.target.value);
+    
+    const value = event.target.value
+    this.setState({
+      commentData: {
+        content: value
+      }
+    })
+  }
+
+  postComment = async (postId) => {
+   
+    console.log(postId);
+    try {
+      await axios.put(`/api/groups/${this.state.group._id}/post/${postId}/comment`, this.state.commentData,
+        { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` } }
+      )
+      const res = await getGroup(this.state.group._id)
+      this.setState({
+        group: res.data,
+        commentData: {
+          content: ''
+        }
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
   render() {
     // console.log(this.state)
@@ -74,7 +143,7 @@ this.setState( { group: res.data })
           hideModal={this.hideModal}
           members={this.state.group.members} />
 
-        <div className='right-section'>
+        <div className='mid-section'>
 
           <div className='profile-info-component'>
             <GroupInfo
@@ -83,17 +152,22 @@ this.setState( { group: res.data })
 
           <div className='profile-post'>
             <GroupPost
-              {...this.state}
-              
+              {...this.state} handleSubmit={this.postToGroup} handleChange={this.handleChange}
             />
 
-           
-
+            <GroupNewsFeedsCard
+              user={this.state.user}
+              like={this.addLike}
+              group={this.state.group}
+              handleChange={this.handleCommentChange}
+              commentData={this.state.commentData.content}
+              postComment = {this.postComment}
+            /> 
 
           </div>
 
         </div>
-
+        <FriendsSidebar />
 
       </div>
     )
