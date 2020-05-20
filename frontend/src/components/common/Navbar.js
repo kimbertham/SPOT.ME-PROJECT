@@ -5,6 +5,7 @@ import { getProfile } from '../../lib/api'
 import { notify } from '../../lib/notifications'
 import { Link, withRouter } from 'react-router-dom'
 import { getUserId, isAuthenticated, logout } from '../../lib/auth'
+import SearchBar from './SearchBar'
 
 class Navbar extends React.Component{
   state = {
@@ -37,6 +38,7 @@ class Navbar extends React.Component{
           <div className="navbar-brand">
             <Link to="/home" className="logo-button" ><img className="logo-picture" src={require('../../assets/dumbbell.png')} alt="logo"/>Spot.me</Link>
             <Link to="/" className="navbar-item"></Link>
+            <SearchBar />
           </div>
           <div className="navbar-menu">
             <div className="navbar-end">
