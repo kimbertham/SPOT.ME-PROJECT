@@ -37,7 +37,6 @@ class Map extends React.Component {
     return (
       <>
         <MapGl
-          className="map"
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
           mapStyle='mapbox://styles/mapbox/light-v10'
           ref={(map) => { this.map = map }}

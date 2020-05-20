@@ -19,10 +19,12 @@ class gymLocations extends React.Component {
     viewport: {
       latitude: 51.509865,
       longitude: -0.118092,
-      width: '86.2vw',
-      height: '83.5vh',
+      width: '84.7vw',
+      height: '85vh',
       zoom: 12
-    }
+    }, 
+    user: {},
+    modal: false
   }
 
   handleChange = event => {
@@ -58,6 +60,13 @@ class gymLocations extends React.Component {
       this.setState({ viewport })
   }
 
+  setModal =() => {
+    this.setState({ modal: true })
+  }
+  hideModal = () => {
+    this.setState({ modal: false })
+  }
+
   render(){
     // console.log(this.state.data)
     return (
@@ -69,14 +78,20 @@ class gymLocations extends React.Component {
           flyTo={this.handleFlyTo}
         />
         <div className="sidebar">
-          <ProfileSidebar />
+          <ProfileSidebar 
+          modal={this.state.modal}
+          setModal={this.setModal}
+          hideModal={this.hideModal}
+          user={this.state.user.id}/>
         </div>
+        <div className="map">
         <Map
-          className="map-width"
           moveMap={this.moveMap}
           viewport={this.state.viewport}
           data={this.state.data}
+          style={{ zIndex: 0 }}
         />
+        </div>
       </>
     )
   }
