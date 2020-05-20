@@ -13,26 +13,28 @@ import { getUserId } from '../../lib/auth'
 class Profile extends React.Component {
 state = {
   user: {},
-  modal: false,
 
   data: {
     content: ''
   },
-
+  
+  modal: false,
   toggleLike: false
 }
 
-async postAComment(postOwner, postId) {
-  const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
-  const user = res.data
-  this.setState({user})
+postAComment = async ( postOwner, postId) =>{
+  console.log(this.state)
+  const response = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
+  const userId = this.props.match.params.userId
+  const res = await getProfile(userId)
+  this.setState( { user: res.data })  
+
 }
 
   handleChange = event => {
     const data = { ...this.state.data, [event.target.name]: event.target.value }
     this.setState( { data } )
   }
-
 
 async componentDidMount() {
   try {
@@ -51,8 +53,6 @@ addLike = async (postId) => {
   this.setState( { user })   
 }
 
-
-
 setModal =() => {
   this.setState({ modal: true })
 }
@@ -61,14 +61,16 @@ hideModal = () => {
 }
 
 render(){
+  const { user } = this.state
+  const posts = user.posts ? user.posts : []
   return (
     <div className='profile-page-container'>
         
-      <ProfileSidebar 
+      {/* <ProfileSidebar 
         modal={this.state.modal}
         setModal={this.setModal}
         hideModal={this.hideModal}
-        user={this.state.user.id}/>
+        user={this.state.user.id}/> */}
 
       <div className='mid-section'>
 
@@ -81,12 +83,19 @@ render(){
             user={this.state.user}
           />
 
-          <NewsFeedsCard
+      {posts.slice(0).reverse().map(post => {
+        console.log(post._id)
+          return <NewsFeedsCard
+            post={post}
             user={this.state.user}
             like={this.addLike}
             comment={this.postAComment}
             change={this.handleChange}
+            key={`profile${post._id}`}
           />
+        })}
+
+
         </div>
       </div>
       <FriendsSidebar/>

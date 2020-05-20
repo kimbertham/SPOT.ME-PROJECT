@@ -7,7 +7,6 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Profile from './components/social/Profile'
 import editProfile from './components/social/editProfile'
-import Home from './components/social/Home'
 import NewsFeedsCard from './components/social/NewsFeedsCard'
 import GroupShow from './components/groups/GroupShowPage'
 

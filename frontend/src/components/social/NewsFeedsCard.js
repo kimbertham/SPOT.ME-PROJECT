@@ -4,13 +4,8 @@ import { withHeaders } from '../../lib/api'
 
 class NewsFeedsCard extends React.Component {
   state = {
-    // data: {
-    //   content: ''
-    // },
-    showLikes: false
+    showLikes: false,
   }
-
-
 
     displayLikes = (value) =>{
       this.setState({showLikes: value})
@@ -18,14 +13,13 @@ class NewsFeedsCard extends React.Component {
 
 
     render () {
-      const { user, like, comment, change } = this.props
-      const posts = user.posts ? user.posts : []
+      // const { user, like, comment, change } = this.props
+      // const posts = user.posts ? user.posts : []
       const modalClassName = this.state.showLikes? 'display-block' : 'display-none'
-
+      const { post,user,like,comment,change } = this.props
       return (
         <>
-          {posts.slice(0).reverse().map((post => {
-            return <div key={post.id} className="wrap-center">
+            <div className="wrap-center">
               <div className="feeds-container">
                 <div className="feeds-header">
                   <img src={`${user.image}`} alt="test" />
@@ -79,7 +73,7 @@ class NewsFeedsCard extends React.Component {
                 </div>
                 
                 {post.comments ? post.comments.map(comment =>{
-                  return <div key={comment.id} className='post-comments-container'>
+                  return <div key={comment._id} className='post-comments-container'>
                     <div className='post-comment-field'>
                       <img src={`${comment.user.image}`} alt='commenters-img'></img>
                       <div className='commenters-comment'>
@@ -100,8 +94,9 @@ class NewsFeedsCard extends React.Component {
                   </figure>
 
                   <div className="field">
-                    <form onSubmit={e=>{e.preventDefault(); comment(`${post.owner}` , `${post._id}`)
-                    }}>
+                    <form onSubmit={e=>{ e.preventDefault(); comment(`${post.owner}` , `${post._id}`)}}>
+
+                    
                       <textarea
                         className="textarea"
                         name="content"
@@ -114,8 +109,6 @@ class NewsFeedsCard extends React.Component {
                 </div>
               </div>
             </div>
-          }))}
-
         </>
       )
     }

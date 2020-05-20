@@ -36,7 +36,7 @@ class ProfileInfo extends React.Component {
           <div className='follower-count'>  
             <div onClick={()=>this.showFollowers(true)} className='followers-icon profile-followers'></div> 
             <div className='modal'></div>
-              <div class='followers-container'>
+              <div className='followers-container'>
                 <div className={`${modalClassName}`}>
                 <div onClick={()=>this.showFollowers('')} className='back-cross'>Xxxx</div>
                 {followers? followers.map(follower => {
