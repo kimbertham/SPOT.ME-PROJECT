@@ -51,7 +51,7 @@ class Map extends React.Component {
               <span role="img"
                 aria-label="marker"
                 onClick={() =>this.handleModal(location.place_id)}
-                >🏋️</span>
+                >🐳</span>
             </Marker>
           })}
         </MapGl>
@@ -61,8 +61,8 @@ class Map extends React.Component {
         <div className={`modal ${modalClassName}`}>
           <div className='gym-modal-info modal-info'>
             <div className='gym-modal-text'>
-              <div onClick={this.hideModal}><p className='close'>X</p></div>
-              <h1>{name}</h1>
+              <div onClick={this.hideModal}><p>xxx</p></div>
+              <p>{name}</p>
               <p>{location}</p>
               <p>{businessStatus}</p>
               <Link to={`/locations/${place_id}`} > <p>see more...</p></Link>

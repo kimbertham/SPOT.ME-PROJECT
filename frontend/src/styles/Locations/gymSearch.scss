@@ -9,19 +9,15 @@
   color: #E5E5E5;
 }
 
-div.map {
-  margin-left: 220px;
-  z-index: 0 !important;
+.map {
+  margin-left: 200px;
 }
 
-.mapboxgl-canvas-container {
-  z-index: 0 !important;
-}
 
 
 .gym-search-container {
   background-color: #3DB2C2;
-  margin-left: 220px;
+  margin-left: 200px;
 
   .gym-search-form {
     display: flex;

@@ -19,8 +19,8 @@ class gymLocations extends React.Component {
     viewport: {
       latitude: 51.509865,
       longitude: -0.118092,
-      width: '84.7vw',
-      height: '85vh',
+      width: '86vw',
+      height: '82.5vh',
       zoom: 12
     }, 
     user: {},
@@ -71,12 +71,14 @@ class gymLocations extends React.Component {
     // console.log(this.state.data)
     return (
       <>
+        <div className="search">
         <GymSearch
           change={this.handleChange} 
           submit={this.handleSubmit}
           {...this.state.searchForm}
           flyTo={this.handleFlyTo}
         />
+        </div>
         <div className="sidebar">
           <ProfileSidebar 
           modal={this.state.modal}
@@ -89,7 +91,6 @@ class gymLocations extends React.Component {
           moveMap={this.moveMap}
           viewport={this.state.viewport}
           data={this.state.data}
-          style={{ zIndex: 0 }}
         />
         </div>
       </>
