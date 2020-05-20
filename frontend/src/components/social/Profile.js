@@ -22,11 +22,21 @@ state = {
   index: null
 }
 
+  handleChange = event => {
+    const data = { ...this.state.data, [event.target.name]: event.target.value }
+    this.setState( { data } )
+  }
+
+  
+// getData = async () => {
+//   const userId = this.props.match.params.userId
+//   const res = await getProfile(userId)
+//   this.setState( { user: res.data }) 
+// }
+
 async componentDidMount() {
   try {
-    const userId = this.props.match.params.userId
-    const res = await getProfile(userId)
-    this.setState( { user: res.data })   
+    this.getData() 
   } catch (err) {
     console.log(err)
   }
@@ -99,6 +109,7 @@ render(){
         <div className='profile-post'>
           <Post 
             user={this.state.user}
+            refresh={this.getData}
           />
 
       {posts.slice(0).reverse().map((post, i) => {
@@ -122,7 +133,6 @@ render(){
         </div>
       </div>
       <FriendsSidebar/>
-
     </div>
   )
 }

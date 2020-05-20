@@ -8,19 +8,6 @@ class NewsFeedsCard extends React.Component {
   
   }
 
-
-  // postAComment = async (postOwner, postId) => {
-  //   const userId= getUserId()
-  //   const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
-  //   const content = res.data
-  //   this.setState({content})
-  // }
-
-  // handleChange = event => {
-  //   const data = { ...this.state.data, [event.target.name]: event.target.value }
-  //   this.setState( {data} )
-  // }
-
   render () {
 
     const { user, like, group } = this.props

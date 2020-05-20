@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .profile-page-container {
 
@@ -14,6 +15,11 @@
 .profile-page-container{ 
   
   margin:20px;
+=======
+.profile-page-container {
+
+  padding: 80px 20px 0 20px;
+>>>>>>> development
   display: flex;
   justify-content: space-evenly;
 
@@ -25,7 +31,12 @@
 
 .mid-section {
   // border:3px solid black;
+<<<<<<< HEAD
   // width: 70vw;
+=======
+  display: flex;
+  width: 70vw;
+>>>>>>> development
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -71,6 +82,7 @@
       border-radius: 50%;
     }
   }
+<<<<<<< HEAD
 }
 .follower-count {
   display: flex;
@@ -85,15 +97,23 @@
     justify-content: center;
   }
 }
+=======
+
+>>>>>>> development
   .follower-count {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 33.3%;
     height: 25vh;
+<<<<<<< HEAD
 
 
   }
+=======
+  }
+
+>>>>>>> development
   .button-container {
     display: flex;
     justify-content: center;
@@ -101,6 +121,10 @@
     width: 33.3%;
     height: 25vh;
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
   .follow-button {
     background: #88BEF0;
     border-radius: 5px;
