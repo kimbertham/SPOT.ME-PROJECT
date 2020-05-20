@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Map from '../map/Map'
 import GymSearch from './GymSearch'
+import ProfileSidebar from '../common/ProfileSidebar'
 // import { FlyToInterpolator } from 'react-map-gl'
 
 
@@ -18,8 +19,8 @@ class gymLocations extends React.Component {
     viewport: {
       latitude: 51.509865,
       longitude: -0.118092,
-      width: '80vw',
-      height: '80vh',
+      width: '86.2vw',
+      height: '83.5vh',
       zoom: 12
     }
   }
@@ -67,7 +68,9 @@ class gymLocations extends React.Component {
           {...this.state.searchForm}
           flyTo={this.handleFlyTo}
         />
-        <div className="sidebar"></div>
+        <div className="sidebar">
+          <ProfileSidebar />
+        </div>
         <Map
           className="map-width"
           moveMap={this.moveMap}
