@@ -47,10 +47,21 @@ async componentDidMount() {
 }
 
 addLike = async (postId) => {
+<<<<<<< HEAD
   const userId = getUserId()
   const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' , withHeaders() )
   const user = res.data
   this.setState( { user })   
+=======
+  try {
+    const userId = getUserId()
+    const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' ,  withHeaders() )
+    
+    this.setState( { user: res.data }) 
+  } catch (err) {
+    console.log(err)
+  }
+>>>>>>> d5bce1a3b039a644102d8965887f37649b40cb0d
 }
 
 setModal =() => {

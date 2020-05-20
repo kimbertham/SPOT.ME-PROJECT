@@ -1,5 +1,6 @@
 import React from 'react'
 import ImageUpload from '../common/ImageUpload'
+<<<<<<< HEAD
 
 // * props: user
 class GroupPost extends React.Component {
@@ -7,6 +8,14 @@ state = {
   formData: {
     content: ''
   }
+=======
+import { postContent } from '../../lib/api'
+import axios from 'axios'
+ 
+// * props: user
+class GroupPost extends React.Component {
+state = {
+>>>>>>> d5bce1a3b039a644102d8965887f37649b40cb0d
   
 }
 
@@ -15,11 +24,6 @@ clearPost = () => {
   const formData = { formData: { content: '' } }
   this.setState({ formData })
   // console.log(this.state.formData)
-}
-
-handleChange = event => {
-  const formData = { ...this.state.formData, [event.target.name]: event.target.value }
-  this.setState({ formData })
 }
 
 // handleSubmit = async event => {
@@ -33,15 +37,15 @@ handleChange = event => {
 //   } catch (err) {
 //     console.log(err)
 //   }
-// }
+// } 
 
 render() {
   if (this.props.group === {}) return null
   // console.log(this.props.group)
   return (
-    <section className="wrap-center">
-      <div className="post-container is-half">
-        <form onSubmit={this.handleSubmit}>
+    <section className="post-container">
+      
+        <form onSubmit={this.props.handleSubmit}>
 
           <div className="top-section">
             <figure className="picture">
@@ -57,9 +61,9 @@ render() {
               <textarea
                 className="textarea"
                 name="content"
-                value={this.state.formData.content}
+                value={this.props.formData.content}
                 placeholder="Want to post something?"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
               />
             </div>
           </div>
@@ -87,7 +91,7 @@ render() {
             </div>
           </div>
         </form>
-      </div>
+      
     </section>
   )
 }
