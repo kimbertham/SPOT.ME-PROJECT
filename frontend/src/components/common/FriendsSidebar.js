@@ -1,4 +1,7 @@
 import React from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { notify } from '../../lib/notifications'
 import { getProfile, withHeaders } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 import axios from 'axios'
@@ -40,11 +43,24 @@ class FriendsSidebar extends React.Component {
     event.preventDefault()
     try {
       await axios.post(`/api//messages/${getUserId()}/post/${this.state.chatId}`,this.state.chat , withHeaders())
+      notify('Message deleted!')
       await this.getData()
       await this.getChat(this.state.chatId)
     } catch (err) {
       console.log(err)
     }
+  }
+
+  deleteMessage = async (event, postId) => {
+    try {
+      await axios.delete(`/api//messages/${getUserId()}/delete/${postId}`, withHeaders())
+
+      // await this.getData()
+      await this.getChat()
+    } catch (err) {
+      console.log(err)
+    }
+    
   }
 
   getChat = id => {
@@ -62,6 +78,7 @@ class FriendsSidebar extends React.Component {
     const modalClassName = modal ? 'display-block' : 'display-none'
 
     return ( <div className="right-section">
+      <ToastContainer/>
       <div className='sidebar-head'> 
         <h3 className="contacts">Contacts</h3>
       </div>
@@ -93,7 +110,7 @@ class FriendsSidebar extends React.Component {
               return <div key={user.id}
                 className={ entry.sender === user.id ? 'my-message' : 'their-message' }
               >{entry.content}
-                <p>X</p>
+                <p onClick={(event) => this.deleteMessage(event, entry._id)}>X</p>
               </div>
           
             })}
