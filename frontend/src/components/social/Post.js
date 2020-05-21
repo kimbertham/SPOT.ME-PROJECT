@@ -10,6 +10,8 @@ state = {
   }
 }
 
+
+
 clearPost = () => {
   // * clears state but doesn't clear the input box
   const formData = { formData: { content: '' } }
@@ -36,6 +38,7 @@ handleSubmit = async event => {
 
 render() {
   if (this.props.user === {}) return null
+  let animation = ''
   return (
     <section className="post-container">
         <form onSubmit={this.handleSubmit}>
@@ -52,7 +55,7 @@ render() {
           
             <div className="field">
               <textarea
-                className="textarea"
+                className="textarea "
                 name="content"
                 value={this.state.formData.content}
                 placeholder="Want to post something?"

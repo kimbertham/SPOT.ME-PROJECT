@@ -26,7 +26,6 @@ handleInput = async({target}) => {
       groups: []
     })
   }
-   
 }
 
 // imageStyles = {

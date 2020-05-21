@@ -14,7 +14,7 @@ class Home extends React.Component {
 
   getData = async () => {
     const res = await getProfile(getUserId())
-    console.log(res)
+    // console.log(res)
     this.setState( { user: res.data }) 
   }
   

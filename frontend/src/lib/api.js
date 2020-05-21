@@ -15,7 +15,7 @@ export const postContent = (content, userId) => {
 
 export const getProfile = userId => {
   console.log(userId)
-  return axios.get(`${baseUrl}/profile/${userId}`)
+  return Promise.resolve(axios.get(`${baseUrl}/profile/${userId}`))
 }
 
 export const getUserGroups = () => {
