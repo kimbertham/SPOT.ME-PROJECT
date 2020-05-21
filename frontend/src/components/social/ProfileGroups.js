@@ -55,7 +55,7 @@ render(){
               <label className="label"> Group Name </label>
               <div className="control"> 
               <input 
-                className=' input group-input' 
+                className=' input is-info group-input' 
                 placeholder="Group name here"
                 name="name"
                 onChange={this.handleChange}
@@ -67,7 +67,7 @@ render(){
               <label className="label"> Description </label>
               <div className="control">
                 <input 
-                className='input group-input'
+                className='input is-info group-input'
                 placeholder="Group description here"
                 name="description"
                 onChange={this.handleChange}
@@ -79,7 +79,7 @@ render(){
               <label className="label"> Image Url </label>
               <div className="control">
                 <input 
-                className='input group-input'
+                className='input is-info group-input'
                 placeholder="Group image here"
                 name="image"
                 onChange={this.handleChange}
@@ -87,7 +87,7 @@ render(){
               />
               </div>
             </div>
-            <button type="submit" className="button is-fullwidth is-warning">Send!</button>
+            <button type="submit" className="button is-fullwidth is-rounded is-link">Send!</button>
           </form>
         </div>
       </div>
