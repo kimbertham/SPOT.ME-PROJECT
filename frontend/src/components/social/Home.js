@@ -12,7 +12,6 @@ import { withHeaders, getProfile, getLike,
 class Home extends React.Component {
   state = {
     user: {},
-  
     data: {
       content: ''
     },
@@ -24,12 +23,12 @@ class Home extends React.Component {
   //! get newsfeed Array
     getData = async () => {
       const res = await getProfile(getUserId())
-      // console.log(res)
       this.setState( { user: res.data }) 
     }
 
   async componentDidMount() {
     const postRes = await axios.get('/api/news', withHeaders())
+    await this.getData()
     const postsArray = postRes.data
     this.setState({ postsArray })
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { getUserId } from '../../lib/auth'
 import { defaultImage } from '../../lib/notifications'
 
