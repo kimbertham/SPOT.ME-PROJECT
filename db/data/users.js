@@ -30,8 +30,8 @@ module.exports = [
     image: 'https://ca.slack-edge.com/T0351JZQ0-UPF4VBW6A-aa58c07cbaf1-72'
   },
   {
-    username: 'Kimberly Tham',
-    firstName: 'Kimberly',
+    username: 'Kimberley Tham',
+    firstName: 'Kimberley',
     lastName: 'Tham',
     email: 'kim@email',
     password: 'pass',

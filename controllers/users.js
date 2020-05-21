@@ -4,7 +4,10 @@ const Group = require('../models/Group')
 async function profileShow(req, res) {
   const userId = req.params.userId
   try {
-    const user = await User.findById(userId).populate('posts.comments.user').populate('followers')
+    const user = await User.findById(userId)
+      .populate('posts.comments.user')
+      .populate('posts.likes')
+      .populate('followers')
     res.status(200).json(user)
   } catch (err) {
     res.json(err)
@@ -16,7 +19,6 @@ async function userUpdate(req, res) {
     console.log('got')
     const userId = req.params.userId
     const user = await User.findById(userId)
-    console.log(req.body)
     Object.assign(user, req.body) 
     await user.save()
     res.status(202).json(user)
@@ -25,6 +27,10 @@ async function userUpdate(req, res) {
     res.status(422).json(err)
   }
 }
+
+// async function getDataById(req,res, next) {
+//     const ownerId = req.params.ownerId
+// }
 
 
 // -------- GET USERS GROUPS ---------------

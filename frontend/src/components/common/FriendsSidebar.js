@@ -1,14 +1,12 @@
 import React from 'react'
-import axios from 'axios'
 import { getProfile } from '../../lib/api'
-import { withHeaders } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 
 class FriendsSidebar extends React.Component {
 
   state = {
     user : {},
-    modal: false
+    // modal: false
   }
 
   async componentDidMount() {
@@ -23,7 +21,7 @@ class FriendsSidebar extends React.Component {
 toggleModal = () => this.setState({ modal : !this.state.modal })
 
   render() {
-    const { user, modal } = this.state
+    const { user } = this.state
 
   return (
 <div className="right-section">

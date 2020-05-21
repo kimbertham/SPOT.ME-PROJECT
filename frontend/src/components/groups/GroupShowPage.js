@@ -2,11 +2,11 @@ import React from 'react'
 import GroupSidebar from './GroupSidebar'
 import GroupInfo from './GroupInfo'
 import GroupPost from './GroupPost'
-import GroupNewsFeedsCard from './GroupNewsFeedsCard'
 import { getGroup, getProfile } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 import axios from 'axios'
 import FriendsSidebar from '../common/FriendsSidebar'
+import GroupNewsFeedsCard from './GroupNewsFeedsCard'
 
 class GroupShow extends React.Component {
   state = {
@@ -92,7 +92,7 @@ class GroupShow extends React.Component {
     // console.log(postId);
 
     try {
-      const userId = getUserId()
+      // const userId = getUserId()
       await axios.put(`/api/groups/${this.state.group._id}/post/${postId}/like`,'' ,  { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` } } )
       const res = await getGroup(this.state.group._id)
       this.setState({

@@ -23,7 +23,7 @@ handleSubmit =  async (event) => {
   event.preventDefault()
   const userId = this.props.user
   await axios.post(`/api/groups/new/${userId}`, this.state.group,
-  { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} })
+    { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}` } })
 }
 
   render(){
@@ -32,20 +32,20 @@ handleSubmit =  async (event) => {
   return(
 
     <>
-      {groups? groups.map(group => {
-        return <Link to={`/groups/${group._id}`}>
+      {groups? groups.map((group,i) => {
+        return <Link key={i} to={`/groups/${group._id}`}>
           <div key={ group.id } className='group-field'>
           <img className='group-icon' src={ group.image ? group.image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1xllWBpckzi_eEfVyJuUcy9WEWObmCUmTsENKt85aXU67KSnF&usqp=CAU'} alt='group'/>
           <div className='group-info'>
         <p>{ group.name }</p>
-          </div>
         </div>
+          </div>
         </Link>
-    }) : ' ' }
+      }) : ' ' }
 
 
 <div className={`${modalClassName} modal `}> 
-    <div className={`${modalClassName} modal-info modal-group`}> 
+    <div className={`${modalClassName} modal-group modal-pop`}> 
     <div onClick={this.props.toggleModal}> X</div>
     <h1> New Group </h1>
         <form onSubmit={this.handleSubmit}className="group-profile-form">
