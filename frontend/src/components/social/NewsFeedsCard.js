@@ -36,7 +36,7 @@ class NewsFeedsCard extends React.Component {
 
             <div className="feeds-image">
               <figure>
-                {post.image ? <img src={require(`${post.image}`)} alt="test"/> : null}
+                {post.image ? <img src={post.image} alt="test"/> : null}
               </figure>
             </div>
             <div 
@@ -53,11 +53,11 @@ class NewsFeedsCard extends React.Component {
                 alt="logo"/>
                   
               <div className={`likes-hover ${i.toString() === indexState ? 'display-block' : 'display-none'}`}>  
-                {post.likes.map((like,i) => {
+                {post.likes? post.likes.map((like,i) => {
                   return <p key={i}>{`${like.firstName}`}{`${like.lastName}`} liked this</p>
-                })}
+                }) : null}
               </div>
-              <p><span>{post.likes.length}</span>likes</p>
+              <p><span>{post.likes.length > 0? post.likes.length : 0 }</span> likes</p>
             </div>
 
             <div className="feeds-buttons">

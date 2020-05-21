@@ -75,6 +75,7 @@ render(){
   return (
     <div className='profile-page-container'>
         <div className='left-section'> 
+
       <ProfileSidebar 
         modal={this.state.modal}
         user={this.state.user.id}/>
@@ -91,6 +92,7 @@ render(){
             refresh={this.getData}
           />
       {posts.slice(0).reverse().map((post, i) => {
+
           return <NewsFeedsCard
             post={post}
             user={this.state.user}

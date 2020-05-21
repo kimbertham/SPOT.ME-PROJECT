@@ -8,6 +8,8 @@ const defaultImage = 'https://bit.ly/3g47LRX'
 class ProfileInfo extends React.Component {
   state ={
     showFollowers: false
+    
+    
   }
 
     followUser = async () =>{
@@ -15,14 +17,14 @@ class ProfileInfo extends React.Component {
       followAUser(userId)
     }
 
-  showFollowers = (value ) => {
-    this.setState({ showFollowers: value })
-  }
+    showFollowers = (value ) => {
+    this.setState({showFollowers: value})
+    }
 
   render () {
-    const { user } = this.props
-    const followers = user.followers ? user.followers : []
-    const modalClassName = this.state.showFollowers ? 'display-block' : 'display-none'
+    const {user, move} = this.props
+    const followers = user.followers? user.followers : []
+    const modalClassName = this.state.showFollowers? 'display-block' : 'display-none'
     const currentUser = getUserId()
     const profileUser = this.props.user.id
 
@@ -38,10 +40,10 @@ class ProfileInfo extends React.Component {
           </div>
           <div className='info-top'>
 
-            <div className='follower-count'>  
-              <div onClick={()=>this.showFollowers(true)} 
-                className='followers-icon profile-followers'>see followers..</div> 
-              <div className={'modal'}></div>
+          <div className='follower-count'>  
+            <div onClick={()=>{this.showFollowers(true)}} 
+            className='followers-icon profile-followers'>see followers..</div> 
+            <div className={'modal'}></div>
 
 
 
@@ -56,30 +58,30 @@ class ProfileInfo extends React.Component {
                     {`${user.firstName}'s Followers`} 
                   </h1>
         
-                  {followers.length > 0 ? followers.map((follower, i) => {
-                    return <Link key={i} to={`/profile/${follower.id}`}>
-                      <div className='followers-field'>
-                        <img alt='follower-img' className='follower-img'
-                          src={follower.image ? `${follower.image}` : defaultImage } />
-                        <p>{`${follower.firstName} ${follower.lastName}`}</p>
-                      </div>
-                    </Link>
-                  }) : 
-                    <p style={{ color: 'red' }}>no followers to show</p> }
-                </div>
-              </div>
-            </div>
-            {/* //!--------------------- */}
+        {followers.length > 0? followers.map((follower, i) => {
+            return <div 
+            onClick={()=>{move(follower)}} 
+            className='followers-field'>
+            <img alt='follower-img' className='follower-img'
+              src={follower.image?`${follower.image}` : defaultImage } />
+            <p>{`${follower.firstName} ${follower.lastName}`}</p>
+          </div>
+        }) : 
+          <p style={{ color: 'red' }}>'no followers to show' </p> }
+    </div>
+  </div>
+</div>
+{/* //!--------------------- */}
 
-            <div className='profile-pic-container'>
-              <img className='profile-pic' 
-                src={user.image ? user.image : defaultImage}  
-                alt='profile-pic'/>
-            </div>
-            <div className='button-container'>
-              <button 
-                onClick={this.followUser} 
-                className='follow-button'> 
+        <div className='profile-pic-container'>
+        <img className='profile-pic' 
+        src={user.image? user.image : defaultImage}  
+        alt='profile-pic'/>
+        </div>
+          <div className='button-container'>
+          <button 
+          onClick={this.followUser} 
+          className='follow-button'> 
           Follow 
               </button>
             </div>

@@ -3,11 +3,10 @@ import axios from 'axios'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slider from 'react-slick'
-
 import Reviews from './gymSections/Reviews'
 import GymNav from './gymSections/GymNav'
 import GymInfo from './gymSections/GymInfo'
-// import GymInfo from './gymSections/GymInfo'
+
 
 
 class gymShow extends React.Component {
@@ -69,19 +68,21 @@ class gymShow extends React.Component {
     return (  
       <div className='gym-show-page'> 
         <div className='page-top'>
-      
-          <div className='gym-images'>
-            <div className='slider-container'>
-              <Slider 
-                asNavFor={this.state.nav2}
-                ref={slider => (this.slider1 = slider)}
-                className='slides'
-                lazyLoad={true}
-                slidesToShow={1}
-                speeds={500}>
-                {this.state.photoReferences.map(photo => {
-                  return <div className='slide' key={photo} >
-                    <img  alt='gym-pics' className='gym-img' src={`${baseUrl}${photo}${key}`}/></div> 
+
+
+
+      <div className='gym-images'>
+        <div className='slider-container'>
+          <Slider 
+            asNavFor={this.state.nav2}
+            ref={slider => (this.slider1 = slider)}
+            className='slides'
+            lazyLoad={true}
+            slidesToShow={1}
+            speeds={500}>
+              {this.state.photoReferences.map(photo => {
+                return <div className='slide'>
+                  <img  alt='gym-pics' className='gym-img' src={`${baseUrl}${photo}${key}`}/></div> 
                 })}
           </Slider>
             <div className='slider-two'>

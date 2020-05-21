@@ -10,8 +10,6 @@ state = {
   }
 }
 
-
-
 clearPost = () => {
   // * clears state but doesn't clear the input box
   const formData = { formData: { content: '' } }
