@@ -12,8 +12,20 @@ async function toggleFollow(req,res,next){
   try {
     const userToFollow = await User.findById(req.params.userId)
     const followingUser = await User.findById(req.currentUser._id)
-    console.log(userToFollow)
-    console.log(followingUser)
+    // const infoCurrentUser = {
+    //   _id: followingUser.id, 
+    //   name: followingUser.name, 
+    //   image: followingUser.image
+    // }
+
+    // const infoToFollow = {
+    //   _id: userToFollow.id, 
+    //   name: userToFollow.name, 
+    //   image: userToFollow.image
+    // }
+
+    // console.log(userToFollow)
+    // console.log(followingUser)
     
     if (!userToFollow || !followingUser){
       throw new Error('Not Found')
@@ -28,6 +40,7 @@ async function toggleFollow(req,res,next){
       userToFollow.followers.push(req.currentUser._id)
       followingUser.following.push(userToFollow._id)
     }
+    console.log('followed')
     await userToFollow.save()
     await followingUser.save()
     res.status(202).json('FOLLOW TOGGLED!')

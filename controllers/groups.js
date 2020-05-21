@@ -105,7 +105,7 @@ async function leaveGroup(req,res,next) {
     if (!user.equals(req.currentUser._id)){
       throw new Error('Not authorized to do this')
     }
-    console.log(group.members)
+    // console.log(group.members)
     group.members.pull(user)
     await group.save()
     res.status(201).json('LEFT GROUP SUCCESSFULLY')
