@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Map from '../map/Map'
 import GymSearch from './GymSearch'
+import ProfileSidebar from '../common/ProfileSidebar'
 // import { FlyToInterpolator } from 'react-map-gl'
 
 
@@ -18,10 +19,12 @@ class gymLocations extends React.Component {
     viewport: {
       latitude: 51.509865,
       longitude: -0.118092,
-      width: '80vw',
-      height: '80vh',
+      width: '84.5vw',
+      height: '82.5vh',
       zoom: 12
-    }
+    }, 
+    user: {},
+    modal: false
   }
 
   handleChange = event => {
@@ -51,21 +54,40 @@ class gymLocations extends React.Component {
     this.setState({ viewport })
   }
 
+  setModal =() => {
+    this.setState({ modal: true })
+  }
+  hideModal = () => {
+    this.setState({ modal: false })
+  }
+
   render(){
     return (
       <>
+      <div className="locations">
+        <div className="search">
         <GymSearch
           change={this.handleChange} 
           submit={this.handleSubmit}
           {...this.state.searchForm}
           flyTo={this.handleFlyTo}
         />
-
-        <Map 
+        </div>
+        <div className="map">
+        <Map
           moveMap={this.moveMap}
           viewport={this.state.viewport}
           data={this.state.data}
         />
+        </div>
+      </div>
+      <div className="sidebar">
+          <ProfileSidebar 
+          modal={this.state.modal}
+          setModal={this.setModal}
+          hideModal={this.hideModal}
+          user={this.state.user.id}/>
+        </div>
       </>
     )
   }
