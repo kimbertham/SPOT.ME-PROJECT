@@ -4,7 +4,7 @@ const Group = require('../models/Group')
 async function profileShow(req, res) {
   const userId = req.params.userId
   try {
-    const user = await User.findById(userId).populate('posts.comments.user')
+    const user = await User.findById(userId).populate('posts.comments.user').populate('followers')
     res.status(200).json(user)
   } catch (err) {
     res.json(err)
