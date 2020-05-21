@@ -27,6 +27,7 @@ async function getNewsFeed(req,res,next){
 
     // get all groups joined by the user
     const groups = await Group.find()
+    console.log(groups)
     const usersGroups = groups.filter(group => {
       let userInGroup = false
       group.members.forEach(member => {
