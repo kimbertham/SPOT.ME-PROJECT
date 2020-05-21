@@ -36,39 +36,43 @@ handleInput = async({ target }) => {
 render(){
   return (
     <div className="navbar-item has-dropdown is-hoverable">
-      <input type='text' value={this.state.input} placeholder='Looking for something?' onChange={this.handleInput} />
+      <input type='text' className='searchBarNav' value={this.state.input} placeholder='Looking for something?' onChange={this.handleInput} />
       <div className="navbar-dropdown is-boxed">
+      { this.state.users.length > 0 && this.state.users.length > 0  ? '' : <div className="navbar-item centered"><p>No Results</p></div>}
+      { this.state.users.length > 0 ? <div className="navbar-item centered"><p>People</p></div> : ''}
         {this.state.users.map(user => {
           return (
-            <div className="navbar-item">
-              <Link to={`/profile/${user._id}`}>
+            <div className="navbar-item ">
+            
+              <Link className='inline-link' to={`/profile/${user._id}`}>
               
                 <img 
-                  className="profile-picture"
+                  className="searchbar-profile-picture"
                   loading='lazy'
                   src={user.image} 
                   alt="logo" 
                 />
-                <div className="field">
+                <div className="field field-searchbar-item">
                   <p className="">{user.username}</p>
                   <hr className="navbar-divider" />
                 </div>
               </Link>
+              
             </div>
           )
         })}
-        { this.state.groups.length > 0 ? <div className="navbar-item">Groups</div> : ''}
+        { this.state.groups.length > 0 ? <div className="navbar-item centered"><p>Groups</p></div> : ''}
         {this.state.groups.map(group => {
           return (
             <div className="navbar-item">
-              <Link to={`/groups/${group._id}`}>
+              <Link className='inline-link' to={`/groups/${group._id}`}>
                 <img 
-                  className="profile-picture"
+                  className="searchbar-profile-picture"
                   loading='lazy'
                   src={group.image} 
                   alt="logo" 
                 />
-                <div className="field">
+                <div className="field field-searchbar-item">
                   <p className="">{group.name}</p>
                   <hr className="navbar-divider" />
                 </div>
