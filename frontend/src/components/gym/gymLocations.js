@@ -35,14 +35,9 @@ class gymLocations extends React.Component {
   async handleGeocoding() {
     const res = await axios.post('/api/locations/co' , { ...this.state.searchForm })
     const searchForm = { ...this.state.searchForm, latitude: res.data.lat, longitude: res.data.lng }
-    const viewport= {...this.state.viewport, latitude: res.data.lat, longitude: res.data.lng }
+    const viewport = { ...this.state.viewport, latitude: res.data.lat, longitude: res.data.lng }
     this.setState({ searchForm, viewport })
-
   }
-
-//   handleFlyTo = () => {
-//     this.map.flyTo({ center: [-118.4107187, 33.9415889] })
-// }
 
   handleSubmit = async event => {
     event.preventDefault()
@@ -55,9 +50,8 @@ class gymLocations extends React.Component {
     }
   }
 
-
   moveMap = (viewport) => {
-      this.setState({ viewport })
+    this.setState({ viewport })
   }
 
   setModal =() => {
@@ -68,7 +62,6 @@ class gymLocations extends React.Component {
   }
 
   render(){
-    // console.log(this.state.data)
     return (
       <>
       <div className="locations">

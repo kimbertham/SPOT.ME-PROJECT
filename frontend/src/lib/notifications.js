@@ -10,3 +10,5 @@ export const notify = (message) => toast( message , {
   draggable: true,
   progress: undefined
 })
+
+ export const defaultImage = 'https://bit.ly/3g47LRX'

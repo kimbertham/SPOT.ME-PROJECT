@@ -1,8 +1,6 @@
 import React from 'react'
 import ImageUpload from '../common/ImageUpload'
-import { postContent } from '../../lib/api'
-import axios from 'axios'
- 
+
 // * props: user
 class GroupPost extends React.Component {
 state = {
@@ -16,18 +14,6 @@ clearPost = () => {
   // console.log(this.state.formData)
 }
 
-// handleSubmit = async event => {
-//   event.preventDefault()
-//   try {
-//     await postContent(this.state.formData, this.props.user.id)
-//     console.log('GroupPost sent!')
-//     this.clearPost()
-    
-    
-//   } catch (err) {
-//     console.log(err)
-//   }
-// } 
 
 render() {
   if (this.props.group === {}) return null

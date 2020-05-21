@@ -21,6 +21,11 @@
 
 //! profile info
 
+.followers-icon{
+  background-image: url('https://i.imgur.com/dmix3Do.jpg');
+  background-size: cover;
+}
+
 .edit-profile {
   width: 35px;
   float: right;
@@ -45,6 +50,11 @@
   .follower-count {
     width: 33%;
     height: 25vh;
+    .profile-followers{
+      width: 40%;
+      height: 40%;
+      // border: 2px solid red;
+    }
   }
 
   .profile-pic-container {
@@ -59,7 +69,6 @@
       border-radius: 50%;
     }
   }
-
   .follower-count {
     display: flex;
     justify-content: center;
@@ -75,7 +84,6 @@
     width: 33.3%;
     height: 25vh;
   }
-
   .follow-button {
     background: #88BEF0;
     border-radius: 5px;

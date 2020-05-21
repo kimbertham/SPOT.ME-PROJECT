@@ -15,9 +15,7 @@ class Navbar extends React.Component{
   async componentDidMount() {
     try {
       const userId = getUserId()
-      console.log(userId)
       const res = await getProfile(userId)
-      console.log(res.data)
       this.setState({user: res.data })
     } catch(err) {
       console.log(err)

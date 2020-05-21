@@ -12,6 +12,8 @@ import './styles/Profile/profilegroups.scss'
 import './styles/Profile/sidebar.scss'
 import './styles/common/posts.scss'
 import './styles/common/navbar.scss'
+import './styles/newsFeed.scss'
+
 import App from './App'
 
 ReactDOM.render(<App />, document.getElementById('root'))
