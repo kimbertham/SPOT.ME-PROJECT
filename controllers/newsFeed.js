@@ -7,6 +7,7 @@ const Group = require('../models/Group')
 // no body required
 // valid token required
 // Will return an array of ALL posts from joined groups and followed users
+//! need to populate owner 
 
 async function getNewsFeed(req,res,next){
   console.log('GET FEED')
@@ -22,7 +23,7 @@ async function getNewsFeed(req,res,next){
       followedUser.posts.forEach(posts => {
         postArray.push(posts)
       })
-    })
+    }) 
     // get all groups joined by the user
     const groups = await Group.find()
     const usersGroups = groups.filter(group => {
