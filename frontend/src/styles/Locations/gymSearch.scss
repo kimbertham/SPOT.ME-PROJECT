@@ -73,3 +73,53 @@
     margin-left: 10px;
   }
 }
+
+.searchBarNav {
+  width: 300px;
+  height: 30px;
+  margin-top: 15px;
+  border-radius: 5px;
+
+}
+
+.inline-link {
+  width:100%;
+  display: flex;
+  flex-wrap: nowrap;
+  
+  p {
+    display: inline-block;
+    
+    margin-left: 10px;
+    margin-bottom: 15px;
+    
+  }
+  margin: 0;
+}
+
+.no-padd {
+  padding: 0;
+}
+
+.item-styling {
+  display: block;
+}
+
+.centered {
+  text-align: center;
+  margin-bottom: 15px;
+  margin-left: 35%;
+}
+
+.searchbar-profile-picture {
+  transform: scale(1.5);
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-top: -2px;
+  margin-right: 5px;
+}
+
+.field-searchbar-item {
+  width:100%
+}
