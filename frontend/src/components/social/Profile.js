@@ -13,9 +13,9 @@ class Profile extends React.Component {
 state = {
   user: {},
   modal: false,
-  data : {
+  data: {
     content: ''
-  },
+  }
 }
 
 getData = async () => {
@@ -50,10 +50,10 @@ handleChange = event => {
 
   postAComment = async (postOwner, postId) => {
     console.log(this.state)
-  const userId = getUserId()
-  const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
-  const content = res.data
-}
+    const userId = getUserId()
+    const res = await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
+    const content = res.data
+  }
 
 setModal =() => {
   this.setState({ modal: true })

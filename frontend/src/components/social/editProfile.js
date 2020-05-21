@@ -5,7 +5,7 @@ import axios from 'axios'
 
 class editProfile extends React.Component {
 state = { 
-  user : {}
+  user: {}
 }
 
 async componentDidMount() {
@@ -19,16 +19,16 @@ async componentDidMount() {
 }
 
   handleSubmit = async event => {
-  event.preventDefault()
-  try {
-    const userId = this.props.match.params.userId
-    const data = { ...this.state.user }
-    await axios.post(`/api/profile/${userId}/edit`, data)
-    this.props.history.push(`/profile/${userId}`)
-  } catch (err) {
-    console.log(err)
+    event.preventDefault()
+    try {
+      const userId = this.props.match.params.userId
+      const data = { ...this.state.user }
+      await axios.post(`/api/profile/${userId}/edit`, data)
+      this.props.history.push(`/profile/${userId}`)
+    } catch (err) {
+      console.log(err)
+    }
   }
-}
 
 returnPage = () => {
   const userId = this.props.match.params.userId
@@ -38,7 +38,7 @@ returnPage = () => {
 
 handleChange = event => {
   const user = { ...this.state.user, [event.target.name]: event.target.value }
-  this.setState({ user})
+  this.setState({ user })
 }
 
 render() {
@@ -47,7 +47,7 @@ render() {
   return (
     <div className='edit-profile-container'>
       <div className='edit-form-container'> 
-      <div onClick={this.returnPage} className='back-cross'><p> X </p></div>
+        <div onClick={this.returnPage} className='back-cross'><p> X </p></div>
         <form onSubmit={this.handleSubmit} className="edit-profile-form">
           <div className="edit-field">
             <label className="label"> First Name </label>

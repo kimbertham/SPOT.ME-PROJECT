@@ -1,6 +1,7 @@
 .locations {
   position: fixed;
-  margin-top: 50px;
+  top: 60px;
+  left: 300px;
 }
 
 .sidebar {
@@ -9,18 +10,13 @@
   position: absolute;
   top: 60px;
   left: 0px;
-  width: 200px;
+  width: 220px;
   height: 100%;
   color: #E5E5E5;
 }
 
-.map {
-  margin-left: 200px;
-}
-
 .gym-search-container {
   background-color: #3DB2C2;
-  margin-left: 200px;
 
   .gym-search-form {
     display: flex;
@@ -53,5 +49,27 @@
 
   button:hover {
     background-color:#6A6767;
+  }
+}
+
+.gym-modal-info {
+  height: 150px;
+  width: 600px;
+  background-color: white;
+
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    color: grey;
+  }
+
+  h1 {
+    font-weight: 700;
+    margin-left: 10px;
+  }
+
+  p {
+    margin-left: 10px;
   }
 }

@@ -1,4 +1,4 @@
- import React from 'react'
+import React from 'react'
 import axios from 'axios'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -39,8 +39,8 @@ class gymShow extends React.Component {
       const gymId = this.props.match.params.placeId
       const response = await axios.post(`/api/locations/${gymId}`)
       const data = response.data
-      this.setState({ data})
-      this.setState({  nav1: this.slider1, nav2: this.slider2})
+      this.setState({ data })
+      this.setState({  nav1: this.slider1, nav2: this.slider2 })
       await this.getImages()
     } catch (err) {
       console.log(err)
@@ -74,43 +74,43 @@ class gymShow extends React.Component {
       <div className='gym-show-page'> 
         <div className='page-top'>
       
-      <div className='gym-images'>
-        <div className='slider-container'>
-          <Slider 
-            asNavFor={this.state.nav2}
-            ref={slider => (this.slider1 = slider)}
-            className='slides'
-            lazyLoad={true}
-            slidesToShow={1}
-            speeds={500}>
-              {this.state.photoReferences.map(photo => {
-                return <div className='slide'>
-                  <img  alt='gym-pics' className='gym-img' src={`${baseUrl}${photo}${key}`}/></div> 
+          <div className='gym-images'>
+            <div className='slider-container'>
+              <Slider 
+                asNavFor={this.state.nav2}
+                ref={slider => (this.slider1 = slider)}
+                className='slides'
+                lazyLoad={true}
+                slidesToShow={1}
+                speeds={500}>
+                {this.state.photoReferences.map(photo => {
+                  return <div className='slide' key={photo} >
+                    <img  alt='gym-pics' className='gym-img' src={`${baseUrl}${photo}${key}`}/></div> 
                 })}
-          </Slider>
-            <div className='slider-two'>
-          <Slider 
-            asNavFor={this.state.nav1}
-            ref={slider => (this.slider2 = slider)}
-            slidesToShow={7}
-            swipeToSlide={true}
-            focusOnSelect={true}
-            className='slides-two'> 
-              {this.state.photoReferences.map(photo => {
-                return <div className='slide-two'>
-                <img alt='gym-pics'className='slider-two-img' src={`${baseUrl}${photo}${key}`}/> </div> 
-              })}
-          </Slider>
-        </div>
+              </Slider>
+              <div className='slider-two'>
+                <Slider 
+                  asNavFor={this.state.nav1}
+                  ref={slider => (this.slider2 = slider)}
+                  slidesToShow={7}
+                  swipeToSlide={true}
+                  focusOnSelect={true}
+                  className='slides-two'> 
+                  {this.state.photoReferences.map(photo => {
+                    return <div className='slide-two' key={photo}>
+                      <img alt='gym-pics'className='slider-two-img' src={`${baseUrl}${photo}${key}`}/> </div> 
+                  })}
+                </Slider>
+              </div>
 
-        <GymNav getSection={this.getSection} />
+              <GymNav getSection={this.getSection} />
 
-        <div className="changing-sections">
-          <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
+              <div className="changing-sections">
+                <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-      </div>
-      </div>
       </div>
     ) 
   }

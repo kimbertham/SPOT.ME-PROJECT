@@ -9,7 +9,6 @@ const commentSchema = new mongoose.Schema({
   timestamps: true
 })
 
-
 const PostSchema = new mongoose.Schema({
   content: { type: String, required: true },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },

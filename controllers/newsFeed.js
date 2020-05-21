@@ -7,13 +7,14 @@ const Group = require('../models/Group')
 // no body required
 // valid token required
 // Will return an array of ALL posts from joined groups and followed users
+//! need to populate owner 
 
 async function getNewsFeed(req,res,next){
   console.log('GET FEED')
   const postArray = []
   try {
     // get user and populate following field
-    const user = await User.findById(req.currentUser._id).populate('following')
+    const user = await (await User.findById(req.currentUser._id).populate('following'))
     if (!user) {
       throw new Error('Not Found')
     }
@@ -22,7 +23,7 @@ async function getNewsFeed(req,res,next){
       followedUser.posts.forEach(posts => {
         postArray.push(posts)
       })
-    })
+    }) 
     // get all groups joined by the user
     const groups = await Group.find()
     const usersGroups = groups.filter(group => {
@@ -41,9 +42,11 @@ async function getNewsFeed(req,res,next){
       })
     })
     console.log(postArray)
+
     postArray.sort(function(a, b){
       return b.updatedAt - a.updatedAt
     })
+    console.log(postArray)
     res.status(200).json(postArray)
   } catch (err){
     next(err)
@@ -66,3 +69,5 @@ module.exports = {
 // get group's posts
 // add to array
 // sort by date
+
+// Post a comment on the newsFeed 

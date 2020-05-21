@@ -7,9 +7,8 @@ import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Profile from './components/social/Profile'
 import editProfile from './components/social/editProfile'
-import Home from './components/social/Home'
-import NewsFeedsCard from './components/social/NewsFeedsCard'
 import GroupShow from './components/groups/GroupShowPage'
+import Home from './components/social/Home'
 
 
 const App = () => {
@@ -25,8 +24,8 @@ const App = () => {
           <Route path='/profile/:userId/edit' component={editProfile} />
           <Route path='/profile/:userId' component={Profile}/>
           <Route path='/home' component={Home}/>
-          <Route path='/feed/:userId' component={NewsFeedsCard}/>
           <Route path='/groups/:groupId' component={GroupShow}/>
+
         </Switch>
       </BrowserRouter>
     </>
