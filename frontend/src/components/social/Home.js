@@ -32,8 +32,6 @@ class Home extends React.Component {
     this.setState({ postsArray })
   }
 
-
-    
     addLike = async (postId) => {
       await getLike(userId, postId)
       const res = await getProfile(userId)
