@@ -77,11 +77,11 @@ render(){
   return (
     <div className='profile-page-container'>
         
-        <div className='left-section'> 
-      <ProfileSidebar 
-        modal={this.state.modal}
-        user={this.state.user.id}/>
-        </div>
+        <ProfileSidebar 
+            modal={this.state.modal}
+            setModal={this.setModal}
+            hideModal={this.hideModal}
+            user={this.state.user.id}/>
 
       <div className='mid-section'>
         <div className='profile-info-component'>

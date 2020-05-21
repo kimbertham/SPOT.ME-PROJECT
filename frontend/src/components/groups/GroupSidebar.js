@@ -16,7 +16,7 @@ function GroupSidebar(props) {
         <div className="groups-list">
           {members ? members.map(member => {
             return (
-              <div key={member._id}>
+              <div key={member._id} className="group-field">
                 <img className="group-icon" src={member.image} alt='group-icon'/>
                 <p>{member.firstName} {member.lastName}</p>
               </div>
