@@ -17,10 +17,7 @@ class ProfileInfo extends React.Component {
     followUser = async () =>{
       const userId = this.props.user.id
       const message = await followAUser(userId)
-      
-      if(message)setTimeout(() => {
         notify(message.data)
-    }, 500)
     // this.setState({ showFollowers: !this.state.showFollowers })
   }
 
@@ -34,7 +31,6 @@ class ProfileInfo extends React.Component {
     const modalClassName = this.state.showFollowers? 'display-block' : 'display-none'
     const currentUser = getUserId()
     const profileUser = this.props.user.id
-    console.log(user)
 
     return (
 
@@ -91,7 +87,7 @@ class ProfileInfo extends React.Component {
               <button 
               onClick={this.followUser} 
               className={ currentUser === profileUser ? 'display-none' : 'follow-button'}
-              >{followers.includes(currentUser)? 'Unfollow' : 'Follow'}</button>
+              >{ followers.includes(currentUser) ? 'Unfollow' : 'Follow' }</button>
             </div>
           </div>
 
