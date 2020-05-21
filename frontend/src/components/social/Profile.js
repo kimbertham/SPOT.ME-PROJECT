@@ -1,61 +1,52 @@
 import React from 'react' 
 import Post from './Post'
 import axios from 'axios'
-import { getProfile } from '../../lib/api'
 import ProfileInfo from '../social/ProfileInfo'
 import FriendsSidebar from '../common/FriendsSidebar'
 import NewsFeedsCard from './NewsFeedsCard'
-import { withHeaders } from '../../lib/api'
-import { getUserId } from '../../lib/auth'
 import ProfileSidebar from './ProfileSidebar'
+import { getProfile, getLike, commentADelete, deleteAPost, postAComment } from '../../lib/api'
+import { getUserId } from '../../lib/auth'
+
+
 
 class Profile extends React.Component {
 state = {
-  user: {},
-
+  user: {}, 
   data: {
     content: ''
   },
-  
   modal: false,
-
-  index: null
+  index: null,
+  postsUser: {}
 }
 
-  handleChange = event => {
-    const data = { ...this.state.data, [event.target.name]: event.target.value }
-    this.setState( { data } )
-  }
-
-  
-// getData = async () => {
-//   const userId = this.props.match.params.userId
-//   const res = await getProfile(userId)
-//   this.setState( { user: res.data }) 
-// }
-
 async componentDidMount() {
+  const userId = this.props.match.params.userId
+  const res = await getProfile(userId)
+  this.setState( { user: res.data }) 
   try {
-    this.getData() 
   } catch (err) {
     console.log(err)
   }
 }
 
 addLike = async (postId) => {
-  const userId = getUserId()
-  const res = await axios.put(`/api/profile/${userId}/post/${postId}`,'' , withHeaders() )
-  const user = res.data
-  this.setState( { user })   
+  const userId = this.props.match.params.userId
+  await getLike(userId, postId)
+  const res = await getProfile(userId)
+  this.setState({  user :res.data  }, () => { console.log(this.state.user)})   
 }
 
 handleChange = event => {
-  const data = { ...this.state.data, [event.target.name]: event.target.value }
+  const data = 
+  { ...this.state.data, [event.target.name]: event.target.value }
   this.setState( { data } )
 }
 
-postAComment = async ( postOwner, postId) =>{
-await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.data , withHeaders() )
+postComment = async ( postOwner, postId) =>{
+  const content = this.state.data
+  await postAComment(postOwner,postId, content)
   const userId = this.props.match.params.userId
   const res = await getProfile(userId)
   this.setState( { user: res.data })  
@@ -63,43 +54,34 @@ await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`, this.state.d
 
 commentDelete = async (postId, commentId) => {
   const userId=getUserId()
-  await axios.delete(`/api/profile/${userId}/post/${postId}/comment/${commentId}`, withHeaders())
+  commentADelete( userId ,postId,commentId)
   const res = await getProfile(userId)
   this.setState( { user: res.data })  
 }
 
 deletePost = async (postId) => {
   const userId = getUserId()
-  await axios.delete(`/api/profile/${userId}/post/${postId}`, withHeaders())
+deleteAPost(userId, postId)
   const res = await getProfile(userId)
   this.setState( { user: res.data })  
 }
 
 setIndex = async (i) => {
   await this.setState({index: i})
-
-}
-
-setModal =() => {
-  this.setState({ modal: true })
-}
-hideModal = () => {
-  this.setState({ modal: false })
 }
 
 render(){
   const { user } = this.state
   const posts = user.posts ? user.posts : []
+  console.log(this.state)
   return (
     <div className='profile-page-container'>
         
-        {/* <div className='left-section'> 
+        <div className='left-section'> 
       <ProfileSidebar 
         modal={this.state.modal}
-        setModal={this.setModal}
-        hideModal={this.hideModal}
         user={this.state.user.id}/>
-        </div> */}
+        </div>
 
       <div className='mid-section'>
         <div className='profile-info-component'>
@@ -117,7 +99,7 @@ render(){
             post={post}
             user={this.state.user}
             like={this.addLike}
-            comment={this.postAComment}
+            comment={this.postComment}
             change={this.handleChange}
             key={`profile${post._id}`}
             commentDelete={this.commentDelete}

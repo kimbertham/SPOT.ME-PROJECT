@@ -10,6 +10,22 @@ html {
 //   transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
 // }
 
+
+.delete-text { //! for deleteing posts
+  font-size: 11px;
+  float:right;
+  margin:-3px;
+  margin:0 5px -7px 0;
+}
+
+.back-cross { //! for back crosses
+  font-size: 20px;
+  color:black;
+  float:right;
+  font-size: 40px;
+}
+
+
 input {
 
   &[type="checkbox"],
@@ -23,7 +39,6 @@ input {
   width: 100%;
   height: 100%;
   background-color: #343D42;
-  margin: 0 auto;
 }
 
 .textAlign {
@@ -96,7 +111,6 @@ button:hover {
   background-color: #6A6767;
 }
 
-// * For NewsFeed
 .feeds-container {
   display: flex;
   flex-direction: column;
@@ -108,10 +122,15 @@ button:hover {
   .feeds-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 100%;
     width: 95%;
     padding: 10px 0;
     margin: 0 auto;
+    .feeds-user-info {
+      display: flex;
+    }
+    
 
     img {
       width: 60px;
@@ -258,7 +277,8 @@ button:hover {
 
 .commenters-comment {
   height: 100%;
-  margin-left: 10px;
+  margin: 0 0 10px 10px;
+  min-width: 20%;
   padding: 10px 10px;
   border-radius: 30px;
   background-color: #6A6767

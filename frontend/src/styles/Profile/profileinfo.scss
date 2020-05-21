@@ -1,25 +1,6 @@
-<<<<<<< HEAD
-
-.profile-page-container {
-
-  *{
-    border: 2px solid red;
-  }
-//! common 
-
-.followers-icon{
-  background-image: url('https://i.imgur.com/dmix3Do.jpg');
-  background-size:100% 100%;
-}
-
-.profile-page-container{ 
-  
-  margin:20px;
-=======
 .profile-page-container {
 
   padding: 80px 20px 0 20px;
->>>>>>> development
   display: flex;
   justify-content: space-evenly;
 
@@ -31,18 +12,19 @@
 
 .mid-section {
   // border:3px solid black;
-<<<<<<< HEAD
-  // width: 70vw;
-=======
   display: flex;
   width: 70vw;
->>>>>>> development
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 //! profile info
+
+.followers-icon{
+  background-image: url('https://i.imgur.com/dmix3Do.jpg');
+  background-size: cover;
+}
 
 .edit-profile {
   width: 35px;
@@ -68,6 +50,11 @@
   .follower-count {
     width: 33%;
     height: 25vh;
+    .profile-followers{
+      width: 40%;
+      height: 40%;
+      // border: 2px solid red;
+    }
   }
 
   .profile-pic-container {
@@ -82,38 +69,14 @@
       border-radius: 50%;
     }
   }
-<<<<<<< HEAD
-}
-.follower-count {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width:33.3%;
-  height:25vh;
-  .profile-followers{
-    width:28%;
-    height: 30%;
-    display: flex;
-    justify-content: center;
-  }
-}
-=======
-
->>>>>>> development
   .follower-count {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 33.3%;
     height: 25vh;
-<<<<<<< HEAD
-
-
-  }
-=======
   }
 
->>>>>>> development
   .button-container {
     display: flex;
     justify-content: center;
@@ -121,10 +84,6 @@
     width: 33.3%;
     height: 25vh;
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> development
   .follow-button {
     background: #88BEF0;
     border-radius: 5px;

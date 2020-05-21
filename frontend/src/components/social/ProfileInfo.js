@@ -1,7 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import {withHeaders, followAUser} from '../../lib/api'
 import { getUserId } from '../../lib/auth'
+const defaultImage = 'https://bit.ly/3g47LRX'
+
 
 class ProfileInfo extends React.Component {
   state ={
@@ -10,13 +13,10 @@ class ProfileInfo extends React.Component {
 
     followUser = async () =>{
       const userId = this.props.user.id
-    await axios.put(`/api/profile/${userId}/follow`, '' ,
-    { headers: { Authorization: `Bearer ${window.localStorage.getItem('token')}`} }
-    )
+      followAUser(userId)
   }
 
   showFollowers = (value ) => {
-    console.log('clicked')
   this.setState({showFollowers: value})
   }
 
@@ -33,33 +33,55 @@ class ProfileInfo extends React.Component {
       <div className='profile-info-section'>
         <div className={currentUser === profileUser? 'display-block' : 'display-none'}>
       <Link to={`/profile/${user.id}/edit`}> 
-      <img className='edit-profile' src='https://i.imgur.com/8o2WJAN.jpg' alt='edit-icon'/></Link>
+      <img className='edit-profile' 
+      src='https://i.imgur.com/8o2WJAN.jpg' 
+      alt='edit-icon'/></Link>
       </div>
         <div className='info-top'>
 
           <div className='follower-count'>  
-            <div onClick={()=>this.showFollowers(true)} className='followers-icon profile-followers'></div> 
+            <div onClick={()=>this.showFollowers(true)} 
+            className='followers-icon profile-followers'>see followers..</div> 
             <div className={'modal'}></div>
-              <div className='followers-container'>
-                <div className={`modal ${modalClassName}`}>
-                  <div className='modal-group'>
-                <div onClick={()=>this.showFollowers('')} className='back-cross'>X</div>
-                {followers.length > 0? followers.map(follower => {
-                return <div className='followers-field'>
-                  <img src={`${follower.image}`} alt='follower-img'/>
-                  <p>{`${follower.firstName} ${follower.lastName}`}</p>
-                  </div>
-                }) : <p style={{ color: 'red' }}>'no followers to show' </p> }
-                </div>
-              </div>
-            </div>
-        </div>
+
+
+
+{/* //! Modal Followers */}
+  <div className={`modal ${modalClassName}`}>
+    <div className='modal-pop modal-followers'>
+      <div 
+      onClick={()=>this.showFollowers('')} 
+      className='back-cross'>X</div>
+        <h1 
+        className='follower-title'>
+        {`${user.firstName}'s Followers`} 
+        </h1>
+        
+        {followers.length > 0? followers.map((follower, i) => {
+        return <Link key={i} to={`/profile/${follower.id}`}>
+            <div className='followers-field'>
+            <img alt='follower-img' className='follower-img'
+              src={follower.image?`${follower.image}` : defaultImage } />
+            <p>{`${follower.firstName} ${follower.lastName}`}</p>
+          </div>
+          </Link>}) : 
+          <p style={{ color: 'red' }}>'no followers to show' </p> }
+    </div>
+  </div>
+</div>
+{/* //!--------------------- */}
 
         <div className='profile-pic-container'>
-          <img className='profile-pic'src={user.image}  alt='profile-pic'/>
+        <img className='profile-pic' 
+        src={user.image? user.image : defaultImage}  
+        alt='profile-pic'/>
         </div>
           <div className='button-container'>
-          <button onClick={this.followUser} className='follow-button'> Follow </button>
+          <button 
+          onClick={this.followUser} 
+          className='follow-button'> 
+          Follow 
+          </button>
           </div>
       </div>
 
