@@ -58,23 +58,31 @@ async function deletePost(req,res,next) {
 
 async function toggleLike(req,res,next){
   try {
+    const user = await User.findById(req.currentUser._id)
     const owner = await User.findById(req.params.userId)
     const post = owner.posts.id(req.params.postId)
     if (!owner || !post) {
       throw new Error('Not Found')
     }
+
     if (post.likes.includes(req.currentUser._id)) {
       post.likes.pull(req.currentUser)
+      user.likes.pull(post)
     } else {
       post.likes.push(req.currentUser)
+      user.likes.push(post)
     }
+
+
     await owner.save()
-    res.status(201).json(owner)
+    await user.save()
+    res.status(201).json('Liked')
 
   } catch (err){
     next(err)
   }
 }
+
 
 // ------------------------------ ADD COMMENT TO A POST SECTION  - NOT FOR GROUP POSTS!, REFER TO GROUP CONTROLLER FOR THIS  -------------------------------------
 // PUT Request to /profile/:ownerId/post/:postId/comment

@@ -13,7 +13,7 @@ async function getNewsFeed(req,res,next){
   const postArray = []
   try {
     // get user and populate following field
-    const user = await User.findById(req.currentUser._id).populate('following')
+    const user = await (await User.findById(req.currentUser._id).populate('following'))
     if (!user) {
       throw new Error('Not Found')
     }
@@ -41,9 +41,11 @@ async function getNewsFeed(req,res,next){
       })
     })
     console.log(postArray)
+
     postArray.sort(function(a, b){
       return b.updatedAt - a.updatedAt
     })
+    console.log(postArray)
     res.status(200).json(postArray)
   } catch (err){
     next(err)
@@ -66,3 +68,5 @@ module.exports = {
 // get group's posts
 // add to array
 // sort by date
+
+// Post a comment on the newsFeed 

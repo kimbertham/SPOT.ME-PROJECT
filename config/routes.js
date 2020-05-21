@@ -112,6 +112,7 @@ router.route('/groups/:groupId/post/:postId/comment/:commentId/like')
 router.route('/news')
   .get(secureRoute ,newsFeed.getNewsFeed)
 
+
 // ------------ ROUTES FOR MESSAGES -----------------
 
 router.route('/messages')

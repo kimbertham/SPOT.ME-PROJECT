@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
   image: { type: String },
   level: { type: String, required: true },
   gyms: [],
+  likes: [],
   messages: [messageSchema],
   posts: [postSchema],
   description: { type: String, maxlength: 50 },
