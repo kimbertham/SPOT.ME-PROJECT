@@ -7,7 +7,7 @@ import FriendsSidebar from '../common/FriendsSidebar'
 import Post from './Post'
 import { withHeaders, getProfile, getLike, 
   commentADelete, deleteAPost, postAComment } from '../../lib/api'
-  const userId = getUserId()
+const userId = getUserId()
 
 class Home extends React.Component {
   state = {
@@ -26,12 +26,12 @@ class Home extends React.Component {
       this.setState( { user: res.data }) 
     }
 
-  async componentDidMount() {
-    const postRes = await axios.get('/api/news', withHeaders())
-    await this.getData()
-    const postsArray = postRes.data
-    this.setState({ postsArray })
-  }
+    async componentDidMount() {
+      const postRes = await axios.get('/api/news', withHeaders())
+      await this.getData()
+      const postsArray = postRes.data
+      this.setState({ postsArray })
+    }
 
 
     
@@ -52,7 +52,9 @@ class Home extends React.Component {
       const content = this.state.data
       await postAComment(postOwner,postId, content)
       const res = await getProfile(userId)
-      this.setState( { user: res.data }, ()=> { console.log(this.state)})  
+      this.setState( { user: res.data }, ()=> {
+        console.log(this.state)
+      })  
     }
     
     commentDelete = async (postId, commentId) => {
