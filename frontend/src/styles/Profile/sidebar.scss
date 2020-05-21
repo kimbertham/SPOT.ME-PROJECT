@@ -30,7 +30,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
 
         p {
           cursor: pointer;
@@ -49,13 +48,13 @@
 
           .group-field,
           .event-field {
-            display: flex;
             padding: 5px;
+            display: flex;
             height: 10%;
             margin: -10px 0;
 
-            .group-icon,
-            .event-icon {
+            
+            img {
               width: 45px;
               border-radius: 50%;
             }
@@ -67,6 +66,7 @@
               justify-content: flex-end;
               padding-left: 20px;
               width: 100%;
+
               p {
                 max-width: 15vh;
               }
@@ -86,13 +86,9 @@
   position: sticky;
   top: 67px;
   border-radius: 10px;
-  // background-color: blue;
+  background-color: blue;
 
   .sidebar-head {
-    border-bottom: 2px solid #535C61;
-    margin-bottom: 20px;
-        // .contacts {
-        // }
 
     h3 {
       font-size: 25px;
@@ -146,12 +142,8 @@
     border-radius: 10px;
     border: 2px solid grey;
     background-color: white;
-    overflow: scroll;
 
     .my-message {
-      display: flex;
-      justify-content: space-between;
-      
       color: blue;
     }
     
