@@ -24,6 +24,7 @@ async function getAllMessages(req,res,next){
 // content: String,
 // image: String(optional)
 // }
+// token required
 
 async function createMessage(req,res,next) {
   console.log('message sent!')

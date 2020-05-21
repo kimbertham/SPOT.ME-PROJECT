@@ -30,6 +30,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
 
         p {
           cursor: pointer;
@@ -85,9 +86,13 @@
   position: sticky;
   top: 67px;
   border-radius: 10px;
-  background-color: blue;
+  // background-color: blue;
 
   .sidebar-head {
+    border-bottom: 2px solid #535C61;
+    margin-bottom: 20px;
+        // .contacts {
+        // }
 
     h3 {
       font-size: 25px;
@@ -95,4 +100,96 @@
     }
   }
 
+  .friends-list {
+
+    .friend {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+
+
+      .friend-icon {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+
+
+}
+
+// * for chatbox
+
+.chat-modal {
+  width: 40%;
+  height: 50vh;
+  background-color: #0084FF;
+  padding: 20px;
+  border-radius: 20px;
+
+  .chat-top {
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      color: black;
+    }
+  
+    .close-chat-modal {
+      color: black;
+    }
+  }
+
+
+  .chatbox {
+    height: 70%;
+    border-radius: 10px;
+    border: 2px solid grey;
+    background-color: white;
+
+    .my-message {
+      display: flex;
+      justify-content: space-between;
+      
+      color: blue;
+    }
+    
+    .their-message {
+      color: red;
+    }
+  }
+  .chat-form {
+    display: flex;
+    align-items: center;
+    height: 20%;
+    margin-top: 10px;
+    border: none;
+  
+    .chat-input {
+      height: 100%;
+      width: 86%;
+      padding: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      color: black;
+      font-weight: 600;
+      font-size: medium;
+      overflow: auto;
+      resize: vertical;
+      border: 5px solid grey;
+    }
+    button {
+      height: 100%;
+      width: 12%;
+      cursor: pointer;
+      color: black;
+      margin-left: auto;
+      background-color: rgba(40, 44, 39, 0.133);
+      border-radius: 10px;
+      border: 5px solid grey;
+    }
+    button:hover {
+      color: red;
+    }
+  }
 }

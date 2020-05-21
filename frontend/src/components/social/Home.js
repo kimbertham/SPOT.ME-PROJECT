@@ -16,15 +16,17 @@ class Home extends React.Component {
     data: {
       content: ''
     },
-    
     modal: false,
-  
     index: null,
-
     postsArray: []
   }
-
+  
   //! get newsfeed Array
+    getData = async () => {
+      const res = await getProfile(getUserId())
+      // console.log(res)
+      this.setState( { user: res.data }) 
+    }
 
   async componentDidMount() {
     const postRes = await axios.get('/api/news', withHeaders())
