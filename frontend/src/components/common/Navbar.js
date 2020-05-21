@@ -35,13 +35,11 @@ class Navbar extends React.Component{
         <div className="container">
           <div className="navbar-brand">
             <Link to="/home" className="logo-button" ><img className="logo-picture" src={require('../../assets/dumbbell.png')} alt="logo"/>Spot.me</Link>
-            <Link to="/" className="navbar-item"></Link>
             <SearchBar />
           </div>
           <div className="navbar-menu">
             <div className="navbar-end">
               {isAuthenticated() && <Link to="/home" className="navbar-button"><img src={require('../../assets/color.png')} alt="home" /></Link>}
-              {isAuthenticated() && <Link to="" className="navbar-button"><img src={require('../../assets/alarm.png')} alt="notification"/></Link>}
               {isAuthenticated() && <Link to="/locations" className="navbar-button"><img src={require('../../assets/travel.png')} alt="location" /></Link>}
               {!isAuthenticated() && <Link to="/register" className="other-button">Sign Up</Link>}
               {!isAuthenticated() && <Link to="/login" className="navbar-button"><img src={require('../../assets/multimedia.png')} alt="login" /></Link>}

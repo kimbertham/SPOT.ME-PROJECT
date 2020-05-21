@@ -2,17 +2,34 @@
   
 .modal-pop{
   * { color: black;}
-  background-color: white;
   padding: 20px;
   border-radius: 20px;
   margin: 0 auto;
 }
 
 .modal-group {
+  background-color: silver;
   color: black;
   margin: 0 auto;
+  border-radius: 20px;
   width: 30%;
-  height: 60%;
+  height: 67%;
+
+  .closed {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+  h1, label {
+    color: black;
+  }
+
+  label {
+    margin-left: 10px;
+  }
 }
 
 .modal-followers {

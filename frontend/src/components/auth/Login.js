@@ -44,7 +44,7 @@ class Login extends React.Component {
     return (
       <section className="section">
         <ToastContainer/>
-        <div className="container">
+        <div className="containers">
           <div className="columns">
             <form 
               onSubmit={this.handleSubmit} 
@@ -77,7 +77,7 @@ class Login extends React.Component {
                 {error && <small className="help is-danger">{error}</small>}
               </div>
               <div className="field">
-                <button type="submit" className="button is-fullwidth is-warning">Login</button>
+                <button type="submit" className="button is-fullwidth is-rounded is-warning">Login</button>
               </div>
               <div className="field">
                 <p className="textAlign">New to Spot.me?<Link to="/register" > Register here</Link></p>

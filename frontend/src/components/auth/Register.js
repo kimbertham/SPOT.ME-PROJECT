@@ -59,7 +59,7 @@ class Register extends React.Component {
     // console.log(this.getSubmitErrors(['email', 'usernames']) )
     return ( 
       <section className="section">
-        <div className="container">
+        <div className="containers">
           <ToastContainer/>
           <div className="columns">
             <form onSubmit={ this.handleSubmit } className="column is-half is-offset-one-quarter box">
@@ -191,7 +191,7 @@ class Register extends React.Component {
                 </div>
               </div>
               <div className="field">
-                <button type="submit" className="button is-fullwidth is-warning">Register</button>
+                <button type="submit" className="button is-fullwidth is-rounded is-warning">Register</button>
               </div>
             </form>
           </div>
