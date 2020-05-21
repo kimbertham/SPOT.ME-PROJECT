@@ -6,7 +6,7 @@ import Slider from 'react-slick'
 
 import Reviews from './gymSections/Reviews'
 import GymNav from './gymSections/GymNav'
-// import GymInfo from './gymSections/GymInfo'
+import GymInfo from './gymSections/GymInfo'
 
 
 class gymShow extends React.Component {
@@ -73,7 +73,9 @@ class gymShow extends React.Component {
     return (  
       <div className='gym-show-page'> 
         <div className='page-top'>
-      
+
+
+
       <div className='gym-images'>
         <div className='slider-container'>
           <Slider 
@@ -102,6 +104,10 @@ class gymShow extends React.Component {
               })}
           </Slider>
         </div>
+
+        <GymInfo 
+      data={this.state.data}/>
+
 
         <GymNav getSection={this.getSection} />
 

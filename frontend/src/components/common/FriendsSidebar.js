@@ -1,6 +1,8 @@
 import React from 'react'
-import { getProfile } from '../../lib/api'
+import { getProfile, withHeaders } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
+import axios from 'axios'
+
 
 class FriendsSidebar extends React.Component {
   state = {

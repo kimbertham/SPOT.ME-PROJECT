@@ -22,10 +22,14 @@ class Home extends React.Component {
   }
   
   //! get newsfeed Array
+
     getData = async () => {
-      const res = await getProfile(getUserId())
+      const postRes = await axios.get('/api/news', withHeaders())
+      // const res = await getProfile(getUserId())
       // console.log(res)
-      this.setState( { user: res.data }) 
+      const postsArray = postRes.data
+      this.setState({ postsArray })
+      // this.setState( { user: res.data }) 
     }
 
   async componentDidMount() {
@@ -51,7 +55,7 @@ class Home extends React.Component {
       const content = this.state.data
       await postAComment(postOwner,postId, content)
       const res = await getProfile(userId)
-      this.setState( { user: res.data }, ()=> { console.log(this.state)})  
+      this.setState( { user: res.data } )  
     }
     
     commentDelete = async (postId, commentId) => {
@@ -76,14 +80,12 @@ class Home extends React.Component {
     render() {
       const { postsArray } = this.state
       const posts = postsArray ? postsArray : []
-      console.log(postsArray)
+      console.log(posts)
       return (
         <div className='profile-page-container'>
         
           <ProfileSidebar 
             modal={this.state.modal}
-            setModal={this.setModal}
-            hideModal={this.hideModal}
             user={this.state.user.id}/>
 
           <div className='mid-section'>
@@ -95,10 +97,9 @@ class Home extends React.Component {
               />
 
               {posts.slice(0).reverse().map((post, i) => { 
-                //get owner from get userById
                 return <NewsFeedsCard
                   post={post}
-                  user={this.state.user}
+                  user={post.owner}
                   like={this.addLike}
                   comment={this.postComment}
                   change={this.handleChange}

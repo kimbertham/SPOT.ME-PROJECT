@@ -3,6 +3,7 @@ import axios from 'axios'
 import Map from '../map/Map'
 import GymSearch from './GymSearch'
 import ProfileSidebar from '../common/ProfileSidebar'
+
 // import { FlyToInterpolator } from 'react-map-gl'
 
 
@@ -63,7 +64,9 @@ class gymLocations extends React.Component {
 
   render(){
     return (
+
       <>
+
       <div className="locations">
         <div className="search">
         <GymSearch
