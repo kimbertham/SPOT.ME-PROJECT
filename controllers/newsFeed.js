@@ -10,22 +10,28 @@ const Group = require('../models/Group')
 //! need to populate owner 
 
 async function getNewsFeed(req,res,next){
-  console.log('GET FEED')
+ 
   const postArray = []
+  
   try {
     // get user and populate following field
-    const user = await (await User.findById(req.currentUser._id).populate('following'))
+    const user = await User.findById(req.currentUser._id).populate('following').populate('following.posts.owner')
     if (!user) {
       throw new Error('Not Found')
     }
+
     // get posts from each of the followed users
     user.following.forEach(followedUser => {
       followedUser.posts.forEach(posts => {
         postArray.push(posts)
       })
     }) 
+    
+    
+
     // get all groups joined by the user
     const groups = await Group.find()
+    console.log(groups)
     const usersGroups = groups.filter(group => {
       let userInGroup = false
       group.members.forEach(member => {
@@ -41,12 +47,14 @@ async function getNewsFeed(req,res,next){
         postArray.push(groupPost)
       })
     })
-    console.log(postArray)
+    
 
     postArray.sort(function(a, b){
       return b.updatedAt - a.updatedAt
     })
-    console.log(postArray)
+    
+    
+    
     res.status(200).json(postArray)
   } catch (err){
     next(err)

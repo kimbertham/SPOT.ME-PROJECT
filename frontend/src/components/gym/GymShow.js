@@ -6,6 +6,7 @@ import Slider from 'react-slick'
 
 import Reviews from './gymSections/Reviews'
 import GymNav from './gymSections/GymNav'
+import GymInfo from './gymSections/GymInfo'
 // import GymInfo from './gymSections/GymInfo'
 
 
@@ -15,7 +16,7 @@ class gymShow extends React.Component {
     section: {
       reviews: false,
       members: false,
-      directions: false,
+      info: false,
       posts: false
     },
 
@@ -49,18 +50,13 @@ class gymShow extends React.Component {
 
   async getImages(){
     const images = this.state.data.photos
-    // * I cleaned this up, please check if it works - Tom
-    // const photoReferences = []
-    // images.map(photo => {
-    //   photoReferences.push(photo.photo_reference)
-    // })
     const photoReferences = images.map(photo => photo.photo_reference)
     this.setState({ photoReferences })
   }
 
 
   getSection = async page =>  {
-    const section = { reviews: false, members: false, directions: false, posts: false }
+    const section = { reviews: false, members: false, info: false, posts: false }
     await this.setState({ section })
     const sectionChange =  { ...this.state.section, [page]: true }
     this.setState({ section: sectionChange })
@@ -87,30 +83,33 @@ class gymShow extends React.Component {
                   return <div className='slide' key={photo} >
                     <img  alt='gym-pics' className='gym-img' src={`${baseUrl}${photo}${key}`}/></div> 
                 })}
-              </Slider>
-              <div className='slider-two'>
-                <Slider 
-                  asNavFor={this.state.nav1}
-                  ref={slider => (this.slider2 = slider)}
-                  slidesToShow={7}
-                  swipeToSlide={true}
-                  focusOnSelect={true}
-                  className='slides-two'> 
-                  {this.state.photoReferences.map(photo => {
-                    return <div className='slide-two' key={photo}>
-                      <img alt='gym-pics'className='slider-two-img' src={`${baseUrl}${photo}${key}`}/> </div> 
-                  })}
-                </Slider>
-              </div>
-
-              <GymNav getSection={this.getSection} />
-
-              <div className="changing-sections">
-                <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
-              </div>
-            </div>
-          </div>
+          </Slider>
+            <div className='slider-two'>
+          <Slider 
+            asNavFor={this.state.nav1}
+            ref={slider => (this.slider2 = slider)}
+            slidesToShow={7}
+            swipeToSlide={true}
+            focusOnSelect={true}
+            className='slides-two'> 
+              {this.state.photoReferences.map(photo => {
+                return <div className='slide-two'>
+                <img alt='gym-pics'className='slider-two-img' src={`${baseUrl}${photo}${key}`}/> 
+                </div> 
+              })}
+          </Slider>
         </div>
+        </div>
+        </div>
+        <div className="page-two">
+        <GymNav getSection={this.getSection} />
+
+        <div className="changing-sections">
+          <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
+          <GymInfo status={this.state.section.info} data={this.state.data}/>
+          </div>
+      </div>
+      </div>
       </div>
     ) 
   }
