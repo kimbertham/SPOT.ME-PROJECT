@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route,withRouter } from 'react-router-dom'
 import GymLocations from './components/gym/gymLocations'
 import GymShow from './components/gym/GymShow'
 import Navbar from './components/common/Navbar'
@@ -22,7 +22,7 @@ const App = () => {
           <Route path='/register' component={Register}/>
           <Route path='/login' component={Login}/>
           <Route path='/profile/:userId/edit' component={editProfile} />
-          <Route path='/profile/:userId' component={Profile}/>
+          <Route exact path='/profile/:userId' component={withRouter(Profile) }/>
           <Route path='/home' component={Home}/>
           <Route path='/groups/:groupId' component={GroupShow}/>
 

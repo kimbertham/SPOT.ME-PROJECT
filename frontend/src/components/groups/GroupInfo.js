@@ -24,7 +24,7 @@ function GroupInfo(props) {
 
       <div className='profile-info-section'>
 
-      <img className='edit-profile' src='https://i.imgur.com/8o2WJAN.jpg' alt='edit-icon'/>
+      
 
       <div className='info-top'>
         <div className='follower-count'>
@@ -35,7 +35,7 @@ function GroupInfo(props) {
           <img className='profile-pic' src={group.image} alt='profile-pic'/>
         </div>
           <div className='button-container'>
-          <button  onClick = {membersIdArray.includes( props.user.id)? props.leave : props.join } className='follow-button'> {membersIdArray.includes( props.user.id)? 'Leave Group' : 'Join Group'} </button>
+          <button  onClick = {membersIdArray.includes( props.user.id)? props.leave : props.join } className='group-follow-button'> {membersIdArray.includes( props.user.id)? 'Leave Group' : 'Join Group'} </button>
           </div>
       </div>
 

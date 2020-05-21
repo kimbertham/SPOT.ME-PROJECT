@@ -27,6 +27,7 @@ handleInput = async({ target }) => {
   }
 }
 
+
 render(){
   return (
     <div className="navbar-item has-dropdown is-hoverable">
@@ -45,6 +46,7 @@ render(){
                   loading='lazy'
                   src={user.image} 
                   alt="logo" 
+                  
                 />
                 <div className="field field-searchbar-item">
                   <p className="">{user.username}</p>
@@ -85,7 +87,7 @@ render(){
 
 }
 
-export default withRouter(SearchBar) 
+export default SearchBar
 
 
 

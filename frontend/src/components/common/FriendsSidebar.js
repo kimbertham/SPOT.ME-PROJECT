@@ -1,7 +1,6 @@
 import React from 'react'
 import { getProfile, withHeaders } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
-import { withHeaders } from '../../lib/api'
 import axios from 'axios'
 
 

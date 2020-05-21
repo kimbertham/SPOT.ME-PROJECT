@@ -1,6 +1,7 @@
 import React from 'react' 
 import Post from './Post'
 import axios from 'axios'
+import {withRouter} from 'react-router-dom'
 import ProfileInfo from '../social/ProfileInfo'
 import FriendsSidebar from '../common/FriendsSidebar'
 import NewsFeedsCard from './NewsFeedsCard'
@@ -115,4 +116,4 @@ render(){
   )
 }
 }
-export default Profile
+export default withRouter(Profile)

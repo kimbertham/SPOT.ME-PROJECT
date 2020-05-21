@@ -64,27 +64,7 @@ class gymLocations extends React.Component {
 
   render(){
     return (
-
-      <>
-<<<<<<< HEAD
-        <div className="locations">
-          <div className="search">
-            <GymSearch
-              change={this.handleChange} 
-              submit={this.handleSubmit}
-              {...this.state.searchForm}
-              flyTo={this.handleFlyTo}
-            />
-          </div>
-          <div className="map">
-            <Map
-              moveMap={this.moveMap}
-              viewport={this.state.viewport}
-              data={this.state.data}
-            />
-          </div>
-=======
-
+    <>
       <div className="locations">
         <div className="search">
         <GymSearch
@@ -93,7 +73,6 @@ class gymLocations extends React.Component {
           {...this.state.searchForm}
           flyTo={this.handleFlyTo}
         />
->>>>>>> ce2b83007acf6dba0686d82370494ff2406b9c63
         </div>
         <div className="sidebar">
           <ProfileSidebar 
@@ -101,6 +80,7 @@ class gymLocations extends React.Component {
             setModal={this.setModal}
             hideModal={this.hideModal}
             user={this.state.user.id}/>
+        </div>
         </div>
       </>
     )
