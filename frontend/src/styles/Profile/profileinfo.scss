@@ -25,6 +25,10 @@
   background-image: url('https://i.imgur.com/dmix3Do.jpg');
   background-size: cover;
 }
+.followers-icon::hover {
+  cursor: pointer;
+  background-color: blanchedalmond;
+}
 
 .edit-profile {
   width: 35px;
@@ -50,11 +54,13 @@
   .follower-count {
     width: 33%;
     height: 25vh;
-    .profile-followers{
+    .profile-followers {
+      cursor: pointer;
       width: 40%;
       height: 40%;
       // border: 2px solid red;
     }
+    
   }
 
   .profile-pic-container {
@@ -87,8 +93,15 @@
   .follow-button {
     background: #88BEF0;
     border-radius: 5px;
-    width: 20%;
+    width: 70px;
     text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 3px 3px black;
+  }
+  .follow-button:hover {
+    background-color: gray;
+    transform: translateY(3px);
+    box-shadow: none;
   }
 }
 
