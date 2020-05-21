@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import {  followAUser } from '../../lib/api'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { notify } from '../../lib/notifications'
+import { followAUser } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 const defaultImage = 'https://bit.ly/3g47LRX'
 
@@ -8,12 +11,18 @@ const defaultImage = 'https://bit.ly/3g47LRX'
 class ProfileInfo extends React.Component {
   state ={
     showFollowers: false
+    // following: 
   }
 
     followUser = async () =>{
       const userId = this.props.user.id
-      followAUser(userId)
-    }
+      const message = await followAUser(userId)
+      
+      if(message)setTimeout(() => {
+        notify(message.data)
+    }, 500)
+    // this.setState({ showFollowers: !this.state.showFollowers })
+  }
 
   showFollowers = (value ) => {
     this.setState({ showFollowers: value })
@@ -25,11 +34,13 @@ class ProfileInfo extends React.Component {
     const modalClassName = this.state.showFollowers ? 'display-block' : 'display-none'
     const currentUser = getUserId()
     const profileUser = this.props.user.id
+    console.log(user)
 
     return (
 
       <div className='profile-info-container'>
         <div className='profile-info-section'>
+        <ToastContainer/>
           <div className={currentUser === profileUser ? 'display-block' : 'display-none'}>
             <Link to={`/profile/${user.id}/edit`}> 
               <img className='edit-profile' 
@@ -78,10 +89,9 @@ class ProfileInfo extends React.Component {
             </div>
             <div className='button-container'>
               <button 
-                onClick={this.followUser} 
-                className='follow-button'> 
-          Follow 
-              </button>
+              onClick={this.followUser} 
+              className={ currentUser === profileUser ? 'display-none' : 'follow-button'}
+              >{followers.includes(currentUser)? 'Unfollow' : 'Follow'}</button>
             </div>
           </div>
 

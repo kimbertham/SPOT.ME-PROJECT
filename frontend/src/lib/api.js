@@ -14,41 +14,40 @@ export const withHeaders = () => {
 export const getUserGroups = () => {
   return axios.get('/api/groups', withHeaders())
 }
-export const getGroup = groupId => {
-  console.log(groupId)
-  return axios.get(`${baseUrl}/groups/${groupId}`)
+export const getGroup = async groupId => {
+  return await axios.get(`${baseUrl}/groups/${groupId}`)
 }
 
 // PROFILE FUNCTIONS 
 
-export const getProfile = userId => {
-  return axios.get(`${baseUrl}/profile/${userId}`)
+export const getProfile = async userId => {
+  return await axios.get(`${baseUrl}/profile/${userId}`)
 }
 
-export const postContent = (content, userId) => {
-  return axios.post(`${baseUrl}/profile/${userId}/post`, content, withHeaders())
+export const postContent = async (content, userId) => {
+  return await axios.post(`${baseUrl}/profile/${userId}/post`, content, withHeaders())
 }
 
 
-export const getLike = (userId, postId) => {
-  return axios.put(`/api/profile/${userId}/post/${postId}`,'' , withHeaders() )
+export const getLike = async (userId, postId) => {
+  return await axios.put(`/api/profile/${userId}/post/${postId}`,'' , withHeaders() )
 } 
 
-export const commentADelete = (userId, postId,commentId ) => {
-  return axios.delete(`/api/profile/${userId}/post/${postId}/comment/${commentId}`, withHeaders())
+export const commentADelete = async (userId, postId, commentId ) => {
+  return await axios.delete(`/api/profile/${userId}/post/${postId}/comment/${commentId}`, withHeaders())
 }
 
-export const deleteAPost = (userId, postId)=>{
-  return axios.delete(`/api/profile/${userId}/post/${postId}`, withHeaders())
+export const deleteAPost = async (userId, postId)=>{
+  return await axios.delete(`/api/profile/${userId}/post/${postId}`, withHeaders())
 }
 
-export const followAUser = (userId) => {
-  const res = axios.put(`/api/profile/${userId}/follow`,'' ,withHeaders())
+export const followAUser = async (userId) => {
+  const res = await axios.put(`/api/profile/${userId}/follow`,'' ,withHeaders())
   console.log(res)
 }
 
-export const postAComment = (postOwner,postId, content) => {
-  return axios.put(`/api/profile/${postOwner}/post/${postId}/comment`,
+export const postAComment = async (postOwner, postId, content) => {
+  return await axios.put(`/api/profile/${postOwner}/post/${postId}/comment`,
     content , withHeaders() )
 }
 

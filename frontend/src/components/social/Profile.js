@@ -18,30 +18,32 @@ state = {
   postsUser: {}
 }
 async componentDidMount() {
-  const userId = this.props.match.params.userId
-  const res = await getProfile(userId)
-  this.setState( { user: res.data }) 
+  this.getData()
   try {
   } catch (err) {
     console.log(err)
   }
 }
+
 getData = async () => {
-  const res = await getProfile(getUserId())
-  // console.log(res)
+  const userId = this.props.match.params.userId
+  const res = await getProfile(userId)
   this.setState( { user: res.data }) 
 }
+
 addLike = async (postId) => {
   const userId = this.props.match.params.userId
   await getLike(userId, postId)
   const res = await getProfile(userId)
   this.setState({  user :res.data  }, () => { console.log(this.state.user)})   
 }
+
 handleChange = event => {
   const data = 
   { ...this.state.data, [event.target.name]: event.target.value }
   this.setState( { data } )
 }
+
 postComment = async ( postOwner, postId) =>{
   const content = this.state.data
   await postAComment(postOwner,postId, content)
@@ -83,7 +85,9 @@ render(){
         <div className='profile-info-component'>
           <ProfileInfo 
             user={this.state.user}
-            move={this.movePage}/>
+            move={this.movePage}
+            refresh={this.getData}
+            />
         </div>
         <div className='profile-post'>
           <Post 
