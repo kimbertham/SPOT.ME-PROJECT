@@ -11,25 +11,3 @@
 
   }
 }
-
-.gym-modal-info {
-  height: 150px;
-  width: 600px;
-  background-color: white;
-
-  .close {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-    color: grey;
-  }
-
-  h1 {
-    font-weight: 700;
-    margin-left: 10px;
-  }
-
-  p {
-    margin-left: 10px;
-  }
-}
