@@ -84,6 +84,8 @@ router.route('/groups/:groupId/join/:userId')
 router.route('/groups/:groupId/leave/:userId')
   .put(secureRoute ,groups.leave)
 
+router.route('/groups/:groupId/edit')
+  .put(secureRoute ,groups.edit)  
 
 // ------------ ROUTES FOR POSTING IN GROUP AND LIKING/COMMENTING -----------------
 

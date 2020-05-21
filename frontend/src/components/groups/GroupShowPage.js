@@ -7,6 +7,7 @@ import { getUserId } from '../../lib/auth'
 import axios from 'axios'
 import FriendsSidebar from '../common/FriendsSidebar'
 import GroupNewsFeedsCard from './GroupNewsFeedsCard'
+import {withRouter} from 'react-router-dom'
 
 class GroupShow extends React.Component {
   state = {
@@ -18,7 +19,8 @@ class GroupShow extends React.Component {
     },
     commentData: {
       content: ''
-    }
+    },
+    editted: false
   }
 
 
@@ -34,6 +36,14 @@ class GroupShow extends React.Component {
     } catch (err) {
       console.log(err)
     }
+  }
+
+   groupEditted = async() => {
+     console.log('edited');
+     const groupId = this.props.match.params.groupId
+      const res = await getGroup(groupId)
+      this.setState({ group: res.data })
+     
   }
 
   joinGroup = async () => {
@@ -148,7 +158,7 @@ class GroupShow extends React.Component {
 
           <div className='profile-info-component'>
             <GroupInfo
-              group={this.state.group} user={this.state.user} members={this.state.group.members} join={this.joinGroup} leave={this.leaveGroup} />
+              group={this.state.group} user={this.state.user} members={this.state.group.members} join={this.joinGroup} leave={this.leaveGroup} handleEdit={this.groupEditted} />
           </div>
 
           <div className='profile-post'>
@@ -175,4 +185,4 @@ class GroupShow extends React.Component {
   }
 }
 
-export default GroupShow
+export default  withRouter(GroupShow)

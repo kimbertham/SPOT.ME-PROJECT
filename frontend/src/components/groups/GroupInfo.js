@@ -1,58 +1,68 @@
 import React from 'react'
+import { getUserId } from '../../lib/auth'
+import GroupEdit from './GroupEdit'
 
-function GroupInfo(props) {
+class GroupInfo extends React.Component {
+  state = {
+    modal: false
+  }
+
+
+toggleModal = () => this.setState({ modal: !this.state.modal })
+
+
+
+
+  render() {
+    const { group } = this.props
+    const membersLength = group.members ? group.members.map(member => member.id) : ''
+    console.log(membersLength);
+
   
-
-
-    const {group} = props
-    const members = group.members
-    
-    if(!group) {
-      console.log('nothing');
-      return
-    }
-
-    const membersIdArray = members?  members.map(member => {
-      return member._id
-    }) : ''
-    console.log(membersIdArray);
-    console.log(membersIdArray.includes( props.user.id));
-    
-    
-  return (
+  return ( 
     <div className='profile-info-container'>
-
       <div className='profile-info-section'>
-
-      
-
-      <div className='info-top'>
-        <div className='follower-count'>
-          <p>{membersIdArray.length}</p>
-          <p>Member{membersIdArray.length === 1? '' : 's'}</p>
+        <div className={group.owner === getUserId() ? 'display-block' : 'display-none'}>
+          <div>
+            <img className='edit-profile'
+              src='https://i.imgur.com/8o2WJAN.jpg'
+              alt='edit-icon'
+              onClick={this.toggleModal} /></div>
         </div>
-        <div className='profile-pic-container'>
-          <img className='profile-pic' src={group.image} alt='profile-pic'/>
-        </div>
+
+
+        <div className='info-top'>
+          <div className='follower-count'>
+            <p>{membersLength.length > 0 ? membersLength.length : 0}</p>
+            <p>Member{membersLength === 1 ? '' : 's'}</p>
+          </div>
+          <div className='profile-pic-container'>
+            <img className='profile-pic' src={group.image} alt='profile-pic' />
+          </div>
           <div className='button-container'>
-          <button  onClick = {membersIdArray.includes( props.user.id)? props.leave : props.join } className='group-follow-button'> {membersIdArray.includes( props.user.id)? 'Leave Group' : 'Join Group'} </button>
+            <button onClick={membersLength.includes(this.props.user.id) ? this.props.leave : this.props.join} className='group-follow-button'> {membersLength.includes(this.props.user.id) ? 'Leave Group' : 'Join Group'} </button>
           </div>
-      </div>
+        </div>
 
-      <div className='info-bottom'>
-        <div className='info-text'>
-        <div className='username'>
-          <h1>{group.name}</h1>
+        <div className='info-bottom'>
+          <div className='info-text'>
+            <div className='username'>
+              <h1>{group.name}</h1>
+            </div>
+            <p> {group.description}</p>
           </div>
-          <p> {group.description}</p>
-      </div>
-      </div>
+          
+              <GroupEdit 
+                {...group}
+                handleEdit={this.props.handleEdit}
+                toggleModal={this.toggleModal}
+                modal={this.state.modal}/>
+           
+        </div>
       </div>
     </div>
-
-
-
   )
+}
   }
 
 

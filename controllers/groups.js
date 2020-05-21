@@ -71,6 +71,37 @@ async function deleteGroup(req,res,next) {
   }
 }
 
+
+
+// -------------- EDIT A GROUP --------------------
+// PUT request: /groups/:groupId/edit
+// body required = {
+// name: string,
+// description: String,
+// image: String,
+// }
+// token of group owner required
+
+async function editGroup(req,res,next) {
+  console.log('TRYING TO EDIT')
+  
+  try {
+    const groupToEdit = await Group.findById(req.params.groupId)
+    if (!groupToEdit) {
+      throw new Error('Not Found')
+    }
+    if (!groupToEdit.owner.equals(req.currentUser._id)){
+      throw new Error('Not authorized to do this')
+    }
+    Object.assign(groupToEdit, req.body)
+    await groupToEdit.save()
+    res.status(202).json(groupToEdit)
+  } catch (err){
+    next(err)
+  }
+}
+
+
 // -------------- JOIN A GROUP --------------------
 // PUT request: /groups/:groupId/join/:userId
 // No body required
@@ -281,6 +312,7 @@ async function toggleCommentLike(req,res,next){
 module.exports = {
   new: createGroup,
   delete: deleteGroup,
+  edit: editGroup,
   join: joinGroup,
   leave: leaveGroup,
   post: postInGroup,
