@@ -61,7 +61,7 @@ class Map extends React.Component {
         <div className={`modal ${modalClassName}`}>
           <div className='gym-modal-info modal-info'>
             <div className='gym-modal-text'>
-              <div onClick={this.hideModal}><p>xxx</p></div>
+              <div className="close" onClick={this.hideModal}><p>X</p></div>
               <p>{name}</p>
               <p>{location}</p>
               <p>{businessStatus}</p>

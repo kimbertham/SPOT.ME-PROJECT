@@ -19,7 +19,7 @@ class gymLocations extends React.Component {
     viewport: {
       latitude: 51.509865,
       longitude: -0.118092,
-      width: '86vw',
+      width: '84.5vw',
       height: '82.5vh',
       zoom: 12
     }, 
