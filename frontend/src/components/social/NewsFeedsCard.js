@@ -10,6 +10,7 @@ class NewsFeedsCard extends React.Component {
     const { post, user ,like, comment ,change, commentDelete, deletePost, i , setIndex, indexState } = this.props
     const currentUser = getUserId()
     const profileUser =  user.id
+    console.log(post)
 
     return (
       <>
@@ -30,7 +31,7 @@ class NewsFeedsCard extends React.Component {
             </div>
 
             <div className="feeds-content">
-              <h1>{post.content}</h1>
+              {/* <h1>{post.content}</h1> */}
             </div>
 
             <div className="feeds-image">
