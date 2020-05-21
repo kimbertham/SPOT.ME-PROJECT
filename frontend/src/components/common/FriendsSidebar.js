@@ -2,6 +2,7 @@ import React from 'react'
 import { getProfile } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 
+
 class FriendsSidebar extends React.Component {
   state = {
     user : {},
@@ -32,17 +33,17 @@ class FriendsSidebar extends React.Component {
 
   handleChange = event => { this.setState({ chat: {content: event.target.value }}) }
   
-  handleSubmit =  async (event) => {
-    event.preventDefault()
-    try {
-      const res = await axios.post(`/api//messages/${getUserId()}/post/5ec60be3e9d35e6a408d1605`,this.state.chat , withHeaders())
-      await this.getData()
-      await this.getChat(this.state.chatId)
-      // console.log(res)
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // handleSubmit =  async (event) => {
+  //   event.preventDefault()
+  //   try {
+  //     const res = await axios.post(`/api//messages/${getUserId()}/post/5ec60be3e9d35e6a408d1605`,this.state.chat , withHeaders())
+  //     await this.getData()
+  //     await this.getChat(this.state.chatId)
+  //     // console.log(res)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   getChat = id => {
     const conversation = this.state.user.messages.filter(message => id === message.otherUserId)

@@ -32,7 +32,7 @@ function GroupInfo(props) {
           <p>Member{membersIdArray.length === 1? '' : 's'}</p>
         </div>
         <div className='profile-pic-container'>
-          <img className='profile-pic' src='https://i.imgur.com/8o2WJAN.jpg' alt='profile-pic'/>
+          <img className='profile-pic' src={group.image} alt='profile-pic'/>
         </div>
           <div className='button-container'>
           <button  onClick = {membersIdArray.includes( props.user.id)? props.leave : props.join } className='follow-button'> {membersIdArray.includes( props.user.id)? 'Leave Group' : 'Join Group'} </button>
