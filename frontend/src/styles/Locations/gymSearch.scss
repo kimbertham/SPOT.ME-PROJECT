@@ -1,0 +1,75 @@
+.locations {
+  position: fixed;
+  top: 60px;
+  left: 220px;
+}
+
+.sidebar {
+  background-color: #343D42;
+  display: block;
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  width: 220px;
+  height: 100%;
+  color: #E5E5E5;
+}
+
+.gym-search-container {
+  background-color: #3DB2C2;
+
+  .gym-search-form {
+    display: flex;
+
+    p {
+      color: #000000;
+    }
+  }
+
+  .keyword-field {
+    margin: 10px 40px 10px 10px;
+  }
+
+  .radius-field {
+    margin: 10px;
+  }
+  
+  .address-field {
+    margin: 10px;
+  }
+
+  .form-input {
+    background-color: #C4C4C4;
+  }
+
+  button {
+    margin: 35px 0px 0px 10px;
+    background-color:#DA5C5C;
+  }
+
+  button:hover {
+    background-color:#6A6767;
+  }
+}
+
+.gym-modal-info {
+  height: 150px;
+  width: 600px;
+  background-color: white;
+
+  .close {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+    color: grey;
+  }
+
+  h1 {
+    font-weight: 700;
+    margin-left: 10px;
+  }
+
+  p {
+    margin-left: 10px;
+  }
+}
