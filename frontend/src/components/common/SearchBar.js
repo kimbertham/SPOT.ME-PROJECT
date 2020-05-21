@@ -37,7 +37,7 @@ render(){
   return (
     <div className="navbar-item has-dropdown is-hoverable">
       <input type='text' className='searchBarNav' value={this.state.input} placeholder='Looking for something?' onChange={this.handleInput} />
-      <div className="navbar-dropdown is-boxed">
+      { this.state.input !== '' ? <div className="navbar-dropdown is-boxed">
       { this.state.users.length > 0 && this.state.users.length > 0  ? '' : <div className="navbar-item centered"><p>No Results</p></div>}
       { this.state.users.length > 0 ? <div className="navbar-item centered"><p>People</p></div> : ''}
         {this.state.users.map(user => {
@@ -82,7 +82,8 @@ render(){
         })}
           
         
-      </div>
+      </div> : ''}
+      
     </div>
   )
 }

@@ -28,6 +28,9 @@ async function showGroup(req,res,next){
 // }
 // requires a valid token
 async function createGroup(req,res,next) {
+  if (!req.body.image){
+    req.body.image = 'https://c0.wallpaperflare.com/preview/587/61/258/yoga-pose-exercise-woman.jpg'
+  }
   try {
     console.log('CREATING GROUP')
     const user = await User.findById(req.params.userId)
