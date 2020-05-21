@@ -5,7 +5,7 @@ import axios from 'axios'
 
 class FriendsSidebar extends React.Component {
   state = {
-    user : {},
+    user: {},
     modal: false,
     friendProfiles: [],
     chat: {
@@ -31,15 +31,16 @@ class FriendsSidebar extends React.Component {
     }
   }
 
-  handleChange = event => { this.setState({ chat: {content: event.target.value }}) }
+  handleChange = event => {
+    this.setState({ chat: { content: event.target.value } }) 
+  }
   
   handleSubmit =  async (event) => {
     event.preventDefault()
     try {
-      const res = await axios.post(`/api//messages/${getUserId()}/post/${this.state.chatId}`,this.state.chat , withHeaders())
+      await axios.post(`/api//messages/${getUserId()}/post/${this.state.chatId}`,this.state.chat , withHeaders())
       await this.getData()
       await this.getChat(this.state.chatId)
-      // console.log(res)
     } catch (err) {
       console.log(err)
     }
@@ -52,64 +53,64 @@ class FriendsSidebar extends React.Component {
 
   toggleModal = (id) => {
     this.getChat(id)
-    this.setState({ modal : !this.state.modal  })
+    this.setState({ modal: !this.state.modal  })
   }
 
   render() {
     const { user, modal, chat, conversation } = this.state
     const modalClassName = modal ? 'display-block' : 'display-none'
 
-  return ( <div className="right-section">
-            <div className='sidebar-head'> 
-              <h3 className="contacts">Contacts</h3>
-            </div>
-          <div className="friends-list">
-    { user.following ? user.following.map(friend => {
-    return <div key={friend} className="friend" onClick={()=>this.toggleModal(friend)}>
-              <img 
-                className='friend-icon' 
-                src={require("../../assets/dumbbell.png")}
-                // src={ friend.image ? friend.image : '../../assets/dumbell.png'} 
-                alt='friend'
-              />          
-          <p>Friend</p>
+    return ( <div className="right-section">
+      <div className='sidebar-head'> 
+        <h3 className="contacts">Contacts</h3>
+      </div>
+      <div className="friends-list">
+        { user.following ? user.following.map(friend => {
+          return <div key={friend} className="friend" onClick={()=>this.toggleModal(friend)}>
+            <img 
+              className='friend-icon' 
+              src={require('../../assets/dumbbell.png')}
+              // src={ friend.image ? friend.image : '../../assets/dumbell.png'} 
+              alt='friend'
+            />          
+            <p>Friend</p>
           </div>
-    }) : null }
-  </div>
+        }) : null }
+      </div>
 
-  <div className={`${modalClassName} modal `}> 
-    <div className={`${modalClassName} modal-info chat-modal`}>
+      <div className={`${modalClassName} modal `}> 
+        <div className={`${modalClassName} modal-info chat-modal`}>
       
-      <div className="chat-top" >
-        <h1> Chat </h1>
-        <div className="close-chat-modal" onClick={this.toggleModal}> X</div>
-      </div>
-
-      {/* // * past messages show */}
-      <div className="chatbox">
-        { conversation.map(entry => {
-          return <div 
-          className={ entry.sender === user.id ? "my-message" : "their-message" }
-          >{entry.content}
-          <p>X</p>
+          <div className="chat-top" >
+            <h1> Chat </h1>
+            <div className="close-chat-modal" onClick={this.toggleModal}> X</div>
           </div>
-          
-        })}
-      </div>
 
-      <form className="chat-form" onSubmit={this.handleSubmit} >
-          <textarea 
-            className='chat-input'
-            placeholder="Type something here"
-            name="content"
-            onChange={this.handleChange}
-            value={chat.content}
+          {/* // * past messages show */}
+          <div className="chatbox">
+            { conversation.map(entry => {
+              return <div key={user.id}
+                className={ entry.sender === user.id ? 'my-message' : 'their-message' }
+              >{entry.content}
+                <p>X</p>
+              </div>
+          
+            })}
+          </div>
+
+          <form className="chat-form" onSubmit={this.handleSubmit} >
+            <textarea 
+              className='chat-input'
+              placeholder="Type something here"
+              name="content"
+              onChange={this.handleChange}
+              value={chat.content}
             />
-          <button>Send!</button>
-      </form>
+            <button>Send!</button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
     )
   } 
 }

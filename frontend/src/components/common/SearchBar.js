@@ -40,7 +40,7 @@ render(){
       <div className="navbar-dropdown is-boxed">
         {this.state.users.map(user => {
           return (
-            <div className="navbar-item">
+            <div className="navbar-item" key={user.id}>
               <Link to={`/profile/${user._id}`}>
               
                 <img 
@@ -60,8 +60,8 @@ render(){
         { this.state.groups.length > 0 ? <div className="navbar-item">Groups</div> : ''}
         {this.state.groups.map(group => {
           return (
-            <div className="navbar-item">
-              <Link to={`/groups/${group._id}`}>
+            <div key={group.id} className="navbar-item">
+              <Link  to={`/groups/${group._id}`}>
                 <img 
                   className="profile-picture"
                   loading='lazy'

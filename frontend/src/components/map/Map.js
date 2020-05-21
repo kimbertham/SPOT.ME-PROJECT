@@ -38,13 +38,13 @@ class Map extends React.Component {
         >
           {this.props.data.map((location) => {
             return <Marker
-            key={location.place_id}
-            latitude={location.lat}
-            longitude={location.lng}>
+              key={location.place_id}
+              latitude={location.lat}
+              longitude={location.lng}>
               <span role="img"
                 aria-label="marker"
                 onClick={() =>this.handleModal(location.place_id)}
-                >🐳</span>
+              >🐳</span>
             </Marker>
           })}
         </MapGl>

@@ -30,12 +30,12 @@ class ImageUpload extends React.Component {
           :
           <>
             <button className="custom-button">
-            <input
-              className="display-none"
-              type="file"
-              onChange={this.handleUpload}
-            />
-            <img  src={require('../../assets/photo.png')} alt="poloroid" width="40px"/>
+              <input
+                className="display-none"
+                type="file"
+                onChange={this.handleUpload}
+              />
+              <img  src={require('../../assets/photo.png')} alt="poloroid" width="40px"/>
             Upload photo
             </button>
           </>
