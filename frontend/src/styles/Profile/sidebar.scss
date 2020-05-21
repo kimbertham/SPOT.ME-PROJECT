@@ -46,12 +46,17 @@
         .groups-list,
         .events-list {
 
+          .locations-groups-side {
+            margin-bottom: 20px;
+          }
+
           .group-field,
           .event-field {
             padding: 5px;
             display: flex;
             height: 10%;
-            margin: -10px 0;
+            margin: 0;
+            // margin-bottom: 10px;
 
             
             img {
@@ -78,18 +83,27 @@
   }
 }
 
+.sidebar {
+  .left-section {
+    margin-left: 25px;
+    margin-top: 25px;
+  }
+}
+
 // * right side
 
 .right-section {
   height: 90vh;
   width: 20vh;
+  // padding: 10px;
   position: sticky;
   top: 67px;
   border-radius: 10px;
-  background-color: blue;
+  background-color: #343D42;
 
   .sidebar-head {
     border-bottom: 2px solid #535C61;
+    margin-bottom: 10px;
 
     h3 {
       font-size: 25px;
@@ -103,7 +117,7 @@
       cursor: pointer;
       display: flex;
       justify-content: space-between;
-      margin-bottom: 5px;
+      margin-bottom: 20px;
 
 
       .friend-icon {
@@ -139,16 +153,24 @@
 
 
   .chatbox {
+    
+    
     height: 70%;
     border-radius: 10px;
     border: 2px solid grey;
     background-color: white;
-
+    overflow: scroll;
+    
     .my-message {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row-reverse;
       color: blue;
     }
     
     .their-message {
+      display: flex;
+      justify-content: space-between;
       color: red;
     }
   }
@@ -183,7 +205,7 @@
       border: 5px solid grey;
     }
     button:hover {
-      color: red;
+      color: white;
     }
   }
 }

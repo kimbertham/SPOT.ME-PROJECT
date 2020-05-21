@@ -10,7 +10,7 @@ class NewsFeedsCard extends React.Component {
     const { post, user ,like, comment ,change, commentDelete, deletePost, i , setIndex, indexState } = this.props
     const currentUser = getUserId()
     const profileUser =  user.id
-    console.log(post)
+    // console.log(i)
 
     return (
       <>

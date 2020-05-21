@@ -64,15 +64,24 @@ class gymLocations extends React.Component {
 
   render(){
     return (
-    <>
-      <div className="locations">
-        <div className="search">
-        <GymSearch
-          change={this.handleChange} 
-          submit={this.handleSubmit}
-          {...this.state.searchForm}
-          flyTo={this.handleFlyTo}
-        />
+
+      <>
+        <div className="locations">
+          <div className="search">
+            <GymSearch
+              change={this.handleChange} 
+              submit={this.handleSubmit}
+              {...this.state.searchForm}
+              flyTo={this.handleFlyTo}
+            />
+          </div>
+          <div className="map">
+            <Map
+              moveMap={this.moveMap}
+              viewport={this.state.viewport}
+              data={this.state.data}
+            />
+          </div>
         </div>
         <div className="sidebar">
           <ProfileSidebar 
@@ -81,7 +90,7 @@ class gymLocations extends React.Component {
             hideModal={this.hideModal}
             user={this.state.user.id}/>
         </div>
-        </div>
+        
       </>
     )
   }

@@ -48,40 +48,46 @@ render(){
 
       <div className={`${modalClassName} modal `}> 
         <div className={`${modalClassName} modal-info modal-group`}> 
-          <div onClick={this.props.toggleModal}> X</div>
+          <div className="closed" onClick={this.props.toggleModal}> X</div>
           <h1> New Group </h1>
           <form onSubmit={this.handleSubmit}className="group-profile-form">
-            <div className="group-field">
+            <div className="field">
               <label className="label"> Group Name </label>
+              <div className="control"> 
               <input 
-                className='group-input' 
+                className=' input is-info group-input' 
                 placeholder="Group name here"
                 name="name"
                 onChange={this.handleChange}
                 value={groups.name}
               />
+              </div>
             </div>
-            <div className="group-field">
+            <div className="field">
               <label className="label"> Description </label>
-              <input 
-                className='group-input'
+              <div className="control">
+                <input 
+                className='input is-info group-input'
                 placeholder="Group description here"
                 name="description"
                 onChange={this.handleChange}
                 value={groups.description}
               />
+              </div>
             </div>
-            <div className="group-field">
+            <div className="field">
               <label className="label"> Image Url </label>
-              <input 
-                className='group-input'
+              <div className="control">
+                <input 
+                className='input is-info group-input'
                 placeholder="Group image here"
                 name="image"
                 onChange={this.handleChange}
                 value={groups.image}
               />
+              </div>
             </div>
-            <button>Send!</button>
+            <button type="submit" className="button is-fullwidth is-rounded is-link">Send!</button>
           </form>
         </div>
       </div>
