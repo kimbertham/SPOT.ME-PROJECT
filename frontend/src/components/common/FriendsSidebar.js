@@ -62,7 +62,7 @@ class FriendsSidebar extends React.Component {
 
   return ( <div className="right-section">
             <div className='sidebar-head'> 
-              <h3>Contacts</h3>
+              <h3 className="contacts">Contacts</h3>
             </div>
           <div className="friends-list">
     { user.following ? user.following.map(friend => {
@@ -92,6 +92,7 @@ class FriendsSidebar extends React.Component {
           return <div 
           className={ entry.sender === user.id ? "my-message" : "their-message" }
           >{entry.content}
+          <p>X</p>
           </div>
           
         })}

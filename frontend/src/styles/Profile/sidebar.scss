@@ -30,6 +30,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
 
         p {
           cursor: pointer;
@@ -86,9 +87,13 @@
   position: sticky;
   top: 67px;
   border-radius: 10px;
-  background-color: blue;
+  // background-color: blue;
 
   .sidebar-head {
+    border-bottom: 2px solid #535C61;
+    margin-bottom: 20px;
+        .contacts {
+        }
 
     h3 {
       font-size: 25px;
@@ -144,6 +149,9 @@
     background-color: white;
 
     .my-message {
+      display: flex;
+      justify-content: space-between;
+      
       color: blue;
     }
     
