@@ -6,6 +6,7 @@ import Slider from 'react-slick'
 
 import Reviews from './gymSections/Reviews'
 import GymNav from './gymSections/GymNav'
+import GymInfo from './gymSections/GymInfo'
 // import GymInfo from './gymSections/GymInfo'
 
 
@@ -15,7 +16,7 @@ class gymShow extends React.Component {
     section: {
       reviews: false,
       members: false,
-      directions: false,
+      info: false,
       posts: false
     },
 
@@ -60,7 +61,7 @@ class gymShow extends React.Component {
 
 
   getSection = async page =>  {
-    const section = { reviews: false, members: false, directions: false, posts: false }
+    const section = { reviews: false, members: false, info: false, posts: false }
     await this.setState({ section })
     const sectionChange =  { ...this.state.section, [page]: true }
     this.setState({ section: sectionChange })
@@ -102,13 +103,15 @@ class gymShow extends React.Component {
               })}
           </Slider>
         </div>
-
+        </div>
+        </div>
+        <div className="page-two">
         <GymNav getSection={this.getSection} />
 
         <div className="changing-sections">
           <Reviews status={this.state.section.reviews} reviews={this.state.data.reviews}/>
-        </div>
-        </div>
+          <GymInfo status={this.state.section.info} data={this.state.data}/>
+          </div>
       </div>
       </div>
       </div>
