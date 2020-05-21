@@ -7,6 +7,9 @@ import NewsFeedsCard from './NewsFeedsCard'
 import ProfileSidebar from '../common/ProfileSidebar'
 import { getProfile, getLike, commentADelete, deleteAPost, postAComment } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { notify } from '../../lib/notifications'
 class Profile extends React.Component {
 state = {
   user: {}, 
@@ -47,22 +50,21 @@ handleChange = event => {
 postComment = async ( postOwner, postId) =>{
   const content = this.state.data
   await postAComment(postOwner,postId, content)
-  const userId = this.props.match.params.userId
-  const res = await getProfile(userId)
-  this.setState( { user: res.data })  
+  this.getData()
 }
+
 commentDelete = async (postId, commentId) => {
-  const userId=getUserId()
+  const userId = getUserId()
   commentADelete( userId ,postId,commentId)
-  const res = await getProfile(userId)
-  this.setState( { user: res.data })  
+  this.getData() 
 }
+
 deletePost = async (postId) => {
   const userId = getUserId()
-deleteAPost(userId, postId)
-  const res = await getProfile(userId)
-  this.setState( { user: res.data })  
+  deleteAPost(userId, postId)
+  this.getData()
 }
+
 setIndex = async (i) => {
   await this.setState({index: i})
 }
@@ -76,6 +78,7 @@ render(){
   const posts = user.posts ? user.posts : []
   return (
     <div className='profile-page-container'>
+      <ToastContainer/>
         <div className='left-section'> 
 
       <ProfileSidebar 

@@ -13,9 +13,9 @@ async function createNewPost(req,res,next) {
   // console.log(req.params.userId)
   try {
     const user = await User.findById(req.params.userId)
-    if (!user.equals(req.currentUser._id)){
-      throw new Error('Not authorized to do this')
-    }
+    // if (!user.equals(req.currentUser._id)){
+    //   throw new Error('Not authorized to do this')
+    // }
     req.body.owner = req.currentUser
     user.posts.push(req.body)
     await user.save()

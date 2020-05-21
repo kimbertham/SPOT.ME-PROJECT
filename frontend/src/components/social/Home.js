@@ -24,24 +24,18 @@ class Home extends React.Component {
 
     getData = async () => {
       const postRes = await axios.get('/api/news', withHeaders())
-      // const res = await getProfile(getUserId())
-      // console.log(res)
+      const res = await getProfile(getUserId())
       const postsArray = postRes.data
-      this.setState({ postsArray })
-      // this.setState( { user: res.data }) 
+      this.setState({ postsArray, user: res.data }) 
     }
 
     async componentDidMount() {
-      const postRes = await axios.get('/api/news', withHeaders())
       await this.getData()
-      const postsArray = postRes.data
-      this.setState({ postsArray })
     }
 
     addLike = async (postId) => {
       await getLike(userId, postId)
-      const res = await getProfile(userId)
-      this.setState({  user: res.data  })   
+      this.getData()  
     }
     
     handleChange = event => {
@@ -51,36 +45,33 @@ class Home extends React.Component {
     }
     
     postComment = async ( postOwner, postId) =>{
-      console.log(this.state)
       const content = this.state.data
       await postAComment(postOwner,postId, content)
-      const res = await getProfile(userId)
-      this.setState( { user: res.data } )  
+      await this.getData() 
     }
     
     commentDelete = async (postId, commentId) => {
       const userId = getUserId()
       commentADelete( userId ,postId,commentId)
-      const res = await getProfile(userId)
-      this.setState( { user: res.data })  
+      this.getData()
     }
     
     deletePost = async (postId) => {
       const userId = getUserId()
       deleteAPost(userId, postId)
-      const res = await getProfile(userId)
-      this.setState( { user: res.data })  
+      this.getData() 
     }
     
     setIndex = async (i) => {
       await this.setState({ index: i })
     }
+
     //! ---------------------------
 
     render() {
       const { postsArray } = this.state
       const posts = postsArray ? postsArray : []
-      console.log(posts)
+      // console.log(posts)
       return (
         <div className='profile-page-container'>
         
