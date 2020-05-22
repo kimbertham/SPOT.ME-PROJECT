@@ -43,9 +43,9 @@ class FriendsSidebar extends React.Component {
     event.preventDefault()
     try {
       await axios.post(`/api//messages/${getUserId()}/post/${this.state.chatId}`,this.state.chat , withHeaders())
-      notify('Message deleted!')
       await this.getData()
       await this.getChat(this.state.chatId)
+      this.setState( { chat: { content: '', image: '' } })
     } catch (err) {
       console.log(err)
     }
@@ -54,17 +54,19 @@ class FriendsSidebar extends React.Component {
   deleteMessage = async (event, postId) => {
     try {
       await axios.delete(`/api//messages/${getUserId()}/delete/${postId}`, withHeaders())
+      await this.getData()
+      await this.getChat(this.state.chatId)
 
-      // await this.getData()
-      await this.getChat()
+      notify('Message deleted!')
     } catch (err) {
       console.log(err)
     }
     
   }
 
-  getChat = id => {
+  getChat = async id => {
     const conversation = this.state.user.messages.filter(message => id === message.otherUserId)
+    console.log(conversation)
     this.setState({ conversation: conversation, chatId: id })
   }
 
@@ -76,6 +78,7 @@ class FriendsSidebar extends React.Component {
   render() {
     const { user, modal, chat, conversation } = this.state
     const modalClassName = modal ? 'display-block' : 'display-none'
+    
 
     return ( <div className="right-section">
       <ToastContainer/>
@@ -107,7 +110,7 @@ class FriendsSidebar extends React.Component {
           {/* // * past messages show */}
           <div className="chatbox">
             { conversation.map(entry => {
-              return <div key={user.id}
+              return <div key={`${entry._id}chat`}
                 className={ entry.sender === user.id ? 'my-message' : 'their-message' }
               >{entry.content}
                 <p onClick={(event) => this.deleteMessage(event, entry._id)}>X</p>
@@ -124,7 +127,7 @@ class FriendsSidebar extends React.Component {
               onChange={this.handleChange}
               value={chat.content}
             />
-            <button>Send!</button>
+            <button>Send</button>
           </form>
         </div>
       </div>

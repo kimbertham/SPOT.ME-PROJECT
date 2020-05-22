@@ -22,6 +22,7 @@ state = {
   index: null,
 currentUser : {}
 }
+
 async componentDidMount() {
   const userId = this.props.match.params.userId
   const res = await getProfile(userId)
@@ -77,26 +78,23 @@ postComment = async ( postOwner, postId) =>{
   await postAComment(postOwner,postId, contents)
   const userId = this.props.match.params.userId
   const res = await getProfile(userId)
-
-
   this.setState( { data: {content: ''} , user: res.data })  
-
 }
 
 commentDelete = async (postId, commentId) => {
   const userId = getUserId()
   commentADelete( userId ,postId,commentId)
-  this.getData() 
+  await this.getData() 
 }
 
 deletePost = async (postId) => {
   const userId = getUserId()
   deleteAPost(userId, postId)
-  this.getData()
+  await this.getData()
 }
 
 setIndex = async (i) => {
-  await this.setState({index: i})
+  this.setState({index: i})
 }
 movePage = async (follower) => {
   this.props.history.push(`/profile/${follower.id}`)
@@ -116,8 +114,7 @@ profileEditted = async() => {
 render(){
   const { user } = this.state
   const posts = user.posts ? user.posts : []
-
-  console.log(this.state.data)
+  
   return (
     <div className='profile-page-container'>
       <ToastContainer/>

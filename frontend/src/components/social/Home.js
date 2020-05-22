@@ -33,16 +33,16 @@ class Home extends React.Component {
 
 
     async componentDidMount() {
-      const postRes = await axios.get('/api/news', withHeaders())
-      const postsArray = postRes.data
-      const getCurrentId = await getUserId()
-      const getCurrentProfile = await getProfile(getCurrentId)
-      const currentUser = getCurrentProfile.data
+      // const postRes = await axios.get('/api/news', withHeaders())
+      // const postsArray = postRes.data
+      // const getCurrentId = await getUserId()
+      // const getCurrentProfile = await getProfile(getCurrentId)
+      // const currentUser = getCurrentProfile.data
       // currentUser.posts.map(post => {
       //   postsArray.push(post)
       // })
-      this.setState({ postsArray, currentUser})
-      // await this.getData()
+      // this.setState({ postsArray, currentUser})
+      await this.getData()
     }
 
     addLike = async (userId, postId) => {
@@ -77,7 +77,7 @@ class Home extends React.Component {
     render() {
       const { postsArray } = this.state
       const posts = postsArray ? postsArray : []
-      console.log(postsArray)
+      console.log(this.state)
       return (
         <div className='profile-page-container'>
         
