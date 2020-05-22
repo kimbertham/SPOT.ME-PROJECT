@@ -46,11 +46,7 @@ async function toggleFollow(req,res,next){
     console.log('followed')
     await userToFollow.save()
     await followingUser.save()
-<<<<<<< HEAD
     res.status(202).json(followingUser)
-=======
-    res.status(202).json(message)
->>>>>>> development
   } catch (err){
     next(err)
   }

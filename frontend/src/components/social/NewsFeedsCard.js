@@ -7,16 +7,8 @@ import { defaultImage } from '../../lib/notifications'
 class NewsFeedsCard extends React.Component {
 
   render () {
-<<<<<<< HEAD
     const { post ,like, comment ,change, commentDelete, 
     deletePost, i , setIndex, indexState, currentUser, value } = this.props
-=======
-    const { post, user ,like, comment ,change, commentDelete, deletePost, i , setIndex, indexState } = this.props
-    const currentUser = getUserId()
-    const profileUser =  user.id
-    // console.log(i)
-
->>>>>>> development
     return (
       <>
       <div className="wrap-center">
@@ -117,7 +109,7 @@ class NewsFeedsCard extends React.Component {
                   className="textarea"
                   name="content"
                   placeholder="Write a comment..."
-                  onChange={change(i)}
+                  onChange={change}
                   value={value}/>
                 <button> Send Comment </button> 
               </form>

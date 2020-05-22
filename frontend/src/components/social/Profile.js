@@ -8,14 +8,10 @@ import NewsFeedsCard from './NewsFeedsCard'
 import ProfileSidebar from '../common/ProfileSidebar'
 import { getProfile, getLike, commentADelete, deleteAPost, postAComment } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
-<<<<<<< HEAD
-
-
-=======
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { notify } from '../../lib/notifications'
->>>>>>> development
+
 class Profile extends React.Component {
 state = {
   user: {}, 
@@ -27,15 +23,12 @@ state = {
 currentUser : {}
 }
 async componentDidMount() {
-<<<<<<< HEAD
   const userId = this.props.match.params.userId
   const res = await getProfile(userId)
   const getCurrentId = await getUserId()
   const currentUser = await getProfile(getCurrentId)
   await this.setState( { user: res.data, currentUser : currentUser.data  }) 
-=======
   this.getData()
->>>>>>> development
   try {
   } catch (err) {
     console.log(err)
@@ -48,12 +41,9 @@ getData = async () => {
   this.setState( { user: res.data }) 
 }
 
-<<<<<<< HEAD
 addLike = async (userId, postId) => {
-=======
-addLike = async (postId) => {
-  const userId = this.props.match.params.userId
->>>>>>> development
+// addLike = async (postId) => {
+  // const userId = this.props.match.params.userId
   await getLike(userId, postId)
   const res = await getProfile(userId)
   this.setState({  user: res.data  })   
@@ -66,7 +56,6 @@ handleChange = event => {
 }
 
 postComment = async ( postOwner, postId) =>{
-<<<<<<< HEAD
   const contents = this.state.data
   await postAComment(postOwner,postId, contents)
   const userId = this.props.match.params.userId
@@ -75,11 +64,6 @@ postComment = async ( postOwner, postId) =>{
 
   this.setState( { data: {content: ''} , user: res.data })  
 
-=======
-  const content = this.state.data
-  await postAComment(postOwner,postId, content)
-  this.getData()
->>>>>>> development
 }
 
 commentDelete = async (postId, commentId) => {
@@ -124,13 +108,9 @@ render(){
           <ProfileInfo 
             user={this.state.user}
             move={this.movePage}
-<<<<<<< HEAD
-            currentUser={this.state.currentUser}/>
-
-=======
+            currentUser={this.state.currentUser}
             refresh={this.getData}
             />
->>>>>>> development
         </div>
         <div className='profile-post'>
           <Post 

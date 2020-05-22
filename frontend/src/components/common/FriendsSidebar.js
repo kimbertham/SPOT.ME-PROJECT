@@ -1,12 +1,8 @@
 import React from 'react'
-<<<<<<< HEAD
-import { getProfile } from '../../lib/api'
-=======
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { notify } from '../../lib/notifications'
 import { getProfile, withHeaders } from '../../lib/api'
->>>>>>> development
 import { getUserId } from '../../lib/auth'
 import axios from 'axios'
 
