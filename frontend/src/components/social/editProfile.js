@@ -1,93 +1,99 @@
-import React from 'react' 
+import React from 'react'
 import axios from 'axios'
+import { withHeaders } from '../../lib/api'
 
 
 
-class editProfile extends React.Component {
-state = { 
-  user: {}
-}
-
-async componentDidMount() {
-  try {
-    const userId = this.props.match.params.userId
-    const user = await axios.get(`/api/profile/${userId}`)
-    this.setState( { user: user.data })   
-  } catch (err) {
-    console.log(err)
+class EditProfile extends React.Component {
+  state = {
+    user: {}
   }
-}
 
-  handleSubmit = async event => {
-    event.preventDefault()
+  async componentDidMount() {
     try {
       const userId = this.props.match.params.userId
-      const data = { ...this.state.user }
-      await axios.post(`/api/profile/${userId}/edit`, data)
-      this.props.history.push(`/profile/${userId}`)
+      const user = await axios.get(`/api/profile/${userId}`)
+      this.setState({ user: user.data })
     } catch (err) {
       console.log(err)
     }
   }
 
-returnPage = () => {
-  const userId = this.props.match.params.userId
-  this.props.history.push(`/profile/${userId}`)
-}
+  handleSubmit = async event => {
+    event.preventDefault()
+    try {
+      const userId = this.props._id
+      const data = { ...this.state.user }
+      await axios.post(`/api/profile/${userId}/edit`, data, withHeaders())
+      this.props.toggleModal()
+    this.props.handleEdit()
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
 
-handleChange = event => {
-  const user = { ...this.state.user, [event.target.name]: event.target.value }
-  this.setState({ user })
-}
 
-render() {
-  console.log(this.state)
-  console.log(this.props)
-  return (
-    <div className='edit-profile-container'>
-      <div className='edit-form-container'> 
-        <div onClick={this.returnPage} className='back-cross'><p> X </p></div>
-        <form onSubmit={this.handleSubmit} className="edit-profile-form">
-          <div className="edit-field">
-            <label className="label"> First Name </label>
-            <input 
-              className='edit-input'
-              placeholder="First Name here"
-              name="firstName"
-              onChange={this.handleChange}
-              value={this.state.user.firstName}
-            />
+  handleChange = event => {
+    const user = { ...this.state.user, [event.target.name]: event.target.value }
+    this.setState({ user })
+  }
+
+  render() {
+    const { user } = this.state
+    const modalClassName = this.props.modal ? 'display-block' : 'display-none'
+    return (
+
+      <>
+        <div className={`${modalClassName} modal `}>
+          <div className={`${modalClassName} modal-info modal-group`}>
+            <div className="closed" onClick={this.props.toggleModal}> X</div>
+            <h1> Edit Group </h1>
+            <form onSubmit={this.handleSubmit} className="group-profile-form">
+              <div className="field">
+                <label className="label"> First Name </label>
+                <div className="control">
+                  <input
+                    className=' input is-info group-input'
+                    placeholder="First Name"
+                    name="firstName"
+                    onChange={this.handleChange}
+                    value={user.firstName}
+                  />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label"> Last Name </label>
+                <div className="control">
+                  <input
+                    className=' input is-info group-input'
+                    placeholder="Last Name"
+                    name="lastName"
+                    onChange={this.handleChange}
+                    value={user.lastName}
+                  />
+                </div>
+              </div>
+        
+              <div className="field">
+                <label className="label"> Email </label>
+                <div className="control">
+                  <input
+                    className='input is-info group-input'
+                    placeholder="Email"
+                    name="email"
+                    onChange={this.handleChange}
+                    value={user.email}
+                  />
+                </div>
+              </div>
+          
+              <button type="submit" className="button is-fullwidth is-rounded is-link">Send!</button>
+            </form>
           </div>
-
-          <div className="edit-field">
-            <label className="label"> Last Name</label>
-            <input 
-              className='edit-input'
-              placeholder="last Name"
-              name="lastName"
-              onChange={this.handleChange}
-              value={this.state.user.lastName}
-            />
-          </div>
-
-          <div className="edit-field">
-            <label className="label">Description </label>
-            <textarea 
-              className='edit-textarea'
-              placeholder="description here"
-              name="description"
-              onChange={this.handleChange}
-              value={this.state.user.description}
-            />
-          </div>
-          <button>send!</button>
-        </form>
-      </div>
-
-
-    </div>
-  )
+        </div>
+      </>
+    )
+  }
 }
-}
-export default editProfile
+export default EditProfile

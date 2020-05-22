@@ -27,6 +27,13 @@ handleInput = async({ target }) => {
   }
 }
 
+handleClick = () => {
+this.setState({
+  input: ''
+})
+
+}
+
 
 render(){
   return (
@@ -39,7 +46,7 @@ render(){
           return (
             <div className="navbar-item ">
             
-              <Link className='inline-link' to={`/profile/${user._id}`}>
+              <Link className='inline-link' to={`/profile/${user._id}`} onClick={this.handleClick} >
               
                 <img 
                   className="searchbar-profile-picture"
@@ -61,7 +68,7 @@ render(){
         {this.state.groups.map(group => {
           return (
             <div className="navbar-item">
-              <Link className='inline-link' to={`/groups/${group._id}`}>
+              <Link className='inline-link' to={`/groups/${group._id}`} onClick={this.handleClick}>
                 <img 
                   className="searchbar-profile-picture"
                   loading='lazy'
