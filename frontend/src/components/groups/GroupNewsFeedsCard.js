@@ -12,7 +12,7 @@ class NewsFeedsCard extends React.Component {
 
     const { user, like, group } = this.props
     let GroupPosts = group.posts ? group.posts : []
-
+console.log(GroupPosts)
     return (
       <>
 

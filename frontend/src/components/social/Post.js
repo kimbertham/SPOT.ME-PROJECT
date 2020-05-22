@@ -46,7 +46,7 @@ render() {
               <img 
                 className="profile-picture"
                 loading='lazy'
-                src={this.props.user.image} 
+                src={this.props.currentUser.image} 
                 alt="logo" 
               />
             </figure>

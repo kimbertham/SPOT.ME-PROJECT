@@ -101,6 +101,7 @@ class Home extends React.Component {
               <Post 
                 user={this.state.user}
                 refresh={this.getData}
+                currentUser={this.state.currentUser}
               />
 
               {posts.slice(0).reverse().map((post, i) => {
