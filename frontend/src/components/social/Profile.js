@@ -114,8 +114,7 @@ profileEditted = async() => {
 render(){
   const { user } = this.state
   const posts = user.posts ? user.posts : []
-
-  console.log(this.state.data)
+  
   return (
     <div className='profile-page-container'>
       <ToastContainer/>
