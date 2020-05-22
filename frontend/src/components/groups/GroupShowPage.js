@@ -38,6 +38,22 @@ class GroupShow extends React.Component {
     }
   }
 
+  componentDidUpdate = async (prevProps) => {
+    if (prevProps.location.pathname.includes('/groups/') && this.props.location.pathname.includes('/groups/')) {
+      if (this.props.location.pathname !== prevProps.location.pathname) {
+        try {
+          const groupId = this.props.match.params.groupId
+          const res = await getGroup(groupId)
+          const userId = await getUserId()
+          const resUser = await getProfile(userId)
+          this.setState({ group: res.data, user: resUser.data })
+        } catch (err) {
+          console.log(err)
+        }
+      }
+    }
+  }
+
    groupEditted = async() => {
      console.log('edited');
      const groupId = this.props.match.params.groupId
@@ -142,6 +158,8 @@ class GroupShow extends React.Component {
       console.log(err);
     }
   }
+
+
 
 
   render() {

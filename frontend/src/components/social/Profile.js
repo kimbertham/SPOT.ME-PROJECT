@@ -35,6 +35,23 @@ async componentDidMount() {
   }
 }
 
+componentDidUpdate = async (prevProps) => {
+  if (prevProps.location.pathname.includes('/profile/') && this.props.location.pathname.includes('/profile/')) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      try {
+        const userId = this.props.match.params.userId
+        const res = await getProfile(userId)
+        const getCurrentId = await getUserId()
+        const currentUser = await getProfile(getCurrentId)
+        await this.setState( { user: res.data, currentUser : currentUser.data  }) 
+        this.getData()
+       } catch (err) {
+          console.log(err)
+        }
+      }
+  }
+}
+
 getData = async () => {
   const userId = this.props.match.params.userId
   const res = await getProfile(userId)
@@ -88,6 +105,13 @@ movePage = async (follower) => {
   await this.setState({ user })
 }
 
+profileEditted = async() => {
+  const userId = this.props.match.params.userId
+  const res = await getProfile(userId)
+  const getCurrentId = await getUserId()
+  const currentUser = await getProfile(getCurrentId)
+  this.setState( { user: res.data, currentUser : currentUser.data  }) 
+}
 
 render(){
   const { user } = this.state
@@ -110,6 +134,7 @@ render(){
             move={this.movePage}
             currentUser={this.state.currentUser}
             refresh={this.getData}
+            handleEdit={this.profileEditted}
             />
         </div>
         <div className='profile-post'>

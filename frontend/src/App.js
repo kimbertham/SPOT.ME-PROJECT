@@ -6,7 +6,6 @@ import Navbar from './components/common/Navbar'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import Profile from './components/social/Profile'
-import editProfile from './components/social/editProfile'
 import GroupShow from './components/groups/GroupShowPage'
 import Home from './components/social/Home'
 
@@ -21,7 +20,6 @@ const App = () => {
           <Route path='/locations' component={GymLocations}/>
           <Route path='/register' component={Register}/>
           <Route path='/login' component={Login}/>
-          <Route path='/profile/:userId/edit' component={editProfile} />
           <Route exact path='/profile/:userId' component={withRouter(Profile) }/>
           <Route path='/home' component={Home}/>
           <Route path='/groups/:groupId' component={GroupShow}/>

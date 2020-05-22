@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import EditProfile from './EditProfile'
 import { Link } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -9,10 +10,14 @@ import { getUserId } from '../../lib/auth'
 const defaultImage = 'https://bit.ly/3g47LRX'
 
 
+
 class ProfileInfo extends React.Component {
   state ={
     showFollowers: false,
+    modal: false
   }
+
+  toggleModal = () => this.setState({ modal: !this.state.modal })
 
 
 
@@ -37,10 +42,11 @@ class ProfileInfo extends React.Component {
       <div className='profile-info-container'>
         <div className='profile-info-section'>
           <div className={currentUser.id === user.id ? 'display-block' : 'display-none'}>
-            <Link to={`/profile/${user.id}/edit`}> 
-              <img className='edit-profile' 
-                src='https://i.imgur.com/8o2WJAN.jpg' 
-                alt='edit-icon'/></Link>
+          <div>
+            <img className='edit-profile'
+              src='https://i.imgur.com/8o2WJAN.jpg'
+              alt='edit-icon'
+              onClick={this.toggleModal} /></div>
           </div>
           <div className='info-top'>
 
@@ -102,6 +108,11 @@ class ProfileInfo extends React.Component {
               </div>
               <p> {user.description ? user.description : ' '}</p>
             </div>
+            <EditProfile 
+                {...user}
+                handleEdit={this.props.handleEdit}
+                toggleModal={this.toggleModal}
+                modal={this.state.modal}/>
           </div>
         </div> 
       </div>
