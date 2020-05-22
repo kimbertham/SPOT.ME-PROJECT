@@ -27,13 +27,12 @@ class ProfileInfo extends React.Component {
 
   render () {
     const {user, move} = this.props
-    const followers = user.followers? user.followers : []
-    const modalClassName = this.state.showFollowers? 'display-block' : 'display-none'
+    const followers = user.followers ? user.followers : ''
+    const modalClassName = this.state.showFollowers ? 'display-block' : 'display-none'
     const currentUser = getUserId()
     const profileUser = this.props.user.id
 
     return (
-
       <div className='profile-info-container'>
         <div className='profile-info-section'>
         <ToastContainer/>
@@ -87,7 +86,7 @@ class ProfileInfo extends React.Component {
               <button 
               onClick={ this.followUser }
               className={ currentUser === profileUser ? 'display-none' : 'follow-button'}
-              >{ followers.includes(currentUser) ? 'Unfollow' : 'Follow' }</button>
+              >{ followers === Object && followers[0].following.includes(currentUser) ? 'Unfollow' : 'Follow' }</button>
             </div>
           </div>
 

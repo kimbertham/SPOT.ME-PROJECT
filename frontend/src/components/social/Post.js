@@ -29,6 +29,7 @@ handleSubmit = async event => {
     console.log('Post sent!')
     this.clearPost()
     this.props.refresh()
+    this.setState({ formData: { content: '' } })
   } catch (err) {
     console.log(err)
   }
