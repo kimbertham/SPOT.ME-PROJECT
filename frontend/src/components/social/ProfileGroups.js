@@ -21,8 +21,7 @@ handleChange = event => {
 
 handleSubmit =  async (event) => {
   event.preventDefault()
-  const userId = this.props.user
-  await axios.post(`/api/groups/new/${userId}`, this.state.group, withHeaders())
+  await axios.post(`/api/groups/new`, this.state.group, withHeaders())
 }
 
 render(){
