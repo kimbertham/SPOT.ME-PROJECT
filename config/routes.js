@@ -76,7 +76,7 @@ router.route('/profile/:userId/getFollowers')
 router.route('/groups/:groupId')
   .get(groups.showGroup)
 
-router.route('/groups/new/:userId')
+router.route('/groups/new')
   .post(secureRoute ,groups.new)
 
 router.route('/groups/:groupId/:userId')
