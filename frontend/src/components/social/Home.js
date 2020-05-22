@@ -23,33 +23,36 @@ class Home extends React.Component {
   //! get newsfeed Array
 
     getData = async () => {
+      let postsArray = []
       const postRes = await axios.get('/api/news', withHeaders())
-      // const postsArray = postRes.data
-      // this.setState({ postsArray })
-      const res = await getProfile(getUserId())
-      const postsArray = postRes.data
-      this.setState({ postsArray, user: res.data }) 
-    }
-
-
-    async componentDidMount() {
-      const postRes = await axios.get('/api/news', withHeaders())
-      const postsArray = postRes.data
+      const getPostsArray = postRes.data.slice(0).reverse()
+        getPostsArray.map(user => {
+        user.map(post => {
+          postsArray.push(post)
+        })
+      })
       const getCurrentId = await getUserId()
       const getCurrentProfile = await getProfile(getCurrentId)
       const currentUser = getCurrentProfile.data
-      // currentUser.posts.map(post => {
-      //   postsArray.push(post)
-      // })
       this.setState({ postsArray, currentUser})
-      // await this.getData()
+    }
+
+    commentDelete = async (postId, postOwnerId, commentId) => {
+      console.log(postOwnerId)
+      commentADelete( postOwnerId ,postId,commentId)
+      this.getData() 
+    }
+
+    async componentDidMount() {
+    await this.getData()
     }
 
     addLike = async (userId, postId) => {
       await getLike(userId, postId)
       const res = await axios.get('/api/news', withHeaders())
       const postsArray = res.data.slice(0).reverse()
-      this.setState({ postsArray })   
+      this.getData()
+      // this.setState({ postsArray })   
       // this.getData()  
     }
     
@@ -63,14 +66,21 @@ class Home extends React.Component {
       console.log(this.state)
       const content = this.state.data
       await postAComment(postOwner,postId, content)
-      const res = await axios.get('/api/news', withHeaders())
-      const postsArray = res.data.slice(0).reverse()
-      this.setState( { postsArray} )  
+      this.getData()
     }
     
+    movePage = async (follower) => {
+      this.props.history.push(`/profile/${follower.id}`)
+      const data = await getProfile(follower.id)
+      const user = data.data
+      await this.setState({ user })
+    }
+
     setIndex = async (i) => {
       await this.setState({ index: i })
     }
+
+    
 
     //! ---------------------------
 

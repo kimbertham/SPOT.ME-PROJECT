@@ -11,10 +11,10 @@ const Group = require('../models/Group')
 
 
 async function getNewsFeed(req,res,next){
-  let postArray = []
+  const postArray = []
   try {
     // get user and populate following field
-    const user = await (await User.findById(req.currentUser._id).populate('following').populate('posts.owner'))
+    const user = await (await User.findById(req.currentUser._id).populate('following'))
 
     if (!user) {
       throw new Error('Not Found')
@@ -26,7 +26,7 @@ async function getNewsFeed(req,res,next){
         .populate('posts.likes')
         .populate('posts.comments.user')
       const posts = folUser.posts
-      postArray = posts
+      await postArray.push(posts)
     }))
 
 

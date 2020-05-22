@@ -8,6 +8,7 @@ module.exports = [
     passwordConfirmation: 'pass',
     level: 'beginner',
     image: 'https://ca.slack-edge.com/T0351JZQ0-UF7T00ANN-9e0ffcda6506-72'
+    
   },
   {
     username: 'charlotte',
@@ -17,7 +18,8 @@ module.exports = [
     password: 'pass',
     passwordConfirmation: 'pass',
     level: 'intermediate',
-    image: 'https://ca.slack-edge.com/T0351JZQ0-UDC194EAH-3d2a5f44ffa8-72'
+    image: 'https://ca.slack-edge.com/T0351JZQ0-UDC194EAH-3d2a5f44ffa8-72',
+    following: ['5ec5264e1e5cb1195c73a9a9']
   },
   {
     username: 'abi',

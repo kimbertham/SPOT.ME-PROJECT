@@ -33,11 +33,13 @@
 }
 
 .modal-followers {
+  background-color: white;
   width: 25%;
-  height: 60vh;
+
   .follower-title{
     font-size: 40px;
     margin:5px
+    
   }
   .followers-field {
     width: 80%;

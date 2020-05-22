@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-
 import { getUserId } from '../../lib/auth'
 import { defaultImage } from '../../lib/notifications'
 
@@ -7,8 +6,9 @@ import { defaultImage } from '../../lib/notifications'
 class NewsFeedsCard extends React.Component {
 
   render () {
-    const { post ,like, comment ,change, commentDelete, 
+    const { post, like, comment ,change, commentDelete, 
     deletePost, i , setIndex, indexState, currentUser, value } = this.props
+    // const post = this.props.post? this.props.post : ''
     return (
       <>
       <div className="wrap-center">
@@ -17,7 +17,7 @@ class NewsFeedsCard extends React.Component {
           <div className="feeds-header">
             <div className='feeds-user-info'>
               <img 
-              src={`${post.owner.image? post.owner.image : defaultImage }`} 
+              src={post.owner? post.owner.image : defaultImage } 
               alt="test" 
               />
               <h4 className="feeds-header-title">{post.owner.username}</h4> 
@@ -86,8 +86,9 @@ class NewsFeedsCard extends React.Component {
                   <p>{comment.user.username}</p>
                   <p>{comment.content}</p>
                   <div 
-                    className={currentUser === post.owner.id ? 'display-block' : 'display-none'}
-                    onClick={()=>commentDelete(`${post._id}`,`${comment._id}`)}>
+                    className={currentUser.id === post.owner.id  ? 'display-block' : 'display-none' ||
+                  currentUser.id === post.comment.user.id? 'display-block' : 'display-none' }
+                    onClick={()=>commentDelete(`${post._id}`,`${post.owner._id}`,`${comment._id}`)}>
                     <p className='delete-text'>delete</p></div>
                 </div>
               </div>
