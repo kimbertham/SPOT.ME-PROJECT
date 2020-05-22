@@ -46,14 +46,20 @@
         .groups-list,
         .events-list {
 
+          .locations-groups-side {
+            margin-bottom: 20px;
+          }
+
           .group-field,
           .event-field {
             padding: 5px;
             display: flex;
             height: 10%;
-            margin: -10px 0;
+            margin: 0;
+            border-radius: 10px;
+            // margin-bottom: 10px;
 
-            
+
             img {
               width: 45px;
               border-radius: 50%;
@@ -72,9 +78,20 @@
               }
             }
           }
+
+          .group-field:hover {
+            background-color: #363636;
+          }
         }
       }
     }
+  }
+}
+
+.sidebar {
+  .left-section {
+    margin-left: 25px;
+    margin-top: 25px;
   }
 }
 
@@ -83,13 +100,15 @@
 .right-section {
   height: 90vh;
   width: 20vh;
+  // padding: 10px;
   position: sticky;
   top: 67px;
   border-radius: 10px;
-  background-color: blue;
+  background-color: #343D42;
 
   .sidebar-head {
     border-bottom: 2px solid #535C61;
+    margin-bottom: 10px;
 
     h3 {
       font-size: 25px;
@@ -103,13 +122,19 @@
       cursor: pointer;
       display: flex;
       justify-content: space-between;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      padding: 10px;
 
 
       .friend-icon {
         height: 30px;
         width: 30px;
       }
+    }
+
+    .friend:hover {
+      background-color: #363636;
     }
   }
 
@@ -128,10 +153,11 @@
   .chat-top {
     display: flex;
     justify-content: space-between;
+
     h1 {
       color: black;
     }
-  
+
     .close-chat-modal {
       color: black;
     }
@@ -139,26 +165,60 @@
 
 
   .chatbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     height: 70%;
     border-radius: 10px;
     border: 2px solid grey;
     background-color: white;
+    overflow: scroll;
+
+    .my-message,
+    .their-message {
+      display: flex;
+      font-weight: 500;
+      padding: 10px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      border-radius: 10px;
+      min-width: 30%;
+      margin: 1px 0;
+
+      p:hover {
+        color: rgb(151, 151, 151);
+        cursor: pointer;
+      }
+    }
 
     .my-message {
-      color: blue;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      color: rgb(221, 221, 221);
+      background-color: rgb(75, 139, 190);
+
+      p {
+        margin-right: 10px;
+      }
     }
-    
+
     .their-message {
-      color: red;
+      display: flex;
+      background-color: rgb(81, 81, 82);
+      color: rgb(221, 221, 221);
+
+      p {
+        margin-left: 10px;
+      }
     }
   }
+
   .chat-form {
     display: flex;
     align-items: center;
     height: 20%;
     margin-top: 10px;
     border: none;
-  
+
     .chat-input {
       height: 100%;
       width: 86%;
@@ -172,9 +232,11 @@
       resize: vertical;
       border: 5px solid grey;
     }
+
     button {
       height: 100%;
       width: 12%;
+      text-align: center;
       cursor: pointer;
       color: black;
       margin-left: auto;
@@ -182,8 +244,9 @@
       border-radius: 10px;
       border: 5px solid grey;
     }
+
     button:hover {
-      color: red;
+      color: white;
     }
   }
 }

@@ -90,6 +90,7 @@ class gymLocations extends React.Component {
             hideModal={this.hideModal}
             user={this.state.user.id}/>
         </div>
+        
       </>
     )
   }

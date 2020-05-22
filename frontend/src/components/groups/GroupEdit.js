@@ -1,55 +1,59 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { getUserGroups, withHeaders } from '../../lib/api'
+import { getGroup, withHeaders } from '../../lib/api'
 
-class ProfileGroups extends React.Component {
+class GroupEdit extends React.Component {
 state = {
-  groups: []
+  formData: {
+    name: this.props._id,
+    description: this.props.description,
+    image: this.props.image
+  }
 }
 
-async componentDidMount() {
-  const res = await getUserGroups()
-  const groups = res.data
-  this.setState({ groups })
-}
+// componentDidMount() {
+//   console.log(this.props);
+  
+//     this.setState({ 
+//       formData: {
+//         name: this.props.name,
+//         description: this.props.description,
+//         image: this.props.image,
+//       }
+//     })
+// }
 
 handleChange = event => {
-  const group = { ...this.state.group, [event.target.name]: event.target.value }
-  this.setState({ group })
+  const formData = { ...this.state.formData, [event.target.name]: event.target.value }
+  this.setState({ formData })
 }
 
 handleSubmit =  async (event) => {
-  event.preventDefault()
-  const userId = this.props.user
-  await axios.post(`/api/groups/new/${userId}`, this.state.group, withHeaders())
+  try {
+    const groupId = this.props._id
+    event.preventDefault()
+    const userId = this.props.user
+    await axios.put(`/api/groups/${groupId}/edit`, this.state.formData, withHeaders())
+    this.props.toggleModal()
+    this.props.handleEdit()
+  } catch(err){
+    console.log(err);
+    
+  }
+  
 }
 
 render(){
-  const { groups } = this.state
+  const { formData } = this.state
   const modalClassName = this.props.modal ? 'display-block' : 'display-none'
   return (
 
     <>
-      {groups? groups.map((group,i) => {
-        return <Link key={i} to={`/groups/${group._id}`}>
-          <div key={ group.id } className='group-field'>
-          <img className='group-icon'
-          src={ group.image ? group.image :
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS1xllWBpckzi_eEfVyJuUcy9WEWObmCUmTsENKt85aXU67KSnF&usqp=CAU'} 
-          alt='group'/>
-          <div className='group-info'>
-        <p>{ group.name }</p>
-        </div>
-          </div>
-        </Link>
-      }) : ' ' }
-
-
       <div className={`${modalClassName} modal `}> 
         <div className={`${modalClassName} modal-info modal-group`}> 
           <div className="closed" onClick={this.props.toggleModal}> X</div>
-          <h1> New Group </h1>
+          <h1> Edit Group </h1>
           <form onSubmit={this.handleSubmit}className="group-profile-form">
             <div className="field">
               <label className="label"> Group Name </label>
@@ -59,7 +63,7 @@ render(){
                 placeholder="Group name here"
                 name="name"
                 onChange={this.handleChange}
-                value={groups.name}
+                value={formData.name}
               />
               </div>
             </div>
@@ -71,7 +75,7 @@ render(){
                 placeholder="Group description here"
                 name="description"
                 onChange={this.handleChange}
-                value={groups.description}
+                value={formData.description}
               />
               </div>
             </div>
@@ -83,7 +87,7 @@ render(){
                 placeholder="Group image here"
                 name="image"
                 onChange={this.handleChange}
-                value={groups.image}
+                value={formData.image}
               />
               </div>
             </div>
@@ -95,4 +99,4 @@ render(){
   )
 }
 }
-export default ProfileGroups
+export default GroupEdit

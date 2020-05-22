@@ -10,12 +10,12 @@ state = {
   }
 }
 
-// clearPost = () => {
-//   // * clears state but doesn't clear the input box
-//   const formData = { formData: { content: '' } }
-//   this.setState({ formData })
-//   // console.log(this.state.formData)
-// }
+clearPost = () => {
+  // * clears state but doesn't clear the input box
+  const formData = { formData: { content: '' } }
+  this.setState({ formData })
+  // console.log(this.state.formData)
+}
 
 handleChange = event => {
   const formData = { ...this.state.formData, [event.target.name]: event.target.value }
@@ -27,7 +27,7 @@ handleSubmit = async event => {
   try {
     await postContent(this.state.formData, this.props.user.id)
     console.log('Post sent!')
-    // this.clearPost()
+    this.clearPost()
     this.props.refresh()
   } catch (err) {
     console.log(err)
