@@ -7,6 +7,8 @@ import NewsFeedsCard from './NewsFeedsCard'
 import ProfileSidebar from '../common/ProfileSidebar'
 import { getProfile, getLike, commentADelete, deleteAPost, postAComment } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
+
+
 class Profile extends React.Component {
 state = {
   user: {}, 
@@ -15,39 +17,46 @@ state = {
   },
   modal: false,
   index: null,
-  postsUser: {}
+currentUser : {}
 }
 async componentDidMount() {
   const userId = this.props.match.params.userId
   const res = await getProfile(userId)
-  this.setState( { user: res.data }) 
+  const getCurrentId = await getUserId()
+  const currentUser = await getProfile(getCurrentId)
+  await this.setState( { user: res.data, currentUser : currentUser.data  }) 
   try {
   } catch (err) {
     console.log(err)
   }
 }
+
 getData = async () => {
   const res = await getProfile(getUserId())
   // console.log(res)
   this.setState( { user: res.data }) 
 }
-addLike = async (postId) => {
-  const userId = this.props.match.params.userId
+
+addLike = async (userId, postId) => {
   await getLike(userId, postId)
   const res = await getProfile(userId)
-  this.setState({  user :res.data  }, () => { console.log(this.state.user)})   
+  this.setState({  user: res.data  })   
 }
+
 handleChange = event => {
   const data = 
   { ...this.state.data, [event.target.name]: event.target.value }
   this.setState( { data } )
 }
 postComment = async ( postOwner, postId) =>{
-  const content = this.state.data
-  await postAComment(postOwner,postId, content)
+  const contents = this.state.data
+  await postAComment(postOwner,postId, contents)
   const userId = this.props.match.params.userId
   const res = await getProfile(userId)
-  this.setState( { user: res.data })  
+
+
+  this.setState( { data: {content: ''} , user: res.data })  
+
 }
 commentDelete = async (postId, commentId) => {
   const userId=getUserId()
@@ -64,14 +73,19 @@ deleteAPost(userId, postId)
 setIndex = async (i) => {
   await this.setState({index: i})
 }
-movePage = (follower) => {
-const user = follower
-  // this.props.history.push(`/profile/${follower._id}`)
-  this.setState({ user ,  modal: false })
+movePage = async (follower) => {
+  this.props.history.push(`/profile/${follower.id}`)
+  const data = await getProfile(follower.id)
+  const user = data.data
+  await this.setState({ user })
 }
+
+
 render(){
   const { user } = this.state
   const posts = user.posts ? user.posts : []
+
+  console.log(this.state.data)
   return (
     <div className='profile-page-container'>
         <div className='left-section'> 
@@ -84,7 +98,9 @@ render(){
         <div className='profile-info-component'>
           <ProfileInfo 
             user={this.state.user}
-            move={this.movePage}/>
+            move={this.movePage}
+            currentUser={this.state.currentUser}/>
+
         </div>
         <div className='profile-post'>
           <Post 
@@ -94,18 +110,18 @@ render(){
       {posts.slice(0).reverse().map((post, i) => {
 
           return <NewsFeedsCard
+          key={`profile${post._id}`}
             post={post}
-            user={this.state.user}
             like={this.addLike}
+            setIndex={this.setIndex}
             comment={this.postComment}
             change={this.handleChange}
-            key={`profile${post._id}`}
-            commentDelete={this.commentDelete}
             deletePost={this.deletePost}
-            showLikes={this.showLikes}
-            setIndex={this.setIndex}
+            commentDelete={this.commentDelete}
             i={i}
             indexState={this.state.index}
+            currentUser={this.state.currentUser}
+            value={this.state.data.content}
           />
         })}
         </div>

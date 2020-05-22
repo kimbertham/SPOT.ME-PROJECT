@@ -1,20 +1,22 @@
 import React from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
-import {  followAUser } from '../../lib/api'
+import {  followAUser, getProfile, getFollowers } from '../../lib/api'
 import { getUserId } from '../../lib/auth'
 const defaultImage = 'https://bit.ly/3g47LRX'
 
 
 class ProfileInfo extends React.Component {
   state ={
-    showFollowers: false
-    
-    
+    showFollowers: false,
   }
+
+
 
     followUser = async () =>{
       const userId = this.props.user.id
-      followAUser(userId)
+      const res = await followAUser(userId)
+      console.log(res)
     }
 
     showFollowers = (value ) => {
@@ -22,17 +24,15 @@ class ProfileInfo extends React.Component {
     }
 
   render () {
-    const {user, move} = this.props
+    const {user, move, currentUser} = this.props
     const followers = user.followers? user.followers : []
     const modalClassName = this.state.showFollowers? 'display-block' : 'display-none'
-    const currentUser = getUserId()
-    const profileUser = this.props.user.id
-
+    const followingArray = currentUser.following? currentUser.following : []
     return (
 
       <div className='profile-info-container'>
         <div className='profile-info-section'>
-          <div className={currentUser === profileUser ? 'display-block' : 'display-none'}>
+          <div className={currentUser.id === user.id ? 'display-block' : 'display-none'}>
             <Link to={`/profile/${user.id}/edit`}> 
               <img className='edit-profile' 
                 src='https://i.imgur.com/8o2WJAN.jpg' 
@@ -42,7 +42,8 @@ class ProfileInfo extends React.Component {
 
           <div className='follower-count'>  
             <div onClick={()=>{this.showFollowers(true)}} 
-            className='followers-icon profile-followers'>see followers..</div> 
+            className='followers-icon profile-followers'></div> 
+            <div className='followers-number'><p>{followers.length}</p></div>
             <div className={'modal'}></div>
 
 
@@ -51,26 +52,27 @@ class ProfileInfo extends React.Component {
               <div className={`modal ${modalClassName}`}>
                 <div className='modal-pop modal-followers'>
                   <div 
-                    onClick={()=>this.showFollowers('')} 
+                    onClick={()=>this.showFollowers(false)} 
                     className='back-cross'>X</div>
                   <h1 
                     className='follower-title'>
                     {`${user.firstName}'s Followers`} 
                   </h1>
         
-        {followers.length > 0? followers.map((follower, i) => {
-            return <div 
-            onClick={()=>{move(follower)}} 
-            className='followers-field'>
-            <img alt='follower-img' className='follower-img'
-              src={follower.image?`${follower.image}` : defaultImage } />
-            <p>{`${follower.firstName} ${follower.lastName}`}</p>
+                  {followers.length > 0? followers.map((follower, i) => {
+                      return <div 
+                      onClick={()=>{this.setState( {showFollowers:false}, () => move(follower) )}} 
+                      className='followers-field'>
+                      <img alt='follower-img' className='follower-img'
+                        src={follower.image?`${follower.image}` : defaultImage } />
+                      <p>{`${follower.firstName} ${follower.lastName}`}</p>
+                    </div>
+                    }) : 
+                  <p style={{ color: 'red' }}>'no followers to show' </p> }
+
+              </div>
+            </div>
           </div>
-        }) : 
-          <p style={{ color: 'red' }}>'no followers to show' </p> }
-    </div>
-  </div>
-</div>
 {/* //!--------------------- */}
 
         <div className='profile-pic-container'>
@@ -81,9 +83,9 @@ class ProfileInfo extends React.Component {
           <div className='button-container'>
           <button 
           onClick={this.followUser} 
-          className='follow-button'> 
-          Follow 
-              </button>
+          className={`follow-button ${currentUser.id === user.id ? 'display-none' : 'display-block'}`}>
+            {followingArray.includes(user.id)? <p>Unfollow </p> : <p>Follow </p>}
+            </button>
             </div>
           </div>
 

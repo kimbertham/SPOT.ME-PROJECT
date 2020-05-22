@@ -43,9 +43,20 @@ async function toggleFollow(req,res,next){
     console.log('followed')
     await userToFollow.save()
     await followingUser.save()
-    res.status(202).json('FOLLOW TOGGLED!')
+    res.status(202).json(followingUser)
   } catch (err){
     next(err)
+  }
+}
+
+async function getFollowers(req,res) {
+  const userId = req.params.userId
+  try {
+    const user = await User.findbyId(userId)
+    const followers = user.followers
+    res.status(200).json(followers)
+  } catch (err){
+    console.log(err)
   }
 }
 
@@ -56,5 +67,6 @@ async function toggleFollow(req,res,next){
 
 
 module.exports = {
-  toggleFollow: toggleFollow
+  toggleFollow: toggleFollow,
+  getFollowers: getFollowers
 }

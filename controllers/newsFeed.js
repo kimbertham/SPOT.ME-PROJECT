@@ -9,17 +9,22 @@ const Group = require('../models/Group')
 // Will return an array of ALL posts from joined groups and followed users
 //! need to populate owner 
 
+
 async function getNewsFeed(req,res,next){
   let postArray = []
   try {
     // get user and populate following field
-    const user = await User.findById(req.currentUser._id).populate('following')
+    const user = await (await User.findById(req.currentUser._id).populate('following').populate('posts.owner'))
+
     if (!user) {
       throw new Error('Not Found')
     }
 
     await Promise.all(user.following.map(  async followedUser => {
-      const folUser = await User.findById(followedUser._id).populate('posts.owner')
+      const folUser = await User.findById(followedUser._id)
+        .populate('posts.owner')
+        .populate('posts.likes')
+        .populate('posts.comments.user')
       const posts = folUser.posts
       postArray = posts
     }))
@@ -27,7 +32,7 @@ async function getNewsFeed(req,res,next){
 
     // get all groups joined by the user
     const groups = await Group.find()
-    console.log(groups)
+    // console.log(groups)
     const usersGroups = groups.filter(group => {
       let userInGroup = false
       group.members.forEach(member => {
@@ -39,6 +44,7 @@ async function getNewsFeed(req,res,next){
     })
     // get all posts from each group the user is in
     usersGroups.forEach(group => {
+      // console.log(group)
       group.posts.forEach(groupPost => {
         postArray.push(groupPost)
       })
@@ -46,11 +52,17 @@ async function getNewsFeed(req,res,next){
     postArray.sort(function(a, b){
       return b.updatedAt - a.updatedAt
     })
+
+    await user.save()
+
     res.status(200).json(postArray)
   } catch (err){
     next(err)
   }
 }
+
+
+// get posts from user 
 
 
 

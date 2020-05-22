@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { getToken } from './auth'
+import { getToken, getUserId } from './auth'
+
 
 const baseUrl = '/api'
 
@@ -52,3 +53,10 @@ export const postAComment = (postOwner,postId, content) => {
     content , withHeaders() )
 }
 
+export const getCurrentUser = async () => {
+const resId = await getUserId()
+const dataId = resId.data
+const resProfile = await getProfile(dataId)
+const dataProfile = resProfile.data
+return dataProfile
+}
