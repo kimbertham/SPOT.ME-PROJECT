@@ -21,6 +21,7 @@ state = {
   index: null,
   postsUser: {}
 }
+
 async componentDidMount() {
   this.getData()
   try {
@@ -51,23 +52,23 @@ handleChange = event => {
 postComment = async ( postOwner, postId) =>{
   const content = this.state.data
   await postAComment(postOwner,postId, content)
-  this.getData()
+  await this.getData()
 }
 
 commentDelete = async (postId, commentId) => {
   const userId = getUserId()
   commentADelete( userId ,postId,commentId)
-  this.getData() 
+  await this.getData() 
 }
 
 deletePost = async (postId) => {
   const userId = getUserId()
   deleteAPost(userId, postId)
-  this.getData()
+  await this.getData()
 }
 
 setIndex = async (i) => {
-  await this.setState({index: i})
+  this.setState({index: i})
 }
 movePage = (follower) => {
 const user = follower
@@ -92,6 +93,7 @@ render(){
             user={this.state.user}
             move={this.movePage}
             refresh={this.getData}
+            notify={notify}
             />
         </div>
         <div className='profile-post'>

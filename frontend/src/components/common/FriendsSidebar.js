@@ -110,7 +110,7 @@ class FriendsSidebar extends React.Component {
               return <div key={user.id}
                 className={ entry.sender === user.id ? 'my-message' : 'their-message' }
               >{entry.content}
-                <p onClick={(event) => this.deleteMessage(event, entry._id)}>X</p>
+                <p onClick={(event) => this.deleteMessage(event, entry._id), notify('Message deleted!')}>X</p>
               </div>
           
             })}
