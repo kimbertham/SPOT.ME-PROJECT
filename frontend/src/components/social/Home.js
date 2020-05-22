@@ -25,6 +25,7 @@ class Home extends React.Component {
     getData = async () => {
       let postsArray = []
       const postRes = await axios.get('/api/news', withHeaders())
+<<<<<<< HEAD
       const getPostsArray = postRes.data.slice(0).reverse()
         getPostsArray.map(user => {
         user.map(post => {
@@ -45,6 +46,27 @@ class Home extends React.Component {
 
     async componentDidMount() {
     await this.getData()
+=======
+      // const postsArray = postRes.data
+      // this.setState({ postsArray })
+      const res = await getProfile(getUserId())
+      const postsArray = postRes.data
+      this.setState({ postsArray, user: res.data }) 
+    }
+
+
+    async componentDidMount() {
+      // const postRes = await axios.get('/api/news', withHeaders())
+      // const postsArray = postRes.data
+      // const getCurrentId = await getUserId()
+      // const getCurrentProfile = await getProfile(getCurrentId)
+      // const currentUser = getCurrentProfile.data
+      // currentUser.posts.map(post => {
+      //   postsArray.push(post)
+      // })
+      // this.setState({ postsArray, currentUser})
+      await this.getData()
+>>>>>>> 5584239afff5dfda04d9ead5f0ab51235c25e747
     }
 
     addLike = async (userId, postId) => {
@@ -87,7 +109,7 @@ class Home extends React.Component {
     render() {
       const { postsArray } = this.state
       const posts = postsArray ? postsArray : []
-      console.log(postsArray)
+      console.log(this.state)
       return (
         <div className='profile-page-container'>
         

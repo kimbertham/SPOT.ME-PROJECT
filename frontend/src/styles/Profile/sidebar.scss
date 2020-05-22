@@ -234,6 +234,8 @@
     }
 
     button {
+      // display: flex;
+      // justify-content: start;
       height: 100%;
       width: 12%;
       text-align: center;
@@ -243,6 +245,8 @@
       background-color: rgba(40, 44, 39, 0.133);
       border-radius: 10px;
       border: 5px solid grey;
+      font-size: 1.5vh;
+      
     }
 
     button:hover {

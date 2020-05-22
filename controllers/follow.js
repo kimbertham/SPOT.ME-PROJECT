@@ -8,9 +8,9 @@ const User = require('../models/user')
 // any Valid token required
 
 async function toggleFollow(req,res,next){
-  let message = ''
   // console.log(req.currentUser)
   try {
+    let message = ''
     const userToFollow = await User.findById(req.params.userId)
     const followingUser = await User.findById(req.currentUser._id)
     // const infoCurrentUser = {
@@ -46,7 +46,7 @@ async function toggleFollow(req,res,next){
     console.log('followed')
     await userToFollow.save()
     await followingUser.save()
-    res.status(202).json(followingUser)
+    res.status(202).json(message)
   } catch (err){
     next(err)
   }
