@@ -17,7 +17,7 @@ class ProfileInfo extends React.Component {
     followUser = async () =>{
       const userId = this.props.user.id
       const message = await followAUser(userId)
-      notify(message.data)
+      // notify(message.data)
     // this.setState({ showFollowers: !this.state.showFollowers })
   }
 
