@@ -8,6 +8,9 @@ async function profileShow(req, res) {
       .populate('posts.comments.user')
       .populate('posts.likes')
       .populate('followers')
+      .populate('posts.owner')
+      .populate('comments.user')
+    
     res.status(200).json(user)
   } catch (err) {
     res.json(err)
@@ -58,8 +61,8 @@ async function getUsersGroups(req,res,next){
       return userInGroup
     })
 
-    console.log('got groups')
-    console.log(usersGroups)
+    // console.log('got groups')
+    // console.log(usersGroups)
     res.status(200).json(usersGroups)
   } catch (err){
     next(err)

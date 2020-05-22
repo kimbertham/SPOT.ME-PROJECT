@@ -8,9 +8,9 @@ const User = require('../models/user')
 // any Valid token required
 
 async function toggleFollow(req,res,next){
-  let message = ''
   // console.log(req.currentUser)
   try {
+    let message = ''
     const userToFollow = await User.findById(req.params.userId)
     const followingUser = await User.findById(req.currentUser._id)
     // const infoCurrentUser = {
@@ -52,6 +52,17 @@ async function toggleFollow(req,res,next){
   }
 }
 
+async function getFollowers(req,res) {
+  const userId = req.params.userId
+  try {
+    const user = await User.findbyId(userId)
+    const followers = user.followers
+    res.status(200).json(followers)
+  } catch (err){
+    console.log(err)
+  }
+}
+
 // get User from profile id
 // check if user exists
 // check if user is already following 
@@ -59,5 +70,6 @@ async function toggleFollow(req,res,next){
 
 
 module.exports = {
-  toggleFollow: toggleFollow
+  toggleFollow: toggleFollow,
+  getFollowers: getFollowers
 }

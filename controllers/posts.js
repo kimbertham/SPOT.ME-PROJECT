@@ -19,7 +19,7 @@ async function createNewPost(req,res,next) {
     req.body.owner = req.currentUser
     user.posts.push(req.body)
     await user.save()
-    res.status(201).json(req.body)
+    res.status(201).json(user)
   } catch (err){
     next(err)
   }
@@ -64,7 +64,7 @@ async function toggleLike(req,res,next){
     if (!owner || !post) {
       throw new Error('Not Found')
     }
-
+    
     if (post.likes.includes(req.currentUser._id)) {
       post.likes.pull(req.currentUser)
       user.likes.pull(post)
@@ -72,8 +72,7 @@ async function toggleLike(req,res,next){
       post.likes.push(req.currentUser)
       user.likes.push(post)
     }
-
-
+    
     await owner.save()
     await user.save()
     res.status(201).json('Liked')

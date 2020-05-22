@@ -66,6 +66,10 @@ router.route('/groups')
 router.route('/profile/:userId/follow')
   .put(secureRoute, follow.toggleFollow)
 
+router.route('/profile/:userId/getFollowers')
+  .get(follow.getFollowers
+  )
+
 
 // --------------- ROUTES FOR GROUPS (CREATING,JOINING,DELETING) --------------
 

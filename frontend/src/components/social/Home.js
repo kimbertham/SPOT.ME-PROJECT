@@ -7,7 +7,6 @@ import FriendsSidebar from '../common/FriendsSidebar'
 import Post from './Post'
 import { withHeaders, getProfile, getLike, 
   commentADelete, deleteAPost, postAComment } from '../../lib/api'
-const userId = getUserId()
 
 class Home extends React.Component {
   state = {
@@ -17,25 +16,41 @@ class Home extends React.Component {
     },
     modal: false,
     index: null,
-    postsArray: []
+    postsArray: [],
+    currentUser: ''
   }
   
   //! get newsfeed Array
 
     getData = async () => {
       const postRes = await axios.get('/api/news', withHeaders())
+      // const postsArray = postRes.data
+      // this.setState({ postsArray })
       const res = await getProfile(getUserId())
       const postsArray = postRes.data
       this.setState({ postsArray, user: res.data }) 
     }
 
+
     async componentDidMount() {
-      await this.getData()
+      const postRes = await axios.get('/api/news', withHeaders())
+      const postsArray = postRes.data
+      const getCurrentId = await getUserId()
+      const getCurrentProfile = await getProfile(getCurrentId)
+      const currentUser = getCurrentProfile.data
+      // currentUser.posts.map(post => {
+      //   postsArray.push(post)
+      // })
+      this.setState({ postsArray, currentUser})
+      // await this.getData()
     }
 
-    addLike = async (postId) => {
+    addLike = async (userId, postId) => {
       await getLike(userId, postId)
-      this.getData()  
+      const res = await axios.get('/api/news', withHeaders())
+      const postsArray = res.data.slice(0).reverse()
+      this.setState({ postsArray })   
+      // this.getData()  
     }
     
     handleChange = event => {
@@ -44,22 +59,13 @@ class Home extends React.Component {
       this.setState( { data } )
     }
     
-    postComment = async ( postOwner, postId) =>{
+    postComment = async ( postOwner, postId, userId) =>{
+      console.log(this.state)
       const content = this.state.data
       await postAComment(postOwner,postId, content)
-      await this.getData() 
-    }
-    
-    commentDelete = async (postId, commentId) => {
-      const userId = getUserId()
-      commentADelete( userId ,postId,commentId)
-      this.getData()
-    }
-    
-    deletePost = async (postId) => {
-      const userId = getUserId()
-      deleteAPost(userId, postId)
-      this.getData() 
+      const res = await axios.get('/api/news', withHeaders())
+      const postsArray = res.data.slice(0).reverse()
+      this.setState( { postsArray} )  
     }
     
     setIndex = async (i) => {
@@ -71,7 +77,7 @@ class Home extends React.Component {
     render() {
       const { postsArray } = this.state
       const posts = postsArray ? postsArray : []
-      // console.log(posts)
+      console.log(postsArray)
       return (
         <div className='profile-page-container'>
         
@@ -80,27 +86,26 @@ class Home extends React.Component {
             user={this.state.user.id}/>
 
           <div className='mid-section'>
-
             <div className='profile-post'>
+
               <Post 
                 user={this.state.user}
                 refresh={this.getData}
               />
 
-              {posts.slice(0).reverse().map((post, i) => { 
+              {posts.slice(0).reverse().map((post, i) => {
                 return <NewsFeedsCard
+                key={`profile${post._id}`}
                   post={post}
-                  user={post.owner}
                   like={this.addLike}
+                  setIndex={this.setIndex}
                   comment={this.postComment}
                   change={this.handleChange}
-                  key={`profile${post._id}`}
-                  commentDelete={this.commentDelete}
                   deletePost={this.deletePost}
-                  showLikes={this.showLikes}
-                  setIndex={this.setIndex}
+                  commentDelete={this.commentDelete}
                   i={i}
-                  indexState={this.state.index}/>
+                  indexState={this.state.index}
+                  currentUser={this.state.currentUser}/>
               })}
             </div>
           </div>
