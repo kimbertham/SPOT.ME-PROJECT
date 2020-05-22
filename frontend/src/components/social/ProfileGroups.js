@@ -55,7 +55,7 @@ render(){
               <label className="label"> Group Name </label>
               <div className="control"> 
               <input 
-                className=' input is-info group-input' 
+                className='is-info group-input input' 
                 placeholder="Group name here"
                 name="name"
                 onChange={this.handleChange}
@@ -67,7 +67,7 @@ render(){
               <label className="label"> Description </label>
               <div className="control">
                 <input 
-                className='input is-info group-input'
+                className='is-info group-input input'
                 placeholder="Group description here"
                 name="description"
                 onChange={this.handleChange}
