@@ -43,7 +43,6 @@ class FriendsSidebar extends React.Component {
     event.preventDefault()
     try {
       await axios.post(`/api//messages/${getUserId()}/post/${this.state.chatId}`,this.state.chat , withHeaders())
-      notify('Message deleted!')
       await this.getData()
       await this.getChat(this.state.chatId)
     } catch (err) {
@@ -55,8 +54,9 @@ class FriendsSidebar extends React.Component {
     try {
       await axios.delete(`/api//messages/${getUserId()}/delete/${postId}`, withHeaders())
 
-      // await this.getData()
+      await this.getData()
       await this.getChat()
+      notify('Message deleted!')
     } catch (err) {
       console.log(err)
     }
@@ -65,6 +65,7 @@ class FriendsSidebar extends React.Component {
 
   getChat = id => {
     const conversation = this.state.user.messages.filter(message => id === message.otherUserId)
+    console.log(conversation)
     this.setState({ conversation: conversation, chatId: id })
   }
 
@@ -124,7 +125,7 @@ class FriendsSidebar extends React.Component {
               onChange={this.handleChange}
               value={chat.content}
             />
-            <button>Send!</button>
+            <button>Send</button>
           </form>
         </div>
       </div>
