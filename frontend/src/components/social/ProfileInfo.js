@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import EditProfile from './editProfile'
+import EditProfile from './EditProfile'
 import { Link } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'

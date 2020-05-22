@@ -48,7 +48,7 @@ class EditProfile extends React.Component {
         <div className={`${modalClassName} modal `}>
           <div className={`${modalClassName} modal-info modal-group`}>
             <div className="closed" onClick={this.props.toggleModal}> X</div>
-            <h1> Edit Group </h1>
+            <h1> Edit Details </h1>
             <form onSubmit={this.handleSubmit} className="group-profile-form">
               <div className="field">
                 <label className="label"> First Name </label>
