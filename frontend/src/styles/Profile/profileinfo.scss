@@ -1,0 +1,150 @@
+@import '../main.scss';
+
+.p-page-cont {
+  display: flex;
+  justify-content: space-between;
+  color: #E5E5E5;
+}
+
+// .mid-section {
+//   display: flex;
+//   width: 70vw;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+// }
+
+
+.p-section {
+  @extend .flex, .center;
+  flex-direction: column;
+  width:(100% / 3);
+  height: 100%;
+  // border: 2px solid red;
+}
+
+.p-edit-cont{
+  @extend .p-section;
+  display: block;
+  .edit-icon {
+    float: right;
+    width: 2vw;
+    margin: 10px;
+  }
+}
+
+.p-info-cont {
+  @extend.flex;
+  width: 55vw;
+  height: 50vh;
+  background-color: #535C61;
+  border-radius: 10px;
+  margin: 10vh 0 40px 0;
+}
+
+.p-followers-cont{
+  @extend .p-section;
+  .p-followers {
+    width: 8vw;
+  }
+}
+
+.p-info {
+  @extend .p-section;
+  text-align: center;
+
+  .profile-pic {
+    border-radius: 50%;
+    width: 15vw;
+  }
+
+  h1{
+    font-size: 4vh;
+  }
+}
+
+
+.followers-cont {
+  @extend .modal-i, .scroll;
+  height: 70vh;
+
+  .f-field {
+  @extend .flex, .bottom-border, .pointer;
+  width: 20vw;
+  padding: 10px;
+  align-items: center;
+  border-bottom: 1px solid rgb(189, 189, 189);
+
+  img {
+    width: 3vw;
+    margin-right: 2vw;
+    border-radius: 50%;
+    }
+  }
+}
+
+  .follower-count {
+    width: 33%;
+    height: 25vh;
+    .profile-followers {
+      cursor: pointer;
+      width: 40%;
+      height: 40%;
+      // border: 2px solid red;
+    }
+    
+
+  .profile-pic-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.3%;
+    height: 25vh;
+
+    .profile-pic {
+      width: 60%;
+      border-radius: 50%;
+    }
+  }
+  .follower-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.3%;
+    height: 25vh;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33.3%;
+    height: 25vh;
+  }
+  .follow-button {
+    background: #88BEF0;
+    border-radius: 5px;
+    width: 70px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0px 3px 3px black;
+  }
+  .follow-button:hover {
+    background-color: gray;
+    transform: translateY(3px);
+    box-shadow: none;
+  }
+}
+
+.info-bottom {
+
+  h1 {
+    font-size: 30px;
+    margin: 0;
+  }
+
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}

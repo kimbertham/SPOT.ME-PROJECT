@@ -1,0 +1,258 @@
+// * left side
+
+.left-section-cont {
+  position:relative;
+  width: 15vw;
+  // border: 2px solid red;
+}
+.left-section {
+  height: 80vh;
+  position: sticky;
+  top: 67px;
+
+  .profile-sidebar {
+    width: 15vw;
+    height: 80vh;
+    max-height: 80vh;
+    border-radius: 10px;
+
+
+    .events-container,
+    .groups-container {
+      height: 50%;
+      width: 100%;
+      padding-bottom: 50px;
+      overflow: hidden;
+      border-bottom: 2px solid #535C61;
+
+      h1 {
+        font-size: 25px;
+        margin: 10px;
+      }
+
+      .sidebar-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+          cursor: pointer;
+          font-size: 12px;
+          margin: 0 auto;
+        }
+      }
+
+      .groups-list-wrap,
+      .events-list-wrap {
+        height: 100%;
+        overflow-y: scroll;
+
+        .groups-list,
+        .events-list {
+
+          .locations-groups-side {
+            margin-bottom: 20px;
+          }
+
+          .group-field,
+          .event-field {
+            padding: 5px;
+            display: flex;
+            height: 10%;
+            margin: 0;
+            border-radius: 10px;
+            // margin-bottom: 10px;
+
+
+            img {
+              width: 45px;
+              border-radius: 50%;
+            }
+
+            .group-info,
+            .event-info {
+              display: flex;
+              align-items: center;
+              justify-content: flex-end;
+              padding-left: 20px;
+              width: 100%;
+
+              p {
+                max-width: 15vh;
+              }
+            }
+          }
+
+          .group-field:hover {
+            background-color: #363636;
+          }
+        }
+      }
+    }
+  }
+}
+
+.sidebar {
+  .left-section {
+    margin-left: 25px;
+    margin-top: 25px;
+  }
+}
+
+// * right side
+
+.right-section {
+  height: 90vh;
+  width: 20vh;
+  // padding: 10px;
+  position: sticky;
+  top: 67px;
+  border-radius: 10px;
+  background-color: #343D42;
+
+  .sidebar-head {
+    border-bottom: 2px solid #535C61;
+    margin-bottom: 10px;
+
+    h3 {
+      font-size: 25px;
+      margin: 10px;
+    }
+  }
+
+  .friends-list {
+
+    .friend {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      padding: 10px;
+
+
+      .friend-icon {
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    .friend:hover {
+      background-color: #363636;
+    }
+  }
+}
+
+// * for chatbox
+
+.chat-modal {
+  width: 40%;
+  height: 50vh;
+  background-color: #535C61;
+  padding: 20px;
+  border-radius: 20px;
+
+  .chat-top {
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      color: black;
+    }
+
+    .close-chat-modal {
+      color: black;
+    }
+  }
+
+
+  .chatbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 70%;
+    border-radius: 10px;
+    border: 2px solid grey;
+    background-color: white;
+    overflow: scroll;
+
+    .my-message,
+    .their-message {
+      display: flex;
+      font-weight: 500;
+      padding: 10px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      border-radius: 10px;
+      min-width: 30%;
+      margin: 1px 0;
+
+      p:hover {
+        color: rgb(151, 151, 151);
+        cursor: pointer;
+      }
+    }
+
+    .my-message {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      color: rgb(221, 221, 221);
+      background-color: rgb(75, 139, 190);
+
+      p {
+        margin-right: 10px;
+      }
+    }
+
+    .their-message {
+      display: flex;
+      background-color: rgb(81, 81, 82);
+      color: rgb(221, 221, 221);
+
+      p {
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .chat-form {
+    display: flex;
+    align-items: center;
+    height: 20%;
+    margin-top: 10px;
+    border: none;
+
+    .chat-input {
+      height: 100%;
+      width: 86%;
+      padding: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      color: black;
+      font-weight: 600;
+      font-size: medium;
+      overflow: auto;
+      resize: vertical;
+      border: 5px solid grey;
+    }
+
+    button {
+      // display: flex;
+      // justify-content: start;
+      height: 100%;
+      width: 12%;
+      text-align: center;
+      cursor: pointer;
+      color: black;
+      margin-left: auto;
+      background-color: rgba(40, 44, 39, 0.133);
+      border-radius: 10px;
+      border: 5px solid grey;
+      font-size: 1.5vh;
+      
+    }
+
+    button:hover {
+      color: white;
+    }
+  }
+}
