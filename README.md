@@ -16,7 +16,6 @@
   <li><p>Express</p></li> 
   <li><p>MongoDB</p></li> 
   <li><p>Mongoose</p></li>
-  <li><p>Heroku</p></li> 
   <li><p>Git</p></li>
   </ul>
   
