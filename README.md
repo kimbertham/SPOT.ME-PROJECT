@@ -52,4 +52,38 @@
           })}
         </MapGl>
         ```
+ <h4> Profile and followers </h4>
+ <p> With the gym sections done I then began creating the profile info section. This involved pulling the data by sending request to the backend using Axios. Once the basic data was set, I decided to seperate the followers and edit sections as modals and impletmented the follow buttons on other users page. 
+ 
+ ``` 
+    <button onClick={() => followUser(user.id)} className={current.id === user.id ? 'display-none' : 'follow-button'}>
+          {current.following.includes(user.id) ? 'Unfollow' : 'Follow'}
+        </button>
+```
+<h4> Profile posting </h4>
+<p> I was then tasked with handling all the posting that would occur on profiles and the homepage. I spent most of this time creating post components and requests to be backend that allowed the viewers to create posts, comments and likes. I also created delete buttons and display likes hovers. 
+```
+      <div className='center'
+        onMouseLeave={()=>this.setLike()}
+        onMouseEnter={()=> this.setLike(i + 1)} >
+
+        <img className="likes" alt="logo"
+          src={require('../../assets/muscle.png')}/>
         
+        <div className={show ? 'likes-hover' : 'display-none'}>  
+          {p.likes.map(l => 
+            <p key={l.id}>{`${l.firstName}`} {`${l.lastName}`}</p> 
+          )}
+        </div>
+  
+        <small>
+          {p.likes.length === 1 ? `${p.likes[0].firstName} ${p.likes[0].lastName} likes this` 
+            : p.likes.length === 2 ? `${p.likes[0].firstName} ${p.likes[0].lastName} and ${p.likes[1].firstName} ${p.likes[1].lastName} like this`  
+              : p.likes.length === 3 ?  `${p.likes[0].firstName} ${p.likes[0].lastName}, ${p.likes[1].firstName} ${p.likes[1].lastName} and ${p.likes[2].firstName} ${p.likes[2].lastName} like this` 
+                : p.likes.length === 4 ?  `${p.likes[0].firstName} ${p.likes[0].lastName}, ${p.likes[1].firstName} ${p.likes[1].lastName} and ${p.likes.length - 2} others like this` 
+                  : 0 }
+        </small>
+
+      </div>
+      ```
+      ```
