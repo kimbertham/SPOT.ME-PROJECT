@@ -27,8 +27,8 @@
   
 <h4> Gym data and search </h4>
 <p float='left'>
-  <img src='https://i.imgur.com/HWXvsEP.png' width='400' alt='gym'/>
-    <img src='https://i.imgur.com/LL5IKJI.png' width='400' alt='gym'/>
+  <img src='https://i.imgur.com/HWXvsEP.png' width='500' alt='gym'/>
+    <img src='https://i.imgur.com/LL5IKJI.png' width='500' alt='gym'/>
 
 <p> My first task was to get the gym sections running, this would involve the use of mapbox, and google places API to provide visual locations and details. Once getting the map up, I was able to feed in coordinates attained from google places searches. These results were based on a keyword and provided results found in a given radius. These results were then plotted on the map using markers and on selection linked to a details page. The details page took the form of reusable components with details provided as props. The images were displayed using 'Slick-Carousel', a third party package. </p>
 
@@ -64,7 +64,7 @@
 ```
 
 <h4> Profile posting </h4>
-<img src='https://i.imgur.com/UQChPal.png' alt='post' width='400'/>
+<img src='https://i.imgur.com/UQChPal.png' alt='post' width='500'/>
 <p> I was then tasked with handling all the posting that would occur on profiles and the homepage. I spent most of this time creating post components and requests to be backend that allowed the viewers to create posts, comments and likes. I also created delete buttons and display likes hovers. 
   
   ```
@@ -103,4 +103,4 @@ render() {
          </small>
       </div>
       ```
- 
+ <h2> Wins/Loses </h2>
