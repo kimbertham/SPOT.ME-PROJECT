@@ -2,6 +2,8 @@
 <h1> SpotMe </h1>
 <p> Link : </p>
 
+<img src='https://i.imgur.com/OPFn2GB.png' alt='img'/>
+
 <h2> Brief </h2>
 <p> General Assmeby Group Project - 1 week - 4 participants </p>
 <p> Create a full stack application consuming atleast one API. </p>
@@ -65,9 +67,9 @@
 
 <h4> Profile posting </h4>
 <img src='https://i.imgur.com/UQChPal.png' alt='post' width='500'/>
-<p> I was then tasked with handling all the posting that would occur on profiles and the homepage. I spent most of this time creating post components and requests to be backend that allowed the viewers to create posts, comments and likes. I also created delete buttons and display likes hovers. 
+<p> I was then tasked with handling all the posting that would occur on profiles and the homepage. I spent most of this time creating post components and requests to be backend that allowed the viewers to create posts, comments and likes. I also created delete buttons and display likes hovers. </p>
   
-  ```
+```
 
 setLike = (i) => {
   this.setState({ show: i ? i : null })
@@ -102,5 +104,17 @@ render() {
                   : 0 }
          </small>
       </div>
-      ```
- <h2> Wins/Loses </h2>
+      
+ ```
+  <h2> Wins/Loses </h2>
+  <h4> Wins </h4>
+  <p> Creating the gym section in this project involved me having to do a lot of reading and searching through documentation in order to get all the data and images set up. The google places API particularly had a lot of nested data and links pointing to other searches required. In doing this, I feel a lot more confident and sifting through information and making the appropriate searches in order to find what is needed. </p>
+ <p> Creating the posts forced me to really consider how to set up my components in an oragnized way. To minimise the number of requests needed, I had to really  consider where to place functions, and how to pass them as props in a way that was readable and structured.
+  <h4> Loses </h4>
+  <ul>
+  <li><p> Initially as a group we had a few issues with managing sections and communication which led to a lot of work being written over. This futher became and issue when pulling from git and having a lot of merge conflicts that had to be fixed. After realising this may be an issue in future we tried to be more considerate of each others work and not make alterations without informing others first. </li></p>
+<li><p> When creating the posts, I had forgotten to consider it would not always be the user posting to their own page and that they would likely be posting to others pages. Once I came upon this issue i was able to refactor my codes and functions to by sending profile ids in function parameters however this could have been avoided had I spent more time before hand planning through my work.</li></p>
+  
+ <h2> Experience and takeaways </h2>
+  
+     
