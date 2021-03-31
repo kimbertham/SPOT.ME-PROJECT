@@ -21,17 +21,18 @@
   </ul>
   
 <h2> Process </h2>
-<p> In our first meeting we to create a social media website targeted at gym goers, it would have posting and messaging elements aswell as gym specifics features such as gym searching and group creating. </p>
+<p> In our first meeting we to create a social media website targeted at gym goers, it would have posting and messaging elements as well as gym specifics features such as gym searching and group creating. We also decided it would be beneficial for us to spend every morning having a quick stand up where we'd discuss what each of us would be doing throughout the day and also that we'd be available on zoom to each other throughout our working hours. </p>
+
 
 <h4> Planning/Delegation </h4>
-<p> To ensure everyone was on the same page and had an idea of what to do we discussed what the website would potentially look like and how it would function by the end of the week. We created a list of the possible APIs and packages we would need throughout the project and used insomnia to get an idea of the data we would be handling. We then created a wireframe using figma and mapped out the relationships between the different components and elements. Considering the time available to us, we agreed we would aim to get the project to a MVP stage by the 5 day to allow time for styling and handling any bugs. We also decided it would be beneficial for us to spend every morning having a quick standup where we'd discuss what each of us would be doing throughout the day and also that we'd be available on zoom to each other throughout our working hours. It was decided that I would personally would predominately on the frontend of the website.
+<p> To ensure everyone was on the same page and had an idea of what to do we discussed what the website would potentially look like and how it would function by the end of the week. We created a list of the possible APIs and packages we would need throughout the project and used insomnia to get an idea of the data we would be handling. We then created a wireframe using figma and mapped out the relationships between the different components and elements. Considering the time available to us, we agreed we would aim to get the project to a MVP stage by the 5 day to allow time for styling and handling any bugs.  It was decided that I would personally would predominately on the frontend of the website.
   
 <h4> Gym data and search </h4>
 <p float='left'>
   <img src='https://i.imgur.com/HWXvsEP.png' width='500' alt='gym'/>
     <img src='https://i.imgur.com/LL5IKJI.png' width='500' alt='gym'/>
 
-<p> My first task was to get the gym sections running, this would involve the use of mapbox, and google places API to provide visual locations and details. Once getting the map up, I was able to feed in coordinates attained from google places searches. These results were based on a keyword and provided results found in a given radius. These results were then plotted on the map using markers and on selection linked to a details page. The details page took the form of reusable components with details provided as props. The images were displayed using 'Slick-Carousel', a third party package. </p>
+<p> My first task was to get the gym sections running, this would involve the use of mapbox, and google places API to provide visual locations and details. Once getting the map up, I was able to feed in coordinates attained from google places searches. These results were based on a keyword and provided results found in a given radius. These results were then plotted on the map using markers and on selection linked to a details page. The details page took the form of reusable components with details provided as props. The images were displayed using 'Slick-Carousel', a third-party package. </p>
 
 ```
       <MapGl
@@ -56,7 +57,7 @@
   ```
         
  <h4> Profile and followers </h4>
- <p> With the gym sections done I then began creating the profile info section. This involved pulling the data by sending request to the backend using Axios. Once the basic data was set, I decided to seperate the followers and edit sections as modals and impletmented the follow buttons on other users page. 
+ <p> With the gym sections done I then began creating the profile info section. This involved pulling the data by sending request to the backend using Axios. Once the basic data was set, I decided to separate the followers and edit sections as modals and implemented the follow buttons on other users page. 
  
  ``` 
     <button onClick={() => followUser(user.id)} className={current.id === user.id ? 'display-none' : 'follow-button'}>
@@ -110,11 +111,11 @@ render() {
   <ul>
   <li>
   <p> Creating the gym section in this project involved me having to do a lot of reading and searching through documentation in order to get all the data and images set up. The google places API particularly had a lot of nested data and links pointing to other searches required. In doing this, I feel a lot more confident and sifting through information and making the appropriate searches in order to find what is needed. </li></p>
- <p><li> Creating the posts forced me to really consider how to set up my components in an oragnized way. To minimise the number of requests needed, I had to really  consider where to place functions, and how to pass them as props in a way that was readable and structured.</li></p>
+ <p><li> Creating the posts forced me to really consider how to set up my components in an organized way. To minimise the number of requests needed, I had to really consider where to place functions, and how to pass them as props in a way that was readable and structured. </li></p>
   <h4> Loses </h4>
   <ul>
-  <li><p> Initially as a group we had a few issues with managing sections and communication which led to a lot of work being written over. This futher became and issue when pulling from git and having a lot of merge conflicts that had to be fixed. After realising this may be an issue in future we tried to be more considerate of each others work and not make alterations without informing others first. </li></p>
-<li><p> When creating the posts, I had forgotten to consider it would not always be the user posting to their own page and that they would likely be posting to others pages. Once I came upon this issue i was able to refactor my codes and functions to by sending profile ids in function parameters however this could have been avoided had I spent more time before hand planning through my work.</li></p>
+  <li><p> Initially as a group we had a few issues with managing sections and communication which led to a lot of work being written over. This further became an issue when pulling from git and having a lot of merge conflicts that had to be fixed. After realising this may be an issue in future, we tried to be more considerate of each other’s work and not make alterations without informing others first. </li></p>
+<li><p> When creating the posts, I had forgotten to consider it would not always be the user posting to their own page and that they would likely be posting to others pages. Once I came upon this issue i was able to refactor my codes and functions to by sending profile ids in function parameters however this could have been avoided had I spent more time before hand planning through my work. </li></p>
  </ul>
  
  <h2> Bugs and future work </h2>
@@ -122,6 +123,7 @@ render() {
  <p> Currently the website is not quite at finished state and in future i would like to go through and finish sections such as the groups and events. </p>
   
  <h2> Experience and takeaways </h2>
- <p> I found this project taught me a lot about team work and the imporance of planning and communication. With so many interacting parts of a website, its key to be informed about what other coders are doing in order for all the components to work together appropriately. I have also become much more comfortable using ReactJS since beginning this project and believe I have a much more stable grasp on the benefits of using state changes and prop passing.  
+ <p> I found this project taught me a lot about team work and the importance of planning and communication. With so many interacting parts of a website, its key to be informed about what other coders are doing in order for all the components to work together appropriately. I have also become much more comfortable using ReactJS since beginning this project and believe I have a much more stable grasp on the benefits of using state changes and prop passing.  </p>
+
   
      
