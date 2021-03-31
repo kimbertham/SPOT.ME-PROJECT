@@ -8,15 +8,15 @@
 
 <h2> Technologies </h2>
 <ul>
-  <li><pi>-JavaScript</p></li>
-  <li><pi>-Sass</p></li>
-  <li><pi>-ReactJs</p></li> 
-  <li><pi>-Node.js</p></li> 
-  <li><pi>-Express</p></li> 
-  <li><pi>-MongoDB</p></li> 
-  <li><pi>-Mongoose</p></li>
-  <li><pi>-Heroku</p></li> 
-  <li><pi>-Git</p></li>
+  <li><p>-JavaScript</p></li>
+  <li><p>-Sass</p></li>
+  <li><p>-ReactJs</p></li> 
+  <li><p>-Node.js</p></li> 
+  <li><p>-Express</p></li> 
+  <li><p>-MongoDB</p></li> 
+  <li><p>-Mongoose</p></li>
+  <li><p>-Heroku</p></li> 
+  <li><p>-Git</p></li>
   </ul>
   
 <h2> Process </h2>
