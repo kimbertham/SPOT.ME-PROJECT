@@ -1,6 +1,5 @@
 
 <h1> SpotMe </h1>
-<p> Link : </p>
 
 <img src='https://i.imgur.com/OPFn2GB.png' alt='img'/>
 
@@ -10,15 +9,15 @@
 
 <h2> Technologies </h2>
 <ul>
-  <li><p>-JavaScript</p></li>
-  <li><p>-Sass</p></li>
-  <li><p>-ReactJs</p></li> 
-  <li><p>-Node.js</p></li> 
-  <li><p>-Express</p></li> 
-  <li><p>-MongoDB</p></li> 
-  <li><p>-Mongoose</p></li>
-  <li><p>-Heroku</p></li> 
-  <li><p>-Git</p></li>
+  <li><p>JavaScript</p></li>
+  <li><p>Sass</p></li>
+  <li><p>ReactJs</p></li> 
+  <li><p>Node.js</p></li> 
+  <li><p>Express</p></li> 
+  <li><p>MongoDB</p></li> 
+  <li><p>Mongoose</p></li>
+  <li><p>Heroku</p></li> 
+  <li><p>Git</p></li>
   </ul>
   
 <h2> Process </h2>
@@ -108,13 +107,21 @@ render() {
  ```
   <h2> Wins/Loses </h2>
   <h4> Wins </h4>
-  <p> Creating the gym section in this project involved me having to do a lot of reading and searching through documentation in order to get all the data and images set up. The google places API particularly had a lot of nested data and links pointing to other searches required. In doing this, I feel a lot more confident and sifting through information and making the appropriate searches in order to find what is needed. </p>
- <p> Creating the posts forced me to really consider how to set up my components in an oragnized way. To minimise the number of requests needed, I had to really  consider where to place functions, and how to pass them as props in a way that was readable and structured.
+  <ul>
+  <li>
+  <p> Creating the gym section in this project involved me having to do a lot of reading and searching through documentation in order to get all the data and images set up. The google places API particularly had a lot of nested data and links pointing to other searches required. In doing this, I feel a lot more confident and sifting through information and making the appropriate searches in order to find what is needed. </li></p>
+ <p><li> Creating the posts forced me to really consider how to set up my components in an oragnized way. To minimise the number of requests needed, I had to really  consider where to place functions, and how to pass them as props in a way that was readable and structured.</li></p>
   <h4> Loses </h4>
   <ul>
   <li><p> Initially as a group we had a few issues with managing sections and communication which led to a lot of work being written over. This futher became and issue when pulling from git and having a lot of merge conflicts that had to be fixed. After realising this may be an issue in future we tried to be more considerate of each others work and not make alterations without informing others first. </li></p>
 <li><p> When creating the posts, I had forgotten to consider it would not always be the user posting to their own page and that they would likely be posting to others pages. Once I came upon this issue i was able to refactor my codes and functions to by sending profile ids in function parameters however this could have been avoided had I spent more time before hand planning through my work.</li></p>
+ </ul>
+ 
+ <h2> Bugs and future work </h2>
+ <p> Some of the empty fields coming from the places API leads to an error on the page due undefined variables. This could be fixed by going through and adding default values if null results are present. </p>
+ <p> Currently the website is not quite at finished state and in future i would like to go through and finish sections such as the groups and events. </p>
   
  <h2> Experience and takeaways </h2>
+ <p> I found this project taught me a lot about team work and the imporance of planning and communication. With so many interacting parts of a website, its key to be informed about what other coders are doing in order for all the components to work together appropriately. I have also become much more comfortable using ReactJS since beginning this project and believe I have a much more stable grasp on the benefits of using state changes and prop passing.  
   
      
