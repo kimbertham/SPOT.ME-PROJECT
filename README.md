@@ -29,7 +29,7 @@
 <h4> Gym data and search </h4>
 <p float='left'>
   <img src='https://i.imgur.com/HWXvsEP.png' width='400' alt='gym'/>
-    <img src='https://i.imgur.com/LL5IKJI.png' width='400' alt='gym'/>
+    <img src='https://i.imgur.com/LL5IKJI.png' width='410' alt='gym'/>
 
 <p> My first task was to get the gym sections running, this would involve the use of mapbox and google places API to provide visual locations and details. Once getting the map up, I was able to feed in coordinates attained from google places searches. These results were based on a keyword and provided results found in a given radius. These results were then plotted on the map using markers and linked to a details page on selection. The details page took the form of reusable components with details provided as props. The images were displayed using 'Slick-Carousel', a third-party package. </p>
 
