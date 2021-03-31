@@ -28,8 +28,8 @@
   
 <h4> Gym data and search </h4>
 <p float='left'>
-  <img src='https://i.imgur.com/HWXvsEP.png' width='500' alt='gym'/>
-    <img src='https://i.imgur.com/LL5IKJI.png' width='500' alt='gym'/>
+  <img src='https://i.imgur.com/HWXvsEP.png' width='400' alt='gym'/>
+    <img src='https://i.imgur.com/LL5IKJI.png' width='400' alt='gym'/>
 
 <p> My first task was to get the gym sections running, this would involve the use of mapbox and google places API to provide visual locations and details. Once getting the map up, I was able to feed in coordinates attained from google places searches. These results were based on a keyword and provided results found in a given radius. These results were then plotted on the map using markers and linked to a details page on selection. The details page took the form of reusable components with details provided as props. The images were displayed using 'Slick-Carousel', a third-party package. </p>
 
@@ -111,6 +111,7 @@ render() {
   <li>
   <p> Creating the gym section in this project involved me having to do a lot of reading and searching through documentation in order to get all the data and images set up. The google places API particularly had a lot of nested data and links pointing to other searches required. In doing this, I feel a lot more confident sifting through information and making the appropriate searches in order to find what is needed. </li></p>
  <p><li> Creating the posts forced me to really consider how to set up my components in an organized way. To minimise the number of requests needed, I had to really consider where to place functions and how to pass them as props in a way that was readable and structured. </li></p>
+ </ul>
   <h4> Loses </h4>
   <ul>
   <li><p> Initially as a group we had a few issues with managing sections and communication which led to a lot of work being written over. This further became an issue when pulling from git and having a lot of merge conflicts that had to be fixed. After realising this issue, we tried to be more considerate of each other’s work and not make alterations without informing others first. </li></p>
