@@ -65,10 +65,8 @@
 
 <h4> Profile posting </h4>
 <p> I was then tasked with handling all the posting that would occur on profiles and the homepage. I spent most of this time creating post components and requests to be backend that allowed the viewers to create posts, comments and likes. I also created delete buttons and display likes hovers. 
-```
-state = {
-  show: false
-}
+  
+  ```
 
 setLike = (i) => {
   this.setState({ show: i ? i : null })
@@ -101,8 +99,7 @@ render() {
               : p.likes.length === 3 ?  `${p.likes[0].firstName} ${p.likes[0].lastName}, ${p.likes[1].firstName} ${p.likes[1].lastName} and ${p.likes[2].firstName}                 ${p.likes[2].lastName} like this` 
                 : p.likes.length === 4 ?  `${p.likes[0].firstName} ${p.likes[0].lastName}, ${p.likes[1].firstName} ${p.likes[1].lastName} and ${p.likes.length - 2}                 others like this` 
                   : 0 }
-        </small>
-
+         </small>
       </div>
       ```
  
